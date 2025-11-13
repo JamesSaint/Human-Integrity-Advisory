@@ -1,0 +1,230 @@
+/* ============================================
+   Navigation styling – Human Integrity Human Integrity Advisory
+   Theme: Montserrat, Navy #003366, Gold #C9B694
+   Purpose: Override Bootstrap navbar to match site
+            typography and colour system.
+   ============================================ */
+
+/* ----- Base navbar wrapper ----- */
+/* Now explicitly fixed so it stays visible on scroll */
+.hic-navbar {
+    position: fixed;          /* <— add this */
+    top: 0;                   /* <— and this */
+    left: 0;                  /* <— and this */
+    right: 0;                 /* <— and this */
+
+    background-color: #EEEEEE !important; /* neutralise Bootstrap's blue */
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    padding: 0.6rem 0;
+    box-shadow: none;
+    border-bottom: 2px solid #C9B694;
+    transition:
+        box-shadow 0.25s ease,
+        padding 0.25s ease,
+        background-color 0.25s ease;
+    z-index: 1030; /* above page content */
+}
+
+
+/* On scroll we keep background the same but tighten padding slightly.
+   (The .navbar-scrolled class is toggled via JS in index.html.) */
+.hic-navbar.navbar-scrolled {
+    padding: 0.4rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ----- Brand area (logo + text) ----- */
+.hic-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #003366;
+    font-size: 0.9rem;
+}
+
+.hic-navbar .navbar-brand:hover {
+    color: #003366;
+}
+
+.navbar-logo {
+    /* Header logo size inside the navbar */
+    height: 70px;
+    width: auto;
+    margin-right: 0.5rem;
+    transition:
+        height 0.25s ease,
+        transform 0.25s ease;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.brand-title {
+    font-size: 0.85rem;
+}
+
+.brand-subtitle {
+    font-size: 0.7rem;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+/* On scroll, make the logo slightly smaller for a more compact bar */
+.hic-navbar.navbar-scrolled .navbar-logo {
+    height: 45px;
+    transform: translateY(1px);
+}
+
+/* ----- Nav links ----- */
+.hic-navbar .navbar-nav .nav-link {
+    position: relative;
+    color: #003366;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    margin: 0 0.15rem;
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.hic-navbar .navbar-nav .nav-link:hover,
+.hic-navbar .navbar-nav .nav-link:focus {
+    color: #C9B694;
+    text-decoration: none;
+}
+
+.hic-navbar .navbar-nav .nav-link.active {
+    color: #C9B694;
+}
+
+/* Underline animation beneath active/hovered links */
+.hic-navbar .navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.8rem;
+    right: 0.8rem;
+    bottom: 0.1rem;
+    height: 2px;
+    background-color: #C9B694;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+.hic-navbar .navbar-nav .nav-link:hover::after,
+.hic-navbar .navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* ----- Toggler (hamburger) with animated gold lines ----- */
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Three gold bars, animated into an "X" when open */
+.navbar-toggler .toggler-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 999px;
+    background-color: #C9B694;
+    margin: 4px 0;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* Animate into X when expanded (Bootstrap toggler removes .collapsed) */
+.navbar-toggler:not(.collapsed) .toggler-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.navbar-toggler:not(.collapsed) .toggler-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler:not(.collapsed) .toggler-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ----- Mobile layout adjustments ----- */
+@media (max-width: 991.98px) {
+.navbar-logo {
+    height: 45px;
+}
+    /* Gold bottom border on mobile only (your request) */
+    .hic-navbar {
+        border-bottom: 2px solid #C9B694;
+    }
+
+    .hic-navbar .navbar-nav {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .hic-navbar .navbar-nav .nav-link {
+        padding: 0.4rem 0;
+        margin: 0.1rem 0;
+    }
+
+    .hic-navbar .navbar-nav .nav-link::after {
+        left: 0;
+        right: 0;
+    }
+}
+
+/* Add padding on mobile for logo and hamburger so they are not flush to edges */
+@media (max-width: 991.98px) {
+    .hic-navbar .container {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+}
+
+/* Small-screen typography tweaks for brand text */
+@media (max-width: 575.98px) {
+    .brand-title {
+        font-size: 0.8rem;
+    }
+
+    .brand-subtitle {
+        font-size: 0.65rem;
+    }
+}
+
+/* ----- Anchor offset for sticky navbar ----- */
+/* Ensures anchored headings are not hidden under the navbar */
+section[id],
+.card-like[id],
+h2[id],
+h3[id] {
+    scroll-margin-top: 90px; /* approximate navbar height */
+}
+
+/* Slightly smaller offset on very small screens */
+@media (max-width: 575.98px) {
+
+    section[id],
+    .card-like[id],
+    h2[id],
+    h3[id] {
+        scroll-margin-top: 80px;
+    }
+}
