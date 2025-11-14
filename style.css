@@ -409,7 +409,7 @@ header .btn:focus {
     position: absolute;
     left: 0;
     top: 0.35rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #C9B694;
     /* gold accent for bullets */
 }
