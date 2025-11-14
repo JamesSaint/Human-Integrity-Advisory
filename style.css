@@ -424,6 +424,62 @@ header .btn:focus {
     font-weight: 900;
 }
 
+/* Variants for different semantic uses */
+
+/* Positive outcomes / benefits */
+.icon-list-outcomes li i {
+    color: #C9B694;
+    font-size: 1.05rem;
+}
+
+/* Who I work with / audiences */
+.icon-list-who li i {
+    color: #003366;
+}
+
+/* Service detail bullets */
+.icon-list-services li i {
+    color: #003366;
+    font-size: 0.9rem;
+}
+
+/* “What I am not” – firm but on brand */
+.icon-list-not li i {
+    color: #003366;
+    font-size: 1.05rem;
+}
+
+/* Big reflective questions */
+.icon-list-questions li i {
+    color: #003366;
+    font-size: 1rem;
+}
+
+/* Contact / practical info */
+.icon-list-contact li i {
+    color: #003366;
+    font-size: 0.9rem;
+}
+/* ------------------------------------
+   H2 Heading Icons
+   Consistent spacing + subtle balance
+   ------------------------------------ */
+
+.h2-icon {
+    font-size: 1.1rem;
+    margin-right: 0.4rem;
+    color: #003366;
+    opacity: 0.85;
+    position: relative;
+    top: -1px;
+}
+
+h2.with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
 
 /* ------------------------------
    Footer
