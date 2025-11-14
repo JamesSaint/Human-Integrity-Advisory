@@ -24,8 +24,10 @@ body {
     color: #003366;
     margin: 0;
     padding: 20px;
-    font-size: 0.95rem;     /* base size on desktop */
-    line-height: 1.6;       /* comfortable reading line-height */
+    font-size: 0.95rem;
+    /* base size on desktop */
+    line-height: 1.6;
+    /* comfortable reading line-height */
 }
 
 
@@ -35,7 +37,7 @@ body {
     width: 100%;
     background-color: #EEEEEE;
     padding: 0;
-    margin-top: 110px; 
+    margin-top: 110px;
     opacity: 0;
     transition: opacity 0.6s ease-out;
 }
@@ -52,7 +54,8 @@ body {
 #loader-overlay {
     position: fixed;
     inset: 0;
-    background-color: #C9B694; /* Gold splash */
+    background-color: #C9B694;
+    /* Gold splash */
     color: #003366;
     display: flex;
     align-items: center;
@@ -171,7 +174,8 @@ h1 {
     color: #003366;
     padding-bottom: 0.3em;
     text-transform: uppercase;
-    font-size: 1.8rem;    /* desktop default */
+    font-size: 1.8rem;
+    /* desktop default */
     font-weight: 600;
     text-align: center;
     margin-bottom: 1.2rem;
@@ -241,7 +245,8 @@ a:focus {
 /* The header sits underneath the navbar inside .content */
 header {
     text-align: center;
-    margin-top: 7em;   /* tighter gap */
+    margin-top: 7em;
+    /* tighter gap */
     margin-bottom: 2em;
 }
 
@@ -381,6 +386,44 @@ header .btn:focus {
     margin-top: 20px;
     font-size: 0.88rem;
 }
+
+/* ------------------------------
+   Icon lists (Font Awesome bullets)
+   ------------------------------ */
+
+.icon-list {
+    list-style: none;
+    /* remove default bullets */
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.icon-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    /* space for the icon */
+    margin-bottom: 0.5em;
+}
+
+.icon-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    font-size: 0.85rem;
+    color: #C9B694;
+    /* gold accent for bullets */
+}
+
+/* Optional variants if you want different icon colours */
+.icon-list-muted li i {
+    color: #003366;
+}
+
+.icon-list-strong li i {
+    font-size: 0.95rem;
+    font-weight: 900;
+}
+
 
 /* ------------------------------
    Footer
