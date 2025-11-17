@@ -23,9 +23,31 @@
     margin-top: 1.25rem;
 }
 
+/* Unify CTA button typography for services page */
+.service-btn,
+.plan-btn {
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Ensure all CTAs sit at the bottom of their cards cleanly */
+.service-card-box,
+.plan-card {
+    gap: 0.15rem;
+}
+
+
 /* ============================================
    Refined service cards – "Luxury strategy advisor"
    ============================================ */
+
+/* Consistent spacing between main sections on the services page */
+main .card-like {
+    margin-bottom: 1.5rem;
+}
+
 
 .section-intro {
     font-size: 0.95rem;
@@ -446,4 +468,12 @@
     .pricing-grid {
         margin-top: 1rem;
     }
+}
+
+/* Refine text width inside heavy-text sections */
+#services-overview p,
+#practicalities .icon-list,
+#services-contact p,
+#services-contact .icon-list {
+    max-width: 780px;
 }
