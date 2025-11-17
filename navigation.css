@@ -8,12 +8,17 @@
 /* ----- Base navbar wrapper ----- */
 /* Now explicitly fixed so it stays visible on scroll */
 .hic-navbar {
-    position: fixed;          /* <— add this */
-    top: 0;                   /* <— and this */
-    left: 0;                  /* <— and this */
-    right: 0;                 /* <— and this */
+    position: fixed;
+    /* <— add this */
+    top: 0;
+    /* <— and this */
+    left: 0;
+    /* <— and this */
+    right: 0;
+    /* <— and this */
 
-    background-color: #EEEEEE !important; /* neutralise Bootstrap's blue */
+    background-color: #EEEEEE !important;
+    /* neutralise Bootstrap's blue */
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     padding: 0.6rem 0;
@@ -23,7 +28,8 @@
         box-shadow 0.25s ease,
         padding 0.25s ease,
         background-color 0.25s ease;
-    z-index: 1030; /* above page content */
+    z-index: 1030;
+    /* above page content */
 }
 
 
@@ -166,9 +172,10 @@
 
 /* ----- Mobile layout adjustments ----- */
 @media (max-width: 991.98px) {
-.navbar-logo {
-    height: 45px;
-}
+    .navbar-logo {
+        height: 45px;
+    }
+
     /* Gold bottom border on mobile only (your request) */
     .hic-navbar {
         border-bottom: 2px solid #C9B694;
@@ -215,7 +222,8 @@ section[id],
 .card-like[id],
 h2[id],
 h3[id] {
-    scroll-margin-top: 90px; /* approximate navbar height */
+    scroll-margin-top: 110px;
+    /* approximate navbar height */
 }
 
 /* Slightly smaller offset on very small screens */
@@ -225,6 +233,6 @@ h3[id] {
     .card-like[id],
     h2[id],
     h3[id] {
-        scroll-margin-top: 80px;
+        scroll-margin-top: 100px;
     }
 }
