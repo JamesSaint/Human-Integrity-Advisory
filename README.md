@@ -127,5 +127,5 @@ Site updates publish automatically through GitHub Pages to:
 
 ## License
 
-All content is proprietary to James Saint. Not for reuse or distribution.
-
+All content is proprietary to **James Saint**. Viewing is permitted.  
+Reuse, reproduction, or redistribution is not permitted without explicit written consent.
