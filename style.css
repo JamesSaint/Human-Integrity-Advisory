@@ -206,7 +206,7 @@ h3 {
 /* Paragraph rhythm */
 p {
     margin-top: 0;
-    margin-bottom: 0.9em;
+    margin-bottom: 0.9rem;
 }
 
 /* List rhythm */
@@ -301,6 +301,16 @@ header .btn:focus {
     border-color: #C9B694;
     text-decoration: none;
 }
+
+/* CTA Stick on Mobile */
+
+@media (max-width: 600px) {
+  .hero { padding-top: 1.5rem; }
+  .hero p { margin-bottom: 0.75rem; }
+  .hero .cta-btn { margin-top: 0.75rem; }
+}
+
+
 
 /* Triad band below hero (Integrity / Impact / Implementation) */
 .triad-band {
