@@ -249,12 +249,15 @@ h3[id] {
         background-color: rgba(5, 9, 16, 0.98) !important;
     }
 
-    /* Swap blue logo for gold in dark mode */
     .navbar-logo,
-    .loader-logo-img,
     .header-logo {
         content: url('images/logo/hia-logo-shield-gold.png');
     }
+
+    .loader-logo-img {
+        content: url('images/logo/hia-logo-shield-blue.png');
+    }
+
 
     .hic-navbar .navbar-brand,
     .hic-navbar .navbar-nav .nav-link {
@@ -275,4 +278,3 @@ h3[id] {
         color: #C9B694;
     }
 }
-
