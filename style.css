@@ -820,6 +820,11 @@ h2.with-icon {
         color: #F5F7FA;
     }
 
+    .hero-eyebrow,
+    .hero-meta {
+        color: #F5F7FA !important;
+    }
+
     .hero-buttons .btn {
         border-color: #C9B694;
         color: #F5F7FA;
@@ -844,12 +849,13 @@ h2.with-icon {
     }
 
     .triad-inner span::after {
-        background-color: rgba(201, 182, 148, 0.45)!important;
+        background-color: rgba(201, 182, 148, 0.45) !important;
     }
-/* Triad divider lines gold in dark mode */
-.triad-inner span::after {
-    background-color: rgba(201, 182, 148, 0.45) !important;
-}
+
+    /* Triad divider lines gold in dark mode */
+    .triad-inner span::after {
+        background-color: rgba(201, 182, 148, 0.45) !important;
+    }
 
     /* Cards & notes (used across index/about/services) */
     .card-like {
