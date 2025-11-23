@@ -386,7 +386,7 @@ header .btn:focus {
 }
 
 /* ================================
-   HERO – FULL WIDTH VIDEO BANNER
+   HERO – FULL WIDTH IMAGE
    ================================ */
 
 .hero-fullwidth {
@@ -414,47 +414,19 @@ header .btn:focus {
     background-color: #EEEEEE;
 }
 
-
 .hero-fullwidth .hero-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-
-        /* LEFT → RIGHT fade (strong edges, clear middle) */
-        linear-gradient(to right,
-        #EEEEEE 0%,
-        rgba(238, 238, 238, 0.92) 10%,
-        rgba(238, 238, 238, 0.35) 28%,
-        rgba(238, 238, 238, 0.10) 45%,
-        /* clearer centre */
-        rgba(238, 238, 238, 0.10) 55%,
-        /* clearer centre */
-        rgba(238, 238, 238, 0.35) 72%,
-        rgba(238, 238, 238, 0.92) 90%,
-        #EEEEEE 100%),
-
-        /* TOP → BOTTOM fade (keep bleaching but lighten middle) */
-        linear-gradient(to bottom,
-        rgba(255, 255, 255, 0.94) 0%,
-        rgba(255, 255, 255, 0.86) 18%,
-        rgba(255, 255, 255, 0.70) 36%,
-        rgba(255, 255, 255, 0.50) 52%,
-        /* clearer centre */
-        rgba(255, 255, 255, 0.65) 65%,
-        rgba(255, 255, 255, 0.82) 82%,
-        rgba(238, 238, 238, 1) 100%),
-
-        /* BOTTOM fade into #EEEEEE */
-        linear-gradient(to bottom,
-        transparent 0%,
-        rgba(238, 238, 238, 0.20) 40%,
-        rgba(238, 238, 238, 0.45) 65%,
-        rgba(238, 238, 238, 0.80) 82%,
-        #EEEEEE 100%);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom,
+      rgba(255,255,255,0.92) 0%,
+      rgba(255,255,255,0.82) 30%,
+      rgba(255,255,255,0.75) 55%,
+      rgba(238,238,238,0.90) 80%,
+      #EEEEEE 100%
+    );
 }
-
 
 .hero-fullwidth .hero-content {
     position: relative;
@@ -525,11 +497,10 @@ header .btn:focus {
 
 /* Card-like sections used for main content blocks */
 .card-like {
-    /*background-color: rgba(254, 251, 242, 0.28);*/
+    background-color: transparent !important;
     border-left: 3px solid #C9B694;
     padding: 18px 20px;
     margin-bottom: 1.5em;
-    /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);*/
 }
 
 /* Highlight / note blocks */
