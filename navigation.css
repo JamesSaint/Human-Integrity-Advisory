@@ -244,6 +244,18 @@ h3[id] {
         border-bottom-color: #C9B694;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
     }
+    .navbar-logo,
+    .loader-logo-img {
+        filter:
+            brightness(1.1)
+            saturate(1.2)
+            invert(68%)
+            sepia(18%)
+            saturate(420%)
+            hue-rotate(345deg)
+            brightness(96%)
+            contrast(92%);
+    }
 
     .hic-navbar.navbar-scrolled {
         background-color: rgba(5, 9, 16, 0.98) !important;
@@ -252,6 +264,11 @@ h3[id] {
     .hic-navbar .navbar-brand,
     .hic-navbar .navbar-nav .nav-link {
         color: #F5F7FA;
+    }
+
+    .hic-navbar .navbar-brand:hover,
+    .hic-navbar .navbar-brand:focus {
+        color: #EEEEEE;
     }
 
     .hic-navbar .navbar-nav .nav-link:hover,

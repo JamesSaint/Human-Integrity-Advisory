@@ -752,27 +752,17 @@ h2.with-icon {
         background-color: #C9B694;
         color: #050910;
     }
-
-    /* Particles + gold band */
-    #particles-page {
-        background:
-            linear-gradient(to bottom,
-                #050910 0%,
-                #05070F 40%,
-                #03040A 100%);
-    }
-
-    #particles-page > canvas {
-        filter: drop-shadow(0 0 5px rgba(201, 182, 148, 0.75));
+    .loader-triad span::after {
+        background-color: rgba(201, 182, 148, 0.65);
     }
 
     h1 {
-        color: #F5F7FA;
+        color: #C9B694;
     }
 
     h2,
     h3 {
-        color: #F5F7FA;
+        color: #C9B694;
         border-bottom-color: #C9B694;
     }
 
@@ -850,8 +840,9 @@ h2.with-icon {
         color: #C9B694;
     }
 
+
     .site-footer {
-        background: #050910;
+        background: rgba(5, 9, 17, 0.35);
         color: #F5F7FA;
     }
 
