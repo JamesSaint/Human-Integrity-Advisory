@@ -495,7 +495,7 @@ header .btn:focus {
 
 /* Card-like sections used for main content blocks */
 .card-like {
-    background-color: transparent !important;
+    background-color: rgba(238, 238, 238, 0.25) !important;
     border-left: 3px solid #C9B694;
     padding: 18px 20px;
     margin-bottom: 1.5em;
