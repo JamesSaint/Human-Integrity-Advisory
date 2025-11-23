@@ -796,12 +796,12 @@ h2.with-icon {
     #particles-page {
         background:
             linear-gradient(to bottom,
-                #050910 0%,
-                #05070F 40%,
-                #03040A 100%);
+            #050910 0%,
+            #05070F 40%,
+            #03040A 100%);
     }
 
-    #particles-page > canvas {
+    #particles-page>canvas {
         filter: drop-shadow(0 0 4px rgba(201, 182, 148, 0.55));
     }
 
@@ -809,11 +809,11 @@ h2.with-icon {
     .hero-fullwidth .hero-overlay {
         background:
             linear-gradient(to bottom,
-                rgba(5, 9, 16, 0.85) 0%,
-                rgba(5, 9, 16, 0.70) 35%,
-                rgba(5, 9, 16, 0.45) 60%,
-                rgba(5, 9, 16, 0.25) 80%,
-                rgba(5, 9, 16, 0.10) 100%);
+            rgba(5, 9, 16, 0.85) 0%,
+            rgba(5, 9, 16, 0.70) 35%,
+            rgba(5, 9, 16, 0.45) 60%,
+            rgba(5, 9, 16, 0.25) 80%,
+            rgba(5, 9, 16, 0.10) 100%);
     }
 
     .hero-content {
@@ -825,13 +825,31 @@ h2.with-icon {
         color: #F5F7FA;
     }
 
+    .hero-buttons .btn,
+    header .btn {
+        border-color: #C9B694 !important;
+        color: #F5F7FA !important;
+        background-color: transparent !important;
+    }
+
+    .hero-buttons .btn:hover,
+    header .btn:hover {
+        background-color: #C9B694 !important;
+        color: #050910 !important;
+        border-color: #C9B694 !important;
+    }
+
     .triad-band {
-        color: #F5F7FA;
+        color: #F5F7FA !important;
     }
 
     .triad-inner span::after {
-        background-color: rgba(201, 182, 148, 0.45);
+        background-color: rgba(201, 182, 148, 0.45)!important;
     }
+/* Triad divider lines gold in dark mode */
+.triad-inner span::after {
+    background-color: rgba(201, 182, 148, 0.45) !important;
+}
 
     /* Cards & notes (used across index/about/services) */
     .card-like {
@@ -866,5 +884,3 @@ h2.with-icon {
         border-top-color: #C9B694;
     }
 }
-
-
