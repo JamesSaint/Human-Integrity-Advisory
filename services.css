@@ -125,6 +125,26 @@ main .card-like {
     margin-bottom: 0.8rem;
 }
 
+/* Align service/pricing lists with paragraph text */
+.service-card-box .icon-list,
+.plan-card .icon-list {
+    margin-left: 0;          /* cancel global margin-left */
+}
+
+.service-card-box .icon-list li,
+.plan-card .icon-list li {
+    margin-left: 0;          /* cancel global li margin-left */
+    padding-left: 1.35rem;   /* smaller indent than global 1.5rem */
+}
+
+/* Slightly refine the little angle-right arrow inside these cards */
+.service-card-box .icon-list li i.fa-angle-right,
+.plan-card .icon-list li i.fa-angle-right {
+    left: 0;                 /* align to new padding */
+    font-size: 0.8rem;
+}
+
+
 .tight-list {
     margin-bottom: 0.4rem;
 }
@@ -370,6 +390,68 @@ main .card-like {
 .plan-btn-primary:hover {
     background-color: #01223f;
     text-decoration: none;
+}
+
+
+/* Keep label pills visually aligned with card content */
+.service-badge,
+.plan-label,
+.plan-label-highlight,
+.fit-label {
+    margin-left: 0;
+    margin-right: 0;
+    align-items: center;
+    justify-content: center;
+}
+/* CTA button – slim, confident */
+.service-btn {
+    align-self: flex-start;
+    margin-top: 0.1rem;
+    background-color: #003366;
+    color: #FFFFFF;
+    padding: 0.44rem 1.35rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.83rem;
+    text-align: center;
+    border: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        background-color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.service-btn:hover {
+    background-color: #01223f;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Plan CTA button */
+.plan-btn {
+    align-self: flex-start;
+    margin-top: 0.15rem;
+    background-color: #FFFFFF;
+    color: #003366;
+    padding: 0.42rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.83rem;
+    text-align: center;
+    border: 1px solid rgba(0, 51, 102, 0.25);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
 }
 
 /* Mobile */
