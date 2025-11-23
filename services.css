@@ -58,7 +58,7 @@ main .card-like {
 
 /* Core service cards */
 .service-card-box {
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0);
     border: 1px solid rgba(0, 51, 102, 0.10);
     padding: 24px 22px 22px;
     display: flex;
@@ -200,7 +200,7 @@ main .card-like {
 
 /* Pricing / engagement cards */
 .plan-card {
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0);
     border: 1px solid rgba(0, 51, 102, 0.10);
     padding: 22px 22px 20px;
     display: flex;
@@ -390,7 +390,7 @@ main .card-like {
    ------------------------------------------- */
 
 .fit-card {
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0);
     border: 1px solid rgba(0, 51, 102, 0.10);
     padding: 22px 22px 20px;
     display: flex;
