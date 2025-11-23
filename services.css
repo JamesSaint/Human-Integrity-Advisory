@@ -538,5 +538,6 @@ main .card-like {
         background-color: #F5F7FA;
         color: #050910;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+        text-decoration: none;
     }
 }
