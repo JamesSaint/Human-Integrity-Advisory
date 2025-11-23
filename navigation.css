@@ -234,8 +234,10 @@ h3[id] {
     }
 }
 
-/* OS Dark Mode */
-    /* Navbar / brand / links */
+/* ============================================
+   Dark mode (automatic: prefers-color-scheme)
+   ============================================ */
+/*@media (prefers-color-scheme: dark) {
     .hic-navbar {
         background-color: rgba(5, 9, 16, 0.93) !important;
         border-bottom-color: #C9B694;
@@ -259,3 +261,4 @@ h3[id] {
     .hic-navbar .navbar-nav .nav-link.active {
         color: #C9B694;
     }
+}*/

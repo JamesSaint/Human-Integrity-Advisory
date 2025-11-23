@@ -29,6 +29,7 @@ body {
     line-height: 1.6rem;
     /* comfortable reading line-height */
 }
+
 body.page-fade-out .content {
     opacity: 0;
     transition: opacity 0.35s ease-out;
@@ -413,13 +414,15 @@ header .btn:focus {
     pointer-events: none;
     background:
         linear-gradient(to bottom,
-            #F3F3F3 0%,
-            #EEEEEE 40%,
-            #E8E8E8 100%);
+        #F3F3F3 0%,
+        #EEEEEE 40%,
+        #E8E8E8 100%);
 }
-#particles-page > canvas {
+
+#particles-page>canvas {
     filter: drop-shadow(0 0 4px rgba(201, 182, 148, 0.55));
 }
+
 /* Soft vertical gold band on the left */
 #page-gold-band {
     position: fixed;
@@ -444,11 +447,11 @@ header .btn:focus {
     pointer-events: none;
     background:
         linear-gradient(to bottom,
-            rgba(238, 238, 238, 0.60) 0%,
-            rgba(238, 238, 238, 0.32) 35%,
-            rgba(238, 238, 238, 0.18) 60%,
-            rgba(238, 238, 238, 0.06) 80%,
-            rgba(238, 238, 238, 0.00) 100%);
+        rgba(238, 238, 238, 0.60) 0%,
+        rgba(238, 238, 238, 0.32) 35%,
+        rgba(238, 238, 238, 0.18) 60%,
+        rgba(238, 238, 238, 0.06) 80%,
+        rgba(238, 238, 238, 0.00) 100%);
 }
 
 
@@ -756,27 +759,25 @@ h2.with-icon {
 /* ============================================
    Dark mode (automatic: prefers-color-scheme)
    ============================================ */
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
 
     body {
         background-color: #050910;
         color: #F5F7FA;
     }
 
-    /* Global particle gradient shifts darker */
     #particles-page {
         background:
             linear-gradient(to bottom,
-                #050910 0%,
-                #05070F 40%,
-                #03040A 100%);
+            #050910 0%,
+            #05070F 40%,
+            #03040A 100%);
     }
 
-    #particles-page > canvas {
+    #particles-page>canvas {
         filter: drop-shadow(0 0 5px rgba(201, 182, 148, 0.75));
     }
 
-    /* Gold band a touch softer in the dark */
     #page-gold-band {
         background: linear-gradient(to right,
             rgba(201, 182, 148, 0.22) 0%,
@@ -785,7 +786,6 @@ h2.with-icon {
             rgba(201, 182, 148, 0.00) 100%);
     }
 
-    /* Headings and text */
     h1 {
         color: #F5F7FA;
     }
@@ -805,15 +805,14 @@ h2.with-icon {
         text-decoration: underline;
     }
 
-    /* Hero overlay lighter so text stays clear */
     .hero-fullwidth .hero-overlay {
         background:
             linear-gradient(to bottom,
-                rgba(5, 9, 16, 0.85) 0%,
-                rgba(5, 9, 16, 0.70) 35%,
-                rgba(5, 9, 16, 0.45) 60%,
-                rgba(5, 9, 16, 0.25) 80%,
-                rgba(5, 9, 16, 0.10) 100%);
+            rgba(5, 9, 16, 0.85) 0%,
+            rgba(5, 9, 16, 0.70) 35%,
+            rgba(5, 9, 16, 0.45) 60%,
+            rgba(5, 9, 16, 0.25) 80%,
+            rgba(5, 9, 16, 0.10) 100%);
     }
 
     .hero-content {
@@ -836,7 +835,6 @@ h2.with-icon {
         color: #050910;
     }
 
-    /* Cards & notes */
     .card-like {
         background-color: rgba(5, 9, 16, 0.35) !important;
         border-left-color: #C9B694;
@@ -847,13 +845,12 @@ h2.with-icon {
         border-left-color: #C9B694;
     }
 
-    /* Footer */
     .site-footer {
-        /*background: #050910;*/
+        background: #050910;
         color: #F5F7FA;
     }
 
     .footer-rule {
         border-top-color: #C9B694;
     }
-}
+}*/
