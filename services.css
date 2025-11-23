@@ -364,10 +364,12 @@ main .card-like {
     border-color: #003366;
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    text-decoration: none;
 }
 
 .plan-btn-primary:hover {
     background-color: #01223f;
+    text-decoration: none;
 }
 
 /* Mobile */
