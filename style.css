@@ -785,31 +785,6 @@ h2.with-icon {
             rgba(201, 182, 148, 0.00) 100%);
     }
 
-    /* Navbar / brand / links */
-    .hic-navbar {
-        background-color: rgba(5, 9, 16, 0.93) !important;
-        border-bottom-color: #C9B694;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
-    }
-
-    .hic-navbar.navbar-scrolled {
-        background-color: rgba(5, 9, 16, 0.98) !important;
-    }
-
-    .hic-navbar .navbar-brand,
-    .hic-navbar .navbar-nav .nav-link {
-        color: #F5F7FA;
-    }
-
-    .hic-navbar .navbar-nav .nav-link:hover,
-    .hic-navbar .navbar-nav .nav-link:focus {
-        color: #C9B694;
-    }
-
-    .hic-navbar .navbar-nav .nav-link.active {
-        color: #C9B694;
-    }
-
     /* Headings and text */
     h1 {
         color: #F5F7FA;
@@ -863,7 +838,7 @@ h2.with-icon {
 
     /* Cards & notes */
     .card-like {
-        background-color: rgba(5, 9, 16, 0.88) !important;
+        background-color: rgba(5, 9, 16, 0.35) !important;
         border-left-color: #C9B694;
     }
 
@@ -874,7 +849,7 @@ h2.with-icon {
 
     /* Footer */
     .site-footer {
-        background: #050910;
+        /*background: #050910;*/
         color: #F5F7FA;
     }
 
