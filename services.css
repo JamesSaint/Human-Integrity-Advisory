@@ -623,3 +623,55 @@ main .card-like {
         text-decoration: none;
     }
 }
+/* ============================================
+   Center pills + buttons inside all cards
+   Without altering text alignment
+   ============================================ */
+
+/* 1. Center the label pills at the top of each card */
+.service-card-box .service-badge,
+.plan-card .plan-label,
+.fit-card .fit-label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Center all CTA buttons at bottom of each card */
+.service-card-box .service-btn,
+.plan-card .plan-btn,
+.plan-card .plan-btn-primary {
+    align-self: center;
+}
+
+/* 3. Ensure list text stays left-aligned but visually balanced */
+.service-card-box .icon-list,
+.plan-card .icon-list,
+.fit-card .icon-list {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* Slight indent on bullet arrow only */
+.service-card-box .icon-list li,
+.plan-card .icon-list li,
+.fit-card .icon-list li {
+    padding-left: 1.2rem;
+}
+
+.service-card-box .icon-list i.fa-angle-right,
+.plan-card .icon-list i.fa-angle-right,
+.fit-card .icon-list i.fa-angle-right {
+    left: 0;
+}
+
+/* 4. Center footer context lines only lightly */
+.service-context,
+.plan-meta {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%;
+}
