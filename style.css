@@ -430,7 +430,7 @@ header .btn:focus {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 140px 20px 120px;
+    padding: 140px 20px 80px;
     color: #003366;
 }
 
