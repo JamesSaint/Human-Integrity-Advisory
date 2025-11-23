@@ -1,4 +1,4 @@
-# hia-logo-shield-blue-1280x1280-c - Favicon Package
+# hia-logo-shield-gold-1280x1280 - Favicon Package
 
 This package contains all the favicon files and configuration needed for complete browser and platform support.
 
