@@ -56,7 +56,9 @@ main .card-like {
 
 /* Card shell */
 
+/* Core service cards */
 .service-card-box {
+    background-color: #FFFFFF;
     border: 1px solid rgba(0, 51, 102, 0.10);
     padding: 24px 22px 22px;
     display: flex;
@@ -69,6 +71,7 @@ main .card-like {
         border-color 0.18s ease,
         background-color 0.18s ease;
 }
+
 
 /* Thin gold accent on top edge */
 
@@ -195,7 +198,9 @@ main .card-like {
 
 /* Card shell */
 
+/* Pricing / engagement cards */
 .plan-card {
+    background-color: #FFFFFF;
     border: 1px solid rgba(0, 51, 102, 0.10);
     padding: 22px 22px 20px;
     display: flex;
@@ -208,6 +213,7 @@ main .card-like {
         border-color 0.18s ease,
         background-color 0.18s ease;
 }
+
 
 /* Gold top accent */
 
@@ -384,16 +390,18 @@ main .card-like {
    ------------------------------------------- */
 
 .fit-card {
-    /*border-radius: 10px;*/
+    background-color: #FFFFFF;
     border: 1px solid rgba(0, 51, 102, 0.10);
-    padding: 20px 20px 18px;
-    height: 100%;
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
     transition:
         transform 0.18s ease,
         box-shadow 0.18s ease,
-        border-color 0.18s ease;
+        border-color 0.18s ease,
+        background-color 0.18s ease;
 }
 
 /* Gold accent line on top */
@@ -470,4 +478,63 @@ main .card-like {
 #services-contact p,
 #services-contact .icon-list {
     max-width: 780px;
+}
+/* ============================================
+   Dark mode overrides for services cards
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+
+    /* Main service cards + pricing + “which format” cards */
+    .service-card-box,
+    .plan-card,
+    .fit-card {
+        background-color: rgba(5, 9, 16, 0.86);
+        border-color: rgba(201, 182, 148, 0.55);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Keep the gold top line but slightly softer */
+    .service-card-box::before,
+    .plan-card::before {
+        border-top-color: #C9B694;
+    }
+
+    /* Headings and key text inside cards */
+    .service-card-header-box h3,
+    .plan-card-header h3,
+    .fit-card h3,
+    .service-desc,
+    .service-context,
+    .plan-tagline,
+    .plan-price,
+    .plan-range,
+    .plan-meta {
+        color: #F5F7FA;
+    }
+
+    /* Small labels / badges */
+    .service-badge,
+    .fit-label,
+    .plan-label,
+    .plan-label-highlight {
+        background-color: rgba(201, 182, 148, 0.16);
+        color: #F5F7FA;
+        border-radius: 999px;
+        border: 1px solid rgba(201, 182, 148, 0.7);
+    }
+
+    /* CTAs in services + pricing grids */
+    .service-btn,
+    .plan-btn {
+        background-color: #C9B694;
+        color: #050910;
+        border: none;
+    }
+
+    .service-btn:hover,
+    .plan-btn:hover {
+        background-color: #F5F7FA;
+        color: #050910;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+    }
 }
