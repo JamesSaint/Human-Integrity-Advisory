@@ -493,7 +493,8 @@ header .btn:focus {
 
 
 .hero-meta {
-    margin-top: 22px;
+    margin: 22px auto;
+    max-width: 88px;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.14em;
