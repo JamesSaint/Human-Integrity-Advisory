@@ -624,7 +624,7 @@ h2.with-icon {
 
 .site-footer {
     width: 100%;
-    background: #EEEEEE;
+    background: transparent;
     color: #003366;
     font-family: Montserrat, sans-serif;
     font-size: 0.7rem;
@@ -882,7 +882,7 @@ h2.with-icon {
 
     /* Footer */
     .site-footer {
-        background: rgba(5, 9, 17, 0.35);
+        background: transparent; /* rgba(5, 9, 17, 0.35)*/
         color: #F5F7FA;
     }
 
