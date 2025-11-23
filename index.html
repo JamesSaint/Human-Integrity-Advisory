@@ -122,7 +122,7 @@
         <main>
             <!-- Introduction / Why this work exists -->
             <section class="card-like mt-4" id="overview">
-                <h2 class="with-icon"><i class="fa-solid fa-compass h2-icon"></i>Why organisations work with me</h2>
+                <h2 class="with-icon"><i class="fa-solid fa-compass h2-icon"></i>Why work with me</h2>
                 <p>
                     Most organisations have values on the wall and a risk register on the server. Fewer have a clear view of what really happens in the room when money, power, technology, and human lives meet under pressure.
                 </p>
@@ -373,212 +373,16 @@
             </div>
         </footer>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Year script -->
-    <script>
-    (function() {
-        var y = new Date().getFullYear();
-        var el = document.getElementById('copy-year');
-        if (el) el.textContent = y;
-    })();
-    </script>
-    <!-- Loader logic -->
-    <script>
-    (function() {
-        function onReady(fn) {
-            if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                setTimeout(fn, 10);
-            } else {
-                window.addEventListener('load', fn);
-            }
-        }
 
-        onReady(function() {
-            var loader = document.getElementById('loader-overlay');
-            var content = document.querySelector('.content');
-            if (!loader || !content) return;
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-            var prefersReducedMotion = false;
-            try {
-                if (window.matchMedia) {
-                    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                }
-            } catch (e) {
-                prefersReducedMotion = false;
-            }
+<!-- Particles.js library -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-            function showPage() {
-                loader.classList.add('loader-hidden');
-                content.classList.add('content-visible');
-            }
+<!-- unified JS -->
+<script src="https://jamessaint.github.io/Human-Integrity-Advisory/scripts.js"></script>
 
-            if (prefersReducedMotion) {
-                showPage();
-            } else {
-                setTimeout(showPage, 1800);
-            }
-        });
-    })();
-    </script>
-    <!-- Navbar behaviour: scroll styling + close mobile on link click -->
-    <script>
-    (function() {
-        // Grab the key navbar elements
-        var navbar = document.querySelector('.hic-navbar');
-        var navLinks = document.querySelectorAll('.hic-navbar .nav-link');
-        var navbarToggler = document.querySelector('.navbar-toggler');
-
-        if (!navbar) return;
-
-        /* -----------------------------
-           1. Scroll-aware navbar styling
-           Adds/removes .navbar-scrolled so CSS
-           can tighten padding and add a shadow.
-           ----------------------------- */
-        function updateNavbarOnScroll() {
-            var offset = window.scrollY || window.pageYOffset || 0;
-            if (offset > 10) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        }
-
-        window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
-        updateNavbarOnScroll(); // run once on page load
-
-        /* -----------------------------
-           2. Close the mobile menu when
-              a nav item is clicked.
-           ----------------------------- */
-        if (navbarToggler && navLinks.length) {
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    // Only act on mobile / tablet widths
-                    if (window.innerWidth < 992) {
-                        // Bootstrap toggler has .collapsed when closed
-                        if (!navbarToggler.classList.contains('collapsed')) {
-                            navbarToggler.click();
-                        }
-                    }
-                });
-            });
-        }
-    })();
-    </script>
-    <!-- Particles.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-    particlesJS('particles-page', {
-        "particles": {
-            "number": {
-                "value": 55,
-                "density": {
-                    "enable": true,
-                    "value_area": 900
-                }
-            },
-            "color": {
-                "value": ["#C9B694"]
-            },
-            "shape": {
-                "type": "circle"
-            },
-            "opacity": {
-                "value": 0.70,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 0.6,
-                    "opacity_min": 0.3,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 2.5,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 1.5,
-                    "size_min": 1.0,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#C9B694",
-                "opacity": 0.55,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 2.2,
-                "direction": "none",
-                "random": true,
-                "straight": false,
-                "out_mode": "out",
-                "attract": {
-                    "enable": true,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": { "enable": false },
-                "onclick": { "enable": false },
-                "resize": true
-            }
-        },
-        "retina_detect": true
-    });
-    </script>
-    <script>
-    (function() {
-        var bg = document.getElementById('particles-page');
-        if (!bg) return;
-
-        window.addEventListener('scroll', function() {
-            var offset = window.pageYOffset || document.documentElement.scrollTop || 0;
-            // Very subtle parallax: tweak 0.02 if you want more or less
-            bg.style.transform = 'translateY(' + (offset * 0.02) + 'px)';
-        }, { passive: true });
-    })();
-    </script>
-    <!-- Page transition fade-out on internal navigation -->
-    <script>
-    (function() {
-        var content = document.querySelector('.content');
-        if (!content) return;
-
-        function isInternalLink(link) {
-            if (!link.href) return false;
-            if (link.target && link.target === '_blank') return false;
-            var url = new URL(link.href, window.location.href);
-            // same origin only
-            return url.origin === window.location.origin;
-        }
-
-        document.addEventListener('click', function(e) {
-            var link = e.target.closest('a');
-            if (!link) return;
-            if (!isInternalLink(link)) return;
-            if (link.getAttribute('href').startsWith('#')) return;
-            if (link.hasAttribute('data-no-fade')) return;
-
-            e.preventDefault();
-            document.body.classList.add('page-fade-out');
-
-            setTimeout(function() {
-                window.location.href = link.href;
-            }, 220);
-        }, { capture: true });
-    })();
-    </script>
 </body>
 
 </html>
