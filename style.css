@@ -516,9 +516,11 @@ header .btn:focus {
   width: 200%;
   height: 200%;
   transform: translate(-50%, -50%);
-  pointer-events: none; /* prevents clicks */
-  opacity: 0.75; /* tweak if needed */
+  pointer-events: none;
+  opacity: 0.85; /* tweak between 0.7 and 1.0 */
+  filter: blur(0.3px); /* optional – softens compression artifacts */
 }
+
 
 
 /* ------------------------------
