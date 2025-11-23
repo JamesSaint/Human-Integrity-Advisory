@@ -441,7 +441,7 @@ header .btn:focus {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 140px 20px 80px;
+    padding: 140px 0px 30px;
     color: #003366;
 }
 
@@ -645,7 +645,7 @@ h2.with-icon {
     border: 0;
     border-top: 1px solid #C9B694;
     width: 100%;
-    margin: 0 auto;
+    margin: 12px auto;
 }
 
 .footer-note {
