@@ -93,38 +93,38 @@
         </nav>
     </div>
     <!-- Header hero content -->
-    <section id="hero" class="hero-fullwidth">
-        <div class="hero-youtube-bg">
-<iframe
-  src="https://www.youtube.com/embed/m1YUmZRfgqU?autoplay=1&mute=1&loop=1&controls=0&playlist=m1YUmZRfgqU&modestbranding=1&playsinline=1"
-  frameborder="0"
-  allow="autoplay; encrypted-media; fullscreen"
-  allowfullscreen>
-</iframe>
+<section id="hero" class="hero-fullwidth">
 
+    <!-- Particles background sits behind everything -->
+    <div id="particles-bg"></div>
+
+    <!-- Keep your existing overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Keep all your existing hero text/buttons exactly as-is -->
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            Independent Integrity &amp; AI Risk Advisory
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-eyebrow">
-                Independent Integrity & AI Risk Advisory
-            </div>
-            <h1 class="hero-title">
-                Governance that keeps pace with the systems you are actually running
-            </h1>
-            <p class="hero-lede">
-                I work with boards, founders, and senior leaders whose decisions carry real downside risk.
-                The work is grounded, unperformed, and focused on the real behaviour of your systems,
-                not the narrative that surrounds them.
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact-title" class="btn btn-outline-primary">Enquire about working together</a>
-                <a href="services.html" class="btn btn-outline-primary">View services</a>
-            </div>
-            <div class="hero-meta">
-                Integrity | Impact | Implementation
-            </div>
+        <h1 class="hero-title">
+            Governance that keeps pace with the systems you are actually running
+        </h1>
+        <p class="hero-lede">
+            I work with boards, founders, and senior leaders whose decisions carry real downside risk.
+            The work is grounded, unperformed, and focused on the real behaviour of your systems,
+            not the narrative that surrounds them.
+        </p>
+        <div class="hero-buttons">
+            <a href="#contact-title" class="btn btn-outline-primary">Enquire about working together</a>
+            <a href="services.html" class="btn btn-outline-primary">View services</a>
         </div>
-    </section>
+        <div class="hero-meta">
+            Integrity | Impact | Implementation
+        </div>
+    </div>
+
+</section>
+
     <!-- Main content -->
     <div class="content container">
         <main>
@@ -475,6 +475,60 @@
         }
     })();
     </script>
+        <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS('particles-bg', {
+        "particles": {
+          "number": {
+            "value": 45,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": ["#003366", "#C9B694"]
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.35,
+            "random": true
+          },
+          "size": {
+            "value": 2.5,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 140,
+            "color": "#003366",
+            "opacity": 0.25,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 1.2,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": { "enable": false },
+            "onclick": { "enable": false },
+            "resize": true
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+
 </body>
 
 </html>
