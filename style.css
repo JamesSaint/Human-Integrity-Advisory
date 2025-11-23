@@ -29,6 +29,10 @@ body {
     line-height: 1.6rem;
     /* comfortable reading line-height */
 }
+body.page-fade-out .content {
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+}
 
 
 /* Main content wrapper – sits under the loader */
@@ -407,8 +411,16 @@ header .btn:focus {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-color: #EEEEEE;
+    background:
+        linear-gradient(to bottom,
+            #F3F3F3 0%,
+            #EEEEEE 40%,
+            #E8E8E8 100%);
 }
+#particles-page > canvas {
+    filter: drop-shadow(0 0 4px rgba(201, 182, 148, 0.55));
+}
+
 
 .hero-fullwidth .hero-overlay {
     position: absolute;
@@ -416,13 +428,12 @@ header .btn:focus {
     pointer-events: none;
     background:
         linear-gradient(to bottom,
-        rgba(238, 238, 238, 0.75) 0%,
-        rgba(238, 238, 238, 0.45) 35%,
-        rgba(238, 238, 238, 0.25) 60%,
-        rgba(238, 238, 238, 0.10) 80%,
-        rgba(238, 238, 238, 0.00) 100%);
+            rgba(238, 238, 238, 0.60) 0%,
+            rgba(238, 238, 238, 0.32) 35%,
+            rgba(238, 238, 238, 0.18) 60%,
+            rgba(238, 238, 238, 0.06) 80%,
+            rgba(238, 238, 238, 0.00) 100%);
 }
-
 
 
 .hero-fullwidth .hero-content {
@@ -448,7 +459,9 @@ header .btn:focus {
     font-weight: 600;
     max-width: 760px;
     margin: 0 auto 20px auto;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
+
 
 .hero-lede {
     max-width: 620px;

@@ -9,28 +9,23 @@
 /* Now explicitly fixed so it stays visible on scroll */
 .hic-navbar {
     position: fixed;
-    /* <— add this */
     top: 0;
-    /* <— and this */
     left: 0;
-    /* <— and this */
     right: 0;
-    /* <— and this */
-
-    background-color: #EEEEEE !important;
-    /* neutralise Bootstrap's blue */
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
+    background-color: rgba(238, 238, 238, 0.92) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     padding: 0.6rem 0;
     box-shadow: none;
     border-bottom: 2px solid #C9B694;
     transition:
         box-shadow 0.25s ease,
         padding 0.25s ease,
-        background-color 0.25s ease;
+        background-color 0.25s ease,
+        backdrop-filter 0.25s ease;
     z-index: 1030;
-    /* above page content */
 }
+
 
 
 /* On scroll we keep background the same but tighten padding slightly.
@@ -38,7 +33,9 @@
 .hic-navbar.navbar-scrolled {
     padding: 0.4rem 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: rgba(238, 238, 238, 0.98) !important;
 }
+
 
 /* ----- Brand area (logo + text) ----- */
 .hic-navbar .navbar-brand {

@@ -504,12 +504,13 @@
             },
             "move": {
                 "enable": true,
-                "speed": 2.5,
+                "speed": 2.0,
                 "direction": "none",
-                "random": true,
+                "random": false,
                 "straight": false,
                 "out_mode": "out"
             }
+
         },
         "interactivity": {
             "detect_on": "canvas",
@@ -521,6 +522,48 @@
         },
         "retina_detect": true
     });
+    </script>
+    <script>
+    (function() {
+        var bg = document.getElementById('particles-page');
+        if (!bg) return;
+
+        window.addEventListener('scroll', function() {
+            var offset = window.pageYOffset || document.documentElement.scrollTop || 0;
+            // Very subtle parallax: tweak 0.02 if you want more or less
+            bg.style.transform = 'translateY(' + (offset * 0.02) + 'px)';
+        }, { passive: true });
+    })();
+    </script>
+    <!-- Page transition fade-out on internal navigation -->
+    <script>
+    (function() {
+        var content = document.querySelector('.content');
+        if (!content) return;
+
+        function isInternalLink(link) {
+            if (!link.href) return false;
+            if (link.target && link.target === '_blank') return false;
+            var url = new URL(link.href, window.location.href);
+            // same origin only
+            return url.origin === window.location.origin;
+        }
+
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (!link) return;
+            if (!isInternalLink(link)) return;
+            if (link.getAttribute('href').startsWith('#')) return;
+            if (link.hasAttribute('data-no-fade')) return;
+
+            e.preventDefault();
+            document.body.classList.add('page-fade-out');
+
+            setTimeout(function() {
+                window.location.href = link.href;
+            }, 220);
+        }, { capture: true });
+    })();
     </script>
 </body>
 
