@@ -44,23 +44,10 @@ Human Integrity Advisory supports organisations by strengthening the human, ethi
 ## Repository Structure
 
 ```
-/
-├── index.html
-├── about.html
-├── services.html
-├── css/
-│   ├── nav.css
-│   ├── style.css
-│   └── services.css
-├── images/
-│   ├── logo/
-│   └── seed-of-life-gold.png
-└── README.md
 ```
 
 ## Brand and Design Standards
-
-- **Framework**: Bootstrap 5.3  
+ 
 - **Typography**: Montserrat  
 - **Palette**: Navy (#003366), Gold (#C9B694), Grey (#EEEEEE)  
 - **Design Signature**: Clean, minimal, leadership-focused  
