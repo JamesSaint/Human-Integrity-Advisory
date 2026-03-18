@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HIA Brand Sheet · Human Integrity Advisory</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    /* ════════════════════════════════════════════════════════
+       BRAND TOKENS  —  single source of truth
+       Copy these variables into any new project file
+    ════════════════════════════════════════════════════════ */
+    :root {
+      /* ── Surfaces ── */
+      --black:        #000000;
+      --bg:           #0a0a0a;
+      --surface:      #141414;
+      --surface2:     #1c1c1c;
+      --white:        #ffffff;
+
+      /* ── Text hierarchy (contrast vs #141414 surface) ──
+         #f0f0f0  →  14:1   Headings, labels
+         #c8c6c4  →   8.5:1  Body copy
+         #a8a5a2  →   5.8:1  Supporting / sub-text
+         #797673  →   3.4:1  Meta, ranges, captions
+      */
+      --text:         #f0f0f0;
+      --text-body:    #c8c6c4;
+      --text-sub:     #a8a5a2;
+      --text-faint:   #797673;
+
+      /* ── Gold accent ── */
+      --gold:         #C9B694;
+      --gold-dim:     rgba(201,182,148,0.40);
+      --gold-faint:   rgba(201,182,148,0.08);
+
+      /* ── Borders ── */
+      --border:       rgba(201,182,148,0.14);
+      --border-mid:   rgba(201,182,148,0.30);
+      --border-str:   rgba(201,182,148,0.58);
+
+      /* ── Layout ── */
+      --nav-h:        60px;
+      --page-max:     980px;
+      --pad-x:        clamp(20px, 5vw, 64px);
+      --pad-section:  clamp(48px, 7vw, 80px);
+
+      /* ── Brand sheet UI only ── */
+      --bs-gap: 32px;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       BRAND SHEET BASE
+    ════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sheet wrapper */
+    .bs-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--pad-x) 80px;
+    }
+
+    /* ── Sheet header ── */
+    .bs-header {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0 36px;
+      margin-bottom: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .bs-header-brand { display: flex; align-items: center; gap: 20px; }
+    .bs-mark { display: inline-flex; align-items: center; }
+    .bs-mark-line { display: block; height: 1px; background: var(--gold); }
+    .bs-mark-stroke { display: block; width: 1px; background: var(--gold); }
+    .bs-header-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+    .bs-header-meta {
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: var(--text-faint);
+      font-weight: 400;
+      text-align: right;
+    }
+
+    /* ── Section divider ── */
+    .bs-section {
+      padding-top: 60px;
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+    }
+    .bs-section:first-of-type { border-top: none; margin-top: 0; }
+    .bs-section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .bs-section-num {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .bs-section-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .bs-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Grid helpers ── */
+    .bs-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+    .bs-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .bs-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+    .bs-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); }
+    .bs-cell { background: var(--bg); padding: 24px 20px; }
+    .bs-cell-sm { background: var(--bg); padding: 16px 18px; }
+
+    /* ── Token label style ── */
+    .token-name {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .token-value {
+      font-family: ui-monospace, 'Menlo', 'Consolas', monospace;
+      font-size: 0.8rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+    .token-note {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      display: block;
+      line-height: 1.5;
+    }
+    .token-ratio {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      font-family: ui-monospace, monospace;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SECTION 1 — BRAND MARK
+    ════════════════════════════════════════════════════════ */
+    .mark-demo {
+      background: var(--surface);
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+    }
+    .mark-demo-dark { background: var(--black); }
+    .mark-demo-light { background: var(--white); }
+    .mark-monogram {
+      font-size: clamp(48px, 10vw, 80px);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+    .mark-descriptor {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-top: 6px;
+    }
+    .mark-rule-demo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .mark-anatomy {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+      margin-top: 1px;
+    }
+    .anatomy-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .anatomy-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .anatomy-row:last-child { border-bottom: none; }
+    .anatomy-spec { font-size: 0.8rem; color: var(--text-body); font-weight: 400; }
+    .anatomy-dim {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      margin-left: auto;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SECTION 2 — COLOUR PALETTE
+    ════════════════════════════════════════════════════════ */
+    .swatch-block {
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 14px;
+      position: relative;
+    }
+    .swatch-block-tall { height: 120px; }
+    .swatch-hex {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .on-dark { color: rgba(255,255,255,0.6); }
+    .on-light { color: rgba(0,0,0,0.45); }
+    .on-mid { color: rgba(255,255,255,0.5); }
+    .swatch-name {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Text swatch rows */
+    .text-swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .text-swatch-row:last-child { border-bottom: none; }
+    .text-swatch-sample {
+      font-size: 1.1rem;
+      font-weight: 500;
+      width: 160px;
+      flex-shrink: 0;
+    }
+
+    /* Gold gradient ramp */
+    .gold-ramp {
+      height: 48px;
+      background: linear-gradient(to right, #000000, #C9B694, #ffffff);
+      position: relative;
+    }
+    .gold-ramp-marker {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(255,255,255,0.4);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SECTION 3 — TYPOGRAPHY
+    ════════════════════════════════════════════════════════ */
+    .type-specimen-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      margin-bottom: 1px;
+      display: flex;
+      align-items: baseline;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .type-specimen-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 600;
+      min-width: 140px;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+    .type-specimen-text { flex: 1; min-width: 200px; }
+    .type-specimen-spec {
+      font-family: ui-monospace, monospace;
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      line-height: 1.7;
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+
+    /* Weight scale */
+    .weight-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 14px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .weight-row:last-child { border-bottom: none; }
+    .weight-label {
+      font-family: ui-monospace, monospace;
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      min-width: 60px;
+    }
+    .weight-sample { font-size: 1.4rem; color: var(--text); line-height: 1; }
+    .weight-name { font-size: 0.72rem; color: var(--text-sub); margin-left: auto; }
+
+    /* Tracking scale */
+    .tracking-row {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .tracking-row:last-child { border-bottom: none; }
+    .tracking-spec {
+      font-family: ui-monospace, monospace;
+      font-size: 0.68rem;
+      color: var(--gold);
+      min-width: 90px;
+    }
+    .tracking-sample {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+    .tracking-use {
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      min-width: 180px;
+      text-align: right;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       SECTION 4 — SPACING & LAYOUT
+    ════════════════════════════════════════════════════════ */
+    .space-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .space-row:last-child { border-bottom: none; }
+    .space-bar-wrap { width: 200px; flex-shrink: 0; }
+    .space-bar {
+      height: 8px;
+      background: var(--gold-dim);
+      border-right: 2px solid var(--gold);
+    }
+    .space-value {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: var(--gold);
+      min-width: 100px;
+    }
+    .space-use { font-size: 0.72rem; color: var(--text-faint); }
+
+    /* ════════════════════════════════════════════════════════
+       SECTION 5 — COMPONENTS
+    ════════════════════════════════════════════════════════ */
+
+    /* Buttons */
+    .btn-gold {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 28px; background: var(--gold); color: var(--black);
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 700; text-decoration: none; border: none; cursor: pointer;
+      min-height: 44px; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 28px; background: transparent; color: var(--text-sub);
+      border: 1px solid var(--border-mid);
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 600; text-decoration: none; cursor: pointer;
+      min-height: 44px; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 20px; background: transparent;
+      border: 1px solid var(--border-mid);
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-body); font-weight: 600; text-decoration: none; cursor: pointer;
+      min-height: 44px; font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Badge / pill */
+    .badge {
+      display: inline-block; font-size: 0.58rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--gold); font-weight: 700;
+      border: 1px solid var(--border-mid); padding: 5px 11px;
+    }
+    .badge-filled {
+      display: inline-block; font-size: 0.58rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--black); font-weight: 700;
+      background: var(--gold); border: 1px solid var(--gold); padding: 5px 11px;
+    }
+
+    /* Block / card */
+    .bs-block {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 28px 32px; margin-bottom: 1px;
+    }
+    .bs-block-accent { border-left: 2px solid var(--gold); }
+    .bs-block p { color: var(--text-body); font-weight: 400; font-size: 0.93rem; line-height: 1.85; margin-bottom: 0.9rem; }
+    .bs-block p:last-child { margin-bottom: 0; }
+
+    /* Note */
+    .bs-note {
+      border-left: 2px solid var(--gold-dim); padding: 14px 20px;
+      background: var(--gold-faint);
+    }
+    .bs-note p { font-size: 0.88rem; color: var(--text-body); font-weight: 400; line-height: 1.75; margin: 0; }
+
+    /* Dash list */
+    .bs-dash { list-style: none; padding: 0; margin: 0; }
+    .bs-dash li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.92rem; color: var(--text-body); font-weight: 400; line-height: 1.75;
+    }
+    .bs-dash li:last-child { border-bottom: none; }
+    .bs-dash li::before {
+      content: ''; display: block; width: 14px; min-width: 14px; height: 1px;
+      background: var(--gold-dim); margin-top: 0.82em; flex-shrink: 0;
+    }
+
+    /* Section header */
+    .bs-section-hd {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    .bs-section-hd .sn {
+      font-size: 0.58rem; letter-spacing: 0.22em; color: var(--gold); font-weight: 700;
+    }
+    .bs-section-hd .st {
+      font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--text); font-weight: 700;
+    }
+    .bs-section-hd .sr { flex: 1; height: 1px; background: var(--border); }
+
+    /* Service card */
+    .bs-svc-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 26px 28px; display: flex; flex-direction: column;
+    }
+    .bs-svc-card.hl { border-color: var(--border-str); }
+    .bs-svc-card h4 { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .bs-svc-card p { font-size: 0.88rem; color: var(--text-body); font-weight: 400; line-height: 1.75; margin: 0; }
+
+    /* Plan card */
+    .bs-plan-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 28px; display: flex; flex-direction: column;
+    }
+    .bs-plan-card.hl { border-color: var(--border-str); }
+    .bs-plan-card h4 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+    .bs-plan-price { font-size: 1.5rem; font-weight: 700; color: var(--white); letter-spacing: -0.01em; margin: 8px 0 4px; }
+    .bs-plan-range { font-size: 0.78rem; color: var(--text-sub); font-style: italic; font-weight: 400; margin-bottom: 0; }
+
+    /* Nav bar demo */
+    .bs-nav-demo {
+      background: rgba(10,10,10,0.95);
+      border: 1px solid var(--border);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+    .bs-nav-brand { display: flex; align-items: center; gap: 14px; }
+    .bs-nav-links { display: flex; gap: 28px; align-items: center; }
+    .bs-nav-link { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-sub); font-weight: 500; }
+    .bs-nav-link.active { color: var(--gold); }
+    .bs-nav-cta {
+      font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--black); background: var(--gold); padding: 8px 16px; font-weight: 700;
+    }
+
+    /* Enquiry pill */
+    .bs-pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .bs-pill {
+      display: inline-block; padding: 8px 16px; border: 1px solid var(--border-mid);
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-sub); font-weight: 600;
+    }
+    .bs-pill.active { border-color: var(--gold); color: var(--black); background: var(--gold); }
+
+    /* Form elements */
+    .bs-input, .bs-select, .bs-textarea {
+      background: var(--bg); border: 1px solid var(--border-mid);
+      color: var(--text-body); font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem; font-weight: 400; padding: 12px 14px;
+      outline: none; width: 100%; border-radius: 0; appearance: none;
+    }
+    .bs-input::placeholder, .bs-textarea::placeholder { color: var(--text-faint); }
+    .bs-form-label {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-sub); font-weight: 600; display: block; margin-bottom: 7px;
+    }
+    .bs-textarea { min-height: 90px; resize: vertical; }
+
+    /* Footer demo */
+    .bs-footer-demo {
+      border-top: 1px solid var(--border);
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--bg);
+    }
+    .bs-footer-brand { display: flex; align-items: center; gap: 12px; }
+    .bs-footer-links { display: flex; gap: 16px; }
+    .bs-footer-link { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+    .bs-footer-copy { font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-faint); }
+
+    /* ── Print note ── */
+    .bs-do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+    .bs-do { background: rgba(201,182,148,0.06); padding: 20px 22px; }
+    .bs-dont { background: rgba(160,40,40,0.06); padding: 20px 22px; }
+    .bs-do-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+    .bs-dont-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: #b05050; margin-bottom: 12px; }
+    .bs-rule-item { font-size: 0.84rem; color: var(--text-body); font-weight: 400; line-height: 1.65; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .bs-rule-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    /* ── Monospace code block ── */
+    .bs-code {
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 16px 20px; font-family: ui-monospace, 'Menlo', monospace;
+      font-size: 0.78rem; color: var(--text-sub); line-height: 1.8;
+      overflow-x: auto; white-space: pre;
+    }
+    .bs-code .k { color: var(--gold); }
+    .bs-code .v { color: var(--text-body); }
+    .bs-code .c { color: var(--text-faint); font-style: italic; }
+
+    /* ── Utility ── */
+    .mt1 { margin-top: 1px; }
+    .mt8 { margin-top: 8px; }
+    .mt16 { margin-top: 16px; }
+    .mt24 { margin-top: 24px; }
+    .mb16 { margin-bottom: 16px; }
+    .col-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; display: block; margin-bottom: 10px; }
+
+    @media (max-width: 768px) {
+      .bs-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .bs-grid-5 { grid-template-columns: repeat(2, 1fr); }
+      .bs-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .bs-do-dont-grid { grid-template-columns: 1fr; }
+      .type-specimen-row { flex-direction: column; gap: 12px; }
+      .tracking-use { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .bs-grid-2 { grid-template-columns: 1fr; }
+      .bs-grid-3 { grid-template-columns: 1fr; }
+      .bs-grid-4 { grid-template-columns: 1fr; }
+      .bs-nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="bs-page">
+
+  <!-- ══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════ -->
+  <header class="bs-header">
+    <div class="bs-header-brand">
+      <span class="bs-mark">
+        <span class="bs-mark-line" style="width:32px"></span>
+        <span class="bs-mark-stroke" style="height:24px"></span>
+        <span class="bs-mark-line" style="width:32px"></span>
+      </span>
+      <span class="bs-header-title">Human Integrity Advisory — Brand Sheet</span>
+    </div>
+    <div class="bs-header-meta">
+      Version 1.0 &nbsp;·&nbsp; Montserrat &nbsp;·&nbsp; Dark theme<br>
+      For internal use. Not for external distribution.
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       01 · BRAND MARK
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">01</span>
+      <span class="bs-section-title">Brand Mark</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <!-- Primary mark — three sizes -->
+    <div class="bs-grid-3 mb16">
+      <!-- Dark bg -->
+      <div class="mark-demo mark-demo-dark">
+        <div class="mark-rule-demo">
+          <span class="bs-mark">
+            <span class="bs-mark-line" style="width:70px;background:#fff"></span>
+            <span class="bs-mark-stroke" style="height:32px;background:#fff"></span>
+            <span class="bs-mark-line" style="width:70px;background:#fff"></span>
+          </span>
+        </div>
+        <div class="mark-monogram" style="color:#fff">HIA</div>
+        <div class="mark-descriptor" style="color:rgba(255,255,255,0.45)">Human Integrity Advisory</div>
+        <span class="token-name mt16" style="color:rgba(255,255,255,0.25)">Primary — on black</span>
+      </div>
+      <!-- Surface bg -->
+      <div class="mark-demo" style="background:var(--surface)">
+        <div class="mark-rule-demo">
+          <span class="bs-mark">
+            <span class="bs-mark-line" style="width:55px;background:#fff"></span>
+            <span class="bs-mark-stroke" style="height:26px;background:#fff"></span>
+            <span class="bs-mark-line" style="width:55px;background:#fff"></span>
+          </span>
+        </div>
+        <div class="mark-monogram" style="color:#fff;font-size:56px">HIA</div>
+        <div class="mark-descriptor" style="color:var(--text-sub)">Human Integrity Advisory</div>
+        <span class="token-name mt16">On surface (#141414)</span>
+      </div>
+      <!-- White bg -->
+      <div class="mark-demo mark-demo-light">
+        <div class="mark-rule-demo">
+          <span class="bs-mark">
+            <span class="bs-mark-line" style="width:55px;background:#000"></span>
+            <span class="bs-mark-stroke" style="height:26px;background:#000"></span>
+            <span class="bs-mark-line" style="width:55px;background:#000"></span>
+          </span>
+        </div>
+        <div class="mark-monogram" style="color:#000;font-size:56px">HIA</div>
+        <div class="mark-descriptor" style="color:rgba(0,0,0,0.45)">Human Integrity Advisory</div>
+        <span class="token-name mt16" style="color:rgba(0,0,0,0.3)">Reverse — on white</span>
+      </div>
+    </div>
+
+    <!-- Mark anatomy -->
+    <div class="mark-anatomy">
+      <span class="anatomy-label">Signature mark — anatomy</span>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Horizontal rule (each side)</span>
+        <span class="anatomy-dim">width: 80–120px desktop · 48–70px mobile · height: 1px · color: #ffffff or #000000</span>
+      </div>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Vertical stroke (centre bisector)</span>
+        <span class="anatomy-dim">width: 1px · height: 32–44px desktop · 24–30px mobile</span>
+      </div>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Monogram "HIA"</span>
+        <span class="anatomy-dim">Montserrat 800 · clamp(48px, 9vw, 80px) · letter-spacing: 0.02em</span>
+      </div>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Descriptor "Human Integrity Advisory"</span>
+        <span class="anatomy-dim">Montserrat 300 · 0.62rem · letter-spacing: 0.30em · uppercase</span>
+      </div>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Nav mark (compact)</span>
+        <span class="anatomy-dim">Line: 20px each · Stroke: 16px · color: var(--gold) #C9B694</span>
+      </div>
+      <div class="anatomy-row">
+        <span class="anatomy-spec">Footer mark (minimal)</span>
+        <span class="anatomy-dim">Line: 16px each · Stroke: 13px · color: var(--gold-dim) rgba(201,182,148,0.40)</span>
+      </div>
+    </div>
+
+    <!-- Gold mark variant -->
+    <div class="bs-grid-2 mt1">
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">Gold mark — nav usage</span>
+        <span class="bs-mark" style="color:var(--gold)">
+          <span class="bs-mark-line" style="width:20px"></span>
+          <span class="bs-mark-stroke" style="height:16px"></span>
+          <span class="bs-mark-line" style="width:20px"></span>
+        </span>
+        &nbsp;&nbsp;
+        <span style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-sub);font-weight:500">Human Integrity Advisory</span>
+        <div class="token-note mt8">Used in sticky nav. Mark in --gold, text in --text-sub</div>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">Minimal mark — footer usage</span>
+        <span class="bs-mark" style="color:var(--gold-dim)">
+          <span class="bs-mark-line" style="width:16px"></span>
+          <span class="bs-mark-stroke" style="height:13px"></span>
+          <span class="bs-mark-line" style="width:16px"></span>
+        </span>
+        <div class="token-note mt8">Used in footer. Mark in --gold-dim (40% opacity gold)</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       02 · COLOUR PALETTE
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">02</span>
+      <span class="bs-section-title">Colour Palette</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <!-- Surface swatches -->
+    <span class="col-label">Surfaces</span>
+    <div class="bs-grid-5 mb16">
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#000000">
+          <div><span class="swatch-name on-dark">Black</span><span class="swatch-hex on-dark">#000000</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--black</span>
+          <span class="token-value">#000000</span>
+          <span class="token-note">Hero backgrounds · keynote covers · premium layouts</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#0a0a0a">
+          <div><span class="swatch-name on-dark">Page BG</span><span class="swatch-hex on-dark">#0a0a0a</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--bg</span>
+          <span class="token-value">#0a0a0a</span>
+          <span class="token-note">Page background · between cards</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#141414">
+          <div><span class="swatch-name on-dark">Surface</span><span class="swatch-hex on-dark">#141414</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--surface</span>
+          <span class="token-value">#141414</span>
+          <span class="token-note">Card backgrounds · content blocks</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#1c1c1c">
+          <div><span class="swatch-name on-dark">Surface 2</span><span class="swatch-hex on-dark">#1c1c1c</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--surface2</span>
+          <span class="token-value">#1c1c1c</span>
+          <span class="token-note">Nested surfaces · code blocks</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#ffffff;border:1px solid rgba(201,182,148,0.14)">
+          <div><span class="swatch-name on-light">White</span><span class="swatch-hex on-light">#ffffff</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--white</span>
+          <span class="token-value">#ffffff</span>
+          <span class="token-note">Reverse mark · brand mark stroke · document clarity</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gold accent -->
+    <span class="col-label">Gold accent</span>
+    <div class="bs-grid-4 mb16">
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:#C9B694">
+          <div><span class="swatch-name on-light">Gold</span><span class="swatch-hex on-light">#C9B694</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--gold</span>
+          <span class="token-value">#C9B694</span>
+          <span class="token-note">Primary accent · buttons · active links · section numbers</span>
+          <span class="token-note" style="margin-top:4px;color:#C9B694">RGB: 201, 182, 148</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:rgba(201,182,148,0.40)">
+          <div><span class="swatch-name on-dark">Gold dim</span><span class="swatch-hex on-dark">rgba(201,182,148,0.40)</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--gold-dim</span>
+          <span class="token-value">rgba(201,182,148,0.40)</span>
+          <span class="token-note">Dash list decorators · footer mark · note borders</span>
+        </div>
+      </div>
+      <div>
+        <div class="swatch-block swatch-block-tall" style="background:rgba(201,182,148,0.08)">
+          <div><span class="swatch-name on-dark">Gold faint</span><span class="swatch-hex on-dark">rgba(201,182,148,0.08)</span></div>
+        </div>
+        <div class="bs-cell-sm" style="background:var(--surface)">
+          <span class="token-name">--gold-faint</span>
+          <span class="token-value">rgba(201,182,148,0.08)</span>
+          <span class="token-note">Note block background · subtle hover fills</span>
+        </div>
+      </div>
+      <div style="background:var(--surface)">
+        <div style="padding:20px 18px 0">
+          <span class="col-label">Gold usage rule</span>
+          <p style="font-size:0.84rem;color:var(--text-body);font-weight:400;line-height:1.7;margin:0">Gold is a <strong style="color:var(--text)">restraint device</strong>, not a decorative flourish. Keep it under roughly 5% of any composition. When in doubt, remove it. Never use as a large fill or background.</p>
+        </div>
+        <div style="margin:16px 18px 0;padding:12px 14px;border-left:2px solid var(--gold-dim);background:var(--gold-faint)">
+          <p style="font-size:0.78rem;color:var(--text-sub);margin:0;font-weight:400">✓ Lines, borders, section numbers, active states<br>✓ Primary CTA button background<br>✗ Never as page or card background<br>✗ Never more than ~5% of the composition</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <span class="col-label">Borders</span>
+    <div class="bs-grid-3 mb16">
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">--border</span>
+        <span class="token-value">rgba(201,182,148,0.14)</span>
+        <div style="height:2px;background:rgba(201,182,148,0.14);margin:10px 0 6px"></div>
+        <span class="token-note">Default card borders · section rules · list dividers</span>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">--border-mid</span>
+        <span class="token-value">rgba(201,182,148,0.30)</span>
+        <div style="height:2px;background:rgba(201,182,148,0.30);margin:10px 0 6px"></div>
+        <span class="token-note">Button borders · input focus borders · table headers</span>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">--border-str</span>
+        <span class="token-value">rgba(201,182,148,0.58)</span>
+        <div style="height:2px;background:rgba(201,182,148,0.58);margin:10px 0 6px"></div>
+        <span class="token-note">Highlighted card borders · featured / active states</span>
+      </div>
+    </div>
+
+    <!-- Text hierarchy -->
+    <span class="col-label">Text colour hierarchy (on #141414 surface)</span>
+    <div style="background:var(--surface);border:1px solid var(--border)">
+      <div class="text-swatch-row">
+        <span class="text-swatch-sample" style="color:#f0f0f0">Aa</span>
+        <div style="flex:1">
+          <span class="token-name" style="margin:0 0 2px">--text · #f0f0f0</span>
+          <span style="font-size:0.88rem;color:#f0f0f0;font-weight:400">Headings, labels, strong text, section titles</span>
+        </div>
+        <span class="token-ratio">14:1 contrast ✓</span>
+      </div>
+      <div class="text-swatch-row">
+        <span class="text-swatch-sample" style="color:#c8c6c4">Aa</span>
+        <div style="flex:1">
+          <span class="token-name" style="margin:0 0 2px">--text-body · #c8c6c4</span>
+          <span style="font-size:0.88rem;color:#c8c6c4;font-weight:400">All body copy, list items, card descriptions</span>
+        </div>
+        <span class="token-ratio">8.5:1 contrast ✓</span>
+      </div>
+      <div class="text-swatch-row">
+        <span class="text-swatch-sample" style="color:#a8a5a2">Aa</span>
+        <div style="flex:1">
+          <span class="token-name" style="margin:0 0 2px">--text-sub · #a8a5a2</span>
+          <span style="font-size:0.88rem;color:#a8a5a2;font-weight:400">Nav links, supporting text, descriptors, button labels</span>
+        </div>
+        <span class="token-ratio">5.8:1 contrast ✓</span>
+      </div>
+      <div class="text-swatch-row">
+        <span class="text-swatch-sample" style="color:#797673">Aa</span>
+        <div style="flex:1">
+          <span class="token-name" style="margin:0 0 2px">--text-faint · #797673</span>
+          <span style="font-size:0.88rem;color:#797673;font-weight:400">Metadata, ranges, captions, footer copy — non-essential only</span>
+        </div>
+        <span class="token-ratio">3.4:1 contrast ✓</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       03 · TYPOGRAPHY
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">03</span>
+      <span class="bs-section-title">Typography</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <!-- Typeface -->
+    <div class="bs-grid-2 mb16">
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">Primary typeface</span>
+        <div style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:var(--white);line-height:1;letter-spacing:-0.01em;margin-bottom:12px">Montserrat</div>
+        <div style="font-size:0.9rem;color:var(--text-sub);font-weight:400;margin-bottom:10px">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@£$%&amp;*().,?</div>
+        <span class="token-note">Google Fonts — free. Import: <code style="color:var(--gold);font-size:0.72rem">wght@300;400;500;600;700;800</code></span>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">No alternatives permitted</span>
+        <p style="font-size:0.88rem;color:var(--text-body);font-weight:400;line-height:1.75;margin-bottom:12px">Montserrat is the only typeface in the HIA system. Never substitute with:</p>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li style="font-size:0.84rem;color:#b05050;padding:5px 0;border-bottom:1px solid var(--border)">✗ Inter or Roboto (too generic)</li>
+          <li style="font-size:0.84rem;color:#b05050;padding:5px 0;border-bottom:1px solid var(--border)">✗ Arial, Helvetica, system-ui</li>
+          <li style="font-size:0.84rem;color:#b05050;padding:5px 0;border-bottom:1px solid var(--border)">✗ Any serif typeface</li>
+          <li style="font-size:0.84rem;color:#b05050;padding:5px 0;border-bottom:1px solid var(--border)">✗ Any script or display font</li>
+          <li style="font-size:0.84rem;color:#b05050;padding:5px 0">✗ Decorative or AI-aesthetic typefaces</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Type scale -->
+    <span class="col-label" style="margin-bottom:0">Type scale</span>
+    <div style="border:1px solid var(--border)">
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">HIA Monogram</span>
+        <div class="type-specimen-text" style="font-size:clamp(3rem,8vw,5.5rem);font-weight:800;color:var(--white);line-height:1;letter-spacing:-0.01em">HIA</div>
+        <div class="type-specimen-spec">size: clamp(2.6rem, 9vw, 6rem)<br>weight: 800<br>tracking: -0.01em<br>color: --white</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Page title (h1 text)</span>
+        <div class="type-specimen-text" style="font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;color:var(--white);line-height:1.15">Services &amp; Engagements</div>
+        <div class="type-specimen-spec">size: clamp(1.6rem, 4.5vw, 3rem)<br>weight: 700<br>tracking: 0em<br>color: --white</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Card heading (h3)</span>
+        <div class="type-specimen-text" style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.2">Boardroom Integrity Advisory</div>
+        <div class="type-specimen-spec">size: clamp(1rem, 2.2vw, 1.1rem)<br>weight: 600<br>tracking: 0em<br>color: --white</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Body copy (p)</span>
+        <div class="type-specimen-text" style="font-size:0.95rem;font-weight:400;color:var(--text-body);line-height:1.85">Most organisations have values on the wall and a risk register on the server. Fewer have a clear view of what really happens in the room when money, power, and human lives meet under pressure.</div>
+        <div class="type-specimen-spec">size: clamp(0.92rem, 1.9vw, 0.98rem)<br>weight: 400<br>line-height: 1.85<br>color: --text-body</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Lede / hero body</span>
+        <div class="type-specimen-text" style="font-size:1rem;font-weight:400;color:var(--text-body);line-height:1.9">Governance that keeps pace with the systems you are actually running.</div>
+        <div class="type-specimen-spec">size: clamp(0.95rem, 2vw, 1.06rem)<br>weight: 400<br>line-height: 1.9<br>max-width: 580px</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Section label</span>
+        <div class="type-specimen-text" style="font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--text);font-weight:700">Why work with me</div>
+        <div class="type-specimen-spec">size: 0.7rem<br>weight: 700<br>tracking: 0.26em<br>uppercase · --text</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Eyebrow / kicker</span>
+        <div class="type-specimen-text" style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);font-weight:600">Independent Integrity &amp; AI Risk Advisory</div>
+        <div class="type-specimen-spec">size: 0.65rem<br>weight: 600<br>tracking: 0.30em<br>uppercase · --gold</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Nav / button label</span>
+        <div class="type-specimen-text" style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-sub);font-weight:500">Services &nbsp;·&nbsp; About &nbsp;·&nbsp; Contact</div>
+        <div class="type-specimen-spec">size: 0.65rem<br>weight: 500–700<br>tracking: 0.18–0.20em<br>uppercase · --text-sub</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Meta / caption</span>
+        <div class="type-specimen-text" style="font-size:0.84rem;color:var(--text-sub);font-style:italic;font-weight:400">All advisory work is confidential and off record unless explicitly agreed otherwise.</div>
+        <div class="type-specimen-spec">size: 0.82–0.88rem<br>weight: 400<br>style: italic<br>color: --text-sub</div>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-specimen-label">Price / figure</span>
+        <div class="type-specimen-text" style="font-size:1.5rem;font-weight:700;color:var(--white);letter-spacing:-0.01em">£4,000–£6,000</div>
+        <div class="type-specimen-spec">size: clamp(1.25rem, 3vw, 1.6rem)<br>weight: 700<br>tracking: -0.01em<br>color: --white</div>
+      </div>
+    </div>
+
+    <!-- Weight scale -->
+    <span class="col-label mt24">Font weight scale (Montserrat)</span>
+    <div style="background:var(--surface);border:1px solid var(--border)">
+      <div class="weight-row"><span class="weight-label">300</span><span class="weight-sample" style="font-weight:300;color:var(--text)">Human Integrity Advisory</span><span class="weight-name">Light — descriptor lines only</span></div>
+      <div class="weight-row"><span class="weight-label">400</span><span class="weight-sample" style="font-weight:400;color:var(--text)">Human Integrity Advisory</span><span class="weight-name">Regular — all body copy</span></div>
+      <div class="weight-row"><span class="weight-label">500</span><span class="weight-sample" style="font-weight:500;color:var(--text)">Human Integrity Advisory</span><span class="weight-name">Medium — nav links, hero descriptor</span></div>
+      <div class="weight-row"><span class="weight-label">600</span><span class="weight-sample" style="font-weight:600;color:var(--text)">Human Integrity Advisory</span><span class="weight-name">SemiBold — h3, section labels, eyebrows</span></div>
+      <div class="weight-row"><span class="weight-label">700</span><span class="weight-sample" style="font-weight:700;color:var(--text)">Human Integrity Advisory</span><span class="weight-name">Bold — h1 text, prices, button labels</span></div>
+      <div class="weight-row"><span class="weight-label">800</span><span class="weight-sample" style="font-weight:800;color:var(--text)">HIA</span><span class="weight-name">ExtraBold — monogram only</span></div>
+    </div>
+
+    <!-- Letter-spacing scale -->
+    <span class="col-label mt24">Letter-spacing scale</span>
+    <div style="background:var(--surface);border:1px solid var(--border)">
+      <div class="tracking-row"><span class="tracking-spec">-0.02em</span><span class="tracking-sample" style="letter-spacing:-0.02em">HIA</span><span class="tracking-use">Monogram at small sizes (mobile)</span></div>
+      <div class="tracking-row"><span class="tracking-spec">-0.01em</span><span class="tracking-sample" style="letter-spacing:-0.01em">HIA · Prices · Page H1</span><span class="tracking-use">Large headings, price figures</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0em</span><span class="tracking-sample" style="letter-spacing:0em">Services &amp; Engagements</span><span class="tracking-use">Page title text (hero-title-text)</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.02em</span><span class="tracking-sample" style="letter-spacing:0.02em">HIA monogram normal</span><span class="tracking-use">Monogram at standard size</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.08em</span><span class="tracking-sample" style="letter-spacing:0.08em">Price prefix / suffix</span><span class="tracking-use">Plan price helper text</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.14em</span><span class="tracking-sample" style="letter-spacing:0.14em">Footer links · copy</span><span class="tracking-use">Footer links, footer copy</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.18em</span><span class="tracking-sample" style="letter-spacing:0.18em">Hero meta · triad</span><span class="tracking-use">Hero "Integrity · Impact · Implementation"</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.20em</span><span class="tracking-sample" style="letter-spacing:0.20em">Button labels · nav</span><span class="tracking-use">CTA buttons, nav links, form labels, drawer</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.22em</span><span class="tracking-sample" style="letter-spacing:0.22em">Section numbers · tokens</span><span class="tracking-use">Section number (01, 02…), token names</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.24em</span><span class="tracking-sample" style="letter-spacing:0.24em">Badges · plan labels</span><span class="tracking-use">Service badges, plan labels, fit labels</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.26em</span><span class="tracking-sample" style="letter-spacing:0.26em">Section titles</span><span class="tracking-use">Section header text (Why work with me…)</span></div>
+      <div class="tracking-row"><span class="tracking-spec">0.30em</span><span class="tracking-sample" style="letter-spacing:0.30em;color:var(--gold)">Hero eyebrow · descriptor</span><span class="tracking-use">Hero eyebrow · hero descriptor · mark descriptor</span></div>
+    </div>
+
+    <!-- Line height -->
+    <span class="col-label mt24">Line-height scale</span>
+    <div class="bs-grid-3" style="border:1px solid var(--border);background:var(--border)">
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.0</span><span class="token-value">Monogram, prices</span><span class="token-note">Display text — tightest</span></div>
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.15–1.25</span><span class="token-value">Page titles (h1 text)</span><span class="token-note">Multi-line large headings</span></div>
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.4</span><span class="token-value">Card h3, fit-card h3</span><span class="token-note">Card headings that may wrap</span></div>
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.7–1.75</span><span class="token-value">Base body · dash-list</span><span class="token-note">Standard body reading rhythm</span></div>
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.85</span><span class="token-value">Body copy in blocks</span><span class="token-note">Extended reading paragraphs</span></div>
+      <div class="bs-cell" style="background:var(--surface)"><span class="token-name">1.9–2.2</span><span class="token-value">Hero lede · hero meta</span><span class="token-note">Spacious hero text rhythm</span></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       04 · SPACING & LAYOUT
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">04</span>
+      <span class="bs-section-title">Spacing &amp; Layout</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <div class="bs-grid-2">
+      <!-- Spacing scale -->
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">Core spacing scale</span>
+        <div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:4px"></div></div><span class="space-value">1px</span><span class="space-use">Grid gap (hairline between cards)</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:12px"></div></div><span class="space-value">6–8px</span><span class="space-use">Pill/badge padding · icon gap</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:24px"></div></div><span class="space-value">12–14px</span><span class="space-use">Button padding (vertical) · nav gap</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:36px"></div></div><span class="space-value">16–18px</span><span class="space-use">Form group margin · dash-list padding</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:48px"></div></div><span class="space-value">20–24px</span><span class="space-use">Card internal padding (small) · note padding</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:72px"></div></div><span class="space-value">28–32px</span><span class="space-use">Block padding · section margin-bottom</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:100px"></div></div><span class="space-value">36–40px</span><span class="space-use">Block padding (desktop) · section-hd mb</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:150px"></div></div><span class="space-value">48–64px</span><span class="space-use">Section padding-top · hero divider</span></div>
+          <div class="space-row"><div class="space-bar-wrap"><div class="space-bar" style="width:200px"></div></div><span class="space-value">80–120px</span><span class="space-use">Hero top padding</span></div>
+        </div>
+      </div>
+
+      <!-- Layout tokens -->
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="col-label">Layout tokens</span>
+        <div style="border:1px solid var(--border)">
+          <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+            <span class="token-name" style="margin:0 0 4px">--nav-h</span>
+            <span class="token-value">60px (56px on mobile &lt;480px)</span>
+            <span class="token-note">Sticky nav height. Used in scroll-padding-top and hero min-height calculations</span>
+          </div>
+          <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+            <span class="token-name" style="margin:0 0 4px">--page-max</span>
+            <span class="token-value">980px</span>
+            <span class="token-note">Max-width of .page-wrap content container</span>
+          </div>
+          <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+            <span class="token-name" style="margin:0 0 4px">--pad-x</span>
+            <span class="token-value">clamp(20px, 5vw, 64px)</span>
+            <span class="token-note">Horizontal page padding — responsive from 20px (mobile) to 64px (wide desktop)</span>
+          </div>
+          <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
+            <span class="token-name" style="margin:0 0 4px">--pad-section</span>
+            <span class="token-value">clamp(48px, 7vw, 80px)</span>
+            <span class="token-note">Section padding-top — keeps rhythm consistent across all breakpoints</span>
+          </div>
+          <div style="padding:12px 14px">
+            <span class="token-name" style="margin:0 0 4px">Grid gap</span>
+            <span class="token-value">1px (hairline)</span>
+            <span class="token-note">All grid-2, grid-3 gaps. Background set to --border so the 1px shows as a gold-tinted line</span>
+          </div>
+        </div>
+
+        <span class="col-label mt16">Breakpoints</span>
+        <div style="border:1px solid var(--border)">
+          <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
+            <span style="font-size:0.8rem;color:var(--text-body);font-weight:400">Small mobile</span>
+            <span class="token-value" style="margin:0">≤ 480px</span>
+          </div>
+          <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
+            <span style="font-size:0.8rem;color:var(--text-body);font-weight:400">Mobile</span>
+            <span class="token-value" style="margin:0">≤ 768px</span>
+          </div>
+          <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
+            <span style="font-size:0.8rem;color:var(--text-body);font-weight:400">Tablet</span>
+            <span class="token-value" style="margin:0">≤ 1024px</span>
+          </div>
+          <div style="padding:10px 14px;display:flex;justify-content:space-between">
+            <span style="font-size:0.8rem;color:var(--text-body);font-weight:400">Desktop</span>
+            <span class="token-value" style="margin:0">> 1024px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       05 · COMPONENTS
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">05</span>
+      <span class="bs-section-title">Components</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <!-- Navigation -->
+    <span class="col-label">Navigation bar</span>
+    <div class="bs-nav-demo mb16">
+      <div class="bs-nav-brand">
+        <span class="bs-mark" style="color:var(--gold)">
+          <span class="bs-mark-line" style="width:20px"></span>
+          <span class="bs-mark-stroke" style="height:16px"></span>
+          <span class="bs-mark-line" style="width:20px"></span>
+        </span>
+        <span style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-sub);font-weight:500">Human Integrity Advisory</span>
+      </div>
+      <div class="bs-nav-links">
+        <span class="bs-nav-link">Home</span>
+        <span class="bs-nav-link active">About</span>
+        <span class="bs-nav-link">Services</span>
+        <span class="bs-nav-link">Fees</span>
+        <span class="bs-nav-link">Contact</span>
+        <span class="bs-nav-cta">Enquire</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <span class="col-label">Buttons</span>
+    <div class="bs-grid-3 mb16">
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">.btn-gold — Primary CTA</span>
+        <div style="margin:12px 0"><a class="btn-gold" href="#">Enquire about working together</a></div>
+        <div class="bs-code" style="font-size:0.68rem;white-space:normal;line-height:1.7">bg: <span style="color:var(--gold)">#C9B694</span> · color: #000<br>size: 0.65rem · weight: 700<br>tracking: 0.20em · uppercase<br>min-height: 44px · padding: 12px 28px</div>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">.btn-outline — Secondary CTA</span>
+        <div style="margin:12px 0"><a class="btn-outline" href="#">View services</a></div>
+        <div class="bs-code" style="font-size:0.68rem;white-space:normal;line-height:1.7">bg: transparent<br>border: 1px solid --border-mid<br>color: --text-sub · weight: 600<br>hover: border/color → --gold</div>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">.svc-btn / .plan-btn — Ghost CTA</span>
+        <div style="margin:12px 0"><a class="btn-ghost" href="#">Learn more</a></div>
+        <div class="bs-code" style="font-size:0.68rem;white-space:normal;line-height:1.7">bg: transparent<br>border: 1px solid --border-mid<br>color: --text-body · size: 0.6rem<br>hover: border/color → --gold</div>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <span class="col-label">Badges &amp; labels</span>
+    <div class="bs-cell mt1 mb16" style="background:var(--surface);display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+      <span class="badge">Boardroom</span>
+      <span class="badge">Systems</span>
+      <span class="badge">Leaders</span>
+      <span class="badge-filled">Focused</span>
+      <span class="badge">Ongoing</span>
+      <span class="badge">Single</span>
+      <div style="margin-left:auto;font-size:0.72rem;color:var(--text-faint)">border: 1px solid --border-mid · size: 0.58rem · tracking: 0.24em · uppercase · weight: 700</div>
+    </div>
+
+    <!-- Section header -->
+    <span class="col-label">Section header</span>
+    <div class="bs-cell mt1 mb16" style="background:var(--surface)">
+      <div class="bs-section-hd">
+        <span class="sn">03</span>
+        <span class="st">What I do</span>
+        <div class="sr"></div>
+      </div>
+      <div class="bs-code" style="font-size:0.68rem;white-space:normal;line-height:1.7">num: 0.58rem · tracking: 0.22em · color: --gold · weight: 700<br>title: 0.7rem · tracking: 0.26em · uppercase · color: --text · weight: 700<br>rule: flex:1 · height: 1px · bg: --border</div>
+    </div>
+
+    <!-- Content blocks -->
+    <span class="col-label">Content block variants</span>
+    <div class="bs-grid-2 mb16">
+      <div>
+        <span class="token-name" style="padding:0 0 6px">Standard block</span>
+        <div class="bs-block">
+          <p>Most organisations have values on the wall and a risk register on the server.</p>
+        </div>
+        <div class="bs-code mt1" style="font-size:0.68rem;white-space:normal;line-height:1.6">bg: --surface (#141414)<br>border: 1px solid --border<br>padding: clamp(20px,4vw,36px)</div>
+      </div>
+      <div>
+        <span class="token-name" style="padding:0 0 6px">Accent block (.block-accent)</span>
+        <div class="bs-block bs-block-accent">
+          <p>My work is grounded, confidential, and deliberately free from performance.</p>
+        </div>
+        <div class="bs-code mt1" style="font-size:0.68rem;white-space:normal;line-height:1.6">+ border-left: 2px solid --gold<br>Used for intro/primary content blocks</div>
+      </div>
+    </div>
+
+    <!-- Note block -->
+    <span class="col-label">Note block</span>
+    <div class="bs-note mb16 mt1">
+      <p><strong style="color:var(--text)">Working boundaries —</strong> All work is pre-scoped in writing. There is no informal support outside the agreed structure.</p>
+    </div>
+    <div class="bs-code mb16" style="font-size:0.68rem;white-space:normal;line-height:1.7">border-left: 2px solid --gold-dim · bg: --gold-faint<br>padding: 14px 20px · text: --text-body · size: 0.88rem · weight: 400</div>
+
+    <!-- Dash list -->
+    <span class="col-label">Dash list (.dash-list)</span>
+    <div class="bs-block mb16 mt1">
+      <ul class="bs-dash">
+        <li>Boards and chairs responsible for oversight of AI, data, or digital transformation.</li>
+        <li>CEOs and founders building products that touch health, finance, or vulnerable groups.</li>
+        <li>Executives navigating public trust, internal culture strain, or ethical scrutiny.</li>
+      </ul>
+    </div>
+    <div class="bs-code mb16" style="font-size:0.68rem;white-space:normal;line-height:1.7">::before — width: 14px · height: 1px · bg: --gold-dim · margin-top: 0.82em<br>li — size: 0.92rem · weight: 400 · color: --text-body · padding: 10px 0<br>separator — border-bottom: 1px solid --border</div>
+
+    <!-- Service cards -->
+    <span class="col-label">Service cards</span>
+    <div class="bs-grid-3 mb16">
+      <div class="bs-svc-card">
+        <span class="badge" style="margin-bottom:14px">Boardroom</span>
+        <h4>Boardroom Integrity Advisory</h4>
+        <p>A confidential, independent mind in the room when the decision in front of you will be remembered.</p>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:0.76rem;color:var(--text-faint);font-style:italic">Used during restructures, crises, or moments of scrutiny.</span>
+        </div>
+        <a class="btn-ghost" style="margin-top:16px;width:fit-content" href="#">Request outline</a>
+      </div>
+      <div class="bs-svc-card hl">
+        <span class="badge-filled" style="margin-bottom:14px">Systems</span>
+        <h4>AI &amp; Systems Ethics Review</h4>
+        <p>A focused examination of how one of your systems behaves for real people — especially those with the least power to contest it.</p>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:0.76rem;color:var(--text-faint);font-style:italic">Often used for systems touching health, finance, or identity.</span>
+        </div>
+        <a class="btn-gold" style="margin-top:16px;width:fit-content" href="#">View ethics sprint</a>
+      </div>
+      <div class="bs-svc-card">
+        <span class="badge" style="margin-bottom:14px">Leaders</span>
+        <h4>Executive Reflection &amp; Integrity Labs</h4>
+        <p>Structured space for senior leaders to think honestly without performance.</p>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border)">
+          <span style="font-size:0.76rem;color:var(--text-faint);font-style:italic">Useful when culture feels brittle or trust is thinning.</span>
+        </div>
+        <a class="btn-ghost" style="margin-top:16px;width:fit-content" href="#">Book a session</a>
+      </div>
+    </div>
+
+    <!-- Plan cards -->
+    <span class="col-label">Plan / pricing cards</span>
+    <div class="bs-grid-3 mb16">
+      <div class="bs-plan-card">
+        <span class="badge" style="margin-bottom:10px">Ongoing</span>
+        <h4>Integrity Retainer</h4>
+        <p style="font-size:0.88rem;color:var(--text-body);font-weight:400;line-height:1.75;margin-bottom:14px">A named independent advisor for boards, founders, or senior teams.</p>
+        <div class="bs-plan-price">£2,000<span style="font-size:0.72rem;color:var(--text-faint);font-weight:300;letter-spacing:0.08em"> / month</span></div>
+        <div class="bs-plan-range">Typical range £2,000–£4,000 per month</div>
+        <a class="btn-ghost" style="margin-top:auto;padding-top:14px;width:fit-content" href="#">Discuss retainer</a>
+      </div>
+      <div class="bs-plan-card hl">
+        <span class="badge-filled" style="margin-bottom:10px">Focused</span>
+        <h4>Ethics Review Sprint</h4>
+        <p style="font-size:0.88rem;color:var(--text-body);font-weight:400;line-height:1.75;margin-bottom:14px">A concentrated 2–3 week review with a clear written outcome.</p>
+        <div class="bs-plan-price">£4,000–£6,000</div>
+        <div class="bs-plan-range">Fee depends on system complexity and availability</div>
+        <a class="btn-gold" style="margin-top:auto;padding-top:14px;width:fit-content" href="#">Request sprint outline</a>
+      </div>
+      <div class="bs-plan-card">
+        <span class="badge" style="margin-bottom:10px">Single</span>
+        <h4>Executive Reflection</h4>
+        <p style="font-size:0.88rem;color:var(--text-body);font-weight:400;line-height:1.75;margin-bottom:14px">A contained 90-minute session with written synthesis.</p>
+        <div class="bs-plan-price">£750–£1,000</div>
+        <div class="bs-plan-range">Includes preparation and follow-up</div>
+        <a class="btn-ghost" style="margin-top:auto;padding-top:14px;width:fit-content" href="#">Book a session</a>
+      </div>
+    </div>
+
+    <!-- Form elements -->
+    <span class="col-label">Form elements</span>
+    <div class="bs-grid-2 mb16">
+      <div class="bs-cell" style="background:var(--surface)">
+        <div style="margin-bottom:16px">
+          <label class="bs-form-label">Full name <span style="color:var(--gold)">*</span></label>
+          <input class="bs-input" type="text" placeholder="Your name">
+        </div>
+        <div style="margin-bottom:16px">
+          <label class="bs-form-label">Email address <span style="color:var(--gold)">*</span></label>
+          <input class="bs-input" type="email" placeholder="your@email.com">
+        </div>
+        <div>
+          <label class="bs-form-label">Your situation <span style="color:var(--gold)">*</span></label>
+          <textarea class="bs-textarea" placeholder="Describe the decision or situation…"></textarea>
+        </div>
+      </div>
+      <div class="bs-cell" style="background:var(--surface)">
+        <span class="token-name">Enquiry type — radio pills</span>
+        <div class="bs-pill-group mt8 mb16">
+          <span class="bs-pill active">Integrity Retainer</span>
+          <span class="bs-pill">Ethics Review Sprint</span>
+          <span class="bs-pill">Executive Reflection</span>
+          <span class="bs-pill">General enquiry</span>
+        </div>
+        <div class="bs-code" style="font-size:0.68rem;white-space:normal;line-height:1.7">input — bg: --bg · border: 1px solid --border-mid<br>color: --text-body · size: 0.88rem · weight: 400<br>focus: border-color → --gold · border-radius: 0<br>placeholder: --text-faint<br>pill active: bg/border → --gold · color → --black</div>
+        <div style="margin-top:16px">
+          <a class="btn-gold" href="#" style="width:100%;text-align:center">Send enquiry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enquiry pills detail -->
+    <span class="col-label">Principles / feature list</span>
+    <div class="bs-block mt1 mb16">
+      <div style="padding:20px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:6px">Authenticity first</div>
+        <p style="margin:0;font-size:0.88rem">Truth is more useful than performance.</p>
+      </div>
+      <div style="padding:20px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:6px">Integrity over optics</div>
+        <p style="margin:0;font-size:0.88rem">Alignment matters more than appearances.</p>
+      </div>
+      <div style="padding:20px 0">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:6px">Human impact is the test</div>
+        <p style="margin:0;font-size:0.88rem">A decision that fails in lived experience has failed.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <span class="col-label">Footer</span>
+    <div class="bs-footer-demo mt1">
+      <div class="bs-footer-brand">
+        <span class="bs-mark" style="color:var(--gold-dim)">
+          <span class="bs-mark-line" style="width:16px"></span>
+          <span class="bs-mark-stroke" style="height:13px"></span>
+          <span class="bs-mark-line" style="width:16px"></span>
+        </span>
+        <span style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-faint);font-weight:400">Human Integrity Advisory</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="bs-footer-links">
+          <span class="bs-footer-link">Press</span>
+          <span class="bs-footer-link">Terms</span>
+          <span class="bs-footer-link">Privacy</span>
+          <span class="bs-footer-link">GDPR</span>
+        </div>
+        <span class="bs-footer-copy">© 2026 Human Integrity Advisory · James Saint · All rights reserved.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       06 · CSS VARIABLES (copy-paste reference)
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">06</span>
+      <span class="bs-section-title">CSS Variables — Copy &amp; Paste</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <div class="bs-code">
+<span class="c">/* ── HIA Design Tokens ── */</span>
+:root {
+  <span class="c">/* Surfaces */</span>
+  <span class="k">--black</span>:        <span class="v">#000000</span>;
+  <span class="k">--bg</span>:           <span class="v">#0a0a0a</span>;         <span class="c">/* page background */</span>
+  <span class="k">--surface</span>:      <span class="v">#141414</span>;         <span class="c">/* card backgrounds */</span>
+  <span class="k">--surface2</span>:     <span class="v">#1c1c1c</span>;         <span class="c">/* nested surfaces */</span>
+  <span class="k">--white</span>:        <span class="v">#ffffff</span>;
+
+  <span class="c">/* Text hierarchy */</span>
+  <span class="k">--text</span>:         <span class="v">#f0f0f0</span>;         <span class="c">/* headings, labels — 14:1 contrast */</span>
+  <span class="k">--text-body</span>:    <span class="v">#c8c6c4</span>;         <span class="c">/* body copy — 8.5:1 contrast */</span>
+  <span class="k">--text-sub</span>:     <span class="v">#a8a5a2</span>;         <span class="c">/* supporting text — 5.8:1 contrast */</span>
+  <span class="k">--text-faint</span>:   <span class="v">#797673</span>;         <span class="c">/* meta, captions — 3.4:1 contrast */</span>
+  <span class="k">--text-muted</span>:   <span class="v">#a8a5a2</span>;         <span class="c">/* alias for --text-sub */</span>
+
+  <span class="c">/* Gold accent */</span>
+  <span class="k">--gold</span>:         <span class="v">#C9B694</span>;         <span class="c">/* RGB: 201 182 148 */</span>
+  <span class="k">--gold-dim</span>:     <span class="v">rgba(201,182,148,0.40)</span>;
+  <span class="k">--gold-faint</span>:   <span class="v">rgba(201,182,148,0.08)</span>;
+
+  <span class="c">/* Borders */</span>
+  <span class="k">--border</span>:       <span class="v">rgba(201,182,148,0.14)</span>; <span class="c">/* default */</span>
+  <span class="k">--border-mid</span>:   <span class="v">rgba(201,182,148,0.30)</span>; <span class="c">/* buttons, inputs */</span>
+  <span class="k">--border-str</span>:   <span class="v">rgba(201,182,148,0.58)</span>; <span class="c">/* highlighted cards */</span>
+
+  <span class="c">/* Layout */</span>
+  <span class="k">--nav-h</span>:        <span class="v">60px</span>;
+  <span class="k">--page-max</span>:     <span class="v">980px</span>;
+  <span class="k">--pad-x</span>:        <span class="v">clamp(20px, 5vw, 64px)</span>;
+  <span class="k">--pad-section</span>:  <span class="v">clamp(48px, 7vw, 80px)</span>;
+}</div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       07 · BRAND RULES
+  ══════════════════════════════════════════ -->
+  <section class="bs-section">
+    <div class="bs-section-label">
+      <span class="bs-section-num">07</span>
+      <span class="bs-section-title">Brand Rules</span>
+      <div class="bs-rule"></div>
+    </div>
+
+    <div class="bs-do-dont-grid">
+      <div class="bs-do">
+        <div class="bs-do-title">Do</div>
+        <div class="bs-rule-item">Use Montserrat exclusively at weights 300, 400, 500, 600, 700, 800</div>
+        <div class="bs-rule-item">Use uppercase with wide tracking (0.18–0.30em) for labels, badges, nav, and buttons</div>
+        <div class="bs-rule-item">Keep gold under ~5% of any composition — it signals, not decorates</div>
+        <div class="bs-rule-item">Use font-weight 400 (never 300) for body copy on dark backgrounds</div>
+        <div class="bs-rule-item">Maintain the 4-step text hierarchy: text → text-body → text-sub → text-faint</div>
+        <div class="bs-rule-item">Use the hairline 1px grid gap to create gold-tinted dividers between cards</div>
+        <div class="bs-rule-item">Use the signature mark (rule + stroke + rule) at the start of new documents</div>
+        <div class="bs-rule-item">Pair the primary gold button with a ghost/outline button for secondary actions</div>
+        <div class="bs-rule-item">Always set border-radius: 0 on buttons, inputs, and cards — the system is sharp</div>
+        <div class="bs-rule-item">Ensure body copy meets ≥7:1 contrast on the surface it sits on</div>
+      </div>
+      <div class="bs-dont">
+        <div class="bs-dont-title">Do not</div>
+        <div class="bs-rule-item">Do not substitute Montserrat with any other typeface</div>
+        <div class="bs-rule-item">Do not use font-weight 300 on dark backgrounds — it becomes unreadable</div>
+        <div class="bs-rule-item">Do not use gold as a large fill, background colour, or decorative shape</div>
+        <div class="bs-rule-item">Do not use rounded corners — the brand aesthetic is architectural and sharp</div>
+        <div class="bs-rule-item">Do not use coloured backgrounds beyond the defined surface tokens</div>
+        <div class="bs-rule-item">Do not use emoji, icons (Font Awesome etc.), or ornamental punctuation</div>
+        <div class="bs-rule-item">Do not use the brand mark at less than 40px wide (monogram only at tiny sizes)</div>
+        <div class="bs-rule-item">Do not introduce new typefaces, even for variety or decoration</div>
+        <div class="bs-rule-item">Do not use purple, teal, or other brand accent colours — the palette is black, white, gold</div>
+        <div class="bs-rule-item">Do not add shadows, glows, gradients, or noise textures</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SHEET FOOTER
+  ══════════════════════════════════════════ -->
+  <footer style="border-top:1px solid var(--border);margin-top:64px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <span class="bs-mark" style="color:var(--gold-dim)">
+      <span class="bs-mark-line" style="width:16px"></span>
+      <span class="bs-mark-stroke" style="height:13px"></span>
+      <span class="bs-mark-line" style="width:16px"></span>
+    </span>
+    <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-faint)">Human Integrity Advisory · Brand Sheet v1.0 · Private &amp; Confidential</span>
+    <span style="font-size:0.6rem;letter-spacing:0.1em;color:var(--text-faint)">© 2026 James Saint · All rights reserved</span>
+  </footer>
+
+</div>
+</body>
+</html>
