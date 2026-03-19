@@ -61,14 +61,14 @@ h3 { font-size: clamp(1rem, 2.2vw, 1.1rem); font-weight: 600; color: var(--white
 p {
   margin-bottom: 1rem;
   color: var(--text-body);
-  font-weight: 400;          /* 400 not 300 — critical for dark bg readability */
+  font-weight: 400;          /* 400 not 300 - critical for dark bg readability */
   font-size: clamp(0.92rem, 1.9vw, 0.98rem);
   line-height: 1.85;
 }
 p:last-child { margin-bottom: 0; }
 p strong { color: var(--text); font-weight: 600; }
 a { color: var(--gold); text-decoration: none; font-weight: 500; transition: opacity 0.15s; }
-a:hover { opacity: 0.75; text-decoration: underline; text-underline-offset: 3px; }
+a:hover { opacity: 0.75; text-decoration: none; }
 ul, ol { list-style: none; padding: 0; }
 
 /* ── BRAND MARK ── */
@@ -180,7 +180,7 @@ ul, ol { list-style: none; padding: 0; }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; width: 0; }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* Mobile drawer — max-height slide instead of display toggle */
+/* Mobile drawer - max-height slide instead of display toggle */
 .nav-drawer {
   position: fixed;
   top: var(--nav-h);
@@ -793,7 +793,7 @@ ul, ol { list-style: none; padding: 0; }
 .d6 { animation-delay: 0.66s; }
 .d7 { animation-delay: 0.78s; }
 
-/* Scroll reveal — JS adds .is-visible */
+/* Scroll reveal - JS adds .is-visible */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -938,13 +938,13 @@ ul, ol { list-style: none; padding: 0; }
   font-weight: 400;
   line-height: 1.65;
 }
-.form-status.success {
+.form-status.is-shown.success {
   display: block;
   border-left: 2px solid var(--gold);
   background: var(--gold-faint);
   color: var(--text-body);
 }
-.form-status.error {
+.form-status.is-shown.error {
   display: block;
   border-left: 2px solid #c0392b;
   background: rgba(192,57,43,0.07);
