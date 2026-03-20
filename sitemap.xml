@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://humanintegrityadvisory.com/index.html</loc>
+    <loc>https://humanintegrityadvisory.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
@@ -15,17 +15,5 @@
   <url>
     <loc>https://humanintegrityadvisory.com/contact.html</loc>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://humanintegrityadvisory.com/privacy.html</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://humanintegrityadvisory.com/terms.html</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://humanintegrityadvisory.com/gdpr.html</loc>
-    <priority>0.3</priority>
   </url>
 </urlset>
