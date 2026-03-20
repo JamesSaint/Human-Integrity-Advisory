@@ -104,3 +104,4 @@ When a custom domain is configured, update all canonical URLs, OG URLs, schema U
 ## License
 
 All content is proprietary to **James Saint**. Viewing is permitted. Reuse, reproduction, or redistribution is not permitted without explicit written consent.
+
