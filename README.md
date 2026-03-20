@@ -13,7 +13,7 @@ Most AI governance programmes produce policy frameworks that define what *should
 
 The live site is hosted at:
 
-**https://humanintegrityadvisory.com/**
+**https://jamessaint.github.io/Human-Integrity-Advisory/**
 
 This repository provides the public website codebase, deployed via GitHub Pages.
 
@@ -66,7 +66,7 @@ Full brand token reference is in `brand-sheet.html`.
 Every public page includes:
 
 - Unique `<title>` and meta description
-- Canonical URL pointed to `humanintegrityadvisory.com`
+- Canonical URL pointed to `jamessaint.github.io/Human-Integrity-Advisory`
 - `index, follow` robots directive on public pages; `noindex, nofollow` on utility pages
 - Full Open Graph tag set (og:title, og:description, og:url, og:image, og:image:alt)
 - Twitter/X card tags
@@ -87,11 +87,11 @@ Open any HTML file directly in a browser. No tooling, build step, or local serve
 
 ## Deployment
 
-Changes pushed to the `main` branch publish automatically via GitHub Pages. The live custom domain is:
+Changes pushed to the `main` branch publish automatically via GitHub Pages to:
 
-**https://humanintegrityadvisory.com/**
+**https://jamessaint.github.io/Human-Integrity-Advisory/**
 
-The GitHub Pages URL `https://jamessaint.github.io/Human-Integrity-Advisory/` resolves to the same content during development and staging.
+When a custom domain is configured, update all canonical URLs, OG URLs, schema URLs, `robots.txt`, and `sitemap.xml` to reflect the new domain before going live.
 
 ## Roadmap
 
