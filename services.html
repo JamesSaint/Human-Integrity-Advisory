@@ -9,8 +9,6 @@
   <meta name="description" content="Three focused services for boards and executives: Boardroom Integrity Advisory, Intervention and Decision Architecture Review, and Executive Intervention Labs.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jamessaint.github.io/Human-Integrity-Advisory/services.html">
-
-  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon-180x180.png">
@@ -18,8 +16,6 @@
   <link rel="manifest" href="assets/images/favicons/site.webmanifest">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="color-scheme" content="dark">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Human Integrity Advisory">
   <meta property="og:title" content="AI Governance Intervention Services | Human Integrity Advisory">
@@ -30,336 +26,834 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Human Integrity Advisory services - boardroom advisory, decision architecture review, intervention labs">
   <meta property="og:locale" content="en_GB">
-
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Governance Intervention Services | Human Integrity Advisory">
   <meta name="twitter:description" content="Three focused services for boards and executives: Boardroom Integrity Advisory, Intervention and Decision Architecture Review, and Executive Intervention Labs.">
   <meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-services.png">
   <meta name="twitter:image:alt" content="Human Integrity Advisory services - boardroom advisory, decision architecture review, intervention labs">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+/* ══════════════════════════════════════════════════════
+   INFOGRAPHIC COMPONENTS — services.html
+   All custom properties inherited from style.css.
+══════════════════════════════════════════════════════ */
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Human Integrity Advisory",
-  "url": "https://jamessaint.github.io/Human-Integrity-Advisory/services.html",
-  "description": "Independent intervention and decision architecture advisory for boards and senior executives navigating AI governance.",
-  "areaServed": "Global",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Advisory Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Boardroom Integrity Advisory",
-          "description": "Senior advisory to boards on decision clarity and authority when AI governance is tested."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Intervention and Decision Architecture Review",
-          "description": "Structured assessment of escalation, override, and authority in AI-dependent operations."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Executive Intervention Labs",
-          "description": "Facilitated scenario-based sessions exposing genuine gaps in leadership intervention capability."
-        }
-      }
-    ]
-  }
+/* ── shared ── */
+.ig-icon { flex-shrink: 0; display: block; }
+
+/* ══ INFOGRAPHIC C: THE INTERVENTION CHAIN
+   Placement: section 01, after the intro block.
+   A vertical timeline from system event → detection →
+   escalation → assessment → intervention.
+   Steps 02–04 are tagged "HIA assesses" to show the
+   exact scope of work without adding prose.
+══ */
+.ig-chain {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: clamp(22px,4vw,36px) clamp(20px,3vw,30px);
+  margin-bottom: 1px;
 }
+.ig-chain-step {
+  display: grid;
+  grid-template-columns: 48px 1px 1fr;
+  gap: 0 24px;
+}
+.ig-chain-node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ig-chain-node {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+.ig-chain-node--accent {
+  border-color: var(--gold);
+  background: var(--gold-faint);
+}
+.ig-chain-connector {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--border-str), var(--border));
+  min-height: 24px;
+}
+.ig-chain-track {
+  width: 1px;
+  background: var(--border);
+}
+.ig-chain-body {
+  padding: 8px 0 32px;
+}
+.ig-chain-step:last-child .ig-chain-body { padding-bottom: 0; }
+.ig-chain-num {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.ig-chain-label {
+  font-size: clamp(0.92rem,2vw,1rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 5px;
+  line-height: 1.25;
+}
+.ig-chain-desc {
+  font-size: clamp(0.82rem,1.7vw,0.88rem);
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 520px;
+}
+.ig-chain-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  border: 1px solid var(--border-str);
+  padding: 3px 9px;
+}
+
+/* ══ INFOGRAPHIC D: SERVICE LINES DETAIL
+   Placement: section 02, replaces the plain grid-3 service cards.
+   Tab interface matches the svc-badge visual language
+   already established on the page.
+   Each pane shows: icon, question, focus, outputs, when-to-engage.
+══ */
+.ig-svc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: 1px;
+}
+/* tab bar */
+.ig-svc-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.ig-svc-tab {
+  padding: clamp(14px,2.5vw,20px) clamp(14px,2.5vw,20px);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .18s, border-color .18s;
+  font-family: 'Montserrat', sans-serif;
+}
+.ig-svc-tab:last-child { border-right: none; }
+.ig-svc-tab:hover { background: var(--gold-faint); }
+.ig-svc-tab.active {
+  background: var(--surface2);
+  border-bottom-color: var(--gold);
+}
+.ig-svc-tab-code {
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-faint);
+  margin-bottom: 5px;
+}
+.ig-svc-tab.active .ig-svc-tab-code { color: var(--gold); }
+.ig-svc-tab-name {
+  font-size: clamp(0.72rem,1.5vw,0.78rem);
+  font-weight: 500;
+  color: var(--text-sub);
+  line-height: 1.3;
+}
+.ig-svc-tab.active .ig-svc-tab-name { color: var(--text); }
+/* panes */
+.ig-svc-pane {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.ig-svc-pane.active { display: grid; }
+.ig-svc-pane-col {
+  background: var(--surface);
+  padding: clamp(22px,4vw,36px) clamp(20px,3vw,30px);
+}
+.ig-svc-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.ig-svc-code {
+  font-size: 0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+}
+.ig-svc-question {
+  font-size: clamp(0.96rem,2.1vw,1.06rem);
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+.ig-svc-focus-lbl {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-faint);
+  margin-bottom: 5px;
+}
+.ig-svc-focus {
+  font-size: clamp(0.82rem,1.7vw,0.88rem);
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.ig-svc-out-lbl {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.ig-svc-out-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ig-svc-out-item:last-child { border-bottom: none; }
+.ig-svc-out-item p {
+  font-size: clamp(0.82rem,1.7vw,0.88rem);
+  color: var(--text-body);
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+}
+/* right col of each pane */
+.ig-svc-pane-col--r { background: var(--surface2); }
+.ig-svc-when {
+  border-left: 2px solid var(--border-str);
+  padding: clamp(14px,2.5vw,20px) clamp(16px,2.5vw,22px);
+  background: var(--gold-faint);
+  margin-bottom: 16px;
+}
+.ig-svc-when-lbl {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.ig-svc-when p {
+  font-size: clamp(0.82rem,1.7vw,0.88rem);
+  color: var(--text-body);
+  font-style: italic;
+  line-height: 1.7;
+  font-weight: 400;
+  margin: 0;
+}
+.ig-svc-engage-lbl {
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.ig-svc-engage-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ig-svc-engage-item:last-child { border-bottom: none; }
+.ig-svc-engage-n {
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ig-svc-engage-item p {
+  font-size: clamp(0.80rem,1.6vw,0.86rem);
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── responsive ── */
+@media (max-width: 768px) {
+  .ig-svc-tabs    { grid-template-columns: 1fr; }
+  .ig-svc-tab     { border-right: none; border-bottom: 1px solid var(--border); }
+  .ig-svc-tab.active { border-bottom-color: var(--gold); }
+  .ig-svc-pane    { grid-template-columns: 1fr; }
+}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/services.html","description":"Independent intervention and decision architecture advisory for boards and senior executives navigating AI governance.","areaServed":"Global","hasOfferCatalog":{"@type":"OfferCatalog","name":"Advisory Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boardroom Integrity Advisory","description":"Senior advisory to boards on decision clarity and authority when AI governance is tested."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Intervention and Decision Architecture Review","description":"Structured assessment of escalation, override, and authority in AI-dependent operations."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Executive Intervention Labs","description":"Facilitated scenario-based sessions exposing genuine gaps in leadership intervention capability."}}]}}
   </script>
 </head>
 <body>
 
-  <!-- ══ NAV ══ -->
-  <nav class="site-nav" aria-label="Primary navigation">
-    <a class="nav-brand" href="index.html" aria-label="Human Integrity Advisory - home">
-      <span class="nav-brand-mark hia-mark">
-        <span class="hia-mark-line" style="width:20px"></span>
-        <span class="hia-mark-stroke" style="height:16px"></span>
-        <span class="hia-mark-line" style="width:20px"></span>
-      </span>
-      <span class="nav-brand-text">Human Integrity Advisory</span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Enquire</a></li>
+<!-- ══ NAV ══ -->
+<nav class="site-nav" aria-label="Primary navigation">
+  <a class="nav-brand" href="index.html" aria-label="Human Integrity Advisory - home">
+    <span class="nav-brand-mark hia-mark">
+      <span class="hia-mark-line" style="width:20px"></span>
+      <span class="hia-mark-stroke" style="height:16px"></span>
+      <span class="hia-mark-line" style="width:20px"></span>
+    </span>
+    <span class="nav-brand-text">Human Integrity Advisory</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Enquire</a></li>
+  </ul>
+</nav>
+<nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="drawer-cta">Request a confidential conversation</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-labelledby="hero-title">
+  <p class="hero-eyebrow fade-up d1">Integrity &amp; Intervention Advisory for AI Systems</p>
+  <div class="hero-mark fade-up d2" aria-hidden="true"></div>
+  <h1 class="hero-title-text fade-up d3" id="hero-title">Services &amp; Engagements</h1>
+  <p class="hero-descriptor fade-up d4">Human Integrity Advisory</p>
+  <div class="hero-divider fade-up d5" aria-hidden="true"></div>
+  <p class="hero-lede fade-up d5">Three areas of focused engagement. Each is designed to answer a specific question that governance frameworks alone cannot answer: can your organisation act when it needs to?</p>
+  <div class="hero-buttons fade-up d6">
+    <a href="contact.html" class="btn-gold">Request a confidential conversation</a>
+    <a href="#service-lines" class="btn-outline">View service lines</a>
+  </div>
+</section>
+
+<!-- ══ CONTENT ══ -->
+<main class="page-wrap">
+
+  <!-- 01 How we work with organisations -->
+  <div class="section-hd reveal">
+    <span class="section-num">01</span>
+    <span class="section-title">How we work with organisations</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <div class="block block-ghost block-accent reveal">
+    <p>HIA exists for the space that governance design cannot reach. Most AI governance programmes produce frameworks that define what <em>should</em> happen when a system behaves unexpectedly. They rarely determine whether the people responsible for acting on those frameworks can do so — under time pressure, with incomplete information, and against authority structures that were not designed with this moment in mind.</p>
+    <p>Our work is practitioner-led. Every assessment is conducted by advisors with direct operational experience in AI systems environments — not analysts evaluating your governance against a compliance checklist. We evaluate against operational reality.</p>
+    <p class="meta-text">If you are looking for reassurance, we are not the right advisor. If you want a clear account of what is actually true about your organisation's intervention capability — and are prepared to act on it — we may work well together.</p>
+  </div>
+
+  <!--
+  ════════════════════════════════════════════════════════
+  INFOGRAPHIC C — THE INTERVENTION CHAIN
+  Position: section 01, directly after the intro block.
+  Shows the five-step path from system event to response,
+  with steps 02–04 tagged to show exactly where HIA works.
+  Gives the reader a concrete mental model before the
+  service lines are introduced.
+  ════════════════════════════════════════════════════════
+  -->
+  <div class="ig-chain reveal" role="figure" aria-label="The intervention chain: five steps from system event to response">
+
+    <!-- Step 01 -->
+    <div class="ig-chain-step">
+      <div class="ig-chain-node-col">
+        <div class="ig-chain-node ig-chain-node--accent">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <polygon points="9,2.5 16.5,15.5 1.5,15.5" stroke="var(--gold)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+            <line x1="9" y1="7.5" x2="9" y2="11.5" stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="9" cy="13.5" r=".65" fill="var(--gold)"/>
+          </svg>
+        </div>
+        <div class="ig-chain-connector"></div>
+      </div>
+      <div class="ig-chain-track"></div>
+      <div class="ig-chain-body">
+        <div class="ig-chain-num">01</div>
+        <p class="ig-chain-label">System Event</p>
+        <p class="ig-chain-desc">An AI-driven system produces an unexpected, erroneous, or damaging output. The clock starts.</p>
+      </div>
+    </div>
+
+    <!-- Step 02 -->
+    <div class="ig-chain-step">
+      <div class="ig-chain-node-col">
+        <div class="ig-chain-node">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M2 9s3-5.5 7-5.5S16 9 16 9s-3 5.5-7 5.5S2 9 2 9z" stroke="var(--text-faint)" stroke-width="1" fill="none"/>
+            <circle cx="9" cy="9" r="2" stroke="var(--text-faint)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="ig-chain-connector"></div>
+      </div>
+      <div class="ig-chain-track"></div>
+      <div class="ig-chain-body">
+        <div class="ig-chain-num">02</div>
+        <p class="ig-chain-label">Detection</p>
+        <p class="ig-chain-desc">Is the failure visible to the right people? Do monitoring systems surface it in time?</p>
+        <span class="ig-chain-tag">HIA assesses</span>
+      </div>
+    </div>
+
+    <!-- Step 03 -->
+    <div class="ig-chain-step">
+      <div class="ig-chain-node-col">
+        <div class="ig-chain-node">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="9" y1="15" x2="9" y2="4.5" stroke="var(--text-faint)" stroke-width="1"/>
+            <polyline points="5.5,8.5 9,4.5 12.5,8.5" stroke="var(--text-faint)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="ig-chain-connector"></div>
+      </div>
+      <div class="ig-chain-track"></div>
+      <div class="ig-chain-body">
+        <div class="ig-chain-num">03</div>
+        <p class="ig-chain-label">Escalation</p>
+        <p class="ig-chain-desc">Does authority reach the correct decision-maker? Are escalation paths clear, fast, and unambiguous?</p>
+        <span class="ig-chain-tag">HIA assesses</span>
+      </div>
+    </div>
+
+    <!-- Step 04 -->
+    <div class="ig-chain-step">
+      <div class="ig-chain-node-col">
+        <div class="ig-chain-node">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="9" y1="3.5" x2="9" y2="14.5" stroke="var(--text-faint)" stroke-width="1"/>
+            <line x1="4.5" y1="6.5" x2="13.5" y2="6.5" stroke="var(--text-faint)" stroke-width="1"/>
+            <path d="M4.5 6.5 L2.5 11 h4z" stroke="var(--text-faint)" stroke-width="1" fill="none" stroke-linejoin="round"/>
+            <path d="M13.5 6.5 L11.5 11 h4z" stroke="var(--text-faint)" stroke-width="1" fill="none" stroke-linejoin="round"/>
+            <line x1="6.5" y1="14.5" x2="11.5" y2="14.5" stroke="var(--text-faint)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="ig-chain-connector"></div>
+      </div>
+      <div class="ig-chain-track"></div>
+      <div class="ig-chain-body">
+        <div class="ig-chain-num">04</div>
+        <p class="ig-chain-label">Assessment</p>
+        <p class="ig-chain-desc">Is information adequate to diagnose the situation? Can leadership determine the right response under pressure and incomplete information?</p>
+        <span class="ig-chain-tag">HIA assesses</span>
+      </div>
+    </div>
+
+    <!-- Step 05 -->
+    <div class="ig-chain-step">
+      <div class="ig-chain-node-col">
+        <div class="ig-chain-node ig-chain-node--accent">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" stroke="var(--gold)" stroke-width="1"/>
+            <polyline points="5.5,9.5 8,12 12.5,6.5" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="ig-chain-track"></div>
+      <div class="ig-chain-body">
+        <div class="ig-chain-num">05</div>
+        <p class="ig-chain-label">Intervention</p>
+        <p class="ig-chain-desc">An effective response is enacted — with the right authority, the right information, in time.</p>
+      </div>
+    </div>
+
+  </div><!-- /ig-chain -->
+
+  <div class="note reveal">
+    <p>"A board that cannot intervene is not a safeguard. It is a witness." — HIA</p>
+  </div>
+
+  <!-- 02 Core service lines -->
+  <div class="section-hd reveal" id="service-lines">
+    <span class="section-num">02</span>
+    <span class="section-title">Core service lines</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:400">Three primary service areas. Each is contained, with clear scope and defined outcomes.</p>
+
+  <!--
+  ════════════════════════════════════════════════════════
+  INFOGRAPHIC D — SERVICE LINES DETAIL
+  Position: section 02, replaces the plain svc-card grid.
+  Uses the same svc-badge visual language (BIA / IDA / EIL)
+  already established in the existing site. Tab navigation
+  keeps the page compact while showing full detail per service.
+  Each pane: icon + question + focus + outputs (left),
+  when-to-engage + engagement model (right).
+  ════════════════════════════════════════════════════════
+  -->
+  <div class="ig-svc reveal" id="svc-infographic" role="tablist" aria-label="Service lines">
+
+    <!-- Tab bar -->
+    <div class="ig-svc-tabs">
+      <button class="ig-svc-tab active" role="tab" aria-selected="true"  aria-controls="svc-bia" data-svc="bia">
+        <div class="ig-svc-tab-code">BIA</div>
+        <div class="ig-svc-tab-name">Boardroom Integrity Advisory</div>
+      </button>
+      <button class="ig-svc-tab"        role="tab" aria-selected="false" aria-controls="svc-ida" data-svc="ida">
+        <div class="ig-svc-tab-code">IDA</div>
+        <div class="ig-svc-tab-name">Decision Architecture Review</div>
+      </button>
+      <button class="ig-svc-tab"        role="tab" aria-selected="false" aria-controls="svc-eil" data-svc="eil">
+        <div class="ig-svc-tab-code">EIL</div>
+        <div class="ig-svc-tab-name">Executive Intervention Labs</div>
+      </button>
+    </div>
+
+    <!-- BIA pane -->
+    <div class="ig-svc-pane active" id="svc-bia" role="tabpanel">
+      <div class="ig-svc-pane-col">
+        <div class="ig-svc-icon-row">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <rect x="3" y="7" width="20" height="13" rx="1" stroke="var(--gold)" stroke-width="1" fill="none"/>
+            <line x1="3"  y1="12" x2="23" y2="12" stroke="var(--gold)" stroke-width="1"/>
+            <line x1="10" y1="7"  x2="10" y2="20" stroke="var(--gold)" stroke-width="1"/>
+            <line x1="13" y1="4"  x2="13" y2="7"  stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="13" cy="3.2" r="1.1" fill="var(--gold)"/>
+          </svg>
+          <span class="ig-svc-code">BIA</span>
+        </div>
+        <p class="ig-svc-question" id="boardroom">Can your board act — not just oversee?</p>
+        <div class="ig-svc-focus-lbl">Focus</div>
+        <p class="ig-svc-focus">Decision clarity when AI governance is tested under real pressure.</p>
+        <div class="ig-svc-out-lbl">What this engagement produces</div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Authority clarity assessment under real decision pressure</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Review of information adequacy — what the board receives versus what it needs to act</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Independent view, not shaped by those who designed the governance framework</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Testable, structured framework for board intervention</p>
+        </div>
+      </div>
+      <div class="ig-svc-pane-col ig-svc-pane-col--r">
+        <div class="ig-svc-when">
+          <div class="ig-svc-when-lbl">When to engage</div>
+          <p>When the question is decision authority and the gap between what governance is designed to deliver and what it delivers under pressure.</p>
+        </div>
+        <div class="ig-svc-engage-lbl">Engagement model</div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">01</span><p>Confidential conversation to establish context</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">02</span><p>Written scope defining assessment boundaries</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">03</span><p>Senior advisors with direct operational experience</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">04</span><p>Findings delivered directly to board or executive team</p></div>
+        <div style="margin-top:20px">
+          <a href="contact.html" class="btn-gold" style="font-size:0.6rem">Request outline</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDA pane -->
+    <div class="ig-svc-pane" id="svc-ida" role="tabpanel">
+      <div class="ig-svc-pane-col">
+        <div class="ig-svc-icon-row">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <circle cx="13" cy="13" r="2.5" stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="5"  cy="7"  r="2"   stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="21" cy="7"  r="2"   stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="5"  cy="19" r="2"   stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="21" cy="19" r="2"   stroke="var(--gold)" stroke-width="1"/>
+            <line x1="7"  y1="8.2"  x2="11.2" y2="11.6" stroke="var(--gold)" stroke-width=".75" opacity=".6"/>
+            <line x1="19" y1="8.2"  x2="14.8" y2="11.6" stroke="var(--gold)" stroke-width=".75" opacity=".6"/>
+            <line x1="7"  y1="17.8" x2="11.2" y2="14.4" stroke="var(--gold)" stroke-width=".75" opacity=".6"/>
+            <line x1="19" y1="17.8" x2="14.8" y2="14.4" stroke="var(--gold)" stroke-width=".75" opacity=".6"/>
+          </svg>
+          <span class="ig-svc-code">IDA</span>
+        </div>
+        <p class="ig-svc-question" id="architecture">Where does escalation fail?</p>
+        <div class="ig-svc-focus-lbl">Focus</div>
+        <p class="ig-svc-focus">Structural mechanics of real-time decision-making in AI-dependent operations.</p>
+        <div class="ig-svc-out-lbl">What this engagement produces</div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Mapping of formal and informal escalation paths from system event to human response</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Override authority assessment — who can act, under what conditions, with what information</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Decision latency analysis against operational urgency</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Prioritised map of structural gaps and failure points</p>
+        </div>
+      </div>
+      <div class="ig-svc-pane-col ig-svc-pane-col--r">
+        <div class="ig-svc-when">
+          <div class="ig-svc-when-lbl">When to engage</div>
+          <p>When escalation and override authority are unclear, untested, or undocumented in the AI systems your organisation depends on.</p>
+        </div>
+        <div class="ig-svc-engage-lbl">Engagement model</div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">01</span><p>Confidential conversation to establish context</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">02</span><p>Written scope defining assessment boundaries</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">03</span><p>Senior advisors with direct operational experience</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">04</span><p>Findings delivered directly to board or executive team</p></div>
+        <div style="margin-top:20px">
+          <a href="contact.html" class="btn-gold" style="font-size:0.6rem">Request outline</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EIL pane -->
+    <div class="ig-svc-pane" id="svc-eil" role="tabpanel">
+      <div class="ig-svc-pane-col">
+        <div class="ig-svc-icon-row">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <path d="M10 5v8l-5 9h16l-5-9V5" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <line x1="8.5" y1="5" x2="17.5" y2="5" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="12" cy="17.5" r=".9" fill="var(--gold)" opacity=".5"/>
+            <circle cx="15.5" cy="19.5" r=".7" fill="var(--gold)" opacity=".65"/>
+            <circle cx="13" cy="21" r=".5"  fill="var(--gold)" opacity=".4"/>
+          </svg>
+          <span class="ig-svc-code">EIL</span>
+        </div>
+        <p class="ig-svc-question" id="labs">Can leadership act under real conditions?</p>
+        <div class="ig-svc-focus-lbl">Focus</div>
+        <p class="ig-svc-focus">Surface intervention capability before a system event makes the discovery unavoidable.</p>
+        <div class="ig-svc-out-lbl">What this engagement produces</div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Realistic AI system scenarios under time pressure and incomplete information</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Direct diagnostic of where decision-making breaks down in practice</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Experience-based understanding — not theoretical</p>
+        </div>
+        <div class="ig-svc-out-item">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px"><rect x="1.5" y="1.5" width="11" height="11" rx=".75" transform="rotate(45 7 7)" stroke="var(--gold-dim)" stroke-width="1" fill="none"/></svg>
+          <p>Concrete account of what would need to change for intervention capability to be reliable</p>
+        </div>
+      </div>
+      <div class="ig-svc-pane-col ig-svc-pane-col--r">
+        <div class="ig-svc-when">
+          <div class="ig-svc-when-lbl">When to engage</div>
+          <p>When leadership needs to discover their actual intervention capability before a system event reveals it — and the cost of discovery is still manageable.</p>
+        </div>
+        <div class="ig-svc-engage-lbl">Engagement model</div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">01</span><p>Confidential conversation to establish context</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">02</span><p>Written scope defining assessment boundaries</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">03</span><p>Senior advisors with direct operational experience</p></div>
+        <div class="ig-svc-engage-item"><span class="ig-svc-engage-n">04</span><p>Findings delivered directly to board or executive team</p></div>
+        <div style="margin-top:20px">
+          <a href="contact.html" class="btn-gold" style="font-size:0.6rem">Request outline</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /ig-svc -->
+
+  <!-- 03 What each service addresses -->
+  <div class="section-hd reveal" id="service-detail">
+    <span class="section-num">03</span>
+    <span class="section-title">What each service addresses</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:400">Each service is built around a specific question. What it is, why it matters, and what changes as a result.</p>
+  <div class="grid-3 grid-bg reveal" style="margin-bottom:16px">
+    <div class="plan-card">
+      <span class="plan-label">Boardroom</span>
+      <h3>What it is</h3>
+      <p class="plan-tagline">Ongoing or project-based advisory to boards and executive leadership. A structured examination of whether the board can make effective decisions in the event of an AI system failure or governance challenge.</p>
+      <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+        <p class="plan-range"><strong style="color:var(--text)">Why it matters —</strong> Most board-level AI governance provides assurance. It is rarely designed to ensure the board can act decisively when assurance is no longer adequate.</p>
+        <p class="plan-range"><strong style="color:var(--text)">What changes —</strong> Boards gain structured clarity on authority, required information, and the conditions that would trigger an intervention. Ambiguity is replaced with a clear, testable framework.</p>
+      </div>
+      <a href="contact.html" class="plan-btn">Discuss this service</a>
+    </div>
+    <div class="plan-card plan-card-hl">
+      <span class="plan-label">Architecture</span>
+      <h3>What it is</h3>
+      <p class="plan-tagline">A deep examination of the decision architecture surrounding your AI-dependent systems. HIA traces the chain from system event to human response — and identifies every point at which the chain can fail.</p>
+      <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+        <p class="plan-range"><strong style="color:var(--text)">Why it matters —</strong> AI governance policies define what should happen when a system behaves unexpectedly. They almost never define who has authority to act, what information they need, or how quickly they can realistically respond.</p>
+        <p class="plan-range"><strong style="color:var(--text)">What changes —</strong> Structural gaps become visible and addressable. A prioritised map of where authority is unclear, escalation paths are broken, or override speed does not match operational urgency.</p>
+      </div>
+      <a href="contact.html" class="plan-btn">Discuss this service</a>
+    </div>
+    <div class="plan-card">
+      <span class="plan-label">Labs</span>
+      <h3>What it is</h3>
+      <p class="plan-tagline">Structured, facilitated sessions with executive leadership, designed to expose genuine gaps in intervention capability through realistic AI system scenarios — not document reviews or hypotheticals.</p>
+      <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+        <p class="plan-range"><strong style="color:var(--text)">Why it matters —</strong> You cannot simulate operational pressure in a document review. Most organisations discover their real intervention capability during a system event. These Labs surface that discovery first.</p>
+        <p class="plan-range"><strong style="color:var(--text)">What changes —</strong> Participants gain direct, experience-based understanding of where decision-making fails under pressure — and a concrete account of what would need to change.</p>
+      </div>
+      <a href="contact.html" class="plan-btn">Discuss this service</a>
+    </div>
+  </div>
+  <div class="note reveal">
+    <p><strong>Scope and clarity —</strong> Every engagement begins with a written scope defining responsibilities, communication channels, and boundaries. Assessments are contained and specific. There is no informal support or unscoped advisory outside an agreed engagement.</p>
+  </div>
+
+  <!-- 04 Choosing the right service -->
+  <div class="section-hd reveal" id="which-service">
+    <span class="section-num">04</span>
+    <span class="section-title">Choosing the right service</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:400">The right service depends on the specific question you are holding.</p>
+  <div class="grid-3 grid-bg reveal">
+    <div class="fit-card">
+      <span class="fit-label">Board accountability</span>
+      <h3>When you need to know whether your board can act — not just oversee</h3>
+      <p><strong>Boardroom Integrity Advisory</strong> is appropriate when the question is one of decision authority, information adequacy, and the gap between what governance is designed to deliver and what it can deliver under pressure.</p>
+    </div>
+    <div class="fit-card">
+      <span class="fit-label">Operational structure</span>
+      <h3>When escalation and override are unclear or untested</h3>
+      <p>The <strong>Intervention &amp; Decision Architecture Review</strong> maps the actual decision architecture — not the documented one — and identifies where structural failure would prevent timely intervention.</p>
+    </div>
+    <div class="fit-card">
+      <span class="fit-label">Leadership readiness</span>
+      <h3>When you want to know before an event reveals it</h3>
+      <p><strong>Executive Intervention Labs</strong> are appropriate when leadership needs a direct, experience-based understanding of whether they can act under realistic conditions — not a theoretical account of whether they should be able to.</p>
+    </div>
+  </div>
+
+  <!-- 05 Engagement model -->
+  <div class="section-hd reveal" id="engagement-model">
+    <span class="section-num">05</span>
+    <span class="section-title">Engagement model</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <div class="block reveal">
+    <ul class="dash-list">
+      <li>Every engagement begins with a focused, confidential conversation to establish context and determine whether HIA is a fit for the situation.</li>
+      <li>A written scope follows, defining what will be assessed, how, and what the engagement will produce. No generic frameworks, no standardised outputs.</li>
+      <li>Assessments are conducted by senior advisors with direct operational experience. Findings are accurate, not reassuring.</li>
+      <li>Findings are presented directly to the board or executive team — clear, prioritised, and specific to the conditions of your organisation.</li>
     </ul>
-  </nav>
-  <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation" aria-hidden="true">
-    <ul role="list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
+    <p class="meta-text">HIA works with a deliberately limited number of organisations. Engagements are not volume work. They are precision assessments that require and receive full senior attention.</p>
+  </div>
+
+  <!-- 06 Contact -->
+  <div class="section-hd reveal" id="services-contact">
+    <span class="section-num">06</span>
+    <span class="section-title">If you are considering an engagement</span>
+    <div class="section-rule" aria-hidden="true"></div>
+  </div>
+  <div class="block block-ghost reveal">
+    <p>If you recognise your situation in any of the service areas above, the first step is a short, confidential conversation to clarify what is actually at stake and which service would address it. Please include your role, the situation prompting the enquiry, and any relevant timelines.</p>
+    <div class="cta-pair">
+      <a href="contact.html" class="btn-gold">Use the enquiry form</a>
+      <a href="mailto:advisory@hia.io" class="btn-outline">advisory@hia.io</a>
+    </div>
+    <p class="meta-text">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</p>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="footer-brand">
+    <span class="hia-mark" style="color:var(--gold-dim)">
+      <span class="hia-mark-line" style="width:16px"></span>
+      <span class="hia-mark-stroke" style="height:13px"></span>
+      <span class="hia-mark-line" style="width:16px"></span>
+    </span>
+    <span class="footer-brand-text">Human Integrity Advisory</span>
+  </div>
+  <div class="footer-right">
+    <ul class="footer-links" role="list">
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="gdpr.html">GDPR</a></li>
     </ul>
-    <a href="contact.html" class="drawer-cta">Request a confidential conversation</a>
-  </nav>
+    <p class="footer-copy">© <span class="copy-year"></span> Human Integrity Advisory · All rights reserved.</p>
+  </div>
+</footer>
 
-  <!-- ══ HERO ══ -->
-  <section class="hero" aria-labelledby="hero-title">
-    <p class="hero-eyebrow fade-up d1">Integrity &amp; Intervention Advisory for AI Systems</p>
-    <div class="hero-mark fade-up d2" aria-hidden="true"></div>
-    <h1 class="hero-title-text fade-up d3" id="hero-title">Services &amp; Engagements</h1>
-    <p class="hero-descriptor fade-up d4">Human Integrity Advisory</p>
-    <div class="hero-divider fade-up d5" aria-hidden="true"></div>
-    <p class="hero-lede fade-up d5">
-      Three areas of focused engagement. Each is designed to answer a specific question that governance frameworks alone cannot answer: can your organisation act when it needs to?
-    </p>
-    <div class="hero-buttons fade-up d6">
-      <a href="contact.html" class="btn-gold">Request a confidential conversation</a>
-      <a href="#service-lines" class="btn-outline">View service lines</a>
-    </div>
-  </section>
+<script>
+  document.querySelectorAll('.copy-year').forEach(el => el.textContent = new Date().getFullYear());
+  const toggle = document.getElementById('navToggle');
+  const drawer = document.getElementById('navDrawer');
+  function closeNav() {
+    drawer.classList.remove('is-open'); toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Open navigation');
+    drawer.setAttribute('aria-hidden','true'); document.body.style.overflow = '';
+  }
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const open = !drawer.classList.contains('is-open');
+    if (open) {
+      drawer.classList.add('is-open'); toggle.classList.add('is-open');
+      toggle.setAttribute('aria-expanded','true'); toggle.setAttribute('aria-label','Close navigation');
+      drawer.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden';
+    } else { closeNav(); }
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('click', function(e) { if (drawer.classList.contains('is-open') && !drawer.contains(e.target) && !toggle.contains(e.target)) closeNav(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
 
-  <!-- ══ CONTENT ══ -->
-  <main class="page-wrap">
-
-    <!-- 01 How we work -->
-    <div class="section-hd reveal">
-      <span class="section-num">01</span>
-      <span class="section-title">How we work with organisations</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <div class="block block-ghost block-accent reveal">
-      <p>HIA exists for the space that governance design cannot reach. Most AI governance programmes produce frameworks that define what <em>should</em> happen when a system behaves unexpectedly. They rarely determine whether the people responsible for acting on those frameworks can do so - under time pressure, with incomplete information, and against authority structures that were not designed with this moment in mind.</p>
-      <p>Our work is practitioner-led. Every assessment is conducted by advisors with direct operational experience in AI systems environments - not analysts evaluating your governance against a compliance checklist. We evaluate against operational reality.</p>
-      <p class="meta-text">If you are looking for reassurance, we are not the right advisor. If you want a clear account of what is actually true about your organisation's intervention capability - and are prepared to act on it - we may work well together.</p>
-    </div>
-
-    <!-- 02 Service lines -->
-    <div class="section-hd reveal" id="service-lines">
-      <span class="section-num">02</span>
-      <span class="section-title">Core service lines</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:300">Three primary service areas. Each is contained, with clear scope and defined outcomes.</p>
-
-    <div class="grid-3 grid-bg reveal">
-      <div class="svc-card" id="boardroom">
-        <span class="svc-badge">Boardroom</span>
-        <h3>Boardroom Integrity Advisory</h3>
-        <p>Senior advisory to boards and executive leadership on whether they have the clarity, information, and authority to act when AI governance is tested.</p>
-        <ul class="dash-list">
-          <li>Assessment of decision quality and authority clarity under pressure.</li>
-          <li>Review of information adequacy - what the board actually receives versus what it needs to act.</li>
-          <li>Independent view not shaped by those who designed the governance framework being assessed.</li>
-        </ul>
-        <p class="svc-context">Focus: decision clarity. A board that cannot make effective decisions when governance is tested is not a safeguard.</p>
-        <a href="contact.html" class="svc-btn">Request outline</a>
-      </div>
-      <div class="svc-card svc-card-hl" id="architecture">
-        <span class="svc-badge">Architecture</span>
-        <h3>Intervention &amp; Decision Architecture Review</h3>
-        <p>A structured assessment of how escalation, override, and authority function in AI-dependent operations. We identify where the architecture fails - before a system event does.</p>
-        <ul class="dash-list">
-          <li>Mapping of formal and informal escalation paths from system event to human response.</li>
-          <li>Assessment of override authority: who can act, under what conditions, with what information.</li>
-          <li>Identification of structural gaps and decision latency that would prevent timely intervention.</li>
-        </ul>
-        <p class="svc-context">Focus: the mechanics of real-time decision-making when a system produces an output that no one planned for.</p>
-        <a href="contact.html" class="svc-btn">Request outline</a>
-      </div>
-      <div class="svc-card" id="labs">
-        <span class="svc-badge">Labs</span>
-        <h3>Executive Intervention Labs</h3>
-        <p>Facilitated scenario-based work with senior leadership. Structured to expose genuine inability to act - and to leave leadership in a materially stronger position.</p>
-        <ul class="dash-list">
-          <li>Realistic AI system scenarios under time pressure, with incomplete information and real authority constraints.</li>
-          <li>Diagnostic of where decision-making breaks down in practice, not in theory.</li>
-          <li>Honest account of what would need to change for intervention capability to be reliable.</li>
-        </ul>
-        <p class="svc-context">Focus: surface the discovery before the event - not after consequences have compounded.</p>
-        <a href="contact.html" class="svc-btn">Request outline</a>
-      </div>
-    </div>
-
-    <!-- 03 What each service addresses -->
-    <div class="section-hd reveal" id="service-detail">
-      <span class="section-num">03</span>
-      <span class="section-title">What each service addresses</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:300">Each service is built around a specific question. What it is, why it matters, and what changes as a result.</p>
-
-    <div class="grid-3 grid-bg reveal" style="margin-bottom:16px">
-      <div class="plan-card">
-        <span class="plan-label">Boardroom</span>
-        <h3>What it is</h3>
-        <p class="plan-tagline">Ongoing or project-based advisory to boards and executive leadership. A structured examination of whether the board can make effective decisions in the event of an AI system failure or governance challenge.</p>
-        <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-          <p class="plan-range"><strong style="color:var(--text)">Why it matters -</strong> Most board-level AI governance provides assurance. It is rarely designed to ensure the board can act decisively when assurance is no longer adequate.</p>
-          <p class="plan-range"><strong style="color:var(--text)">What changes -</strong> Boards gain structured clarity on authority, required information, and the conditions that would trigger an intervention. Ambiguity is replaced with a clear, testable framework.</p>
-        </div>
-        <a href="contact.html" class="plan-btn">Discuss this service</a>
-      </div>
-      <div class="plan-card plan-card-hl">
-        <span class="plan-label">Architecture</span>
-        <h3>What it is</h3>
-        <p class="plan-tagline">A deep examination of the decision architecture surrounding your AI-dependent systems. HIA traces the chain from system event to human response - and identifies every point at which the chain can fail.</p>
-        <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-          <p class="plan-range"><strong style="color:var(--text)">Why it matters -</strong> AI governance policies define what should happen when a system behaves unexpectedly. They almost never define who has authority to act, what information they need, or how quickly they can realistically respond.</p>
-          <p class="plan-range"><strong style="color:var(--text)">What changes -</strong> Structural gaps become visible and addressable. A prioritised map of where authority is unclear, escalation paths are broken, or override speed does not match operational urgency.</p>
-        </div>
-        <a href="contact.html" class="plan-btn">Discuss this service</a>
-      </div>
-      <div class="plan-card">
-        <span class="plan-label">Labs</span>
-        <h3>What it is</h3>
-        <p class="plan-tagline">Structured, facilitated sessions with executive leadership, designed to expose genuine gaps in intervention capability through realistic AI system scenarios - not document reviews or hypotheticals.</p>
-        <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-          <p class="plan-range"><strong style="color:var(--text)">Why it matters -</strong> You cannot simulate operational pressure in a document review. Most organisations discover their real intervention capability during a system event. These Labs surface that discovery first.</p>
-          <p class="plan-range"><strong style="color:var(--text)">What changes -</strong> Participants gain direct, experience-based understanding of where decision-making fails under pressure - and a concrete account of what would need to change.</p>
-        </div>
-        <a href="contact.html" class="plan-btn">Discuss this service</a>
-      </div>
-    </div>
-
-    <div class="note reveal">
-      <p><strong>Scope and clarity -</strong> Every engagement begins with a written scope defining responsibilities, communication channels, and boundaries. Assessments are contained and specific. There is no informal support or unscoped advisory outside an agreed engagement.</p>
-    </div>
-
-    <!-- 04 Choosing the right service -->
-    <div class="section-hd reveal" id="which-service">
-      <span class="section-num">04</span>
-      <span class="section-title">Choosing the right service</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <p class="reveal" style="margin-bottom:16px;color:var(--text-muted);font-weight:300">The right service depends on the specific question you are holding.</p>
-
-    <div class="grid-3 grid-bg reveal">
-      <div class="fit-card">
-        <span class="fit-label">Board accountability</span>
-        <h3>When you need to know whether your board can act - not just oversee</h3>
-        <p><strong>Boardroom Integrity Advisory</strong> is appropriate when the question is one of decision authority, information adequacy, and the gap between what governance is designed to deliver and what it can deliver under pressure.</p>
-      </div>
-      <div class="fit-card">
-        <span class="fit-label">Operational structure</span>
-        <h3>When escalation and override are unclear or untested</h3>
-        <p>The <strong>Intervention &amp; Decision Architecture Review</strong> maps the actual decision architecture - not the documented one - and identifies where structural failure would prevent timely intervention.</p>
-      </div>
-      <div class="fit-card">
-        <span class="fit-label">Leadership readiness</span>
-        <h3>When you want to know before an event reveals it</h3>
-        <p><strong>Executive Intervention Labs</strong> are appropriate when leadership needs a direct, experience-based understanding of whether they can act under realistic conditions - not a theoretical account of whether they should be able to.</p>
-      </div>
-    </div>
-
-    <!-- 05 Engagement model -->
-    <div class="section-hd reveal" id="engagement-model">
-      <span class="section-num">05</span>
-      <span class="section-title">Engagement model</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <div class="block reveal">
-      <ul class="dash-list">
-        <li>Every engagement begins with a focused, confidential conversation to establish context and determine whether HIA is a fit for the situation.</li>
-        <li>A written scope follows, defining what will be assessed, how, and what the engagement will produce. No generic frameworks, no standardised outputs.</li>
-        <li>Assessments are conducted by senior advisors with direct operational experience. Findings are accurate, not reassuring.</li>
-        <li>Findings are presented directly to the board or executive team - clear, prioritised, and specific to the conditions of your organisation.</li>
-      </ul>
-      <p class="meta-text">HIA works with a deliberately limited number of organisations. Engagements are not volume work. They are precision assessments that require and receive full senior attention.</p>
-    </div>
-
-    <!-- 06 Contact -->
-    <div class="section-hd reveal" id="services-contact">
-      <span class="section-num">06</span>
-      <span class="section-title">If you are considering an engagement</span>
-      <div class="section-rule" aria-hidden="true"></div>
-    </div>
-    <div class="block block-ghost reveal">
-      <p>If you recognise your situation in any of the service areas above, the first step is a short, confidential conversation to clarify what is actually at stake and which service would address it. Please include your role, the situation prompting the enquiry, and any relevant timelines.</p>
-      <div class="cta-pair">
-        <a href="contact.html" class="btn-gold">Use the enquiry form</a>
-        <a href="mailto:advisory@hia.io" class="btn-outline">advisory@hia.io</a>
-      </div>
-      <p class="meta-text">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</p>
-    </div>
-
-  </main>
-
-  <!-- ══ FOOTER ══ -->
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <span class="hia-mark" style="color:var(--gold-dim)">
-        <span class="hia-mark-line" style="width:16px"></span>
-        <span class="hia-mark-stroke" style="height:13px"></span>
-        <span class="hia-mark-line" style="width:16px"></span>
-      </span>
-      <span class="footer-brand-text">Human Integrity Advisory</span>
-    </div>
-    <div class="footer-right">
-      <ul class="footer-links" role="list">
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="gdpr.html">GDPR</a></li>
-      </ul>
-      <p class="footer-copy">© <span class="copy-year"></span> Human Integrity Advisory · All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.querySelectorAll('.copy-year').forEach(el => el.textContent = new Date().getFullYear());
-    const toggle = document.getElementById('navToggle');
-    const drawer = document.getElementById('navDrawer');
-    function closeNav() {
-      drawer.classList.remove('is-open');
-      toggle.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open navigation');
-      drawer.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    toggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const open = !drawer.classList.contains('is-open');
-      if (open) {
-        drawer.classList.add('is-open');
-        toggle.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.setAttribute('aria-label', 'Close navigation');
-        drawer.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      } else { closeNav(); }
+  /* Service tab switching */
+  document.querySelectorAll('.ig-svc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ig-svc-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.ig-svc-pane').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById('svc-' + tab.dataset.svc).classList.add('active');
     });
-    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-    document.addEventListener('click', function(e) {
-      if (drawer.classList.contains('is-open') && !drawer.contains(e.target) && !toggle.contains(e.target)) closeNav();
-    });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeNav(); });
-    const reveals = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-      reveals.forEach(el => observer.observe(el));
-    } else {
-      reveals.forEach(el => el.classList.add('is-visible'));
-    }
-  </script>
+  });
+
+  /* Scroll reveals */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+  } else { reveals.forEach(el => el.classList.add('is-visible')); }
+</script>
 </body>
 </html>
