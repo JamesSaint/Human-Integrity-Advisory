@@ -303,6 +303,40 @@
   <p class="hero-meta fade-up d7">Intervention Capability &nbsp;·&nbsp; Decision Architecture &nbsp;·&nbsp; Real-World System Behaviour</p>
 </section>
 
+
+<!-- ══ STATEMENT SLIDER ══ -->
+<div class="stmt-slider" aria-label="Key statements" role="region">
+  <div class="stmt-track" id="stmtTrack">
+    <div class="stmt-slide">
+      <span class="stmt-num">01</span>
+      <p class="stmt-text">Most organisations do not discover their intervention capability <em>before</em> a system event. They discover it <em>during</em> one. By then, the cost of that discovery is not manageable.</p>
+    </div>
+    <div class="stmt-slide">
+      <span class="stmt-num">02</span>
+      <p class="stmt-text">A board that cannot intervene is not a safeguard. <em>It is a witness.</em></p>
+    </div>
+    <div class="stmt-slide">
+      <span class="stmt-num">03</span>
+      <p class="stmt-text">Policy governs intent. HIA tests whether <em>that intent can be enacted</em> under real operational conditions.</p>
+    </div>
+    <div class="stmt-slide">
+      <span class="stmt-num">04</span>
+      <p class="stmt-text">An assessment of governance conducted by those who designed it is not an assessment. <em>It is a validation.</em></p>
+    </div>
+    <div class="stmt-slide">
+      <span class="stmt-num">05</span>
+      <p class="stmt-text">Most AI governance failures are not failures of design. <em>They are failures of readiness.</em></p>
+    </div>
+  </div>
+  <div class="stmt-dots" role="tablist" aria-label="Statement navigation">
+    <button class="stmt-dot active" data-idx="0" aria-label="Statement 1" aria-selected="true"></button>
+    <button class="stmt-dot" data-idx="1" aria-label="Statement 2" aria-selected="false"></button>
+    <button class="stmt-dot" data-idx="2" aria-label="Statement 3" aria-selected="false"></button>
+    <button class="stmt-dot" data-idx="3" aria-label="Statement 4" aria-selected="false"></button>
+    <button class="stmt-dot" data-idx="4" aria-label="Statement 5" aria-selected="false"></button>
+  </div>
+</div>
+
 <!-- ══ CONTENT ══ -->
 <main class="page-wrap">
 
@@ -722,6 +756,58 @@
     const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => obs.observe(el));
   } else { reveals.forEach(el => el.classList.add('is-visible')); }
+  /* Statement slider */
+  (function() {
+    const track = document.getElementById('stmtTrack');
+    const dots  = document.querySelectorAll('.stmt-dot');
+    const total = dots.length;
+    const dur   = 5000;
+    let current = 0;
+    let timer;
+
+    function goTo(n) {
+      current = n;
+      track.style.animation  = 'none';
+      track.style.transform  = 'translateX(-' + (n * 20) + '%)';
+      track.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === n);
+        d.setAttribute('aria-selected', i === n ? 'true' : 'false');
+      });
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(function() { goTo((current + 1) % total); }, dur);
+    }
+
+    // Sync dots with CSS animation until first click
+    var cssSync = setInterval(function() {
+      current = (current + 1) % total;
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+    }, dur);
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        clearInterval(cssSync);
+        clearInterval(timer);
+        goTo(parseInt(dot.dataset.idx));
+        startAuto();
+      });
+    });
+
+    var slider = document.querySelector('.stmt-slider');
+    if (slider) {
+      slider.addEventListener('mouseenter', function() { clearInterval(cssSync); clearInterval(timer); });
+      slider.addEventListener('mouseleave', function() {
+        if (track.style.animation === 'none') startAuto();
+      });
+    }
+  })();
+
 </script>
 </body>
 </html>
