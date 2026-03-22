@@ -21,7 +21,7 @@
   <meta property="og:title" content="AI Governance Intervention Services | Human Integrity Advisory">
   <meta property="og:description" content="Three focused services for boards and executives: Boardroom Integrity Advisory, Intervention and Decision Architecture Review, and Executive Intervention Labs.">
   <meta property="og:url" content="https://jamessaint.github.io/Human-Integrity-Advisory/services.html">
-  <meta property="og:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-services.png">
+  <meta property="og:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-services.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Human Integrity Advisory services - boardroom advisory, decision architecture review, intervention labs">
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Governance Intervention Services | Human Integrity Advisory">
   <meta name="twitter:description" content="Three focused services for boards and executives: Boardroom Integrity Advisory, Intervention and Decision Architecture Review, and Executive Intervention Labs.">
-  <meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-services.png">
+  <meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-services.svg">
   <meta name="twitter:image:alt" content="Human Integrity Advisory services - boardroom advisory, decision architecture review, intervention labs">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -499,6 +499,112 @@
   <div class="note reveal">
     <p>"A board that cannot intervene is not a safeguard. It is a witness."</p>
   </div>
+
+  <!-- Failure-mode chain -->
+  <div class="fail-chain reveal" role="figure" aria-label="What happens when the intervention chain breaks at escalation">
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:#c0392b;font-weight:700;margin-bottom:6px">Failure mode: escalation breaks</div>
+      <p style="font-size:clamp(0.82rem,1.7vw,0.88rem);color:var(--text-sub);font-weight:400;line-height:1.65;max-width:520px;margin:0">The same chain — with a single failure at step 03. The downstream effect on every subsequent step.</p>
+    </div>
+
+    <!-- Step 01 OK -->
+    <div class="fail-chain-step">
+      <div class="fail-chain-node-col">
+        <div class="fail-chain-node fail-chain-node--ok">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <polygon points="9,2.5 16.5,15.5 1.5,15.5" stroke="var(--border-str)" stroke-width="1" stroke-linejoin="round" fill="none"/>
+            <line x1="9" y1="7.5" x2="9" y2="11.5" stroke="var(--border-str)" stroke-width="1"/>
+            <circle cx="9" cy="13.5" r=".65" fill="var(--border-str)"/>
+          </svg>
+        </div>
+        <div class="fail-chain-connector fail-chain-connector--ok"></div>
+      </div>
+      <div class="fail-chain-track"></div>
+      <div class="fail-chain-body">
+        <div class="fail-chain-num fail-chain-num--ok">01</div>
+        <p class="fail-chain-label fail-chain-label--ok">System Event</p>
+        <p class="fail-chain-desc fail-chain-desc--ok">AI system produces an unexpected output. Detected within minutes by monitoring.</p>
+      </div>
+    </div>
+
+    <!-- Step 02 OK -->
+    <div class="fail-chain-step">
+      <div class="fail-chain-node-col">
+        <div class="fail-chain-node fail-chain-node--ok">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M2 9s3-5.5 7-5.5S16 9 16 9s-3 5.5-7 5.5S2 9 2 9z" stroke="var(--border-str)" stroke-width="1" fill="none"/>
+            <circle cx="9" cy="9" r="2" stroke="var(--border-str)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="fail-chain-connector fail-chain-connector--break"></div>
+      </div>
+      <div class="fail-chain-track"></div>
+      <div class="fail-chain-body">
+        <div class="fail-chain-num fail-chain-num--ok">02</div>
+        <p class="fail-chain-label fail-chain-label--ok">Detection</p>
+        <p class="fail-chain-desc fail-chain-desc--ok">Failure surfaced. Operations team flags it and begins escalation.</p>
+      </div>
+    </div>
+
+    <!-- Step 03 BREAK -->
+    <div class="fail-chain-step">
+      <div class="fail-chain-node-col">
+        <div class="fail-chain-node fail-chain-node--break">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="5" y1="5" x2="13" y2="13" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="13" y1="5" x2="5" y2="13" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="fail-chain-connector fail-chain-connector--dead"></div>
+      </div>
+      <div class="fail-chain-track"></div>
+      <div class="fail-chain-body">
+        <div class="fail-chain-num fail-chain-num--break">03 — Failure</div>
+        <p class="fail-chain-label fail-chain-label--break">Escalation breaks</p>
+        <p class="fail-chain-desc fail-chain-desc--break">The escalation path reaches someone without authority to act. They escalate again. Four hours pass. The person with actual authority is in a board meeting with no mechanism to be interrupted for an AI system event.</p>
+      </div>
+    </div>
+
+    <!-- Step 04 DEAD -->
+    <div class="fail-chain-step">
+      <div class="fail-chain-node-col">
+        <div class="fail-chain-node fail-chain-node--dead">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <line x1="9" y1="3.5" x2="9" y2="14.5" stroke="var(--text-faint)" stroke-width="1" opacity=".3"/>
+            <line x1="4.5" y1="6.5" x2="13.5" y2="6.5" stroke="var(--text-faint)" stroke-width="1" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="fail-chain-connector fail-chain-connector--dead"></div>
+      </div>
+      <div class="fail-chain-track"></div>
+      <div class="fail-chain-body">
+        <div class="fail-chain-num fail-chain-num--dead">04</div>
+        <p class="fail-chain-label fail-chain-label--dead">Assessment</p>
+        <p class="fail-chain-desc fail-chain-desc--dead">Never reached. No one with authority to assess the situation has been briefed.</p>
+      </div>
+    </div>
+
+    <!-- Step 05 DEAD -->
+    <div class="fail-chain-step">
+      <div class="fail-chain-node-col">
+        <div class="fail-chain-node fail-chain-node--dead">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" stroke="var(--text-faint)" stroke-width="1" opacity=".3"/>
+          </svg>
+        </div>
+      </div>
+      <div class="fail-chain-track"></div>
+      <div class="fail-chain-body">
+        <div class="fail-chain-num fail-chain-num--dead">05</div>
+        <p class="fail-chain-label fail-chain-label--dead">Intervention</p>
+        <p class="fail-chain-desc fail-chain-desc--dead">Does not happen. Consequences compound for four hours before informal channels reach someone who can act.</p>
+      </div>
+    </div>
+
+    <div class="fail-chain-consequence">
+      <p><strong>One structural gap at step 03 made steps 04 and 05 unreachable.</strong> The governance framework was sound. The escalation path existed on paper. The authority was assigned. None of it functioned under real conditions. This is what HIA assesses before it becomes a post-incident review.</p>
+    </div>
+  </div><!-- /fail-chain -->
 
   <!-- 02 Core service lines -->
   <div class="section-hd reveal" id="service-lines">
