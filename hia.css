@@ -544,6 +544,7 @@ footer {
   /* Prevent any fixed-width child breaking viewport */
   .chain-row { grid-template-columns: 72px 1fr; }
   .chain-row .cr-time { display: none; }
+  .svc-selector-grid { grid-template-columns: 1fr !important; }
   .nav-links      { display: none; }
   .nav-enquire    { display: none; }
   .nav-hamburger  { display: flex; }

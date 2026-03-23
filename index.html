@@ -55,6 +55,15 @@
 .hero-triad { margin-top: 64px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
 
+@media (max-width: 640px) {
+  .hero { justify-content: center; padding-top: clamp(80px,15vw,120px); }
+  .hero-inner { text-align: center; }
+  .hero-lede { max-width: 100%; }
+  .hero-cta { justify-content: center; }
+  .hero-triad { text-align: center; }
+  .hero-eyebrow { margin-bottom: 28px; }
+}
+
 /* ── INFOGRAPHIC: THE GAP, pure HTML/CSS ───────────────── */
 .gap-infographic {
   display: grid;
@@ -147,10 +156,15 @@
   text-align: right; font-style: italic;
 }
 .cr-time.crit { color: var(--gold); }
+@media (max-width: 640px) {
+  .chain-row { grid-template-columns: 72px 1fr; gap: 14px; padding: 16px 18px; }
+  .chain-row.gap-row { padding: 8px 18px; }
+  .cr-time { display: none; }
+  .cr-body { font-size: 0.88rem; }
+}
 @media (max-width: 480px) {
   .chain-table { font-size: 0.88rem; }
   .cr-stage { font-size: 0.55rem; }
-  .cr-time { display: none; }
   .chain-row { grid-template-columns: 60px 1fr; gap: 12px; padding: 14px 16px; }
   .chain-row.gap-row { padding: 8px 16px; }
 }

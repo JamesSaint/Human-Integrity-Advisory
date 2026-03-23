@@ -11,6 +11,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hia.css">
+<style>
+@media (max-width: 640px) {
+  /* Service selector: stack to single column */
+  .svc-selector-grid { grid-template-columns: 1fr !important; }
+  /* Offer detail columns: stack */
+  .offer-cols { grid-template-columns: 1fr !important; }
+  /* Offer head: tighter */
+  .offer-head { padding: 20px 18px; }
+  .offer-col  { padding: 16px 18px; }
+  .offer-foot { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .offer-name { font-size: 1rem; }
+  .offer-summary { font-size: 0.88rem; }
+}
+</style>
 <meta property="og:type" content="website"><meta property="og:site_name" content="Human Integrity Advisory">
 <meta property="og:title" content="Advisory Services &amp; Engagements | Human Integrity Advisory">
 <meta property="og:description" content="Three advisory engagements on AI intervention capability.">
@@ -230,7 +246,7 @@
   <!-- SERVICE SELECTION: HTML/CSS infographic -->
   <div class="reveal" style="border:1px solid var(--border);background:var(--surface);padding:clamp(24px,4vw,44px);overflow:hidden;">
     <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-sub);margin-bottom:28px;text-align:center;">Which question are you holding?</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:1px;overflow:hidden;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:1px;overflow:hidden;" class="svc-selector-grid">
       <div style="background:var(--surface2);padding:20px 22px;min-width:0;display:flex;flex-direction:column;">
         <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Boardroom</p>
         <p style="font-size:0.92rem;color:var(--text-body);line-height:1.65;margin-bottom:16px;flex:1;">Can our board act decisively when governance is tested under real pressure?</p>
