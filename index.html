@@ -31,10 +31,12 @@
 .hero {
   min-height: calc(96vh - var(--nav-h));
   background: var(--black);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 var(--pad-x) clamp(52px,7vw,80px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: clamp(80px,12vw,120px) var(--pad-x) clamp(60px,8vw,96px);
   border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
+  text-align: center;
   width: 100%;
 }
 .hero::before {
@@ -46,23 +48,18 @@
   opacity: 0; animation: grid-in 2s ease forwards 0.8s;
 }
 @keyframes grid-in { to { opacity: 1; } }
-.hero-inner { max-width: var(--page-max); margin: 0 auto; width: 100%; position: relative; z-index: 1; }
-.hero-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); margin-bottom: 44px; opacity: 0; transform: translateY(8px); animation: h-in 0.65s ease forwards 0.2s; }
+.hero-inner {
+  max-width: var(--page-max); margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+}
+.hero-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); margin-bottom: clamp(28px,5vw,44px); opacity: 0; transform: translateY(8px); animation: h-in 0.65s ease forwards 0.2s; }
 .hero-hia { display: block; font-size: clamp(3rem,10vw,7rem); font-weight: 800; letter-spacing: 0.02em; color: var(--white); line-height: 1; margin-bottom: 14px; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.35s; }
 .hero-descriptor { display: block; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.30em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 40px; opacity: 0; transform: translateY(8px); animation: h-in 0.65s ease forwards 0.45s; }
-.hero-lede { font-size: clamp(0.95rem,2vw,1.05rem); font-weight: 400; line-height: 1.9; color: var(--text-body); max-width: 540px; margin-bottom: 36px; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.55s; }
-.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.65s; }
-.hero-triad { margin-top: 64px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
+.hero-lede { font-size: clamp(0.95rem,2vw,1.05rem); font-weight: 400; line-height: 1.9; color: var(--text-body); max-width: 580px; margin-bottom: 36px; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.55s; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.65s; }
+.hero-triad { margin-top: 52px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
-
-@media (max-width: 640px) {
-  .hero { justify-content: center; padding-top: clamp(80px,15vw,120px); }
-  .hero-inner { text-align: center; }
-  .hero-lede { max-width: 100%; }
-  .hero-cta { justify-content: center; }
-  .hero-triad { text-align: center; }
-  .hero-eyebrow { margin-bottom: 28px; }
-}
 
 /* ── INFOGRAPHIC: THE GAP, pure HTML/CSS ───────────────── */
 .gap-infographic {
