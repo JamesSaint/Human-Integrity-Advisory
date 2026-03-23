@@ -30,36 +30,199 @@
 <meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-contact.png">
 <meta name="twitter:image:alt" content="Contact HIA">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Request a Confidential Conversation | Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/contact.html"}</script>
+
+<style>
+/* ══════════════════════════════════════════════════
+   CONTACT PAGE — follows live site style.css patterns
+══════════════════════════════════════════════════ */
+
+/* Layout: info narrower, form wider — matches live site */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 1px;
+  background: var(--border);
+}
+.contact-info {
+  background: var(--surface);
+  padding: clamp(32px,5vw,52px) clamp(28px,4vw,44px);
+}
+.contact-form-wrap {
+  background: var(--surface2);
+  padding: clamp(32px,5vw,52px) clamp(28px,4vw,44px);
+}
+
+/* Section header inside contact */
+.c-hd { display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+.c-hd-num { font-size:0.58rem; letter-spacing:0.22em; color:var(--gold); font-weight:700; }
+.c-hd-title { font-size:0.7rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--text); font-weight:700; }
+.c-hd-rule { flex:1; height:1px; background:var(--border); }
+
+/* Info items */
+.info-item { padding:16px 0; border-bottom:1px solid var(--border); }
+.info-item:last-child { border-bottom:none; }
+.info-item-label {
+  font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--gold); font-weight:700; margin-bottom:6px;
+}
+.info-item-value {
+  font-size:clamp(0.88rem,1.9vw,0.95rem); color:var(--text-body);
+  line-height:1.75; font-weight:400; margin:0;
+}
+.info-item-value a { color:var(--text-sub); font-weight:500; transition:color 0.2s; }
+.info-item-value a:hover { color:var(--gold); opacity:1; }
+
+/* Next steps */
+.next-steps { margin-top:36px; padding-top:28px; border-top:1px solid var(--border); }
+.next-step { display:flex; align-items:flex-start; gap:16px; padding:11px 0; border-bottom:1px solid var(--border); }
+.next-step:last-child { border-bottom:none; }
+.next-step-n { font-size:0.58rem; letter-spacing:0.22em; color:var(--gold); font-weight:700; flex-shrink:0; margin-top:3px; min-width:20px; }
+.next-step p { font-size:clamp(0.86rem,1.8vw,0.92rem); color:var(--text-sub); font-weight:400; line-height:1.7; margin:0; }
+
+/* Form labels */
+.form-label {
+  display:block; font-size:0.62rem; letter-spacing:0.20em; text-transform:uppercase;
+  color:var(--text-sub); font-weight:600; margin-bottom:8px;
+}
+.form-label .req { color:var(--gold); margin-left:2px; }
+
+/* Inputs — bg is --bg (darkest), sits on --surface2 form background */
+.form-input,
+.form-textarea {
+  background: var(--bg);
+  border: 1px solid var(--border-mid);
+  color: var(--text-body);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  line-height: 1.5;
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color:var(--text-faint); }
+.form-input:focus,
+.form-textarea:focus { border-color:var(--gold); }
+.form-textarea { resize:vertical; min-height:148px; line-height:1.75; }
+
+/* Form group spacing */
+.form-group { margin-bottom:20px; }
+.form-group:last-of-type { margin-bottom:28px; }
+.form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+/* Service pills — CSS :checked, no JS needed */
+.pills-label {
+  display:block; font-size:0.62rem; letter-spacing:0.20em; text-transform:uppercase;
+  color:var(--text-sub); font-weight:600; margin-bottom:10px;
+}
+.pills-label .req { color:var(--gold); margin-left:2px; }
+.pills-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8px; margin-bottom:28px;
+}
+.pill { position:relative; }
+.pill input[type="radio"] { position:absolute; opacity:0; width:0; height:0; }
+.pill label {
+  display:flex; align-items:center; gap:10px;
+  padding:14px 16px;
+  border:1px solid var(--border-mid);
+  background:var(--bg);
+  font-size:0.84rem; letter-spacing:0.04em;
+  color:var(--text-sub); font-weight:500;
+  cursor:pointer; line-height:1.4; min-height:52px;
+  transition:border-color 0.18s, color 0.18s, background 0.18s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pill label::before {
+  content:'';
+  display:block; flex-shrink:0;
+  width:8px; height:8px;
+  border:1px solid var(--border-mid);
+  border-radius:50%;
+  transition:background 0.18s, border-color 0.18s;
+}
+.pill label:hover { border-color:var(--gold-dim); color:var(--text-body); }
+.pill label:hover::before { border-color:var(--gold-dim); }
+.pill input:checked + label {
+  border-color:var(--gold);
+  color:var(--white);
+  background:var(--surface);
+}
+.pill input:checked + label::before {
+  background:var(--gold);
+  border-color:var(--gold);
+}
+
+/* Submit */
+.form-submit {
+  width:100%; padding:18px 24px;
+  background:var(--gold); color:var(--black);
+  font-family:'Montserrat',sans-serif;
+  font-size:0.68rem; letter-spacing:0.20em; text-transform:uppercase;
+  font-weight:700; border:none; cursor:pointer;
+  transition:opacity 0.2s; min-height:56px; border-radius:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.form-submit:hover    { opacity:0.85; }
+.form-submit:disabled { opacity:0.5; cursor:not-allowed; }
+
+.form-privacy {
+  font-size:0.75rem; color:var(--text-faint);
+  margin-top:16px; line-height:1.7;
+}
+
+/* Status messages */
+.form-status { display:none; padding:20px 24px; margin-bottom:24px; font-size:0.92rem; font-weight:400; line-height:1.7; }
+.form-status strong { font-weight:600; }
+.form-status.is-shown.success { display:block; border-left:2px solid var(--gold); background:var(--gold-faint); color:var(--text-body); }
+.form-status.is-shown.error   { display:block; border-left:2px solid rgba(192,57,43,.8); background:rgba(192,57,43,.06); color:var(--text-body); }
+
+/* Responsive */
+@media (max-width:768px) {
+  .contact-grid  { grid-template-columns:1fr; }
+  .form-row-2    { grid-template-columns:1fr; gap:0; }
+  .pills-grid    { grid-template-columns:1fr; }
+}
+@media (max-width:480px) {
+  .contact-info,
+  .contact-form-wrap { padding:22px 18px; }
+}
+</style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Primary navigation">
- <div class="nav-inner">
- <a href="index.html" class="nav-mark" aria-label="Human Integrity Advisory home">
- <div class="nav-mark-icon"><div class="nm-line"></div><div class="nm-stroke"></div><div class="nm-line"></div></div>
- <span class="nav-mark-text">Human Integrity Advisory</span>
- </a>
- <ul class="nav-links" role="list">
- <li><a href="index.html">Home</a></li>
- <li><a href="about.html">About</a></li>
- <li><a href="services.html">Services</a></li>
- <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
- </ul>
- <a href="contact.html" class="nav-enquire" style="background:var(--surface2);color:var(--gold);outline:1px solid var(--gold-dim);">Enquire</a>
- <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation">
- <span></span><span></span><span></span>
- </button>
- </div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark" aria-label="Human Integrity Advisory home">
+      <div class="nav-mark-icon"><div class="nm-line"></div><div class="nm-stroke"></div><div class="nm-line"></div></div>
+      <span class="nav-mark-text">Human Integrity Advisory</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
+    </ul>
+    <a href="contact.html" class="nav-enquire" style="background:var(--surface2);color:var(--gold);outline:1px solid var(--gold-dim);">Enquire</a>
+    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 <div class="nav-mobile" id="mobile-nav" aria-hidden="true">
- <ul role="list">
- <li><a href="index.html">Home</a></li>
- <li><a href="about.html">About</a></li>
- <li><a href="services.html">Services</a></li>
- <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
- <li><a href="contact.html">Contact</a></li>
- </ul>
- <a href="contact.html" class="nav-mobile-cta">Request a confidential conversation</a>
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-mobile-cta">Request a confidential conversation</a>
 </div>
 
 <header class="page-hero">
@@ -74,171 +237,164 @@
 <section style="border-bottom:none;">
 <div class="page-wrap">
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+<div class="contact-grid">
 
-    <!-- ── LEFT COLUMN ─────────────────────────────── -->
-    <div>
+  <!-- ══ LEFT COLUMN: context ══════════════════════════════ -->
+  <div class="contact-info">
 
-      <div class="section-hd" style="margin-bottom:28px;">
-        <span class="section-num">01</span>
-        <span class="section-label">Before you write</span>
-        <div class="section-rule"></div>
-      </div>
-
-      <div class="block-note" style="margin-bottom:36px;">
-        Please include your role, the situation or question prompting the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation.<br><br>
-        The initial conversation is not an advisory session. It is a contained exchange to establish context, scope, and whether the work is a fit.
-      </div>
-
-      <!-- Info rows -->
-      <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:48px;">
-
-        <div style="display:flex;flex-direction:column;gap:4px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);">Direct email</span>
-          <span style="font-size:0.95rem;color:var(--text-body);"><a href="mailto:advisory@hia.io" style="color:var(--text-sub);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-sub)'">advisory@hia.io</a></span>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:4px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);">Confidentiality</span>
-          <span style="font-size:0.95rem;color:var(--text-body);line-height:1.75;">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</span>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:4px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);">Response</span>
-          <span style="font-size:0.95rem;color:var(--text-body);line-height:1.75;">You will receive a direct response from a senior HIA advisor within one to two working days.</span>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:4px;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);">No obligation</span>
-          <span style="font-size:0.95rem;color:var(--text-body);line-height:1.75;">The initial conversation carries no commitment on either side. It is a direct discussion of your specific situation.</span>
-        </div>
-
-      </div>
-
-      <div class="section-hd" style="margin-bottom:22px;">
-        <span class="section-num">02</span>
-        <span class="section-label">What happens next</span>
-        <div class="section-rule"></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:2px;">
-
-        <div style="display:flex;gap:20px;align-items:flex-start;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;color:var(--gold);flex-shrink:0;padding-top:3px;">01</span>
-          <p style="font-size:0.95rem;color:var(--text-body);line-height:1.8;">A senior HIA advisor reviews your enquiry and responds directly within one to two working days.</p>
-        </div>
-
-        <div style="display:flex;gap:20px;align-items:flex-start;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;color:var(--gold);flex-shrink:0;padding-top:3px;">02</span>
-          <p style="font-size:0.95rem;color:var(--text-body);line-height:1.8;">If there is a potential fit, we arrange a short, focused conversation to understand your situation in more detail.</p>
-        </div>
-
-        <div style="display:flex;gap:20px;align-items:flex-start;padding:18px 22px;background:var(--surface);border:1px solid var(--border);">
-          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.22em;color:var(--gold);flex-shrink:0;padding-top:3px;">03</span>
-          <p style="font-size:0.95rem;color:var(--text-body);line-height:1.8;">If both parties wish to proceed, a written scope and engagement agreement follows before any work begins.</p>
-        </div>
-
-      </div>
-
+    <div class="c-hd">
+      <span class="c-hd-num">01</span>
+      <span class="c-hd-title">Before you write</span>
+      <div class="c-hd-rule"></div>
     </div>
 
-    <!-- ── RIGHT COLUMN: FORM ───────────────────────── -->
-    <div style="background:var(--surface);border:1px solid var(--border);padding:clamp(32px,4vw,48px);">
+    <div class="block-note" style="margin-bottom:32px;">
+      Please include your role, the situation or question prompting the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation.<br><br>
+      The initial conversation is not an advisory session. It is a contained exchange to establish context, scope, and whether the work is a fit.
+    </div>
 
-      <div class="section-hd" style="margin-bottom:32px;">
-        <span class="section-num">03</span>
-        <span class="section-label">Send an enquiry</span>
-        <div class="section-rule"></div>
+    <div>
+      <div class="info-item">
+        <p class="info-item-label">Direct email</p>
+        <p class="info-item-value"><a href="mailto:advisory@hia.io">advisory@hia.io</a></p>
+      </div>
+      <div class="info-item">
+        <p class="info-item-label">Confidentiality</p>
+        <p class="info-item-value">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</p>
+      </div>
+      <div class="info-item">
+        <p class="info-item-label">Response</p>
+        <p class="info-item-value">You will receive a direct response from a senior HIA advisor within one to two working days.</p>
+      </div>
+      <div class="info-item">
+        <p class="info-item-label">No obligation</p>
+        <p class="info-item-value">The initial conversation carries no commitment on either side. It is a direct discussion of your specific situation.</p>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <div class="c-hd" style="margin-bottom:18px;">
+        <span class="c-hd-num">02</span>
+        <span class="c-hd-title">What happens next</span>
+        <div class="c-hd-rule"></div>
+      </div>
+      <div class="next-step">
+        <span class="next-step-n">01</span>
+        <p>A senior HIA advisor reviews your enquiry and responds directly within one to two working days.</p>
+      </div>
+      <div class="next-step">
+        <span class="next-step-n">02</span>
+        <p>If there is a potential fit, we arrange a short, focused conversation to understand your situation in more detail.</p>
+      </div>
+      <div class="next-step">
+        <span class="next-step-n">03</span>
+        <p>If both parties wish to proceed, a written scope and engagement agreement follows before any work begins.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ RIGHT COLUMN: form ════════════════════════════════ -->
+  <div class="contact-form-wrap">
+
+    <div class="c-hd">
+      <span class="c-hd-num">03</span>
+      <span class="c-hd-title">Send an enquiry</span>
+      <div class="c-hd-rule"></div>
+    </div>
+
+    <div id="form-success" class="form-status success" role="alert">
+      <strong>Enquiry received.</strong><br>
+      A senior HIA advisor will respond to you directly within one to two working days.
+      All information you have shared is held in strict confidence.
+    </div>
+    <div id="form-error" class="form-status error" role="alert">
+      <strong>Something went wrong.</strong><br>
+      Please try again or write directly to
+      <a href="mailto:advisory@hia.io" style="color:var(--text-sub);">advisory@hia.io</a>
+    </div>
+
+    <!--
+      FORMSPREE — replace YOUR_FORM_ID
+      Get endpoint at formspree.io → create form → copy URL
+    -->
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+
+      <!-- Service area — CSS :checked, no JS -->
+      <p class="pills-label">Service area <span class="req">*</span></p>
+      <div class="pills-grid">
+        <div class="pill">
+          <input type="radio" name="service" id="sv1" value="Boardroom Integrity Advisory" required>
+          <label for="sv1">Boardroom Integrity Advisory</label>
+        </div>
+        <div class="pill">
+          <input type="radio" name="service" id="sv2" value="Decision Architecture Review">
+          <label for="sv2">Decision Architecture Review</label>
+        </div>
+        <div class="pill">
+          <input type="radio" name="service" id="sv3" value="Executive Intervention Labs">
+          <label for="sv3">Executive Intervention Labs</label>
+        </div>
+        <div class="pill">
+          <input type="radio" name="service" id="sv4" value="Not yet sure">
+          <label for="sv4">Not yet sure</label>
+        </div>
       </div>
 
-      <!-- Success -->
-      <div id="form-success" role="alert" style="display:none;background:var(--gold-faint);border:1px solid var(--gold-dim);padding:28px;margin-bottom:24px;">
-        <p style="font-size:0.95rem;color:var(--text-body);line-height:1.85;"><strong style="color:var(--white);font-weight:600;">Enquiry received.</strong><br><br>A senior HIA advisor will respond to you directly within one to two working days. All information you have shared is held in strict confidence.</p>
+      <!-- Full name -->
+      <div class="form-group">
+        <label class="form-label" for="f-name">Full name <span class="req">*</span></label>
+        <input class="form-input" type="text" id="f-name" name="full_name"
+          placeholder="Your full name" required autocomplete="name">
       </div>
 
-      <!-- Error -->
-      <div id="form-error" role="alert" style="display:none;background:var(--surface2);border:1px solid var(--border-mid);padding:22px;margin-bottom:4px;">
-        <p style="font-size:0.95rem;color:var(--text-body);line-height:1.8;"><strong style="color:var(--white);font-weight:600;">Something went wrong.</strong><br><br>Please try again or write to <a href="mailto:advisory@hia.io" style="color:var(--text-sub);">advisory@hia.io</a></p>
+      <!-- Role + Email -->
+      <div class="form-group">
+        <div class="form-row-2">
+          <div>
+            <label class="form-label" for="f-role">Title / role <span class="req">*</span></label>
+            <input class="form-input" type="text" id="f-role" name="role"
+              placeholder="e.g. Chief Risk Officer" required>
+          </div>
+          <div>
+            <label class="form-label" for="f-email">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="f-email" name="email"
+              placeholder="you@organisation.com" required autocomplete="email">
+          </div>
+        </div>
       </div>
 
-      <!--
-        FORMSPREE: replace YOUR_FORM_ID
-        Get your endpoint at formspree.io
-      -->
-      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <!-- Organisation -->
+      <div class="form-group">
+        <label class="form-label" for="f-org">Organisation <span class="req">*</span></label>
+        <input class="form-input" type="text" id="f-org" name="organisation"
+          placeholder="Organisation name" required autocomplete="organization">
+      </div>
 
-        <!-- Service area -->
-        <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:12px;">Service area <span style="color:var(--gold);">*</span></p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:36px;">
+      <!-- Your situation -->
+      <div class="form-group">
+        <label class="form-label" for="f-sit">Your situation <span class="req">*</span></label>
+        <textarea class="form-textarea" id="f-sit" name="situation"
+          placeholder="Please include your role, what has prompted the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation."
+          required></textarea>
+      </div>
 
-          <div style="position:relative;">
-            <input type="radio" name="service" id="sv1" value="Boardroom Integrity Advisory" required style="position:absolute;opacity:0;width:0;height:0;">
-            <label for="sv1" style="display:block;padding:16px 18px;cursor:pointer;background:var(--surface);border:1px solid var(--border);font-size:0.85rem;font-weight:500;color:var(--text-body);line-height:1.5;transition:all 0.15s;">Boardroom Integrity Advisory</label>
-          </div>
+      <!-- Honeypot + subject -->
+      <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="HIA — New Enquiry">
 
-          <div style="position:relative;">
-            <input type="radio" name="service" id="sv2" value="Decision Architecture Review" style="position:absolute;opacity:0;width:0;height:0;">
-            <label for="sv2" style="display:block;padding:16px 18px;cursor:pointer;background:var(--surface);border:1px solid var(--border);font-size:0.85rem;font-weight:500;color:var(--text-body);line-height:1.5;transition:all 0.15s;">Decision Architecture Review</label>
-          </div>
+      <button type="submit" class="form-submit" id="submit-btn">Send enquiry</button>
 
-          <div style="position:relative;">
-            <input type="radio" name="service" id="sv3" value="Executive Intervention Labs" style="position:absolute;opacity:0;width:0;height:0;">
-            <label for="sv3" style="display:block;padding:16px 18px;cursor:pointer;background:var(--surface);border:1px solid var(--border);font-size:0.85rem;font-weight:500;color:var(--text-body);line-height:1.5;transition:all 0.15s;">Executive Intervention Labs</label>
-          </div>
+      <p class="form-privacy">
+        All information is held in strict confidence. We do not share your details with any third party.
+        This is a direct line to HIA advisors, not an automated system.
+      </p>
 
-          <div style="position:relative;">
-            <input type="radio" name="service" id="sv4" value="Not yet sure" style="position:absolute;opacity:0;width:0;height:0;">
-            <label for="sv4" style="display:block;padding:16px 18px;cursor:pointer;background:var(--surface);border:1px solid var(--border);font-size:0.85rem;font-weight:500;color:var(--text-body);line-height:1.5;transition:all 0.15s;">Not yet sure</label>
-          </div>
+    </form>
 
-        </div>
+  </div><!-- /.contact-form-wrap -->
 
-        <!-- Full name -->
-        <div style="display:flex;flex-direction:column;margin-bottom:16px;">
-          <label for="fname" style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);background:var(--surface2);padding:12px 18px 6px;border:1px solid var(--border-mid);border-bottom:none;">Full name <span style="color:var(--gold);">*</span></label>
-          <input type="text" id="fname" name="full_name" required autocomplete="name" style="background:var(--surface2);border:1px solid var(--border-mid);border-top:none;color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.95rem;padding:14px 18px 16px;width:100%;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-mid)'">
-        </div>
-
-        <!-- Role + Email -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
-
-          <div style="display:flex;flex-direction:column;">
-            <label for="frole" style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);background:var(--surface2);padding:12px 18px 6px;border:1px solid var(--border-mid);border-bottom:none;">Title / role <span style="color:var(--gold);">*</span></label>
-            <input type="text" id="frole" name="role" required style="background:var(--surface2);border:1px solid var(--border-mid);border-top:none;color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.95rem;padding:14px 18px 16px;width:100%;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-mid)'">
-          </div>
-
-          <div style="display:flex;flex-direction:column;">
-            <label for="femail" style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);background:var(--surface2);padding:12px 18px 6px;border:1px solid var(--border-mid);border-bottom:none;">Email <span style="color:var(--gold);">*</span></label>
-            <input type="email" id="femail" name="email" required autocomplete="email" style="background:var(--surface2);border:1px solid var(--border-mid);border-top:none;color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.95rem;padding:14px 18px 16px;width:100%;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-mid)'">
-          </div>
-
-        </div>
-
-        <!-- Organisation -->
-        <div style="display:flex;flex-direction:column;margin-bottom:16px;">
-          <label for="forg" style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);background:var(--surface2);padding:12px 18px 6px;border:1px solid var(--border-mid);border-bottom:none;">Organisation <span style="color:var(--gold);">*</span></label>
-          <input type="text" id="forg" name="organisation" required autocomplete="organization" style="background:var(--surface2);border:1px solid var(--border-mid);border-top:none;color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.95rem;padding:14px 18px 16px;width:100%;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-mid)'">
-        </div>
-
-        <!-- Your situation -->
-        <div style="display:flex;flex-direction:column;margin-bottom:16px;">
-          <label for="fsit" style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);background:var(--surface2);padding:12px 18px 6px;border:1px solid var(--border-mid);border-bottom:none;">Your situation <span style="color:var(--gold);">*</span></label>
-          <textarea id="fsit" name="situation" required placeholder="Please include your role, what has prompted the enquiry, and any relevant context or timelines." style="background:var(--surface2);border:1px solid var(--border-mid);border-top:none;color:var(--text);font-family:'Montserrat',sans-serif;font-size:0.95rem;padding:14px 18px 16px;width:100%;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.2s;resize:vertical;min-height:160px;line-height:1.75;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-mid)'"></textarea>
-        </div>
-
-        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_subject" value="HIA — New Enquiry">
-
-        <!-- Submit -->
-        <button type="submit" id="submit-btn" style="width:100%;display:flex;align-items:center;justify-content:center;background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;padding:18px;min-height:56px;border:none;cursor:pointer;border-radius:0;transition:opacity 0.2s;margin-top:8px;">Send enquiry</button>
-
-        <p style="font-size:0.78rem;color:var(--text-faint);line-height:1.75;padding-top:16px;">All information is held in strict confidence. We do not share your details with any third party. This is a direct line to HIA advisors, not an automated system.</p>
-
-      </form>
-
-    </div><!-- /.form card -->
-
-  </div><!-- /.two-col grid -->
+</div><!-- /.contact-grid -->
 
 </div><!-- /.page-wrap -->
 </section>
@@ -262,65 +418,27 @@
   </div>
 </footer>
 
+<script src="hia.js"></script>
 <script>
-/* Radio pill highlight */
-document.querySelectorAll('input[name="service"]').forEach(function(radio) {
-  radio.addEventListener('change', function() {
-    document.querySelectorAll('input[name="service"]').forEach(function(r) {
-      var lbl = r.nextElementSibling;
-      lbl.style.background    = 'var(--surface)';
-      lbl.style.color         = 'var(--text-body)';
-      lbl.style.borderColor   = 'var(--border)';
-    });
-    var active = radio.nextElementSibling;
-    active.style.background  = 'var(--bg)';
-    active.style.color       = 'var(--white)';
-    active.style.borderColor = 'var(--gold)';
-  });
-});
-
-/* Mobile nav */
-var ham = document.getElementById('hamburger');
-var mob = document.getElementById('mobile-nav');
-if (ham && mob) {
-  ham.addEventListener('click', function() {
-    var open = ham.classList.toggle('open');
-    mob.classList.toggle('open', open);
-  });
-}
-
-/* Formspree submit */
-var form    = document.getElementById('contact-form');
-var success = document.getElementById('form-success');
-var error   = document.getElementById('form-error');
-var btn     = document.getElementById('submit-btn');
-if (form) {
-  form.addEventListener('submit', function(e) {
+(function () {
+  var form    = document.getElementById('contact-form');
+  var success = document.getElementById('form-success');
+  var error   = document.getElementById('form-error');
+  var btn     = document.getElementById('submit-btn');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     var orig = btn.textContent;
-    btn.textContent = 'Sending\u2026';
-    btn.disabled = true;
-    error.style.display = 'none';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    }).then(function(res) {
-      if (res.ok) {
-        form.style.display   = 'none';
-        success.style.display = 'block';
-      } else {
-        btn.textContent = orig;
-        btn.disabled = false;
-        error.style.display = 'block';
-      }
-    }).catch(function() {
-      btn.textContent = orig;
-      btn.disabled = false;
-      error.style.display = 'block';
-    });
+    btn.textContent = 'Sending\u2026'; btn.disabled = true;
+    error.classList.remove('is-shown');
+    fetch(form.action, { method:'POST', body:new FormData(form), headers:{ Accept:'application/json' } })
+      .then(function (res) {
+        if (res.ok) { form.style.display = 'none'; success.classList.add('is-shown'); }
+        else { btn.textContent = orig; btn.disabled = false; error.classList.add('is-shown'); }
+      })
+      .catch(function () { btn.textContent = orig; btn.disabled = false; error.classList.add('is-shown'); });
   });
-}
+}());
 </script>
 
 </body>
