@@ -560,3 +560,9 @@ footer {
   .stat-band { grid-template-columns: 1fr; }
   .cta-pair  { flex-direction: column; align-items: center; }
 }
+
+/* ── SERVICE SELECTOR responsive fix ─────────────────────── */
+@media (max-width: 640px) {
+  /* Force selector grid to single column at small sizes */
+  .service-selector-grid { grid-template-columns: 1fr !important; }
+}

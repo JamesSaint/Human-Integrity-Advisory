@@ -7,8 +7,7 @@
 <meta name="description" content="Advisory for boards and senior leaders who need to know whether their organisation can intervene in an AI-driven decision before risk becomes consequence.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jamessaint.github.io/Human-Integrity-Advisory/">
-<meta name="theme-color" content="#0a0a0a">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0a"><meta name="color-scheme" content="dark">
 <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -17,29 +16,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hia.css">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Human Integrity Advisory">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Human Integrity Advisory">
 <meta property="og:title" content="AI Intervention Capability for Boards | Human Integrity Advisory">
 <meta property="og:description" content="Advisory for boards and senior leaders who need to know whether their organisation can intervene in an AI-driven decision before risk becomes consequence.">
 <meta property="og:url" content="https://jamessaint.github.io/Human-Integrity-Advisory/">
 <meta property="og:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Human Integrity Advisory">
-<meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Intervention Capability for Boards | Human Integrity Advisory">
-<meta name="twitter:description" content="Advisory for boards and senior leaders on AI intervention capability.">
-<meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png">
-<meta name="twitter:image:alt" content="Human Integrity Advisory">
+<meta property="og:image:alt" content="Human Integrity Advisory"><meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Intervention Capability for Boards | Human Integrity Advisory"><meta name="twitter:description" content="Advisory for boards and senior leaders on AI intervention capability."><meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png"><meta name="twitter:image:alt" content="Human Integrity Advisory">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/","areaServed":"Global"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/"}</script>
 <style>
-/* ── HOMEPAGE HERO ────────────────────────────────────────── */
+/* ── HERO ────────────────────────────────────────────────── */
 .hero {
   min-height: calc(96vh - var(--nav-h));
   background: var(--black);
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 var(--pad-x) clamp(60px, 8vw, 96px);
+  padding: 0 var(--pad-x) clamp(52px,7vw,80px);
   border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
 }
@@ -53,51 +46,121 @@
 }
 @keyframes grid-in { to { opacity: 1; } }
 .hero-inner { max-width: var(--page-max); margin: 0 auto; width: 100%; position: relative; z-index: 1; }
-
-/* Eyebrow — matches live: "Integrity & Intervention Advisory for AI Systems" */
-.hero-eyebrow {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.30em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 44px;
-  opacity: 0; transform: translateY(8px);
-  animation: h-in 0.65s ease forwards 0.2s;
-}
-/* HIA monogram */
-.hero-hia {
-  display: block;
-  font-size: clamp(3rem, 10vw, 7rem);
-  font-weight: 800; letter-spacing: 0.02em;
-  color: var(--white); line-height: 1;
-  margin-bottom: 14px;
-  opacity: 0; transform: translateY(10px);
-  animation: h-in 0.65s ease forwards 0.35s;
-}
-/* Descriptor */
-.hero-descriptor {
-  display: block;
-  font-size: 0.72rem; font-weight: 300;
-  letter-spacing: 0.30em; text-transform: uppercase;
-  color: var(--text-sub); margin-bottom: 40px;
-  opacity: 0; transform: translateY(8px);
-  animation: h-in 0.65s ease forwards 0.45s;
-}
-.hero-lede {
-  font-size: clamp(1rem, 2.2vw, 1.15rem); font-weight: 400;
-  line-height: 1.9; color: var(--text-body);
-  max-width: 560px; margin-bottom: 36px;
-  opacity: 0; transform: translateY(10px);
-  animation: h-in 0.65s ease forwards 0.55s;
-}
-.hero-cta {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  opacity: 0; transform: translateY(10px);
-  animation: h-in 0.65s ease forwards 0.65s;
-}
-.hero-triad {
-  margin-top: 64px; font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint);
-  opacity: 0; animation: h-in 0.65s ease forwards 0.8s;
-}
+.hero-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); margin-bottom: 44px; opacity: 0; transform: translateY(8px); animation: h-in 0.65s ease forwards 0.2s; }
+.hero-hia { display: block; font-size: clamp(3rem,10vw,7rem); font-weight: 800; letter-spacing: 0.02em; color: var(--white); line-height: 1; margin-bottom: 14px; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.35s; }
+.hero-descriptor { display: block; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.30em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 40px; opacity: 0; transform: translateY(8px); animation: h-in 0.65s ease forwards 0.45s; }
+.hero-lede { font-size: clamp(0.95rem,2vw,1.05rem); font-weight: 400; line-height: 1.9; color: var(--text-body); max-width: 540px; margin-bottom: 36px; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.55s; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; transform: translateY(10px); animation: h-in 0.65s ease forwards 0.65s; }
+.hero-triad { margin-top: 64px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
+
+/* ── INFOGRAPHIC: THE GAP — pure HTML/CSS ───────────────── */
+.gap-infographic {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--border);
+  margin-top: 32px;
+}
+.gap-col-left, .gap-col-right {
+  background: var(--surface2);
+  padding: clamp(20px,3vw,32px);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.gap-col-right { border-left: 2px solid var(--gold); }
+.gap-mid {
+  background: var(--surface);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 16px 12px; gap: 10px; width: 100px;
+}
+.gap-col-heading {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.gap-col-heading.muted  { color: var(--text-sub); }
+.gap-col-heading.bright { color: var(--gold); }
+.gap-row {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 9px 12px; font-size: 0.88rem; color: var(--text-sub); line-height: 1.5;
+  transition: border-color 0.2s, color 0.2s;
+}
+.gap-col-left:hover .gap-row  { border-color: var(--border-mid); }
+.gap-col-right .gap-row       { color: var(--text-body); border-color: var(--border-mid); }
+.gap-col-right .gap-row:hover { border-color: var(--gold); }
+.gap-divider-label {
+  background: var(--gold); color: #000;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 7px 8px; text-align: center; width: 100%;
+}
+.gap-arrow-line { width: 1px; flex: 1; min-height: 24px; background: var(--border); }
+.gap-arrow-tip  { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--gold-dim); }
+.gap-note-text { font-size: 0.75rem; font-style: italic; color: var(--text-faint); margin-top: 10px; line-height: 1.65; }
+
+@media (max-width:640px) {
+  .gap-infographic { grid-template-columns: 1fr; }
+  .gap-mid { flex-direction: row; width: 100%; padding: 10px 20px; }
+  .gap-col-right { border-left: none; border-top: 2px solid var(--gold); }
+}
+
+/* ── INFOGRAPHIC: AUTHORITY CHAIN — pure HTML/CSS ────────── */
+.chain-infographic {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  background: var(--border);
+  margin-top: 0;
+  overflow-x: auto;
+}
+.chain-node {
+  flex: 1; min-width: 140px;
+  background: var(--surface);
+  padding: clamp(16px,2.5vw,24px) clamp(14px,2vw,20px);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.chain-node.board-node { background: var(--surface2); border-left: 1px solid var(--border-mid); }
+.chain-node.consequence { background: var(--black); border-left: 1px solid var(--gold-dim); }
+.chain-gap {
+  flex: 0 0 auto; width: 56px;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; padding: 8px;
+}
+.chain-label {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.chain-label.muted  { color: var(--text-faint); }
+.chain-label.gold   { color: var(--gold); }
+.chain-body { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; }
+.chain-body.warn    { color: var(--text-sub); }
+.chain-body.closed  { color: var(--gold); font-weight: 600; }
+.chain-time { font-size: 0.72rem; font-style: italic; color: var(--text-faint); margin-top: 4px; }
+.chain-time.crit    { color: var(--gold); }
+.chain-arrow {
+  font-size: 1rem; color: var(--gold-dim); line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.chain-gap-label {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-dim); text-align: center;
+  writing-mode: vertical-lr; transform: rotate(180deg);
+}
+.chain-dash {
+  width: 1px; flex: 1; border-left: 1px dashed rgba(201,182,148,0.25);
+  min-height: 20px;
+}
+
+@media (max-width: 900px) {
+  .chain-infographic { flex-direction: column; overflow-x: visible; }
+  .chain-node  { min-width: 0; }
+  .chain-gap   { width: 100%; flex-direction: row; height: 44px; gap: 10px; }
+  .chain-gap-label { writing-mode: horizontal-tb; transform: none; }
+  .chain-dash  { width: 100%; height: 1px; border-left: none; border-top: 1px dashed rgba(201,182,148,0.25); min-height: 0; }
+  .chain-arrow { transform: rotate(90deg); }
+}
 </style>
 </head>
 <body>
@@ -115,17 +178,11 @@
       <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
     </ul>
     <a href="contact.html" class="nav-enquire">Enquire</a>
-    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="nav-mobile" id="mobile-nav" aria-hidden="true">
-  <ul role="list">
-    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li><li><a href="advisory-briefs.html">Advisory Briefs</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <ul role="list"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="advisory-briefs.html">Advisory Briefs</a></li><li><a href="contact.html">Contact</a></li></ul>
   <a href="contact.html" class="nav-mobile-cta">Request a confidential conversation</a>
 </div>
 
@@ -151,9 +208,10 @@
   <div class="section-hd reveal"><span class="section-num">01</span><span class="section-label">What HIA does</span><div class="section-rule"></div></div>
   <div class="grid-2 reveal">
     <div class="block block-accent">
-      <p style="font-size:1.1rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:18px;">Most AI governance programmes address design: policy frameworks, ethics charters, board oversight structures. These matter. But they cannot, by themselves, ensure that decision-makers will act effectively when an AI-driven system behaves in an unexpected or damaging way.</p>
+      <p style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:16px;">Most AI governance programmes address design. HIA addresses capability.</p>
+      <p>Policy frameworks, ethics charters, board oversight structures — these matter. But they cannot, by themselves, ensure that decision-makers will act effectively when an AI-driven system behaves in an unexpected or damaging way.</p>
       <p>HIA operates at the critical gap between governance design and operational reality. We examine whether your organisation can identify a system failure, escalate with the correct authority, and intervene before consequences compound.</p>
-      <p style="margin-top:14px;font-size:0.95rem;color:var(--text-sub);">This is not an audit function. It is a capability assessment, carried out by practitioners with direct experience in real-world AI systems, decision architectures, and high-pressure operational environments. That experience includes applied work in financial intelligence systems and collaborative research with Professor Nicholas Ryman-Tubb (University of Surrey) on neural network behaviour in high-consequence operational contexts.</p>
+      <p style="font-size:0.88rem;color:var(--text-sub);margin-top:14px;">This is not an audit function. It is a capability assessment carried out by practitioners with direct experience in real-world AI systems, decision architectures, and high-pressure operational environments.</p>
     </div>
     <div class="block">
       <ul class="dash-list">
@@ -162,39 +220,42 @@
         <li>Senior leadership that understands its actual authority, escalation paths, and conditions for action.</li>
         <li>An independent view, not provided by those responsible for designing the governance framework being assessed.</li>
       </ul>
-      <div class="block-note" style="margin-top:20px;">All advisory work is confidential and off record unless explicitly agreed otherwise in writing.</div>
+      <div class="block-note" style="margin-top:18px;">All advisory work is confidential and off record unless explicitly agreed otherwise in writing.</div>
     </div>
   </div>
 
-  <!-- GAP INFOGRAPHIC — enlarged -->
-  <div class="gap-wrap reveal">
-    <p class="gap-wrap-title">Where the failure lives</p>
-    <div class="gap-diagram">
-      <div class="gap-col">
-        <div class="gap-col-head dim">Governance Design Layer</div>
-        <div class="gap-item">Ethics frameworks &amp; risk charters</div>
-        <div class="gap-item">Board oversight structures</div>
-        <div class="gap-item">Escalation protocols — documented</div>
-        <div class="gap-item">Override authority — defined in writing</div>
-        <div class="gap-item">Compliance programmes &amp; audit structures</div>
-        <p class="gap-note">Well-designed. Rigorously documented. Cannot, by itself, ensure a board can act when it needs to.</p>
+  <!-- INFOGRAPHIC 1: THE GAP — HTML/CSS -->
+  <div class="reveal" style="margin-top:32px;">
+    <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-sub);margin-bottom:20px;text-align:center;">Where the failure lives</p>
+    <div class="gap-infographic">
+      <div class="gap-col-left">
+        <p class="gap-col-heading muted">Governance Design Layer</p>
+        <div class="gap-row">Ethics frameworks &amp; risk charters</div>
+        <div class="gap-row">Board oversight structures</div>
+        <div class="gap-row">Escalation protocols — documented</div>
+        <div class="gap-row">Override authority — defined in writing</div>
+        <div class="gap-row">Compliance programmes &amp; audit structures</div>
+        <p class="gap-note-text">Well-designed. Rigorously documented. Cannot, by itself, ensure a board can act when it needs to.</p>
       </div>
-      <div class="gap-centre">
-        <div class="gap-arrow"><div class="gap-arrow-line"></div><div class="gap-arrow-head"></div></div>
-        <div class="gap-badge">THE GAP</div>
-        <div class="gap-arrow" style="transform:rotate(180deg)"><div class="gap-arrow-line"></div><div class="gap-arrow-head"></div></div>
+      <div class="gap-mid">
+        <div class="gap-arrow-line"></div>
+        <div class="gap-arrow-tip"></div>
+        <div class="gap-divider-label">THE<br>GAP</div>
+        <div class="gap-arrow-tip" style="transform:rotate(180deg);border-top:none;border-bottom:7px solid var(--gold-dim);"></div>
+        <div class="gap-arrow-line"></div>
       </div>
-      <div class="gap-col gap-right-col" style="border:1px solid var(--border-mid);border-left:2px solid var(--gold);">
-        <div class="gap-col-head bright">HIA: Intervention Layer</div>
-        <div class="gap-item">Can the board identify failure in time?</div>
-        <div class="gap-item">Is authority clear enough to act under pressure?</div>
-        <div class="gap-item">Do escalation paths function under real conditions?</div>
-        <div class="gap-item">Can overrides be enacted at operational speed?</div>
-        <div class="gap-item">Is information adequate to diagnose and act?</div>
-        <p class="gap-note" style="color:var(--text-sub);">Policy governs intent. HIA tests whether that intent can be enacted.</p>
+      <div class="gap-col-right">
+        <p class="gap-col-heading bright">HIA: Intervention Layer</p>
+        <div class="gap-row">Can the board identify failure in time?</div>
+        <div class="gap-row">Is authority clear enough to act under pressure?</div>
+        <div class="gap-row">Do escalation paths function under real conditions?</div>
+        <div class="gap-row">Can overrides be enacted at operational speed?</div>
+        <div class="gap-row">Is information adequate to diagnose and act?</div>
+        <p class="gap-note-text" style="color:var(--text-sub);">Policy governs intent. HIA tests whether that intent can be enacted.</p>
       </div>
     </div>
   </div>
+
 </div>
 </section>
 
@@ -202,7 +263,7 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">02</span><span class="section-label">Core service lines</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:640px;margin-bottom:36px;">Three areas of focused engagement. Each is designed to answer a specific question that governance frameworks alone cannot answer.</p>
+  <p class="reveal" style="max-width:640px;margin-bottom:32px;">Three areas of focused engagement. Each is designed to answer a specific question that governance frameworks alone cannot answer.</p>
   <div class="grid-3 reveal">
     <div class="svc-card">
       <span class="badge">Boardroom</span>
@@ -230,14 +291,14 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">03</span><span class="section-label">How would you know you need this?</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:660px;margin-bottom:28px;">Most organisations that need HIA do not yet have a defined problem. They have a situation. Some of the most common:</p>
+  <p class="reveal" style="max-width:640px;margin-bottom:24px;">Most organisations that need HIA do not yet have a defined problem. They have a situation. Some of the most common:</p>
   <ul class="dash-list reveal">
     <li>A governance review or AI ethics framework has been completed, but no one has tested whether the people responsible for acting on it can do so under real conditions.</li>
     <li>A new AI system is being deployed into a regulated or high-consequence environment, and the board has been asked to provide oversight it has not yet been equipped to exercise.</li>
     <li>An incident has occurred or nearly occurred, and the post-event review has raised questions about escalation, authority, and whether the right people were able to act in time.</li>
     <li>The board or executive team has been asked directly about AI intervention capability and could not answer with confidence.</li>
   </ul>
-  <div class="block-note reveal" style="margin-top:24px;">If any of these are recognisable, the right first step is a short, confidential conversation. Not a commitment.</div>
+  <div class="block-note reveal" style="margin-top:20px;">If any of these are recognisable, the right first step is a short, confidential conversation. Not a commitment.</div>
 </div>
 </section>
 
@@ -245,7 +306,7 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">04</span><span class="section-label">What a failure looks like in sequence</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:660px;margin-bottom:32px;">The failure is not a single moment. It is a sequence. Each step is survivable in isolation. Together they compound into consequence.</p>
+  <p class="reveal" style="max-width:640px;margin-bottom:28px;">The failure is not a single moment. It is a sequence. Each step is survivable in isolation. Together they compound into consequence.</p>
   <div class="timeline reveal">
     <div class="tl-item"><div class="tl-node">T1</div><div class="tl-body"><div class="tl-label">System event begins</div><div class="tl-text">An AI-driven decision produces outputs outside expected parameters. The deviation is real but not yet visible at executive level.</div></div><div class="tl-time">T + 0</div></div>
     <div class="tl-item"><div class="tl-node">T2</div><div class="tl-body"><div class="tl-label">Signal reaches operations</div><div class="tl-text">An operational team notices the anomaly and flags it internally. The escalation route is unclear — or the first person in the chain lacks authority to act.</div></div><div class="tl-time">T + 6h</div></div>
@@ -261,66 +322,70 @@
 </div>
 </section>
 
-<!-- 05 AUTHORITY CHAIN -->
+<!-- 05 AUTHORITY CHAIN — HTML/CSS infographic -->
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">05</span><span class="section-label">The authority chain — and where it breaks</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:660px;margin-bottom:32px;">Authority must travel from a system event to a person who can act — fast enough to matter. Most organisations have never mapped this chain and have never tested it under pressure.</p>
-  <div class="reveal" style="overflow-x:auto;border:1px solid var(--border);background:var(--surface);padding:clamp(20px,4vw,40px);">
-    <svg viewBox="0 0 860 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:640px;height:auto;display:block;" role="img" aria-label="Authority chain failure pattern diagram">
-      <defs>
-        <marker id="aG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(201,182,148,.55)"/></marker>
-        <marker id="aD" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(201,182,148,.22)"/></marker>
-      </defs>
-      <!-- Node 1: System Event -->
-      <rect x="4" y="54" width="136" height="104" fill="#141414" stroke="rgba(201,182,148,.16)" stroke-width="1"/>
-      <text x="72" y="82"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.8" fill="#797673">SYSTEM EVENT</text>
-      <text x="72" y="106" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">AI decision</text>
-      <text x="72" y="124" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">deviates</text>
-      <text x="72" y="146" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10"  fill="#797673" font-style="italic">T + 0</text>
-      <!-- Arrow 1 -->
-      <line x1="142" y1="106" x2="172" y2="106" stroke="rgba(201,182,148,.5)" stroke-width="1.2" marker-end="url(#aG)"/>
-      <!-- Node 2: Operations -->
-      <rect x="174" y="54" width="136" height="104" fill="#141414" stroke="rgba(201,182,148,.16)" stroke-width="1"/>
-      <text x="242" y="82"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.8" fill="#797673">OPERATIONS</text>
-      <text x="242" y="106" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">Signal noticed.</text>
-      <text x="242" y="124" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Route unclear.</text>
-      <text x="242" y="146" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10"  fill="#797673" font-style="italic">T + 6h</text>
-      <!-- STALL gap -->
-      <rect x="312" y="66" width="44" height="80" fill="rgba(201,182,148,.04)" stroke="rgba(201,182,148,.28)" stroke-width="1" stroke-dasharray="4,3"/>
-      <text x="334" y="104" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" letter-spacing="1.2" fill="rgba(201,182,148,.55)">STALL</text>
-      <line x1="312" y1="106" x2="356" y2="106" stroke="rgba(201,182,148,.18)" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#aD)"/>
-      <!-- Node 3: Management -->
-      <rect x="358" y="54" width="136" height="104" fill="#141414" stroke="rgba(201,182,148,.16)" stroke-width="1"/>
-      <text x="426" y="82"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.8" fill="#797673">MANAGEMENT</text>
-      <text x="426" y="106" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">Issue received.</text>
-      <text x="426" y="124" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Authority unclear.</text>
-      <text x="426" y="146" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10"  fill="#797673" font-style="italic">T + 18h</text>
-      <!-- DELAY gap -->
-      <rect x="496" y="66" width="44" height="80" fill="rgba(201,182,148,.04)" stroke="rgba(201,182,148,.28)" stroke-width="1" stroke-dasharray="4,3"/>
-      <text x="518" y="104" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" letter-spacing="1.2" fill="rgba(201,182,148,.55)">DELAY</text>
-      <line x1="496" y1="106" x2="540" y2="106" stroke="rgba(201,182,148,.18)" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#aD)"/>
-      <!-- Node 4: Board -->
-      <rect x="542" y="40" width="148" height="132" fill="#0d0d0d" stroke="rgba(201,182,148,.40)" stroke-width="1"/>
-      <text x="616" y="68"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.8" fill="rgba(201,182,148,.85)">BOARD</text>
-      <text x="616" y="92"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">Informed too late.</text>
-      <text x="616" y="110" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#c8c6c4">Intervention window</text>
-      <text x="616" y="128" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="rgba(201,182,148,.85)">already closed.</text>
-      <text x="616" y="158" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10"  fill="#797673" font-style="italic">T + 36h+</text>
-      <!-- Arrow to consequence -->
-      <line x1="692" y1="106" x2="724" y2="106" stroke="rgba(201,182,148,.5)" stroke-width="1.2" marker-end="url(#aG)"/>
-      <!-- Consequence box -->
-      <rect x="726" y="24" width="130" height="164" fill="#000000" stroke="rgba(201,182,148,.50)" stroke-width="1"/>
-      <text x="791" y="50"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.8" fill="rgba(201,182,148,.92)">CONSEQUENCE</text>
-      <text x="791" y="76"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Regulatory</text>
-      <text x="791" y="96"  text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Reputational</text>
-      <text x="791" y="116" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Financial liability</text>
-      <text x="791" y="136" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="11"  fill="#a8a5a2">Board confidence</text>
-      <text x="791" y="172" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10"  fill="#797673" font-style="italic">T + 7d+</text>
-      <!-- Caption -->
-      <text x="430" y="215" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" letter-spacing="2" fill="rgba(201,182,148,.28)">TYPICAL AUTHORITY CHAIN FAILURE PATTERN</text>
-    </svg>
+  <p class="reveal" style="max-width:640px;margin-bottom:28px;">Authority must travel from a system event to a person who can act — fast enough to matter. Most organisations have never mapped this chain. Most have never tested it under pressure.</p>
+
+  <div class="chain-infographic reveal">
+
+    <div class="chain-node">
+      <p class="chain-label muted">System Event</p>
+      <p class="chain-body">AI decision deviates from expected parameters.</p>
+      <p class="chain-time">T + 0</p>
+    </div>
+
+    <div class="chain-gap">
+      <div class="chain-arrow">&#8594;</div>
+    </div>
+
+    <div class="chain-node">
+      <p class="chain-label muted">Operations</p>
+      <p class="chain-body warn">Signal noticed. Escalation route unclear.</p>
+      <p class="chain-time">T + 6h</p>
+    </div>
+
+    <div class="chain-gap" style="background:var(--gold-faint);border-left:1px dashed rgba(201,182,148,0.2);border-right:1px dashed rgba(201,182,148,0.2);">
+      <div class="chain-dash"></div>
+      <p class="chain-gap-label">STALL</p>
+      <div class="chain-dash"></div>
+    </div>
+
+    <div class="chain-node">
+      <p class="chain-label muted">Management</p>
+      <p class="chain-body warn">Issue received. Authority to act uncertain.</p>
+      <p class="chain-time">T + 18h</p>
+    </div>
+
+    <div class="chain-gap" style="background:var(--gold-faint);border-left:1px dashed rgba(201,182,148,0.2);border-right:1px dashed rgba(201,182,148,0.2);">
+      <div class="chain-dash"></div>
+      <p class="chain-gap-label">DELAY</p>
+      <div class="chain-dash"></div>
+    </div>
+
+    <div class="chain-node board-node">
+      <p class="chain-label gold">Board</p>
+      <p class="chain-body">Informed too late.</p>
+      <p class="chain-body closed">Intervention window already closed.</p>
+      <p class="chain-time crit">T + 36h+</p>
+    </div>
+
+    <div class="chain-gap">
+      <div class="chain-arrow">&#8594;</div>
+    </div>
+
+    <div class="chain-node consequence">
+      <p class="chain-label gold">Consequence</p>
+      <p class="chain-body warn">Regulatory exposure</p>
+      <p class="chain-body warn">Reputational damage</p>
+      <p class="chain-body warn">Financial liability</p>
+      <p class="chain-time crit">T + 7d+</p>
+    </div>
+
   </div>
+
+  <div class="block-note reveal" style="margin-top:2px;">Most organisations have never mapped this chain. Most have never tested it under pressure. HIA does both.</div>
 </div>
 </section>
 
@@ -328,7 +393,7 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">06</span><span class="section-label">Where this work sits</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:720px;margin-bottom:32px;">Specialist governance firms, including Ethica Group, focus on the design and structure of AI ethics frameworks, board oversight mechanisms, and institutional accountability. This is essential, foundational work. A well-designed governance system defines what <em>should</em> happen. HIA operates in the space that governance design cannot reach: the moment of live system failure. Policy governs intent. HIA tests whether that intent can be enacted.</p>
+  <p class="reveal" style="max-width:700px;margin-bottom:28px;">Specialist governance firms, including Ethica Group, focus on the design and structure of AI ethics frameworks, board oversight mechanisms, and institutional accountability. This is essential, foundational work. A well-designed governance system defines what <em>should</em> happen. HIA operates in the space that governance design cannot reach: the moment of live system failure. Policy governs intent. HIA tests whether that intent can be enacted.</p>
   <div class="compare reveal">
     <div class="compare-col">
       <div class="compare-head dim">Governance Design Layer — what should happen</div>
@@ -337,7 +402,7 @@
       <div class="compare-row faded">Documented escalation protocols</div>
       <div class="compare-row faded">Override authority, defined in writing</div>
       <div class="compare-row faded">Compliance programmes and audit structures</div>
-      <div class="compare-row" style="color:var(--text-sub);font-style:italic;">Well-designed. Rigorously documented. Cannot, by itself, ensure a board can act when it needs to.</div>
+      <div class="compare-row" style="color:var(--text-sub);font-style:italic;font-size:0.85rem;">Well-designed. Rigorously documented. Cannot, by itself, ensure a board can act when it needs to.</div>
     </div>
     <div class="compare-col hi">
       <div class="compare-head bright">HIA: Intervention Layer — what actually happens</div>
@@ -346,7 +411,7 @@
       <div class="compare-row">Do escalation paths function under real conditions?</div>
       <div class="compare-row">Can overrides be enacted at operational speed?</div>
       <div class="compare-row">Is information adequate to diagnose and act?</div>
-      <div class="compare-row" style="color:var(--text-sub);font-style:italic;">HIA operates at the critical gap between governance design and operational reality.</div>
+      <div class="compare-row" style="color:var(--text-sub);font-style:italic;font-size:0.85rem;">HIA operates at the critical gap between governance design and operational reality.</div>
     </div>
   </div>
 </div>
@@ -356,25 +421,25 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">07</span><span class="section-label">Where most organisations stand</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:660px;">Most organisations score well on governance design. They score poorly on operational intervention capability. The gap between the two is where HIA works.</p>
+  <p class="reveal" style="max-width:640px;">Most score well on governance design. They score poorly on operational intervention capability. The gap between the two is where HIA works.</p>
   <div class="scorecard reveal" id="scorecard">
     <div class="sc-panel">
       <div class="sc-panel-label dim">Without HIA</div>
-      <div class="sc-row"><span class="sc-name">Policy documentation</span>             <div class="sc-bar-wrap"><div class="sc-bar" data-w="88"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Governance framework</span>             <div class="sc-bar-wrap"><div class="sc-bar" data-w="82"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Escalation pathway clarity</span>       <div class="sc-bar-wrap"><div class="sc-bar" data-w="28"></div></div><span class="sc-tag weak">Weak</span></div>
-      <div class="sc-row"><span class="sc-name">Decision authority under pressure</span> <div class="sc-bar-wrap"><div class="sc-bar" data-w="18"></div></div><span class="sc-tag weak">Weak</span></div>
+      <div class="sc-row"><span class="sc-name">Policy documentation</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="88"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Governance framework</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="82"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Escalation pathway clarity</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="28"></div></div><span class="sc-tag weak">Weak</span></div>
+      <div class="sc-row"><span class="sc-name">Decision authority under pressure</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="18"></div></div><span class="sc-tag weak">Weak</span></div>
       <div class="sc-row"><span class="sc-name">Override speed vs decision latency</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="12"></div></div><span class="sc-tag weak">Weak</span></div>
-      <div class="sc-row"><span class="sc-name">Intervention rehearsal</span>           <div class="sc-bar-wrap"><div class="sc-bar" data-w="6"></div></div><span class="sc-tag weak">Weak</span></div>
+      <div class="sc-row"><span class="sc-name">Intervention rehearsal</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="6"></div></div><span class="sc-tag weak">Weak</span></div>
     </div>
     <div class="sc-panel" style="border-left:2px solid var(--gold);">
       <div class="sc-panel-label bright">After HIA engagement</div>
-      <div class="sc-row"><span class="sc-name">Policy documentation</span>             <div class="sc-bar-wrap"><div class="sc-bar" data-w="88"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Governance framework</span>             <div class="sc-bar-wrap"><div class="sc-bar" data-w="86"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Escalation pathway clarity</span>       <div class="sc-bar-wrap"><div class="sc-bar" data-w="84"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Decision authority under pressure</span> <div class="sc-bar-wrap"><div class="sc-bar" data-w="82"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Policy documentation</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="88"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Governance framework</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="86"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Escalation pathway clarity</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="84"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Decision authority under pressure</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="82"></div></div><span class="sc-tag strong">Strong</span></div>
       <div class="sc-row"><span class="sc-name">Override speed vs decision latency</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="78"></div></div><span class="sc-tag strong">Strong</span></div>
-      <div class="sc-row"><span class="sc-name">Intervention rehearsal</span>           <div class="sc-bar-wrap"><div class="sc-bar" data-w="80"></div></div><span class="sc-tag strong">Strong</span></div>
+      <div class="sc-row"><span class="sc-name">Intervention rehearsal</span><div class="sc-bar-wrap"><div class="sc-bar" data-w="80"></div></div><span class="sc-tag strong">Strong</span></div>
     </div>
   </div>
 </div>
@@ -407,24 +472,24 @@
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">09</span><span class="section-label">How we work</span><div class="section-rule"></div></div>
-  <ul class="dash-list reveal" style="max-width:720px;">
+  <ul class="dash-list reveal" style="max-width:700px;">
     <li>Every engagement begins with a focused, confidential conversation to establish context and determine whether an HIA engagement is appropriate.</li>
     <li>Assessments are conducted by senior advisors with direct operational experience of AI systems. Not a compliance checklist. An evaluation against operational reality.</li>
     <li>Findings are presented directly to the board or executive team. Clear, prioritised, and grounded in the specific conditions of your organisation.</li>
     <li>HIA works with a deliberately limited number of organisations. Each engagement receives the full attention of senior advisors.</li>
   </ul>
-  <p class="reveal" style="margin-top:22px;font-size:0.92rem;font-style:italic;color:var(--text-sub);">Based in the United Kingdom. Working with clients internationally through remote advisory and selected in-person sessions.</p>
+  <p class="reveal" style="margin-top:18px;font-size:0.88rem;font-style:italic;color:var(--text-sub);">Based in the United Kingdom. Working with clients internationally through remote advisory and selected in-person sessions.</p>
 </div>
 </section>
 
-<!-- 10 THE CORE QUESTION -->
+<!-- 10 CORE QUESTION -->
 <section style="border-bottom:none;">
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">10</span><span class="section-label">The core question</span><div class="section-rule"></div></div>
-  <div class="block block-accent reveal" style="max-width:760px;">
-    <p style="font-size:1.15rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:18px;">Most organisations do not know their actual intervention capability until they need it.</p>
+  <div class="block block-accent reveal" style="max-width:740px;">
+    <p style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:16px;">Most organisations do not know their actual intervention capability until they need it.</p>
     <p>By then, the cost of discovering it is no longer manageable. The question HIA exists to answer is not whether your governance framework is well designed. It is whether, when an AI-driven system produces an outcome that demands a response, your organisation can provide one — in time, with the right authority, acting on the right information.</p>
-    <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
+    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
       <a href="contact.html" class="btn-gold">Request a confidential conversation</a>
       <a href="services.html" class="btn-outline">View all services</a>
     </div>
@@ -436,17 +501,9 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-mark">
-      <div class="footer-mark-icon"><div class="fm-line"></div><div class="fm-stroke"></div><div class="fm-line"></div></div>
-      <span class="footer-mark-text">Human Integrity Advisory</span>
-    </div>
+    <div class="footer-mark"><div class="footer-mark-icon"><div class="fm-line"></div><div class="fm-stroke"></div><div class="fm-line"></div></div><span class="footer-mark-text">Human Integrity Advisory</span></div>
     <div class="footer-right">
-      <ul class="footer-links" role="list">
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="gdpr.html">GDPR</a></li>
-      </ul>
+      <ul class="footer-links" role="list"><li><a href="contact.html">Contact</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="gdpr.html">GDPR</a></li></ul>
       <span class="footer-copy">&copy;&nbsp;2026 Human Integrity Advisory &middot; All rights reserved.</span>
     </div>
   </div>

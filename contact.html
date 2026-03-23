@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request a Confidential Conversation | Human Integrity Advisory</title>
 <meta name="description" content="Request a confidential initial conversation with Human Integrity Advisory. No commitment required.">
 <meta name="robots" content="index, follow">
@@ -21,35 +22,89 @@
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Contact HIA"><meta name="twitter:description" content="Request a confidential conversation."><meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-contact.png"><meta name="twitter:image:alt" content="Contact HIA">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Request a Confidential Conversation | Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/contact.html"}</script>
 <style>
-/* Contact hero — full HIA mark style matching live site */
-.contact-hero {
-  background: var(--black);
-  padding: clamp(64px, 9vw, 110px) var(--pad-x) clamp(48px, 7vw, 72px);
-  border-bottom: 1px solid var(--border);
-  position: relative; overflow: hidden;
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border); align-items: start;
 }
-.contact-hero::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(rgba(201,182,148,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,182,148,0.025) 1px, transparent 1px);
-  background-size: 80px 80px; opacity: 0.6;
-}
-.contact-hero-inner { max-width: var(--page-max); margin: 0 auto; position: relative; z-index: 1; }
-.contact-hero-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-.contact-hero-h1 { font-size: clamp(1.8rem, 4.5vw, 3.2rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 20px; }
-.contact-hero-lede { font-size: clamp(1rem, 2.2vw, 1.15rem); line-height: 1.9; color: var(--text-body); max-width: 600px; }
+.contact-col { background: var(--bg); padding: clamp(28px,5vw,52px) clamp(22px,4vw,44px); }
+.contact-col-right { background: var(--surface); }
 
-/* Two-column contact layout */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  align-items: start;
+/* Info rows */
+.info-rows { display: flex; flex-direction: column; gap: 2px; margin-bottom: 32px; }
+.info-row { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); align-items: baseline; }
+.info-k { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
+.info-v { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; }
+.info-v a { color: var(--text-sub); transition: color 0.2s; }
+.info-v a:hover { color: var(--gold); }
+
+/* Steps */
+.next-steps { display: flex; flex-direction: column; gap: 2px; }
+.next-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); }
+.next-n { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); flex-shrink: 0; padding-top: 3px; }
+.next-t { font-size: 0.92rem; color: var(--text-body); line-height: 1.75; }
+
+/* Service pills */
+.service-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+.spill { position: relative; }
+.spill input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.spill label {
+  display: block; padding: 12px 14px; cursor: pointer;
+  background: var(--surface2); border: 1px solid var(--border-mid);
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--text-sub); line-height: 1.45;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.contact-col { background: var(--bg); padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px); }
+.spill label:hover { background: var(--bg); color: var(--text-body); }
+.spill input:checked + label { background: var(--bg); color: var(--white); border-color: var(--gold); }
+
+/* Fields */
+.f-stack { display: flex; flex-direction: column; gap: 2px; }
+.f-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.f-group { display: flex; flex-direction: column; }
+.f-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-sub); background: var(--surface2);
+  padding: 9px 14px 5px;
+  border: 1px solid var(--border-mid); border-bottom: none;
+}
+.f-input, .f-textarea {
+  background: var(--surface2); border: 1px solid var(--border-mid); border-top: none;
+  color: var(--text); font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem; font-weight: 400;
+  padding: 10px 14px 12px; width: 100%; outline: none;
+  transition: border-color 0.2s; border-radius: 0;
+  -webkit-appearance: none; appearance: none;
+}
+.f-input:focus, .f-textarea:focus { border-color: var(--gold); }
+.f-input::placeholder, .f-textarea::placeholder { color: var(--text-faint); }
+.f-textarea { resize: vertical; min-height: 128px; line-height: 1.7; }
+
+.f-submit {
+  width: 100%; display: flex; align-items: center; justify-content: center;
+  background: var(--gold); color: #000;
+  font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  padding: 14px; min-height: 50px;
+  border: none; cursor: pointer; border-radius: 0;
+  transition: opacity 0.2s; margin-top: 2px;
+}
+.f-submit:hover    { opacity: 0.85; }
+.f-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.f-note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.7; padding: 12px 0 0; }
+.f-note a { color: var(--text-sub); text-decoration: underline; text-underline-offset: 3px; }
+
+.f-success { display: none; background: var(--gold-faint); border: 1px solid var(--gold-dim); padding: 22px; }
+.f-success.show { display: block; }
+.f-success p { font-size: 0.92rem; color: var(--text-body); line-height: 1.8; }
+.f-error { display: none; background: var(--surface2); border: 1px solid var(--border-mid); padding: 18px; margin-top: 2px; }
+.f-error.show { display: block; }
+.f-error p { font-size: 0.92rem; color: var(--text-body); line-height: 1.75; }
 
 @media (max-width: 768px) {
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .f-row          { grid-template-columns: 1fr; }
+  .service-pills  { grid-template-columns: 1fr; }
+  .info-row       { grid-template-columns: 1fr; gap: 4px; }
 }
 </style>
 </head>
@@ -67,212 +122,139 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="advisory-briefs.html">Advisory Briefs</a></li>
     </ul>
-    <a href="contact.html" class="nav-enquire" style="background:var(--surface2);color:var(--gold);border:1px solid var(--gold-dim);">Enquire</a>
-    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="contact.html" class="nav-enquire" style="background:var(--surface2);color:var(--gold);outline:1px solid var(--gold-dim);">Enquire</a>
+    <button class="nav-hamburger" id="hamburger" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="nav-mobile" id="mobile-nav" aria-hidden="true">
-  <ul role="list">
-    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li><li><a href="advisory-briefs.html">Advisory Briefs</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <ul role="list"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="advisory-briefs.html">Advisory Briefs</a></li><li><a href="contact.html">Contact</a></li></ul>
   <a href="contact.html" class="nav-mobile-cta">Request a confidential conversation</a>
 </div>
 
-<!-- CONTACT HERO -->
-<header class="contact-hero">
-  <div class="contact-hero-inner">
-    <p class="contact-hero-eyebrow">Integrity &amp; Intervention Advisory for AI Systems</p>
-    <h1 class="contact-hero-h1">Request a confidential initial conversation</h1>
-    <p class="contact-hero-lede">We work with a limited number of organisations. Every potential engagement begins with a focused, no-obligation conversation — to understand your specific situation and determine whether HIA can add meaningful value.</p>
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Integrity &amp; Intervention Advisory for AI Systems</p>
+    <h1 class="page-h1">Request a confidential initial conversation</h1>
+    <p class="page-lede">We work with a limited number of organisations. Every potential engagement begins with a focused, no-obligation conversation — to understand your specific situation and determine whether HIA can add meaningful value.</p>
   </div>
 </header>
 
 <main>
+<div class="contact-layout">
 
-<div class="contact-grid">
-
-  <!-- LEFT COLUMN: context + info + steps -->
+  <!-- LEFT: context + info + steps -->
   <div class="contact-col">
 
-    <div class="section-hd" style="margin-bottom:28px;">
+    <div class="section-hd" style="margin-bottom:22px;">
       <span class="section-num">01</span>
       <span class="section-label">Enquiry form</span>
       <div class="section-rule"></div>
     </div>
 
-    <div class="block-note" style="margin-bottom:28px;">
+    <div class="block-note" style="margin-bottom:24px;">
       <strong style="color:var(--white);font-weight:600;">Before you write</strong><br><br>
       Please include your role, the situation or question prompting the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation.<br><br>
       The initial conversation is not an advisory session. It is a contained exchange to establish context, scope, and whether the work is a fit.
     </div>
 
-    <div class="contact-info-block">
-      <div class="info-row">
-        <div class="info-row-label">Direct email</div>
-        <div class="info-row-value"><a href="mailto:advisory@hia.io">advisory@hia.io</a></div>
-      </div>
-      <div class="info-row">
-        <div class="info-row-label">Confidentiality</div>
-        <div class="info-row-value">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</div>
-      </div>
-      <div class="info-row">
-        <div class="info-row-label">Response</div>
-        <div class="info-row-value">You will receive a direct response from a senior HIA advisor within one to two working days.</div>
-      </div>
-      <div class="info-row">
-        <div class="info-row-label">No obligation</div>
-        <div class="info-row-value">The initial conversation carries no commitment on either side. It is a direct discussion of your specific situation.</div>
-      </div>
+    <div class="info-rows">
+      <div class="info-row"><span class="info-k">Direct email</span><span class="info-v"><a href="mailto:advisory@hia.io">advisory@hia.io</a></span></div>
+      <div class="info-row"><span class="info-k">Confidentiality</span><span class="info-v">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</span></div>
+      <div class="info-row"><span class="info-k">Response</span><span class="info-v">You will receive a direct response from a senior HIA advisor within one to two working days.</span></div>
+      <div class="info-row"><span class="info-k">No obligation</span><span class="info-v">The initial conversation carries no commitment on either side. It is a direct discussion of your specific situation.</span></div>
     </div>
 
-    <div class="section-hd" style="margin-top:40px;margin-bottom:22px;">
+    <div class="section-hd" style="margin-bottom:18px;">
       <span class="section-num">02</span>
       <span class="section-label">What happens next</span>
       <div class="section-rule"></div>
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <span class="step-num">01</span>
-        <p class="step-text">A senior HIA advisor reviews your enquiry and responds directly within one to two working days.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <p class="step-text">If there is a potential fit, we arrange a short, focused conversation to understand your situation in more detail.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <p class="step-text">If both parties wish to proceed, a written scope and engagement agreement follows before any work begins.</p>
-      </div>
+    <div class="next-steps">
+      <div class="next-step"><span class="next-n">01</span><p class="next-t">A senior HIA advisor reviews your enquiry and responds directly within one to two working days.</p></div>
+      <div class="next-step"><span class="next-n">02</span><p class="next-t">If there is a potential fit, we arrange a short, focused conversation to understand your situation in more detail.</p></div>
+      <div class="next-step"><span class="next-n">03</span><p class="next-t">If both parties wish to proceed, a written scope and engagement agreement follows before any work begins.</p></div>
     </div>
 
   </div>
 
-  <!-- RIGHT COLUMN: form -->
-  <div class="contact-col" style="background:var(--surface);">
+  <!-- RIGHT: form -->
+  <div class="contact-col contact-col-right">
 
-    <div class="section-hd" style="margin-bottom:28px;">
+    <div class="section-hd" style="margin-bottom:22px;">
       <span class="section-num">03</span>
       <span class="section-label">Send an enquiry</span>
       <div class="section-rule"></div>
     </div>
 
-    <!-- SUCCESS -->
-    <div class="form-success" id="form-success" role="alert">
-      <p><strong style="color:var(--white);font-weight:600;">Enquiry received.</strong><br><br>
-      A senior HIA advisor will respond to you directly within one to two working days. All information you have shared is held in strict confidence.</p>
+    <div class="f-success" id="form-success" role="alert">
+      <p><strong style="color:var(--white);font-weight:600;">Enquiry received.</strong><br><br>A senior HIA advisor will respond to you directly within one to two working days. All information you have shared is held in strict confidence.</p>
     </div>
-
-    <!-- ERROR -->
-    <div class="form-error" id="form-error" role="alert">
-      <p><strong style="color:var(--white);font-weight:600;">Something went wrong.</strong><br><br>
-      Please try again, or write to us directly at <a href="mailto:advisory@hia.io" style="color:var(--text-sub);">advisory@hia.io</a>.</p>
+    <div class="f-error" id="form-error" role="alert">
+      <p><strong style="color:var(--white);font-weight:600;">Something went wrong.</strong><br><br>Please try again, or write directly to <a href="mailto:advisory@hia.io" style="color:var(--text-sub);">advisory@hia.io</a>.</p>
     </div>
 
     <!--
-      FORMSPREE INTEGRATION
-      ─────────────────────
-      1. Go to https://formspree.io — create a free account
-      2. Create a new form — copy the endpoint URL
-      3. Replace YOUR_FORM_ID below with your endpoint:
-         e.g. action="https://formspree.io/f/xabcdefg"
-      ─────────────────────
+      FORMSPREE: replace YOUR_FORM_ID
+      Get endpoint at formspree.io
     -->
-    <form
-      id="contact-form"
-      action="https://formspree.io/f/YOUR_FORM_ID"
-      method="POST"
-      novalidate
-    >
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
-      <!-- Service area — radio pills matching live site -->
-      <p class="form-section-label">Service area <span style="color:var(--gold);">*</span></p>
-      <div class="form-service-grid" style="margin-bottom:24px;">
-        <div class="form-pill">
-          <input type="radio" name="service" id="s-boardroom" value="Boardroom Integrity Advisory" required>
-          <label for="s-boardroom">Boardroom Integrity Advisory</label>
+      <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px;">Service area <span style="color:var(--gold)">*</span></p>
+      <div class="service-pills">
+        <div class="spill"><input type="radio" name="service" id="sv1" value="Boardroom Integrity Advisory" required><label for="sv1">Boardroom Integrity Advisory</label></div>
+        <div class="spill"><input type="radio" name="service" id="sv2" value="Decision Architecture Review"><label for="sv2">Decision Architecture Review</label></div>
+        <div class="spill"><input type="radio" name="service" id="sv3" value="Executive Intervention Labs"><label for="sv3">Executive Intervention Labs</label></div>
+        <div class="spill"><input type="radio" name="service" id="sv4" value="Not yet sure"><label for="sv4">Not yet sure</label></div>
+      </div>
+
+      <div class="f-stack">
+        <div class="f-group">
+          <label class="f-label" for="fname">Full name <span style="color:var(--gold)">*</span></label>
+          <input class="f-input" type="text" id="fname" name="full_name" required autocomplete="name">
         </div>
-        <div class="form-pill">
-          <input type="radio" name="service" id="s-architecture" value="Decision Architecture Review">
-          <label for="s-architecture">Decision Architecture Review</label>
+        <div class="f-row">
+          <div class="f-group">
+            <label class="f-label" for="frole">Title / role <span style="color:var(--gold)">*</span></label>
+            <input class="f-input" type="text" id="frole" name="role" required>
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="femail">Email <span style="color:var(--gold)">*</span></label>
+            <input class="f-input" type="email" id="femail" name="email" required autocomplete="email">
+          </div>
         </div>
-        <div class="form-pill">
-          <input type="radio" name="service" id="s-labs" value="Executive Intervention Labs">
-          <label for="s-labs">Executive Intervention Labs</label>
+        <div class="f-group">
+          <label class="f-label" for="forg">Organisation <span style="color:var(--gold)">*</span></label>
+          <input class="f-input" type="text" id="forg" name="organisation" required autocomplete="organization">
         </div>
-        <div class="form-pill">
-          <input type="radio" name="service" id="s-unsure" value="Not yet sure">
-          <label for="s-unsure">Not yet sure</label>
+        <div class="f-group">
+          <label class="f-label" for="fsit">Your situation <span style="color:var(--gold)">*</span></label>
+          <textarea class="f-textarea" id="fsit" name="situation" placeholder="Please include your role, what has prompted the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation." required></textarea>
         </div>
       </div>
 
-      <!-- Full name -->
-      <div class="form-field">
-        <label class="form-label" for="full-name">Full name <span style="color:var(--gold);">*</span></label>
-        <input class="form-input" type="text" id="full-name" name="full_name" placeholder="Your full name" required autocomplete="name">
-      </div>
-
-      <!-- Title / role and Email in a row -->
-      <div class="form-row2">
-        <div class="form-field">
-          <label class="form-label" for="role">Title / role <span style="color:var(--gold);">*</span></label>
-          <input class="form-input" type="text" id="role" name="role" placeholder="e.g. Chief Risk Officer" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="email">Email <span style="color:var(--gold);">*</span></label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="you@organisation.com" required autocomplete="email">
-        </div>
-      </div>
-
-      <!-- Organisation -->
-      <div class="form-field">
-        <label class="form-label" for="organisation">Organisation <span style="color:var(--gold);">*</span></label>
-        <input class="form-input" type="text" id="organisation" name="organisation" placeholder="Organisation name" required autocomplete="organization">
-      </div>
-
-      <!-- Your situation -->
-      <div class="form-field">
-        <label class="form-label" for="situation">Your situation <span style="color:var(--gold);">*</span></label>
-        <textarea class="form-textarea" id="situation" name="situation" placeholder="Please include your role, what has prompted the enquiry, and any relevant context or timelines. This allows us to prepare for a more useful first conversation." required></textarea>
-      </div>
-
-      <!-- Honeypot -->
       <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
       <input type="hidden" name="_subject" value="HIA — New Enquiry">
 
-      <button type="submit" class="form-submit">Send enquiry</button>
+      <button type="submit" class="f-submit">Send enquiry</button>
 
-      <p class="form-note">All information is held in strict confidence. We do not share your details with any third party. This is a direct line to HIA advisors, not an automated system. By submitting you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+      <p class="f-note">All information is held in strict confidence. We do not share your details with any third party. This is a direct line to HIA advisors, not an automated system.</p>
 
     </form>
-
   </div>
-</div>
 
+</div>
 </main>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-mark">
-      <div class="footer-mark-icon"><div class="fm-line"></div><div class="fm-stroke"></div><div class="fm-line"></div></div>
-      <span class="footer-mark-text">Human Integrity Advisory</span>
-    </div>
+    <div class="footer-mark"><div class="footer-mark-icon"><div class="fm-line"></div><div class="fm-stroke"></div><div class="fm-line"></div></div><span class="footer-mark-text">Human Integrity Advisory</span></div>
     <div class="footer-right">
-      <ul class="footer-links" role="list">
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="terms.html">Terms &amp; Conditions</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="gdpr.html">GDPR</a></li>
-      </ul>
+      <ul class="footer-links" role="list"><li><a href="contact.html">Contact</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="gdpr.html">GDPR</a></li></ul>
       <span class="footer-copy">&copy;&nbsp;2026 Human Integrity Advisory &middot; All rights reserved.</span>
     </div>
   </div>
 </footer>
-
 <script src="hia.js"></script>
 </body>
 </html>
