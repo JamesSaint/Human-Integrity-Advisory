@@ -22,83 +22,87 @@
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Contact HIA"><meta name="twitter:description" content="Request a confidential conversation."><meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-contact.png"><meta name="twitter:image:alt" content="Contact HIA">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Request a Confidential Conversation | Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/contact.html"}</script>
 <style>
+/* Contact layout — constrained to page-max, not full viewport */
 .contact-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--border); align-items: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  align-items: start;
 }
-.contact-col { background: var(--bg); padding: clamp(28px,5vw,52px) clamp(22px,4vw,44px); }
-.contact-col-right { background: var(--surface); }
+.contact-col        { background: var(--bg);      padding: clamp(36px,5vw,60px) clamp(28px,4vw,52px); }
+.contact-col-right  { background: var(--surface);  padding: clamp(36px,5vw,60px) clamp(28px,4vw,52px); }
 
-/* Info rows */
-.info-rows { display: flex; flex-direction: column; gap: 2px; margin-bottom: 32px; }
-.info-row { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); align-items: baseline; }
-.info-k { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
-.info-v { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; }
-.info-v a { color: var(--text-sub); transition: color 0.2s; }
+/* Info rows — more breathing room */
+.info-rows { display: flex; flex-direction: column; gap: 2px; margin-bottom: 40px; }
+.info-row  { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 18px 22px; background: var(--surface); border: 1px solid var(--border); align-items: baseline; }
+.info-k    { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
+.info-v    { font-size: 0.95rem; color: var(--text-body); line-height: 1.75; }
+.info-v a  { color: var(--text-sub); transition: color 0.2s; }
 .info-v a:hover { color: var(--gold); }
 
-/* Steps */
+/* Steps — generous padding */
 .next-steps { display: flex; flex-direction: column; gap: 2px; }
-.next-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); }
-.next-n { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); flex-shrink: 0; padding-top: 3px; }
-.next-t { font-size: 0.92rem; color: var(--text-body); line-height: 1.75; }
+.next-step  { display: flex; gap: 20px; align-items: flex-start; padding: 18px 22px; background: var(--surface); border: 1px solid var(--border); }
+.next-n     { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); flex-shrink: 0; padding-top: 3px; }
+.next-t     { font-size: 0.95rem; color: var(--text-body); line-height: 1.8; }
 
-/* Service pills */
-.service-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+/* Service pills — larger, more comfortable */
+.service-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 28px; }
 .spill { position: relative; }
 .spill input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
 .spill label {
-  display: block; padding: 12px 14px; cursor: pointer;
+  display: block; padding: 16px 18px; cursor: pointer;
   background: var(--surface2); border: 1px solid var(--border-mid);
-  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
-  color: var(--text-sub); line-height: 1.45;
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--text-sub); line-height: 1.5;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .spill label:hover { background: var(--bg); color: var(--text-body); }
 .spill input:checked + label { background: var(--bg); color: var(--white); border-color: var(--gold); }
 
-/* Fields */
+/* Fields — premium spacing */
 .f-stack { display: flex; flex-direction: column; gap: 2px; }
 .f-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.f-group { display: flex; flex-direction: column; }
+.f-group { display: flex; flex-direction: column; margin-bottom: 2px; }
 .f-label {
   font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--text-sub); background: var(--surface2);
-  padding: 9px 14px 5px;
+  padding: 12px 18px 6px;
   border: 1px solid var(--border-mid); border-bottom: none;
 }
 .f-input, .f-textarea {
   background: var(--surface2); border: 1px solid var(--border-mid); border-top: none;
   color: var(--text); font-family: 'Montserrat', sans-serif;
-  font-size: 0.92rem; font-weight: 400;
-  padding: 10px 14px 12px; width: 100%; outline: none;
+  font-size: 0.95rem; font-weight: 400;
+  padding: 12px 18px 16px; width: 100%; outline: none;
   transition: border-color 0.2s; border-radius: 0;
   -webkit-appearance: none; appearance: none;
 }
 .f-input:focus, .f-textarea:focus { border-color: var(--gold); }
 .f-input::placeholder, .f-textarea::placeholder { color: var(--text-faint); }
-.f-textarea { resize: vertical; min-height: 128px; line-height: 1.7; }
+.f-textarea { resize: vertical; min-height: 160px; line-height: 1.75; }
 
 .f-submit {
   width: 100%; display: flex; align-items: center; justify-content: center;
   background: var(--gold); color: #000;
   font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700;
   letter-spacing: 0.20em; text-transform: uppercase;
-  padding: 14px; min-height: 50px;
+  padding: 18px; min-height: 56px;
   border: none; cursor: pointer; border-radius: 0;
-  transition: opacity 0.2s; margin-top: 2px;
+  transition: opacity 0.2s; margin-top: 4px;
 }
 .f-submit:hover    { opacity: 0.85; }
 .f-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-.f-note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.7; padding: 12px 0 0; }
+.f-note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.75; padding: 16px 0 0; }
 .f-note a { color: var(--text-sub); text-decoration: underline; text-underline-offset: 3px; }
 
-.f-success { display: none; background: var(--gold-faint); border: 1px solid var(--gold-dim); padding: 22px; }
+.f-success { display: none; background: var(--gold-faint); border: 1px solid var(--gold-dim); padding: 28px; }
 .f-success.show { display: block; }
-.f-success p { font-size: 0.92rem; color: var(--text-body); line-height: 1.8; }
-.f-error { display: none; background: var(--surface2); border: 1px solid var(--border-mid); padding: 18px; margin-top: 2px; }
+.f-success p { font-size: 0.95rem; color: var(--text-body); line-height: 1.85; }
+.f-error { display: none; background: var(--surface2); border: 1px solid var(--border-mid); padding: 22px; margin-top: 2px; }
 .f-error.show { display: block; }
-.f-error p { font-size: 0.92rem; color: var(--text-body); line-height: 1.75; }
+.f-error p { font-size: 0.95rem; color: var(--text-body); line-height: 1.8; }
 
 @media (max-width: 768px) {
   .contact-layout { grid-template-columns: 1fr; }
@@ -140,6 +144,8 @@
 </header>
 
 <main>
+<section style="padding:0;border-bottom:none;">
+<div class="page-wrap" style="padding:0;">
 <div class="contact-layout">
 
   <!-- LEFT: context + info + steps -->
@@ -164,7 +170,7 @@
       <div class="info-row"><span class="info-k">No obligation</span><span class="info-v">The initial conversation carries no commitment on either side. It is a direct discussion of your specific situation.</span></div>
     </div>
 
-    <div class="section-hd" style="margin-bottom:18px;">
+    <div class="section-hd" style="margin-bottom:18px;margin-top:44px;">
       <span class="section-num">02</span>
       <span class="section-label">What happens next</span>
       <div class="section-rule"></div>
@@ -200,7 +206,7 @@
     -->
     <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
-      <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px;">Service area <span style="color:var(--gold)">*</span></p>
+      <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:10px;">Service area <span style="color:var(--gold)">*</span></p>
       <div class="service-pills">
         <div class="spill"><input type="radio" name="service" id="sv1" value="Boardroom Integrity Advisory" required><label for="sv1">Boardroom Integrity Advisory</label></div>
         <div class="spill"><input type="radio" name="service" id="sv2" value="Decision Architecture Review"><label for="sv2">Decision Architecture Review</label></div>
@@ -241,9 +247,11 @@
       <p class="f-note">All information is held in strict confidence. We do not share your details with any third party. This is a direct line to HIA advisors, not an automated system.</p>
 
     </form>
-  </div>
+  </div><!-- /.contact-col-right -->
 
-</div>
+</div><!-- /.contact-layout -->
+</div><!-- /.page-wrap -->
+</section>
 </main>
 
 <footer>
