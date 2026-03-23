@@ -5,6 +5,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Universal overflow safety — prevents any child breaking viewport width */
+img, svg, video, iframe, embed { max-width: 100%; }
+table { max-width: 100%; overflow-x: auto; display: block; }
+
 :root {
   --black:      #000000;
   --bg:         #0a0a0a;
@@ -27,7 +31,7 @@
   --pad-s:      clamp(52px, 7vw, 88px);
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); overflow-x: hidden; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -166,7 +170,7 @@ p + p { margin-top: 14px; }
   letter-spacing: 0.20em; text-transform: uppercase;
   padding: 12px 28px; min-height: 44px;
   border: none; cursor: pointer; border-radius: 0;
-  transition: opacity 0.2s; white-space: nowrap;
+  transition: opacity 0.2s;
 }
 .btn-gold:hover { opacity: 0.85; }
 
@@ -178,7 +182,7 @@ p + p { margin-top: 14px; }
   letter-spacing: 0.20em; text-transform: uppercase;
   padding: 11px 28px; min-height: 44px;
   border: 1px solid var(--border-mid); cursor: pointer; border-radius: 0;
-  transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
 }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
@@ -190,7 +194,7 @@ p + p { margin-top: 14px; }
   letter-spacing: 0.20em; text-transform: uppercase;
   padding: 10px 20px; min-height: 40px;
   border: 1px solid var(--border-mid); cursor: pointer; border-radius: 0;
-  transition: border-color 0.2s, color 0.2s; white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
 }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
@@ -307,7 +311,7 @@ section:last-of-type { border-bottom: none; }
 .sc-row    { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); }
 .sc-row:last-child { border-bottom: none; }
 .sc-name   { font-size: 0.85rem; color: var(--text-body); flex: 1; line-height: 1.4; }
-.sc-bar-wrap { width: 90px; height: 3px; background: var(--surface2); flex-shrink: 0; overflow: hidden; }
+.sc-bar-wrap { width: clamp(60px, 15vw, 90px); height: 3px; background: var(--surface2); flex-shrink: 0; overflow: hidden; }
 .sc-bar    { height: 100%; background: var(--gold); width: 0; transition: width 1.4s ease; }
 .sc-tag    { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; flex-shrink: 0; min-width: 44px; text-align: right; }
 .sc-tag.weak   { color: var(--text-faint); }
@@ -368,7 +372,7 @@ section:last-of-type { border-bottom: none; }
 .gap-wrap-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 28px; text-align: center; }
 .gap-diagram { display: flex; align-items: stretch; }
 .gap-col { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 18px; background: var(--surface2); border: 1px solid var(--border); }
-.gap-centre { flex: 0 0 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 12px; }
+.gap-centre { flex: 0 0 clamp(72px, 12vw, 110px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 12px; }
 .gap-col-head { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 6px; }
 .gap-col-head.dim    { color: var(--text-sub); }
 .gap-col-head.bright { color: var(--gold); }
@@ -537,6 +541,9 @@ footer {
   .offer-cols { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
+  /* Prevent any fixed-width child breaking viewport */
+  .chain-row { grid-template-columns: 72px 1fr; }
+  .chain-row .cr-time { display: none; }
   .nav-links      { display: none; }
   .nav-enquire    { display: none; }
   .nav-hamburger  { display: flex; }
@@ -559,6 +566,10 @@ footer {
   :root { --nav-h: 56px; }
   .stat-band { grid-template-columns: 1fr; }
   .cta-pair  { flex-direction: column; align-items: center; }
+  .offer-cols { grid-template-columns: 1fr; }
+  .sc-row { flex-wrap: wrap; }
+  .chain-row { grid-template-columns: 60px 1fr; gap: 12px; padding: 14px 16px; }
+  .tl-time { display: none; }
 }
 
 /* ── SERVICE SELECTOR responsive fix ─────────────────────── */
