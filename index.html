@@ -104,63 +104,48 @@
   .gap-col-right { border-left: none; border-top: 2px solid var(--gold); }
 }
 
-/* ── INFOGRAPHIC: AUTHORITY CHAIN — pure HTML/CSS ────────── */
-.chain-infographic {
-  display: flex;
-  align-items: stretch;
+/* ── INFOGRAPHIC: AUTHORITY CHAIN — vertical list ───────── */
+.chain-table {
   border: 1px solid var(--border);
   background: var(--border);
-  margin-top: 0;
-  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
-.chain-node {
-  flex: 1; min-width: 140px;
+.chain-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 80px;
+  align-items: center;
   background: var(--surface);
-  padding: clamp(16px,2.5vw,24px) clamp(14px,2vw,20px);
-  display: flex; flex-direction: column; gap: 6px;
+  padding: 20px 24px;
+  gap: 24px;
 }
-.chain-node.board-node { background: var(--surface2); border-left: 1px solid var(--border-mid); }
-.chain-node.consequence { background: var(--black); border-left: 1px solid var(--gold-dim); }
-.chain-gap {
-  flex: 0 0 auto; width: 56px;
+.chain-row.board-row   { background: var(--surface2); border-left: 2px solid var(--gold); }
+.chain-row.outcome-row { background: var(--black);    border-left: 2px solid var(--gold-dim); }
+.chain-row.gap-row {
   background: var(--bg);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 6px; padding: 8px;
+  padding: 10px 24px;
+  grid-template-columns: 100px 1fr 80px;
+  border-left: 2px dashed rgba(201,182,148,0.18);
 }
-.chain-label {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase;
+.cr-stage {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; line-height: 1.4;
 }
-.chain-label.muted  { color: var(--text-faint); }
-.chain-label.gold   { color: var(--gold); }
-.chain-body { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; }
-.chain-body.warn    { color: var(--text-sub); }
-.chain-body.closed  { color: var(--gold); font-weight: 600; }
-.chain-time { font-size: 0.72rem; font-style: italic; color: var(--text-faint); margin-top: 4px; }
-.chain-time.crit    { color: var(--gold); }
-.chain-arrow {
-  font-size: 1rem; color: var(--gold-dim); line-height: 1;
-  display: flex; align-items: center; justify-content: center;
+.cr-stage.muted  { color: var(--text-faint); }
+.cr-stage.active { color: var(--gold); }
+.cr-stage.gap    { color: var(--gold-dim); font-size: 0.58rem; }
+.cr-body {
+  font-size: 0.95rem; color: var(--text-body); line-height: 1.7;
 }
-.chain-gap-label {
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--gold-dim); text-align: center;
-  writing-mode: vertical-lr; transform: rotate(180deg);
+.cr-body.warn   { color: var(--text-sub); }
+.cr-body.closed { color: var(--gold); font-weight: 600; font-size: 1rem; }
+.cr-body.gap    { color: var(--text-faint); font-size: 0.85rem; font-style: italic; }
+.cr-time {
+  font-size: 0.75rem; font-weight: 600; color: var(--text-faint);
+  text-align: right; font-style: italic;
 }
-.chain-dash {
-  width: 1px; flex: 1; border-left: 1px dashed rgba(201,182,148,0.25);
-  min-height: 20px;
-}
-
-@media (max-width: 900px) {
-  .chain-infographic { flex-direction: column; overflow-x: visible; }
-  .chain-node  { min-width: 0; }
-  .chain-gap   { width: 100%; flex-direction: row; height: 44px; gap: 10px; }
-  .chain-gap-label { writing-mode: horizontal-tb; transform: none; }
-  .chain-dash  { width: 100%; height: 1px; border-left: none; border-top: 1px dashed rgba(201,182,148,0.25); min-height: 0; }
-  .chain-arrow { transform: rotate(90deg); }
-}
+.cr-time.crit { color: var(--gold); }
 </style>
 </head>
 <body>
@@ -328,59 +313,57 @@
   <div class="section-hd reveal"><span class="section-num">05</span><span class="section-label">The authority chain — and where it breaks</span><div class="section-rule"></div></div>
   <p class="reveal" style="max-width:640px;margin-bottom:28px;">Authority must travel from a system event to a person who can act — fast enough to matter. Most organisations have never mapped this chain. Most have never tested it under pressure.</p>
 
-  <div class="chain-infographic reveal">
+  <div class="chain-table reveal">
 
-    <div class="chain-node">
-      <p class="chain-label muted">System Event</p>
-      <p class="chain-body">AI decision deviates from expected parameters.</p>
-      <p class="chain-time">T + 0</p>
+    <div class="chain-row">
+      <p class="cr-stage muted">System Event</p>
+      <p class="cr-body">An AI-driven decision produces outputs outside expected parameters.</p>
+      <p class="cr-time">T + 0</p>
     </div>
 
-    <div class="chain-gap">
-      <div class="chain-arrow">&#8594;</div>
+    <div class="chain-row gap-row">
+      <p class="cr-stage gap">&#8595;</p>
+      <p class="cr-body gap">Signal travels toward operations — route not yet defined.</p>
+      <p class="cr-time"></p>
     </div>
 
-    <div class="chain-node">
-      <p class="chain-label muted">Operations</p>
-      <p class="chain-body warn">Signal noticed. Escalation route unclear.</p>
-      <p class="chain-time">T + 6h</p>
+    <div class="chain-row">
+      <p class="cr-stage muted">Operations</p>
+      <p class="cr-body warn">Signal noticed. Escalation route unclear. First person in chain lacks authority to act.</p>
+      <p class="cr-time">T + 6h</p>
     </div>
 
-    <div class="chain-gap" style="background:var(--gold-faint);border-left:1px dashed rgba(201,182,148,0.2);border-right:1px dashed rgba(201,182,148,0.2);">
-      <div class="chain-dash"></div>
-      <p class="chain-gap-label">STALL</p>
-      <div class="chain-dash"></div>
+    <div class="chain-row gap-row" style="border-left:2px dashed rgba(201,182,148,0.35);background:var(--gold-faint);">
+      <p class="cr-stage gap" style="color:var(--gold-dim);font-weight:700;letter-spacing:0.18em;">STALL</p>
+      <p class="cr-body gap">Issue moves through approval layers. Each adds latency. No one holds clear authority to halt.</p>
+      <p class="cr-time"></p>
     </div>
 
-    <div class="chain-node">
-      <p class="chain-label muted">Management</p>
-      <p class="chain-body warn">Issue received. Authority to act uncertain.</p>
-      <p class="chain-time">T + 18h</p>
+    <div class="chain-row">
+      <p class="cr-stage muted">Management</p>
+      <p class="cr-body warn">Issue received. Authority to act uncertain. Escalation continues upward.</p>
+      <p class="cr-time">T + 18h</p>
     </div>
 
-    <div class="chain-gap" style="background:var(--gold-faint);border-left:1px dashed rgba(201,182,148,0.2);border-right:1px dashed rgba(201,182,148,0.2);">
-      <div class="chain-dash"></div>
-      <p class="chain-gap-label">DELAY</p>
-      <div class="chain-dash"></div>
+    <div class="chain-row gap-row" style="border-left:2px dashed rgba(201,182,148,0.35);background:var(--gold-faint);">
+      <p class="cr-stage gap" style="color:var(--gold-dim);font-weight:700;letter-spacing:0.18em;">DELAY</p>
+      <p class="cr-body gap">Further approval required. The decision is still running. The window is closing.</p>
+      <p class="cr-time"></p>
     </div>
 
-    <div class="chain-node board-node">
-      <p class="chain-label gold">Board</p>
-      <p class="chain-body">Informed too late.</p>
-      <p class="chain-body closed">Intervention window already closed.</p>
-      <p class="chain-time crit">T + 36h+</p>
+    <div class="chain-row board-row">
+      <p class="cr-stage active">Board</p>
+      <p class="cr-body closed">Informed too late. The intervention window has already closed.</p>
+      <p class="cr-time crit">T + 36h+</p>
     </div>
 
-    <div class="chain-gap">
-      <div class="chain-arrow">&#8594;</div>
-    </div>
-
-    <div class="chain-node consequence">
-      <p class="chain-label gold">Consequence</p>
-      <p class="chain-body warn">Regulatory exposure</p>
-      <p class="chain-body warn">Reputational damage</p>
-      <p class="chain-body warn">Financial liability</p>
-      <p class="chain-time crit">T + 7d+</p>
+    <div class="chain-row outcome-row">
+      <p class="cr-stage active">Consequence</p>
+      <div>
+        <p class="cr-body warn" style="margin-bottom:4px;">Regulatory exposure &nbsp;·&nbsp; Reputational damage &nbsp;·&nbsp; Financial liability</p>
+        <p class="cr-body warn">The cost of discovery is no longer manageable.</p>
+      </div>
+      <p class="cr-time crit">T + 7d+</p>
     </div>
 
   </div>
