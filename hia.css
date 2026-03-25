@@ -270,7 +270,7 @@ section:last-of-type { border-bottom: none; }
 
 /* ── OFFER BLOCKS ─────────────────────────────────────────── */
 
-.offer { border: 1px solid var(--border); background: var(--surface); margin-bottom: 2px; scroll-margin-top: calc(var(--nav-h) + 24px); }
+.offer { border: 1px solid var(--border); background: var(--surface); margin-bottom: 20px; scroll-margin-top: calc(var(--nav-h) + 24px); }
 .offer-head { padding: clamp(20px, 4vw, 32px); border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 20px; }
 .offer-num  { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); flex-shrink: 0; padding-top: 3px; }
 .offer-meta { flex: 1; }
