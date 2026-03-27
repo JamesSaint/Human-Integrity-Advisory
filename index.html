@@ -32,7 +32,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/"}</script>
 <style>
 
-/* ── HERO ────────────────────────────────────────────────── */
+/* ── HERO ─────────────────────────────────────────────────── */
 .hero {
   min-height: calc(96vh - var(--nav-h));
   background: var(--black);
@@ -116,27 +116,15 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   AUTHORITY CHAIN — two parallel tracks on one timeline.
-   Crisis runs. Authority climbs. Window closes first.
-   Column 4 inverts: gold background, the moment of failure.
+   AUTHORITY CHAIN — two parallel tracks on one timeline
 ══════════════════════════════════════════════════════════ */
-
-/*
-  DOM order (mobile-first, reads as vertical sequence):
-  m1 c1 a1 | m2 c2 a2 | m3 c3 a3 | [window open | window closed] | m4 c4 a4
-
-  Desktop: CSS grid places each element into its row and column.
-  4 columns × 4 rows. Column 4 = gold inversion.
-*/
 
 .ctd {
   border: 1px solid var(--border);
   overflow: hidden;
 }
 
-/* ── MOBILE: vertical sequence ──────────────────────────── */
-
-/* Time marker — step header */
+/* Time marker */
 .ctd-m {
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -203,7 +191,7 @@
   line-height: 1.65;
 }
 
-/* Intervention window band — spans before final step */
+/* Intervention window band */
 .ctd-w {
   display: flex;
   align-items: stretch;
@@ -269,23 +257,19 @@
   line-height: 1;
 }
 
-/* ── STEP 4: Board — gold inversion ─────────────────────── */
-/* The gold column: all three cells become gold background */
-
+/* Board — gold inversion */
 .ctd-m.ctd-break {
   background: var(--gold);
   border-top: none;
 }
-
 .ctd-m.ctd-break .ctd-stamp { color: #000; }
 .ctd-m.ctd-break .ctd-stamp .g { color: rgba(0,0,0,0.6); }
 .ctd-m.ctd-break .ctd-step-name { color: rgba(0,0,0,0.55); }
 
 .ctd-c.ctd-break {
-  background: #c4ae8a; /* slightly darker gold */
+  background: #c4ae8a;
   border-top: none;
 }
-
 .ctd-c.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
 .ctd-c.ctd-break .ctd-c-body {
   color: rgba(0,0,0,0.85);
@@ -294,46 +278,25 @@
 }
 
 .ctd-a.ctd-break {
-  background: #b8a27e; /* darker gold for contrast */
+  background: #b8a27e;
   border-top: none;
   border-bottom: none;
 }
-
 .ctd-a.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
 .ctd-a.ctd-break .ctd-a-body {
   color: rgba(0,0,0,0.85);
   font-weight: 600;
 }
 
-/* Consequence pills */
-.ctd-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0 10px;
+/* Mobile: window note wraps */
+@media (max-width: 560px) {
+  .ctd-w { flex-wrap: wrap; gap: 1px; }
+  .ctd-w-open { flex: 1 1 100%; }
+  .ctd-w-closed { flex: 1 1 100%; border-left: none; border-top: 1px solid rgba(201,182,148,0.3); justify-content: flex-start; }
 }
 
-.ctd-pill {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.6);
-  border: 1px solid rgba(0,0,0,0.2);
-  padding: 4px 10px;
-  white-space: nowrap;
-}
-
-
-/* ══════════════════════════════════════════════════════════
-   DESKTOP LAYOUT — CSS grid, 4 columns, 4 rows
-   Explicit grid placement regardless of DOM order.
-   Column 4 = the break column (gold inversion).
-   Row 3 = intervention window (spans 1-3 | 4).
-══════════════════════════════════════════════════════════ */
-
+/* Desktop: explicit grid placement */
 @media (min-width: 720px) {
-
   .ctd {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -344,7 +307,6 @@
     outline: 1px solid var(--border);
   }
 
-  /* ── Row 1: time markers ── */
   .ctd-m      { border-top: none; padding: 18px 22px 16px; }
   .ctd-m1     { grid-column: 1; grid-row: 1; }
   .ctd-m2     { grid-column: 2; grid-row: 1; }
@@ -353,46 +315,32 @@
 
   .ctd-stamp  { font-size: clamp(1.6rem, 3vw, 2.2rem); display: block; margin-bottom: 6px; }
 
-  /* ── Row 2: crisis track ── */
   .ctd-c      { padding: 20px 22px 22px; border-top: none; }
   .ctd-c1     { grid-column: 1; grid-row: 2; }
   .ctd-c2     { grid-column: 2; grid-row: 2; }
   .ctd-c3     { grid-column: 3; grid-row: 2; }
   .ctd-c4     { grid-column: 4; grid-row: 2; }
 
-  /* ── Row 3: intervention window ── */
-  .ctd-w      { display: contents; } /* dissolve the wrapper on desktop */
-
+  .ctd-w      { display: contents; }
   .ctd-w-open {
-    grid-column: 1 / 4;
-    grid-row: 3;
-    flex: none;
-    padding: 12px 22px;
-    align-items: center;
+    grid-column: 1 / 4; grid-row: 3;
+    flex: none; padding: 12px 22px; align-items: center;
   }
-
   .ctd-w-closed {
-    grid-column: 4;
-    grid-row: 3;
-    flex: none;
-    background: #0d0b09;
-    padding: 12px 18px;
-    justify-content: center;
-    border-left: none;
+    grid-column: 4; grid-row: 3;
+    flex: none; background: #0d0b09; padding: 12px 18px;
+    justify-content: center; border-left: none;
   }
 
-  /* ── Row 4: authority track ── */
   .ctd-a      { padding: 20px 22px 24px; border-top: none; border-bottom: none; }
   .ctd-a1     { grid-column: 1; grid-row: 4; }
   .ctd-a2     { grid-column: 2; grid-row: 4; }
   .ctd-a3     { grid-column: 3; grid-row: 4; }
   .ctd-a4     { grid-column: 4; grid-row: 4; }
 
-  /* ── Column 4: gold inversion across all rows ── */
   .ctd-m4.ctd-break { background: var(--gold); }
   .ctd-c4.ctd-break { background: #c4ae8a; }
   .ctd-a4.ctd-break { background: #b8a27e; }
-
 }
 
 </style>
@@ -537,89 +485,62 @@
 </div>
 </section>
 
-<!-- 04 FAILURE TIMELINE -->
-<section>
-<div class="page-wrap">
-  <div class="section-hd reveal"><span class="section-num">04</span><span class="section-label">What a failure looks like in sequence</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:640px;margin-bottom:28px;">The failure is not a single moment. It is a sequence. Each step is survivable in isolation. Together they compound into consequence.</p>
-  <div class="timeline reveal">
-    <div class="tl-item"><div class="tl-node">T1</div><div class="tl-body"><div class="tl-label">System event begins</div><div class="tl-text">An AI-driven decision produces outputs outside expected parameters. The deviation is real but not yet visible at executive level.</div></div><div class="tl-time">T + 0</div></div>
-    <div class="tl-item"><div class="tl-node">T2</div><div class="tl-body"><div class="tl-label">Signal reaches operations</div><div class="tl-text">An operational team notices the anomaly and flags it internally. The escalation route is unclear, or the first person in the chain lacks authority to act.</div></div><div class="tl-time">T + 6h</div></div>
-    <div class="tl-item"><div class="tl-node">T3</div><div class="tl-body"><div class="tl-label">Escalation stalls</div><div class="tl-text">The issue moves through approval layers. Each adds latency. No single person holds clear authority to halt the system. The decision is still running.</div></div><div class="tl-time">T + 18h</div></div>
-    <div class="tl-item crit"><div class="tl-node">!</div><div class="tl-body"><div class="tl-label">The intervention window closes</div><div class="tl-text">The moment at which intervention would have been low-cost and low-visibility has passed. The organisation is no longer managing a system issue. It is managing a crisis.</div></div><div class="tl-time">T + 36h</div></div>
-    <div class="tl-item"><div class="tl-node">T5</div><div class="tl-body"><div class="tl-label">Discovery at board level</div><div class="tl-text">The board is informed. Authority is clarified informally. The post-incident review finds the governance framework complete and untested.</div></div><div class="tl-time">T + 72h</div></div>
-    <div class="tl-item"><div class="tl-node">T6</div><div class="tl-body"><div class="tl-label">Consequence compounds</div><div class="tl-text">Regulatory scrutiny begins. Reputational exposure becomes visible. Financial liability is assessed. The cost of discovery is no longer manageable.</div></div><div class="tl-time">T + 7d+</div></div>
-  </div>
-  <div class="pull-quote reveal">
-    <p class="pull-quote-text">A board that cannot intervene is not a safeguard. It is a witness.</p>
-    <p class="pull-quote-attr">The core question HIA exists to answer</p>
-  </div>
-</div>
-</section>
-
-<!-- 05 AUTHORITY CHAIN -->
+<!-- 04 AUTHORITY CHAIN — two-track diagram -->
+<!-- Old section 04 (timeline) removed. Its narrative function is
+     absorbed into the diagram intro below. The pull quote moves here
+     as the diagram's conclusion. -->
 <section>
 <div class="page-wrap">
   <div class="section-hd reveal">
-    <span class="section-num">05</span>
-    <span class="section-label">The authority chain, and where it breaks</span>
+    <span class="section-num">04</span>
+    <span class="section-label">When the board finds out, the window is already closed</span>
     <div class="section-rule"></div>
   </div>
-  <p class="reveal" style="max-width:640px;margin-bottom:32px;">The crisis runs from the moment the system fails. Authority to stop it travels upward through people who cannot act. The board finds out after the window to intervene has already closed.</p>
+  <p class="reveal" style="max-width:640px;margin-bottom:32px;">The crisis runs from the moment a system fails. Authority to stop it travels upward — through people who cannot act, past approval layers that add latency and nothing else. By the time the board is told, the moment for low-cost intervention has passed. What follows is not crisis management. It is damage limitation.</p>
 
   <div class="ctd reveal">
 
-    <!-- ── STEP 1: T+0 ───────────────────────────── -->
     <div class="ctd-m ctd-m1">
       <div>
         <span class="ctd-stamp">T<span class="g">+</span>0</span>
         <span class="ctd-step-name">System Event</span>
       </div>
     </div>
-
     <div class="ctd-c ctd-c1">
       <span class="ctd-track-name">The crisis</span>
       <p class="ctd-c-body">An AI-driven decision produces outputs outside expected parameters. The system runs on.</p>
     </div>
-
     <div class="ctd-a ctd-a1">
       <span class="ctd-track-name">Authority</span>
       <p class="ctd-a-body">Board unaware. No signal has reached executive level. No one with authority to act has been told.</p>
     </div>
 
-    <!-- ── STEP 2: T+6h ──────────────────────────── -->
     <div class="ctd-m ctd-m2">
       <div>
         <span class="ctd-stamp">T<span class="g">+</span>6<span class="g">h</span></span>
         <span class="ctd-step-name">Operations</span>
       </div>
     </div>
-
     <div class="ctd-c ctd-c2">
       <p class="ctd-c-body">Deviation noticed. Damage accumulating. Decision still running. Escalation route unclear.</p>
     </div>
-
     <div class="ctd-a ctd-a2">
       <p class="ctd-a-body">Signal reaches operations. First person in the chain lacks authority to halt the system.</p>
     </div>
 
-    <!-- ── STEP 3: T+18h ─────────────────────────── -->
     <div class="ctd-m ctd-m3">
       <div>
         <span class="ctd-stamp">T<span class="g">+</span>18<span class="g">h</span></span>
         <span class="ctd-step-name">Management</span>
       </div>
     </div>
-
     <div class="ctd-c ctd-c3">
       <p class="ctd-c-body">Still running. Cost compounding with every hour. The window of low-cost intervention is closing.</p>
     </div>
-
     <div class="ctd-a ctd-a3">
       <p class="ctd-a-body">Issue received at management level. Authority to act uncertain. Escalation continues upward.</p>
     </div>
 
-    <!-- ── INTERVENTION WINDOW BAND ──────────────── -->
     <div class="ctd-w">
       <div class="ctd-w-open">
         <span class="ctd-w-open-text">Intervention possible</span>
@@ -631,19 +552,16 @@
       </div>
     </div>
 
-    <!-- ── STEP 4: T+36h+ ── the break ──────────── -->
     <div class="ctd-m ctd-m4 ctd-break">
       <div>
         <span class="ctd-stamp">T+36<span style="font-size:0.55em;font-weight:800;vertical-align:baseline;">h+</span></span>
         <span class="ctd-step-name">Board</span>
       </div>
     </div>
-
     <div class="ctd-c ctd-c4 ctd-break">
       <span class="ctd-track-name">The crisis</span>
       <p class="ctd-c-body">Uncontainable. Regulatory exposure. Reputational damage. Financial liability. The cost of discovery is no longer manageable.</p>
     </div>
-
     <div class="ctd-a ctd-a4 ctd-break">
       <span class="ctd-track-name">Authority</span>
       <p class="ctd-a-body">The board is informed. The intervention window has already closed. They are not a safeguard. They are a witness.</p>
@@ -651,43 +569,37 @@
 
   </div>
 
-  <div class="block-note reveal" style="margin-top:0;">Most organisations have never mapped this chain. Most have never tested it under pressure. HIA does both.</div>
+  <div class="pull-quote reveal">
+    <p class="pull-quote-text">A board that cannot intervene is not a safeguard. It is a witness.</p>
+    <p class="pull-quote-attr">The core question HIA exists to answer</p>
+  </div>
 
 </div>
 </section>
 
-<!-- 06 WHERE THIS WORK SITS -->
+<!-- 05 WHERE THIS WORK SITS -->
+<!-- Compare table removed — it duplicated the gap infographic in section 01.
+     The positioning argument stands on its own as prose. -->
 <section>
 <div class="page-wrap">
-  <div class="section-hd reveal"><span class="section-num">06</span><span class="section-label">Where this work sits</span><div class="section-rule"></div></div>
-  <p class="reveal" style="max-width:700px;margin-bottom:28px;">Specialist governance firms, including Ethica Group, focus on the design and structure of AI ethics frameworks, board oversight mechanisms, and institutional accountability. This is essential, foundational work. A well-designed governance system defines what <em>should</em> happen. HIA operates in the space that governance design cannot reach: the moment of live system failure. Policy governs intent. HIA tests whether that intent can be enacted.</p>
-  <div class="compare reveal">
-    <div class="compare-col">
-      <div class="compare-head dim">Governance Design Layer: what should happen</div>
-      <div class="compare-row faded">Ethics frameworks and risk charters</div>
-      <div class="compare-row faded">Board oversight structures and accountability policies</div>
-      <div class="compare-row faded">Documented escalation protocols</div>
-      <div class="compare-row faded">Override authority, defined in writing</div>
-      <div class="compare-row faded">Compliance programmes and audit structures</div>
-      <div class="compare-row" style="color:var(--text-sub);font-style:italic;font-size:0.85rem;">Well-designed. Rigorously documented. Cannot, by itself, ensure a board can act when it needs to.</div>
+  <div class="section-hd reveal"><span class="section-num">05</span><span class="section-label">Where this work sits</span><div class="section-rule"></div></div>
+  <div class="grid-2 reveal">
+    <div class="block block-accent">
+      <p>Specialist governance firms, including Ethica Group, focus on the design and structure of AI ethics frameworks, board oversight mechanisms, and institutional accountability. This is essential work. A well-designed governance system defines what <em>should</em> happen.</p>
+      <p>HIA operates in the space that governance design cannot reach: the moment of live system failure. Policy governs intent. HIA tests whether that intent can be enacted when it needs to be.</p>
     </div>
-    <div class="compare-col hi">
-      <div class="compare-head bright">HIA: Intervention Layer, what actually happens</div>
-      <div class="compare-row">Can the board identify a system failure in time?</div>
-      <div class="compare-row">Is authority clear enough to act under pressure?</div>
-      <div class="compare-row">Do escalation paths function under real conditions?</div>
-      <div class="compare-row">Can overrides be enacted at operational speed?</div>
-      <div class="compare-row">Is information adequate to diagnose and act?</div>
-      <div class="compare-row" style="color:var(--text-sub);font-style:italic;font-size:0.85rem;">HIA operates at the critical gap between governance design and operational reality.</div>
+    <div class="block">
+      <p>These are not competing positions. Most organisations that engage HIA already have a governance framework in place. The question is not whether it is well designed. The question is whether it will function under real conditions — and whether the people responsible for acting on it actually can.</p>
+      <p style="color:var(--text-sub);font-size:0.9rem;margin-top:4px;">HIA operates independently of governance design and review functions. That independence is deliberate.</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- 07 SCORECARD -->
+<!-- 06 WHERE MOST ORGANISATIONS STAND -->
 <section>
 <div class="page-wrap">
-  <div class="section-hd reveal"><span class="section-num">07</span><span class="section-label">Where most organisations stand</span><div class="section-rule"></div></div>
+  <div class="section-hd reveal"><span class="section-num">06</span><span class="section-label">Where most organisations stand</span><div class="section-rule"></div></div>
   <p class="reveal" style="max-width:640px;">Most score well on governance design. They score poorly on operational intervention capability. The gap between the two is where HIA works.</p>
   <div class="scorecard reveal" id="scorecard">
     <div class="sc-panel">
@@ -712,8 +624,11 @@
 </div>
 </section>
 
-<!-- 08 STAT BAND -->
+<!-- 07 THE NUMBERS -->
 <section style="padding:0;">
+<div class="page-wrap" style="padding-bottom:0;">
+  <div class="section-hd reveal" style="padding-bottom:0;margin-bottom:0;"><span class="section-num">07</span><span class="section-label">The numbers</span><div class="section-rule"></div></div>
+</div>
 <div class="page-wrap" style="padding:0;">
   <div class="stat-band reveal">
     <div class="stat-cell">
@@ -735,24 +650,32 @@
 </div>
 </section>
 
-<!-- 09 HOW WE WORK -->
+<!-- 08 HOW WE WORK — rewritten with operational specificity -->
 <section>
 <div class="page-wrap">
-  <div class="section-hd reveal"><span class="section-num">09</span><span class="section-label">How we work</span><div class="section-rule"></div></div>
-  <ul class="dash-list reveal" style="max-width:700px;">
-    <li>Every engagement begins with a focused, confidential conversation to establish context and determine whether an HIA engagement is appropriate.</li>
-    <li>Assessments are conducted by senior advisors with direct operational experience of AI systems. Not a compliance checklist. An evaluation against operational reality.</li>
-    <li>Findings are presented directly to the board or executive team. Clear, prioritised, and grounded in the specific conditions of your organisation.</li>
-    <li>HIA works with a deliberately limited number of organisations. Each engagement receives the full attention of senior advisors.</li>
-  </ul>
-  <p class="reveal" style="margin-top:18px;font-size:0.88rem;font-style:italic;color:var(--text-sub);">Based in the United Kingdom. Working with clients internationally through remote advisory and selected in-person sessions.</p>
+  <div class="section-hd reveal"><span class="section-num">08</span><span class="section-label">How we work</span><div class="section-rule"></div></div>
+  <div class="grid-2 reveal">
+    <div class="block block-accent">
+      <p style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:16px;">An HIA engagement begins with a single question: can your organisation actually intervene, right now, in a live AI-driven failure?</p>
+      <p>Not in theory. Not according to your governance documentation. In practice, under real time pressure, with the people and authority structures you actually have.</p>
+      <p>The first session is a confidential conversation with relevant senior leadership. No questionnaire. No preparatory documents. We map the escalation chain as it currently exists — who gets told, in what order, with what authority to act. Most organisations discover the critical gaps in that first conversation.</p>
+    </div>
+    <div class="block">
+      <ul class="dash-list">
+        <li>Assessment findings are presented directly to the board or executive team — not filtered through a project sponsor, not softened for internal politics. A clear account of what your organisation can and cannot do, and what needs to change.</li>
+        <li>Where intervention labs are engaged, scenarios are drawn from real system failure patterns, not hypotheticals. Participants make decisions under conditions that approximate genuine operational pressure.</li>
+        <li>HIA works with a deliberately small number of organisations at any one time. That is a constraint, not a growth ambition. Each engagement receives the full attention of senior advisors with direct operational experience of AI systems.</li>
+      </ul>
+      <div class="block-note" style="margin-top:18px;">Based in the United Kingdom. Working with clients internationally through remote advisory and selected in-person sessions.</div>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- 10 CORE QUESTION -->
+<!-- 09 THE CORE QUESTION -->
 <section style="border-bottom:none;">
 <div class="page-wrap">
-  <div class="section-hd reveal"><span class="section-num">10</span><span class="section-label">The core question</span><div class="section-rule"></div></div>
+  <div class="section-hd reveal"><span class="section-num">09</span><span class="section-label">The core question</span><div class="section-rule"></div></div>
   <div class="block block-accent reveal" style="max-width:740px;">
     <p style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:16px;">Most organisations do not know their actual intervention capability until they need it.</p>
     <p>The question is not whether your governance framework is well designed. It is whether, when an AI-driven system produces an outcome that demands a response, your organisation can provide one — in time, with the right authority, acting on the right information.</p>
