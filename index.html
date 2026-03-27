@@ -23,7 +23,11 @@
 <meta property="og:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Human Integrity Advisory"><meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Intervention Capability for Boards | Human Integrity Advisory"><meta name="twitter:description" content="Advisory for boards and senior leaders on AI intervention capability."><meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png"><meta name="twitter:image:alt" content="Human Integrity Advisory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Intervention Capability for Boards | Human Integrity Advisory">
+<meta name="twitter:description" content="Advisory for boards and senior leaders on AI intervention capability.">
+<meta name="twitter:image" content="https://jamessaint.github.io/Human-Integrity-Advisory/assets/og/og-home.png">
+<meta name="twitter:image:alt" content="Human Integrity Advisory">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/","areaServed":"Global"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Human Integrity Advisory","url":"https://jamessaint.github.io/Human-Integrity-Advisory/"}</script>
 <style>
@@ -37,8 +41,7 @@
   padding: clamp(80px,12vw,120px) var(--pad-x) clamp(60px,8vw,96px);
   border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
-  text-align: center;
-  width: 100%;
+  text-align: center; width: 100%;
 }
 .hero::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -46,10 +49,8 @@
     radial-gradient(ellipse at center, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.48) 55%, rgba(0,0,0,0.82) 100%),
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url('assets/images/hero-bg.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  opacity: 0;
+  background-size: cover; background-position: center top;
+  background-repeat: no-repeat; opacity: 0;
   animation: hero-bg-in 2.4s ease forwards 0.4s;
 }
 @keyframes hero-bg-in { to { opacity: 1; } }
@@ -77,29 +78,19 @@
 
 /* ── INFOGRAPHIC: THE GAP ───────────────────────────────── */
 .gap-infographic {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  background: var(--border);
-  margin-top: 32px;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 0; border: 1px solid var(--border); background: var(--border); margin-top: 32px;
 }
 .gap-col-left, .gap-col-right {
-  background: var(--surface2);
-  padding: clamp(20px,3vw,32px);
+  background: var(--surface2); padding: clamp(20px,3vw,32px);
   display: flex; flex-direction: column; gap: 8px;
 }
 .gap-col-right { border-left: 2px solid var(--gold); }
 .gap-mid {
-  background: var(--surface);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 16px 12px; gap: 10px; width: 100px;
+  background: var(--surface); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 16px 12px; gap: 10px; width: 100px;
 }
-.gap-col-heading {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em;
-  text-transform: uppercase; margin-bottom: 10px;
-}
+.gap-col-heading { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 10px; }
 .gap-col-heading.muted  { color: var(--text-sub); }
 .gap-col-heading.bright { color: var(--gold); }
 .gap-row {
@@ -118,7 +109,6 @@
 .gap-arrow-line { width: 1px; flex: 1; min-height: 24px; background: var(--border); }
 .gap-arrow-tip  { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--gold-dim); }
 .gap-note-text { font-size: 0.75rem; font-style: italic; color: var(--text-faint); margin-top: 10px; line-height: 1.65; }
-
 @media (max-width: 640px) {
   .gap-infographic { grid-template-columns: 1fr; }
   .gap-mid { flex-direction: row; width: 100%; padding: 10px 20px; }
@@ -126,233 +116,309 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   AUTHORITY CHAIN v3
+   AUTHORITY CHAIN v4 — mobile-first, structurally sound
 ══════════════════════════════════════════════════════════ */
 
 .achain {
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(201,182,148,0.18);
+  border: 1px solid rgba(201,182,148,0.2);
   overflow: hidden;
-}
-
-/* Left-edge spine — visible gradient line */
-.achain::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(
-    to bottom,
-    rgba(201,182,148,0.08)  0%,
-    rgba(201,182,148,0.45) 25%,
-    rgba(201,182,148,1)    65%,
-    rgba(201,182,148,0.5)  82%,
-    rgba(201,182,148,0.1)  100%
-  );
-  z-index: 2;
 }
 
 /* ── NODE ROW ─── */
 .ac-node {
-  display: grid;
-  grid-template-columns: 130px 1fr 80px;
-  align-items: center;
-  gap: 0 32px;
-  background: var(--surface);
+  background: #111;
   border-bottom: 1px solid rgba(201,182,148,0.1);
-  padding: 28px 32px 28px 28px;
+  padding: 22px 22px 22px 20px;
+  border-left: 3px solid rgba(201,182,148,0.15);
   position: relative;
 }
 
-/* Stage label */
+/* Stage label — sits above body text, full width */
 .ac-stage {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(201,182,148,0.6);
-  line-height: 1.5;
-  padding-right: 24px;
-  border-right: 1px solid rgba(201,182,148,0.14);
-  align-self: stretch;
+  color: rgba(201,182,148,0.55);
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+/* Timestamp sits inline after stage label */
+.ac-stage-time {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(201,182,148,0.35);
+  margin-left: auto;
 }
 
 /* Body text */
 .ac-body {
-  font-size: clamp(0.94rem, 2vw, 1.01rem);
-  color: rgba(255,255,255,0.75);
-  line-height: 1.72;
+  font-size: clamp(1rem, 2.5vw, 1.06rem);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
   font-weight: 400;
-}
-
-/* Timestamp */
-.ac-time {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: rgba(201,182,148,0.5);
-  text-align: right;
-  white-space: nowrap;
-  letter-spacing: 0.08em;
-  padding-left: 16px;
 }
 
 /* ── CONNECTOR ROW ─── */
 .ac-connector {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 0 32px;
-  background: #0b0b0b;
-  border-bottom: 1px solid rgba(201,182,148,0.08);
-}
-
-.ac-connector-left {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(201,182,148,0.07);
+  border-left: 3px solid rgba(201,182,148,0.08);
+  padding: 13px 22px 13px 20px;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 14px 24px 14px 28px;
-  border-right: 1px solid rgba(201,182,148,0.14);
+  align-items: flex-start;
+  gap: 14px;
 }
 
 .ac-connector-tag {
-  font-size: 0.55rem;
+  flex-shrink: 0;
+  font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(201,182,148,0.75);
+  color: rgba(201,182,148,0.65);
   background: rgba(201,182,148,0.06);
-  border: 1px solid rgba(201,182,148,0.22);
-  padding: 5px 11px;
+  border: 1px solid rgba(201,182,148,0.2);
+  padding: 4px 9px;
   white-space: nowrap;
+  margin-top: 2px;
+  line-height: 1.6;
 }
 
 .ac-connector-note {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-style: italic;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.27);
   line-height: 1.6;
-  align-self: center;
-  padding: 14px 32px 14px 0;
 }
 
-/* ── BOARD ROW — the moment of failure ─── */
+/* ── BOARD ROW — structural failure moment ─── */
 .ac-node.board-row {
-  background: #100e0a;
-  border-top: 1px solid rgba(201,182,148,0.3);
-  border-bottom: 1px solid rgba(201,182,148,0.3);
-  padding-top: 36px;
-  padding-bottom: 36px;
-}
-
-/* Gold spine override for board row */
-.ac-node.board-row::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--gold);
-  z-index: 3;
+  background: #0e0c08;
+  border-left: 4px solid var(--gold);
+  border-top: 1px solid rgba(201,182,148,0.35);
+  border-bottom: 1px solid rgba(201,182,148,0.35);
+  padding: 28px 22px 28px 20px;
 }
 
 .ac-node.board-row .ac-stage {
+  color: rgba(201,182,148,0.8);
+  letter-spacing: 0.32em;
+}
+
+.ac-node.board-row .ac-stage-time {
   color: var(--gold);
-  letter-spacing: 0.3em;
-  border-right-color: rgba(201,182,148,0.3);
+  font-size: 0.65rem;
+  font-weight: 700;
 }
 
 .ac-node.board-row .ac-body {
   color: var(--gold);
   font-weight: 700;
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
-  letter-spacing: 0.01em;
-}
-
-.ac-node.board-row .ac-time {
-  color: var(--gold);
-  font-size: 0.78rem;
+  font-size: clamp(1.1rem, 3vw, 1.22rem);
+  line-height: 1.5;
 }
 
 /* ── CONSEQUENCE ROW ─── */
 .ac-node.outcome-row {
   background: #080808;
+  border-left: 3px solid rgba(201,182,148,0.2);
   border-bottom: none;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  align-items: start;
+  padding: 28px 22px 28px 20px;
 }
 
 .ac-node.outcome-row .ac-stage {
-  align-items: flex-start;
-  padding-top: 6px;
-  color: rgba(201,182,148,0.4);
+  color: rgba(201,182,148,0.38);
 }
 
-.ac-node.outcome-row .ac-time {
-  color: rgba(201,182,148,0.4);
-  padding-top: 6px;
+.ac-node.outcome-row .ac-stage-time {
+  color: rgba(201,182,148,0.3);
 }
 
 .ac-consequence-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
   margin-bottom: 14px;
 }
 
 .ac-consequence-tag {
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.45);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
-  padding: 7px 14px;
+  padding: 6px 12px;
   white-space: nowrap;
 }
 
 .ac-node.outcome-row .ac-body {
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.35);
   font-style: italic;
+  font-size: 0.94rem;
 }
 
-/* Mobile */
-.ac-board-time-inline { display: none; }
+/* ── DESKTOP: add right-hand timestamp column ─── */
+@media (min-width: 640px) {
 
-@media (max-width: 640px) {
   .ac-node {
-    grid-template-columns: 78px 1fr;
-    gap: 0 18px;
-    padding: 22px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 24px;
+    padding: 26px 28px 26px 24px;
   }
-  .ac-node .ac-time { display: none; }
-  .ac-connector {
-    grid-template-columns: 78px 1fr;
-    gap: 0 18px;
+
+  .ac-stage {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 8px;
   }
-  .ac-connector-left { padding: 12px 14px 12px 18px; }
-  .ac-connector-note { padding: 12px 18px 12px 0; font-size: 0.8rem; }
-  .ac-board-time-inline {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 700;
+
+  /* Hide inline time on desktop — shown in dedicated column instead */
+  .ac-stage-time { display: none; }
+
+  /* Desktop timestamp — right column, spans both rows, vertically centred */
+  .ac-time-desktop {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(201,182,148,0.4);
+    text-align: right;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+    padding-left: 20px;
+    min-width: 76px;
+  }
+
+  .ac-body {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .ac-node.board-row {
+    padding: 34px 28px 34px 24px;
+  }
+
+  .ac-node.board-row .ac-time-desktop {
     color: var(--gold);
-    margin-left: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .ac-node.outcome-row {
+    align-items: start;
+    padding: 30px 28px 30px 24px;
+  }
+
+  .ac-node.outcome-row .ac-time-desktop {
+    color: rgba(201,182,148,0.35);
+    padding-top: 4px;
+  }
+
+  /* Consequence inner div needs grid-aware spanning */
+  .ac-node.outcome-row .ac-outcome-inner {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .ac-connector {
+    padding: 13px 28px 13px 24px;
   }
 }
 
-@media (max-width: 420px) {
-  .ac-node { grid-template-columns: 60px 1fr; gap: 0 14px; padding: 18px 14px; }
-  .ac-stage { font-size: 0.52rem; letter-spacing: 0.18em; }
-  .ac-connector { grid-template-columns: 60px 1fr; gap: 0 14px; }
-  .ac-connector-left { padding: 10px 10px 10px 14px; }
+@media (min-width: 900px) {
+  .ac-node {
+    grid-template-columns: 130px 1fr auto;
+    grid-template-rows: 1fr;
+    align-items: center;
+    padding: 28px 32px 28px 28px;
+  }
+
+  .ac-stage {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    padding-right: 20px;
+    border-right: 1px solid rgba(201,182,148,0.12);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .ac-body {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ac-time-desktop {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .ac-node.board-row { padding: 36px 32px 36px 28px; }
+
+  .ac-node.outcome-row {
+    align-items: start;
+    padding: 32px 32px 32px 28px;
+  }
+
+  .ac-node.outcome-row .ac-stage {
+    padding-top: 4px;
+    align-items: flex-start;
+  }
+
+  .ac-node.outcome-row .ac-outcome-inner {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ac-node.outcome-row .ac-time-desktop {
+    grid-column: 3;
+    grid-row: 1;
+    padding-top: 4px;
+    align-self: start;
+  }
+
+  .ac-connector {
+    padding: 14px 32px 14px 28px;
+  }
+
+  /* Three-column connector on wide screens */
+  .ac-connector {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0 20px;
+    align-items: center;
+  }
+
+  .ac-connector-left {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    border-right: 1px solid rgba(201,182,148,0.1);
+    align-self: stretch;
+    align-items: center;
+  }
+
+  .ac-connector-tag { margin-top: 0; }
+
+  .ac-connector-note { padding: 0; }
 }
 
 </style>
@@ -455,7 +521,6 @@
       </div>
     </div>
   </div>
-
 </div>
 </section>
 
@@ -538,63 +603,69 @@
 
     <!-- T+0: System Event -->
     <div class="ac-node">
-      <p class="ac-stage">System<br>Event</p>
+      <p class="ac-stage">
+        System Event
+        <span class="ac-stage-time">T + 0</span>
+      </p>
       <p class="ac-body">An AI-driven decision produces outputs outside expected parameters.</p>
-      <p class="ac-time">T + 0</p>
+      <span class="ac-time-desktop">T + 0</span>
     </div>
 
     <!-- Connector -->
     <div class="ac-connector">
-      <div class="ac-connector-left">
-        <span class="ac-connector-tag">&#8595;</span>
-      </div>
+      <div class="ac-connector-left"><span class="ac-connector-tag">&#8595;</span></div>
       <p class="ac-connector-note">Signal travels toward operations. Route not yet defined.</p>
     </div>
 
     <!-- T+6h: Operations -->
     <div class="ac-node">
-      <p class="ac-stage">Operations</p>
+      <p class="ac-stage">
+        Operations
+        <span class="ac-stage-time">T + 6h</span>
+      </p>
       <p class="ac-body">Signal noticed. Escalation route unclear. First person in chain lacks authority to act.</p>
-      <p class="ac-time">T + 6h</p>
+      <span class="ac-time-desktop">T + 6h</span>
     </div>
 
     <!-- Connector: stall -->
     <div class="ac-connector">
-      <div class="ac-connector-left">
-        <span class="ac-connector-tag">Stall</span>
-      </div>
+      <div class="ac-connector-left"><span class="ac-connector-tag">Stall</span></div>
       <p class="ac-connector-note">Issue moves through approval layers. Each adds latency. No one holds clear authority to halt.</p>
     </div>
 
     <!-- T+18h: Management -->
     <div class="ac-node">
-      <p class="ac-stage">Management</p>
+      <p class="ac-stage">
+        Management
+        <span class="ac-stage-time">T + 18h</span>
+      </p>
       <p class="ac-body">Issue received. Authority to act uncertain. Escalation continues upward.</p>
-      <p class="ac-time">T + 18h</p>
+      <span class="ac-time-desktop">T + 18h</span>
     </div>
 
     <!-- Connector: delay -->
     <div class="ac-connector">
-      <div class="ac-connector-left">
-        <span class="ac-connector-tag">Delay</span>
-      </div>
+      <div class="ac-connector-left"><span class="ac-connector-tag">Delay</span></div>
       <p class="ac-connector-note">Further approval required. The decision is still running. The window is closing.</p>
     </div>
 
-    <!-- T+36h+: Board — critical -->
+    <!-- Board — critical -->
     <div class="ac-node board-row">
-      <p class="ac-stage">Board</p>
-      <p class="ac-body">
-        Informed too late. The intervention window has already closed.
-        <span class="ac-board-time-inline">T + 36h+</span>
+      <p class="ac-stage">
+        Board
+        <span class="ac-stage-time">T + 36h+</span>
       </p>
-      <p class="ac-time">T + 36h+</p>
+      <p class="ac-body">Informed too late. The intervention window has already closed.</p>
+      <span class="ac-time-desktop">T + 36h+</span>
     </div>
 
     <!-- Consequence -->
     <div class="ac-node outcome-row">
-      <p class="ac-stage">Consequence</p>
-      <div>
+      <p class="ac-stage">
+        Consequence
+        <span class="ac-stage-time">T + 7d+</span>
+      </p>
+      <div class="ac-outcome-inner">
         <div class="ac-consequence-list">
           <span class="ac-consequence-tag">Regulatory exposure</span>
           <span class="ac-consequence-tag">Reputational damage</span>
@@ -602,7 +673,7 @@
         </div>
         <p class="ac-body">The cost of discovery is no longer manageable.</p>
       </div>
-      <p class="ac-time">T + 7d+</p>
+      <span class="ac-time-desktop">T + 7d+</span>
     </div>
 
   </div>
