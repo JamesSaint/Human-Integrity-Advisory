@@ -116,173 +116,283 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   AUTHORITY CHAIN — visual logic borrowed from .stat-band
-   Timestamps ARE the visual. Same scale, same weight.
-   Board cell = full gold inversion. No columns. No tables.
+   AUTHORITY CHAIN — two parallel tracks on one timeline.
+   Crisis runs. Authority climbs. Window closes first.
+   Column 4 inverts: gold background, the moment of failure.
 ══════════════════════════════════════════════════════════ */
 
-.achain {
+/*
+  DOM order (mobile-first, reads as vertical sequence):
+  m1 c1 a1 | m2 c2 a2 | m3 c3 a3 | [window open | window closed] | m4 c4 a4
+
+  Desktop: CSS grid places each element into its row and column.
+  4 columns × 4 rows. Column 4 = gold inversion.
+*/
+
+.ctd {
   border: 1px solid var(--border);
-  background: var(--border);
+  overflow: hidden;
+}
+
+/* ── MOBILE: vertical sequence ──────────────────────────── */
+
+/* Time marker — step header */
+.ctd-m {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 14px 20px;
   display: flex;
-  flex-direction: column;
-  gap: 1px;
+  align-items: baseline;
+  gap: 14px;
 }
+.ctd-m:first-child { border-top: none; }
 
-/* ── STAGE CELL ─── identical logic to .stat-cell */
-.ac-cell {
-  background: var(--black);
-  padding: clamp(28px, 4vw, 40px) clamp(24px, 4vw, 40px);
+.ctd-stamp {
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
+.ctd-stamp .g { color: var(--gold); }
 
-/* Stage name — same role as .stat-lbl */
-.ac-stage {
-  font-size: 0.62rem;
+.ctd-step-name {
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--text-faint);
-  line-height: 1;
-  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
-/* Timestamp — same scale as .stat-num */
-.ac-time {
-  font-size: clamp(2rem, 6vw, 3rem);
+/* Crisis cell */
+.ctd-c {
+  background: var(--black);
+  padding: 16px 20px 14px;
+  border-top: 1px solid rgba(201,182,148,0.06);
+}
+
+.ctd-track-name {
+  font-size: 0.52rem;
   font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(201,182,148,0.4);
+  margin-bottom: 6px;
+  display: block;
 }
-.ac-time .ac-g { color: var(--gold); }
 
-/* Description — same role as .stat-note */
-.ac-desc {
-  font-size: clamp(0.88rem, 2vw, 0.95rem);
+.ctd-c-body {
+  font-size: clamp(0.86rem, 2vw, 0.93rem);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+}
+
+/* Authority cell */
+.ctd-a {
+  background: var(--surface);
+  padding: 14px 20px 18px;
+  border-top: 1px solid rgba(201,182,148,0.06);
+  border-bottom: 1px solid rgba(201,182,148,0.08);
+}
+
+.ctd-a-body {
+  font-size: clamp(0.86rem, 2vw, 0.93rem);
   color: var(--text-body);
-  line-height: 1.72;
-  max-width: 620px;
+  line-height: 1.65;
 }
 
-/* ── SEPARATOR BAND ─── */
-/* Dashed rule with label. Reads as friction, not content. */
-.ac-sep {
-  background: #0d0d0d;
-  padding: 13px clamp(24px, 4vw, 40px);
+/* Intervention window band — spans before final step */
+.ctd-w {
+  display: flex;
+  align-items: stretch;
+  background: var(--border);
+  gap: 1px;
+}
+
+.ctd-w-open {
+  flex: 3;
+  background: rgba(201,182,148,0.05);
+  padding: 13px 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
-.ac-sep-label {
-  font-size: 0.52rem;
-  font-weight: 800;
-  letter-spacing: 0.38em;
+.ctd-w-open-text {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(201,182,148,0.5);
-  flex-shrink: 0;
+  color: rgba(201,182,148,0.55);
   white-space: nowrap;
 }
 
-.ac-sep-rule {
+.ctd-w-rule {
   flex: 1;
   height: 1px;
+  align-self: center;
   background: repeating-linear-gradient(
     to right,
-    rgba(201,182,148,0.2) 0,
-    rgba(201,182,148,0.2) 5px,
+    rgba(201,182,148,0.25) 0,
+    rgba(201,182,148,0.25) 5px,
     transparent 5px,
-    transparent 13px
+    transparent 12px
   );
 }
 
-.ac-sep-note {
-  font-size: 0.76rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.22);
-  line-height: 1.5;
-  flex-shrink: 0;
-  max-width: 340px;
-  text-align: right;
-}
-
-/* ── BOARD CELL — full inversion ─── */
-/* Gold background. Dark text. Biggest timestamp on the page.
-   You see it before you read anything else. */
-.ac-cell.ac-break {
-  background: var(--gold);
-  padding: clamp(36px, 5vw, 52px) clamp(24px, 4vw, 40px);
-}
-
-.ac-cell.ac-break .ac-stage {
-  color: rgba(0,0,0,0.5);
-  letter-spacing: 0.32em;
-}
-
-.ac-cell.ac-break .ac-time {
-  color: #000;
-  font-size: clamp(2.8rem, 8vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.ac-cell.ac-break .ac-desc {
-  color: rgba(0,0,0,0.82);
-  font-weight: 600;
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  line-height: 1.45;
-}
-
-/* ── CONSEQUENCE CELL ─── */
-.ac-cell.ac-outcome {
-  background: var(--surface);
-}
-
-.ac-cell.ac-outcome .ac-stage { color: var(--text-faint); }
-
-.ac-cell.ac-outcome .ac-time {
-  color: var(--text-sub);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-}
-
-.ac-pills {
+.ctd-w-closed {
+  flex: 1;
+  background: #0a0808;
+  padding: 13px 16px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 4px 0 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-left: 2px solid rgba(201,182,148,0.3);
 }
 
-.ac-pill {
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.ctd-w-closed-text {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--text-sub);
-  border: 1px solid var(--border-mid);
-  padding: 6px 14px;
+  color: rgba(201,182,148,0.7);
   white-space: nowrap;
 }
 
-.ac-cell.ac-outcome .ac-desc {
-  color: var(--text-faint);
-  font-style: italic;
+.ctd-w-x {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(201,182,148,0.6);
+  line-height: 1;
 }
 
-/* Mobile: separator note wraps below rule */
-@media (max-width: 560px) {
-  .ac-sep {
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px clamp(20px, 4vw, 32px);
+/* ── STEP 4: Board — gold inversion ─────────────────────── */
+/* The gold column: all three cells become gold background */
+
+.ctd-m.ctd-break {
+  background: var(--gold);
+  border-top: none;
+}
+
+.ctd-m.ctd-break .ctd-stamp { color: #000; }
+.ctd-m.ctd-break .ctd-stamp .g { color: rgba(0,0,0,0.6); }
+.ctd-m.ctd-break .ctd-step-name { color: rgba(0,0,0,0.55); }
+
+.ctd-c.ctd-break {
+  background: #c4ae8a; /* slightly darker gold */
+  border-top: none;
+}
+
+.ctd-c.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
+.ctd-c.ctd-break .ctd-c-body {
+  color: rgba(0,0,0,0.85);
+  font-weight: 600;
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
+}
+
+.ctd-a.ctd-break {
+  background: #b8a27e; /* darker gold for contrast */
+  border-top: none;
+  border-bottom: none;
+}
+
+.ctd-a.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
+.ctd-a.ctd-break .ctd-a-body {
+  color: rgba(0,0,0,0.85);
+  font-weight: 600;
+}
+
+/* Consequence pills */
+.ctd-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 10px;
+}
+
+.ctd-pill {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.6);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   DESKTOP LAYOUT — CSS grid, 4 columns, 4 rows
+   Explicit grid placement regardless of DOM order.
+   Column 4 = the break column (gold inversion).
+   Row 3 = intervention window (spans 1-3 | 4).
+══════════════════════════════════════════════════════════ */
+
+@media (min-width: 720px) {
+
+  .ctd {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto auto;
+    background: var(--border);
+    gap: 1px;
+    border: none;
+    outline: 1px solid var(--border);
   }
-  .ac-sep-note {
-    max-width: 100%;
-    text-align: left;
-    flex: 1 1 100%;
-    order: 3;
+
+  /* ── Row 1: time markers ── */
+  .ctd-m      { border-top: none; padding: 18px 22px 16px; }
+  .ctd-m1     { grid-column: 1; grid-row: 1; }
+  .ctd-m2     { grid-column: 2; grid-row: 1; }
+  .ctd-m3     { grid-column: 3; grid-row: 1; }
+  .ctd-m4     { grid-column: 4; grid-row: 1; }
+
+  .ctd-stamp  { font-size: clamp(1.6rem, 3vw, 2.2rem); display: block; margin-bottom: 6px; }
+
+  /* ── Row 2: crisis track ── */
+  .ctd-c      { padding: 20px 22px 22px; border-top: none; }
+  .ctd-c1     { grid-column: 1; grid-row: 2; }
+  .ctd-c2     { grid-column: 2; grid-row: 2; }
+  .ctd-c3     { grid-column: 3; grid-row: 2; }
+  .ctd-c4     { grid-column: 4; grid-row: 2; }
+
+  /* ── Row 3: intervention window ── */
+  .ctd-w      { display: contents; } /* dissolve the wrapper on desktop */
+
+  .ctd-w-open {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    flex: none;
+    padding: 12px 22px;
+    align-items: center;
   }
-  .ac-sep-rule { display: none; }
+
+  .ctd-w-closed {
+    grid-column: 4;
+    grid-row: 3;
+    flex: none;
+    background: #0d0b09;
+    padding: 12px 18px;
+    justify-content: center;
+    border-left: none;
+  }
+
+  /* ── Row 4: authority track ── */
+  .ctd-a      { padding: 20px 22px 24px; border-top: none; border-bottom: none; }
+  .ctd-a1     { grid-column: 1; grid-row: 4; }
+  .ctd-a2     { grid-column: 2; grid-row: 4; }
+  .ctd-a3     { grid-column: 3; grid-row: 4; }
+  .ctd-a4     { grid-column: 4; grid-row: 4; }
+
+  /* ── Column 4: gold inversion across all rows ── */
+  .ctd-m4.ctd-break { background: var(--gold); }
+  .ctd-c4.ctd-break { background: #c4ae8a; }
+  .ctd-a4.ctd-break { background: #b8a27e; }
+
 }
 
 </style>
@@ -455,64 +565,88 @@
     <span class="section-label">The authority chain, and where it breaks</span>
     <div class="section-rule"></div>
   </div>
-  <p class="reveal" style="max-width:640px;margin-bottom:32px;">Authority must travel from a system event to a person who can act, fast enough to matter. Most organisations have never mapped this chain. Most have never tested it under pressure.</p>
+  <p class="reveal" style="max-width:640px;margin-bottom:32px;">The crisis runs from the moment the system fails. Authority to stop it travels upward through people who cannot act. The board finds out after the window to intervene has already closed.</p>
 
-  <div class="achain reveal">
+  <div class="ctd reveal">
 
-    <div class="ac-cell">
-      <p class="ac-stage">System Event</p>
-      <p class="ac-time">T <span class="ac-g">+</span> 0</p>
-      <p class="ac-desc">An AI-driven decision produces outputs outside expected parameters.</p>
-    </div>
-
-    <div class="ac-sep">
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-label">&#8595;&nbsp; Signal travelling</span>
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-note">Route not yet defined.</span>
-    </div>
-
-    <div class="ac-cell">
-      <p class="ac-stage">Operations</p>
-      <p class="ac-time">T <span class="ac-g">+</span> 6<span class="ac-g">h</span></p>
-      <p class="ac-desc">Signal noticed. Escalation route unclear. First person in chain lacks authority to act.</p>
-    </div>
-
-    <div class="ac-sep">
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-label">Stall</span>
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-note">Issue moves through approval layers. Each adds latency. No one holds clear authority to halt.</span>
-    </div>
-
-    <div class="ac-cell">
-      <p class="ac-stage">Management</p>
-      <p class="ac-time">T <span class="ac-g">+</span> 18<span class="ac-g">h</span></p>
-      <p class="ac-desc">Issue received. Authority to act uncertain. Escalation continues upward.</p>
-    </div>
-
-    <div class="ac-sep">
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-label">Delay</span>
-      <div class="ac-sep-rule"></div>
-      <span class="ac-sep-note">Further approval required. The decision is still running. The window is closing.</span>
-    </div>
-
-    <div class="ac-cell ac-break">
-      <p class="ac-stage">Board</p>
-      <p class="ac-time">T + 36<span style="font-size:0.6em;font-weight:700;">h+</span></p>
-      <p class="ac-desc">Informed too late. The intervention window has already closed.</p>
-    </div>
-
-    <div class="ac-cell ac-outcome">
-      <p class="ac-stage">Consequence</p>
-      <p class="ac-time">T <span class="ac-g">+</span> 7d<span class="ac-g">+</span></p>
-      <div class="ac-pills">
-        <span class="ac-pill">Regulatory exposure</span>
-        <span class="ac-pill">Reputational damage</span>
-        <span class="ac-pill">Financial liability</span>
+    <!-- ── STEP 1: T+0 ───────────────────────────── -->
+    <div class="ctd-m ctd-m1">
+      <div>
+        <span class="ctd-stamp">T<span class="g">+</span>0</span>
+        <span class="ctd-step-name">System Event</span>
       </div>
-      <p class="ac-desc">The cost of discovery is no longer manageable.</p>
+    </div>
+
+    <div class="ctd-c ctd-c1">
+      <span class="ctd-track-name">The crisis</span>
+      <p class="ctd-c-body">An AI-driven decision produces outputs outside expected parameters. The system runs on.</p>
+    </div>
+
+    <div class="ctd-a ctd-a1">
+      <span class="ctd-track-name">Authority</span>
+      <p class="ctd-a-body">Board unaware. No signal has reached executive level. No one with authority to act has been told.</p>
+    </div>
+
+    <!-- ── STEP 2: T+6h ──────────────────────────── -->
+    <div class="ctd-m ctd-m2">
+      <div>
+        <span class="ctd-stamp">T<span class="g">+</span>6<span class="g">h</span></span>
+        <span class="ctd-step-name">Operations</span>
+      </div>
+    </div>
+
+    <div class="ctd-c ctd-c2">
+      <p class="ctd-c-body">Deviation noticed. Damage accumulating. Decision still running. Escalation route unclear.</p>
+    </div>
+
+    <div class="ctd-a ctd-a2">
+      <p class="ctd-a-body">Signal reaches operations. First person in the chain lacks authority to halt the system.</p>
+    </div>
+
+    <!-- ── STEP 3: T+18h ─────────────────────────── -->
+    <div class="ctd-m ctd-m3">
+      <div>
+        <span class="ctd-stamp">T<span class="g">+</span>18<span class="g">h</span></span>
+        <span class="ctd-step-name">Management</span>
+      </div>
+    </div>
+
+    <div class="ctd-c ctd-c3">
+      <p class="ctd-c-body">Still running. Cost compounding with every hour. The window of low-cost intervention is closing.</p>
+    </div>
+
+    <div class="ctd-a ctd-a3">
+      <p class="ctd-a-body">Issue received at management level. Authority to act uncertain. Escalation continues upward.</p>
+    </div>
+
+    <!-- ── INTERVENTION WINDOW BAND ──────────────── -->
+    <div class="ctd-w">
+      <div class="ctd-w-open">
+        <span class="ctd-w-open-text">Intervention possible</span>
+        <div class="ctd-w-rule"></div>
+      </div>
+      <div class="ctd-w-closed">
+        <span class="ctd-w-x">&#x2715;</span>
+        <span class="ctd-w-closed-text">Window closed</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: T+36h+ ── the break ──────────── -->
+    <div class="ctd-m ctd-m4 ctd-break">
+      <div>
+        <span class="ctd-stamp">T+36<span style="font-size:0.55em;font-weight:800;vertical-align:baseline;">h+</span></span>
+        <span class="ctd-step-name">Board</span>
+      </div>
+    </div>
+
+    <div class="ctd-c ctd-c4 ctd-break">
+      <span class="ctd-track-name">The crisis</span>
+      <p class="ctd-c-body">Uncontainable. Regulatory exposure. Reputational damage. Financial liability. The cost of discovery is no longer manageable.</p>
+    </div>
+
+    <div class="ctd-a ctd-a4 ctd-break">
+      <span class="ctd-track-name">Authority</span>
+      <p class="ctd-a-body">The board is informed. The intervention window has already closed. They are not a safeguard. They are a witness.</p>
     </div>
 
   </div>
