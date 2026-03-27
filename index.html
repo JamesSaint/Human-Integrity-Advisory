@@ -76,7 +76,7 @@
 .hero-triad { margin-top: 52px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
 
-/* ── INFOGRAPHIC: THE GAP ───────────────────────────────── */
+/* ── THE GAP ─────────────────────────────────────────────── */
 .gap-infographic {
   display: grid; grid-template-columns: 1fr auto 1fr;
   gap: 0; border: 1px solid var(--border); background: var(--border); margin-top: 32px;
@@ -116,367 +116,315 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   AUTHORITY CHAIN v5
-   Timestamps = visual anchor. Rows = progressively heavier.
-   Stall/Delay = full-width interrupt. Board row = headline.
+   AUTHORITY CHAIN — built on stat-band visual logic.
+   The timestamp IS the visual. Everything else is annotation.
 ══════════════════════════════════════════════════════════ */
 
+/* Outer wrapper — no gap, continuous bordered block */
 .achain {
+  border: 1px solid rgba(201,182,148,0.15);
+  overflow: hidden;
+}
+
+/* ── STAGE CARD ─────────────────────────────────────────── */
+/* Each stage = one card. Stage name + timestamp + body.
+   Mobile: stacked. Desktop: three horizontal zones. */
+
+.ac-card {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  padding: 28px 24px 24px;
+  background: #111;
+  border-bottom: 1px solid rgba(201,182,148,0.1);
+  border-left: 3px solid rgba(201,182,148,0.15);
+  gap: 6px;
 }
 
-/* ── STANDARD NODE ─────────────────────────────────────── */
-.ac-node {
-  display: grid;
-  /* Mobile: full width single column */
-  grid-template-columns: 1fr;
-  background: var(--surface);
-  border: 1px solid rgba(201,182,148,0.12);
-  border-top: none;
-  border-left: 3px solid rgba(201,182,148,0.18);
-  padding: 24px 22px;
-  position: relative;
-}
-.ac-node:first-child { border-top: 1px solid rgba(201,182,148,0.12); }
-
-/* Meta row: stage label + timestamp on same line */
-.ac-meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.ac-stage {
+/* Stage name — tiny, tracked, above the number */
+.ac-label {
   font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(201,182,148,0.5);
+  color: rgba(201,182,148,0.45);
   line-height: 1;
 }
 
-.ac-time {
-  font-size: clamp(1.2rem, 4vw, 1.6rem);
+/* The timestamp — THIS is the dominant visual element.
+   Borrowed directly from .stat-num logic. */
+.ac-stamp {
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
   font-weight: 800;
-  color: rgba(201,182,148,0.22);
+  color: rgba(201,182,148,0.2);
   line-height: 1;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  margin: 2px 0 10px;
 }
 
-.ac-body {
-  font-size: clamp(0.94rem, 2.2vw, 1rem);
-  color: rgba(255,255,255,0.65);
-  line-height: 1.68;
-  font-weight: 400;
+/* Body — annotation beneath the number */
+.ac-desc {
+  font-size: clamp(0.88rem, 2vw, 0.96rem);
+  color: rgba(255,255,255,0.58);
+  line-height: 1.65;
+  max-width: 560px;
 }
 
-/* Progressively increase timestamp brightness as urgency builds */
-.ac-node:nth-child(3) .ac-time { color: rgba(201,182,148,0.28); }
-.ac-node:nth-child(5) .ac-time { color: rgba(201,182,148,0.36); }
+/* Progressive colour build — each stage gets slightly brighter */
+.ac-card:nth-child(1) .ac-stamp { color: rgba(201,182,148,0.18); }
+.ac-card:nth-child(3) .ac-stamp { color: rgba(201,182,148,0.26); }
+.ac-card:nth-child(5) .ac-stamp { color: rgba(201,182,148,0.34); }
 
-/* ── INTERRUPT BAND (stall / delay) ────────────────────── */
-.ac-interrupt {
-  background: #0d0b08;
-  border-left: 3px solid rgba(201,182,148,0.12);
-  border-right: 1px solid rgba(201,182,148,0.12);
-  border-bottom: 1px solid rgba(201,182,148,0.08);
-  padding: 16px 22px;
+/* ── FRICTION BAND (stall / delay) ─────────────────────── */
+/* Not a row. A full-width interrupt that reads as a gap in
+   the process — the system grinding. */
+.ac-friction {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(201,182,148,0.07);
+  border-left: 3px solid rgba(201,182,148,0.08);
+  padding: 14px 24px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Dashed horizontal rule that fills the band */
-.ac-interrupt-rule {
-  flex: 1;
-  height: 1px;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(201,182,148,0.2) 0px,
-    rgba(201,182,148,0.2) 6px,
-    transparent 6px,
-    transparent 14px
-  );
-}
-
-.ac-interrupt-label {
-  font-size: 0.55rem;
+.ac-friction-word {
+  font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: 0.38em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(201,182,148,0.55);
+  color: rgba(201,182,148,0.5);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.ac-interrupt-note {
-  font-size: 0.78rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.22);
-  line-height: 1.55;
-  flex: 2;
+.ac-friction-line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(201,182,148,0.18) 0,
+    rgba(201,182,148,0.18) 5px,
+    transparent 5px,
+    transparent 12px
+  );
 }
 
-/* ── BOARD ROW ─────────────────────────────────────────── */
-/* This is not a table row. It is the moment the chain breaks. */
-.ac-node.board-row {
-  background: #0f0d09;
+.ac-friction-note {
+  font-size: 0.76rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.5;
+  flex: 2;
+  min-width: 0;
+}
+
+/* ── BOARD CARD — the break ─────────────────────────────── */
+/* This is not a slightly-more-gold version of the above.
+   It is a completely different visual moment. */
+.ac-card.ac-break {
+  background: #0d0b07;
   border-left: 4px solid var(--gold);
-  border-top: 1px solid rgba(201,182,148,0.3) !important;
+  border-top: 1px solid rgba(201,182,148,0.3);
   border-bottom: 1px solid rgba(201,182,148,0.3);
-  border-right: 1px solid rgba(201,182,148,0.3);
+  padding: 36px 24px 32px;
+  gap: 8px;
+}
+
+.ac-card.ac-break .ac-label {
+  color: rgba(201,182,148,0.8);
+  letter-spacing: 0.36em;
+}
+
+.ac-card.ac-break .ac-stamp {
+  color: var(--gold);
+  font-size: clamp(2.8rem, 10vw, 4.8rem);
+  margin-bottom: 12px;
+}
+
+.ac-card.ac-break .ac-desc {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 3vw, 1.22rem);
+  line-height: 1.45;
+}
+
+/* ── CONSEQUENCE CARD ───────────────────────────────────── */
+.ac-card.ac-outcome {
+  background: #080808;
+  border-bottom: none;
+  border-left: 3px solid rgba(201,182,148,0.15);
   padding: 32px 24px;
 }
 
-.ac-node.board-row .ac-stage {
-  color: rgba(201,182,148,0.75);
-  letter-spacing: 0.34em;
+.ac-card.ac-outcome .ac-label { color: rgba(201,182,148,0.3); }
+
+.ac-card.ac-outcome .ac-stamp {
+  color: rgba(201,182,148,0.2);
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
 }
 
-.ac-node.board-row .ac-time {
-  color: var(--gold);
-  font-size: clamp(1.4rem, 5vw, 2rem);
-}
-
-.ac-node.board-row .ac-body {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-  line-height: 1.45;
-  margin-top: 4px;
-}
-
-/* ── CONSEQUENCE ROW ───────────────────────────────────── */
-.ac-node.outcome-row {
-  background: #080808;
-  border-left: 3px solid rgba(201,182,148,0.2);
-  border-bottom: 1px solid rgba(201,182,148,0.1);
-  padding: 28px 22px;
-}
-
-.ac-node.outcome-row .ac-stage { color: rgba(201,182,148,0.35); }
-
-.ac-node.outcome-row .ac-time {
-  color: rgba(201,182,148,0.28);
-  font-size: clamp(1.2rem, 4vw, 1.6rem);
-}
-
-.ac-consequence-pills {
+.ac-outcome-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 12px 0 14px;
+  margin: 4px 0 14px;
 }
 
 .ac-pill {
   font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
   padding: 6px 14px;
-  white-space: nowrap;
 }
 
-.ac-node.outcome-row .ac-body {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.3);
+.ac-card.ac-outcome .ac-desc {
+  color: rgba(255,255,255,0.28);
   font-style: italic;
+  font-size: 0.9rem;
 }
 
-/* ── DESKTOP LAYOUT (700px+) ───────────────────────────── */
-/* On wide screens: timestamp moves to right column so it
-   doesn't compete with the stage label for left-side space */
-@media (min-width: 700px) {
+/* ── DESKTOP: side-by-side zones ────────────────────────── */
+/* On wide screens, break each card into three horizontal
+   zones: label left | timestamp centre | body right.
+   This echoes the three-cell stat band layout. */
+@media (min-width: 720px) {
 
-  .ac-node {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    column-gap: 32px;
-    padding: 28px 32px;
-    align-items: start;
-  }
-
-  .ac-meta {
-    grid-column: 1;
-    grid-row: 1;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-  }
-
-  /* Stage label only — no inline time on desktop */
-  .ac-stage { /* unchanged */ }
-
-  /* Desktop time: large, right column, spans rows */
-  .ac-time {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    text-align: right;
-    padding-left: 24px;
-    border-left: 1px solid rgba(201,182,148,0.1);
-  }
-
-  .ac-body {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  /* Interrupt bands: give them room on desktop */
-  .ac-interrupt {
-    padding: 18px 32px;
-  }
-
-  /* Board row desktop */
-  .ac-node.board-row {
-    padding: 36px 32px;
+  .ac-card {
+    flex-direction: row;
     align-items: center;
+    gap: 0;
+    padding: 0;
   }
 
-  .ac-node.board-row .ac-time {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    border-left-color: rgba(201,182,148,0.25);
-  }
-
-  .ac-node.board-row .ac-body {
-    grid-column: 1;
-    grid-row: 2;
-    margin-top: 8px;
-  }
-
-  /* Consequence row desktop */
-  .ac-node.outcome-row {
-    padding: 32px 32px;
-    align-items: start;
-  }
-
-  .ac-node.outcome-row .ac-time {
-    padding-top: 4px;
-    align-self: start;
-  }
-
-  .ac-outcome-inner {
-    grid-column: 1;
-    grid-row: 2;
-  }
-}
-
-/* ── WIDE DESKTOP (1000px+): add stage label column ─────── */
-@media (min-width: 1000px) {
-
-  .ac-node {
-    grid-template-columns: 140px 1fr auto;
-    grid-template-rows: 1fr;
-    align-items: center;
-    gap: 0 0;
-    padding: 30px 36px 30px 0;
-  }
-
-  .ac-meta {
-    grid-column: 1;
-    grid-row: 1;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-bottom: 0;
-    padding: 0 24px 0 28px;
-    border-right: 1px solid rgba(201,182,148,0.1);
+  /* Zone 1: stage label */
+  .ac-label {
+    flex-shrink: 0;
+    width: 120px;
+    padding: 28px 20px 28px 28px;
     align-self: stretch;
     display: flex;
-    gap: 0;
-  }
-
-  .ac-stage {
-    font-size: 0.58rem;
-  }
-
-  /* Hide the inline time — desktop right column handles it */
-  .ac-meta .ac-time-inline-only { display: none; }
-
-  .ac-body {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 28px;
-  }
-
-  .ac-time {
-    grid-column: 3;
-    grid-row: 1;
-    align-self: center;
-    font-size: clamp(1.4rem, 2vw, 1.9rem);
-    border-left-color: rgba(201,182,148,0.1);
-    padding: 0 0 0 24px;
-    text-align: right;
-    min-width: 110px;
-  }
-
-  .ac-node.board-row {
-    padding: 36px 36px 36px 0;
     align-items: center;
+    border-right: 1px solid rgba(201,182,148,0.1);
+    margin: 0;
   }
 
-  .ac-node.board-row .ac-meta {
+  /* Zone 2: timestamp */
+  .ac-stamp {
+    flex-shrink: 0;
+    width: 160px;
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(201,182,148,0.08);
+    margin: 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+  }
+
+  /* Zone 3: body */
+  .ac-desc {
+    flex: 1;
+    padding: 28px 32px 28px 28px;
+    max-width: none;
+  }
+
+  /* Board break card */
+  .ac-card.ac-break {
+    padding: 0;
+  }
+
+  .ac-card.ac-break .ac-label {
+    padding: 36px 20px 36px 28px;
     border-right-color: rgba(201,182,148,0.25);
   }
 
-  .ac-node.board-row .ac-body {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 28px;
+  .ac-card.ac-break .ac-stamp {
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    color: var(--gold);
+    padding: 36px 24px;
+    border-right-color: rgba(201,182,148,0.2);
+    width: 180px;
   }
 
-  .ac-node.board-row .ac-time {
-    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  .ac-card.ac-break .ac-desc {
+    padding: 36px 32px 36px 28px;
   }
 
-  .ac-node.outcome-row {
+  /* Outcome card */
+  .ac-card.ac-outcome {
+    padding: 0;
     align-items: start;
+  }
+
+  .ac-card.ac-outcome .ac-label {
     padding-top: 32px;
     padding-bottom: 32px;
+    align-items: flex-start;
   }
 
-  .ac-node.outcome-row .ac-meta { align-self: flex-start; padding-top: 4px; }
-  .ac-node.outcome-row .ac-time { align-self: start; padding-top: 4px; }
-
-  .ac-outcome-inner {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 28px;
+  .ac-card.ac-outcome .ac-stamp {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    padding: 32px 24px;
+    align-items: flex-start;
+    padding-top: 32px;
   }
 
-  /* Three-column interrupt on wide screens */
-  .ac-interrupt {
-    padding: 16px 36px 16px 0;
-    display: grid;
-    grid-template-columns: 140px 1fr auto;
-    gap: 0;
-    align-items: center;
+  .ac-outcome-content {
+    flex: 1;
+    padding: 32px 32px 32px 28px;
   }
 
-  .ac-interrupt-label {
-    grid-column: 1;
+  .ac-card.ac-outcome .ac-desc { padding: 0; }
+
+  /* Friction bands — align with card zones on desktop */
+  .ac-friction {
+    padding: 0;
+  }
+
+  .ac-friction-word {
+    width: 120px;
+    flex-shrink: 0;
+    padding: 14px 20px 14px 28px;
     text-align: right;
-    padding-right: 24px;
-    color: rgba(201,182,148,0.45);
+    justify-content: flex-end;
+    border-right: 1px solid rgba(201,182,148,0.07);
   }
 
-  .ac-interrupt-rule {
-    grid-column: 2;
-    margin: 0 20px;
+  .ac-friction-line {
+    width: 160px;
+    flex: none;
+    margin: 0;
+    border-right: 1px solid rgba(201,182,148,0.06);
+    padding: 14px 0;
+    background: none;
+    position: relative;
   }
 
-  .ac-interrupt-note {
-    grid-column: 2;
-    display: none; /* note visible on mobile, rule on desktop */
+  .ac-friction-line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: repeating-linear-gradient(
+      to right,
+      rgba(201,182,148,0.18) 0,
+      rgba(201,182,148,0.18) 5px,
+      transparent 5px,
+      transparent 12px
+    );
   }
 
+  .ac-friction-note {
+    flex: 1;
+    padding: 14px 28px;
+  }
 }
 
 </style>
@@ -653,80 +601,67 @@
 
   <div class="achain reveal">
 
-    <!-- T+0 -->
-    <div class="ac-node">
-      <div class="ac-meta">
-        <span class="ac-stage">System Event</span>
-      </div>
-      <p class="ac-body">An AI-driven decision produces outputs outside expected parameters.</p>
-      <span class="ac-time">T + 0</span>
+    <!-- System Event -->
+    <div class="ac-card">
+      <span class="ac-label">System Event</span>
+      <span class="ac-stamp">T + 0</span>
+      <p class="ac-desc">An AI-driven decision produces outputs outside expected parameters.</p>
     </div>
 
-    <!-- Signal travelling -->
-    <div class="ac-interrupt">
-      <div class="ac-interrupt-rule"></div>
-      <span class="ac-interrupt-label">&#8595;</span>
-      <span class="ac-interrupt-note">Signal travels toward operations. Route not yet defined.</span>
-      <div class="ac-interrupt-rule"></div>
+    <div class="ac-friction">
+      <div class="ac-friction-line"></div>
+      <span class="ac-friction-word">&#8595;</span>
+      <span class="ac-friction-note">Signal travels toward operations. Route not yet defined.</span>
+      <div class="ac-friction-line"></div>
     </div>
 
-    <!-- T+6h -->
-    <div class="ac-node">
-      <div class="ac-meta">
-        <span class="ac-stage">Operations</span>
-      </div>
-      <p class="ac-body">Signal noticed. Escalation route unclear. First person in chain lacks authority to act.</p>
-      <span class="ac-time">T + 6h</span>
+    <!-- Operations -->
+    <div class="ac-card">
+      <span class="ac-label">Operations</span>
+      <span class="ac-stamp">T + 6h</span>
+      <p class="ac-desc">Signal noticed. Escalation route unclear. First person in chain lacks authority to act.</p>
     </div>
 
-    <!-- Stall -->
-    <div class="ac-interrupt">
-      <div class="ac-interrupt-rule"></div>
-      <span class="ac-interrupt-label">Stall</span>
-      <span class="ac-interrupt-note">Issue moves through approval layers. Each adds latency. No one holds clear authority to halt.</span>
-      <div class="ac-interrupt-rule"></div>
+    <div class="ac-friction">
+      <div class="ac-friction-line"></div>
+      <span class="ac-friction-word">Stall</span>
+      <span class="ac-friction-note">Issue moves through approval layers. Each adds latency. No one holds clear authority to halt.</span>
+      <div class="ac-friction-line"></div>
     </div>
 
-    <!-- T+18h -->
-    <div class="ac-node">
-      <div class="ac-meta">
-        <span class="ac-stage">Management</span>
-      </div>
-      <p class="ac-body">Issue received. Authority to act uncertain. Escalation continues upward.</p>
-      <span class="ac-time">T + 18h</span>
+    <!-- Management -->
+    <div class="ac-card">
+      <span class="ac-label">Management</span>
+      <span class="ac-stamp">T + 18h</span>
+      <p class="ac-desc">Issue received. Authority to act uncertain. Escalation continues upward.</p>
     </div>
 
-    <!-- Delay -->
-    <div class="ac-interrupt">
-      <div class="ac-interrupt-rule"></div>
-      <span class="ac-interrupt-label">Delay</span>
-      <span class="ac-interrupt-note">Further approval required. The decision is still running. The window is closing.</span>
-      <div class="ac-interrupt-rule"></div>
+    <div class="ac-friction">
+      <div class="ac-friction-line"></div>
+      <span class="ac-friction-word">Delay</span>
+      <span class="ac-friction-note">Further approval required. The decision is still running. The window is closing.</span>
+      <div class="ac-friction-line"></div>
     </div>
 
     <!-- Board — the break -->
-    <div class="ac-node board-row">
-      <div class="ac-meta">
-        <span class="ac-stage">Board</span>
-      </div>
-      <p class="ac-body">Informed too late. The intervention window has already closed.</p>
-      <span class="ac-time">T + 36h+</span>
+    <div class="ac-card ac-break">
+      <span class="ac-label">Board</span>
+      <span class="ac-stamp">T + 36h+</span>
+      <p class="ac-desc">Informed too late. The intervention window has already closed.</p>
     </div>
 
     <!-- Consequence -->
-    <div class="ac-node outcome-row">
-      <div class="ac-meta">
-        <span class="ac-stage">Consequence</span>
-      </div>
-      <div class="ac-outcome-inner">
-        <div class="ac-consequence-pills">
+    <div class="ac-card ac-outcome">
+      <span class="ac-label">Consequence</span>
+      <span class="ac-stamp">T + 7d+</span>
+      <div class="ac-outcome-content">
+        <div class="ac-outcome-pills">
           <span class="ac-pill">Regulatory exposure</span>
           <span class="ac-pill">Reputational damage</span>
           <span class="ac-pill">Financial liability</span>
         </div>
-        <p class="ac-body">The cost of discovery is no longer manageable.</p>
+        <p class="ac-desc">The cost of discovery is no longer manageable.</p>
       </div>
-      <span class="ac-time">T + 7d+</span>
     </div>
 
   </div>
