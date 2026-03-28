@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intervention & Decision Architecture Review | Human Integrity Advisory</title>
+<meta name="description" content="A structured assessment of how escalation, override, and authority function in AI-dependent operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, svg, video, iframe, embed { max-width: 100%; }
+:root {
+  --black:      #000000;
+  --bg:         #0a0a0a;
+  --surface:    #141414;
+  --surface2:   #1c1c1c;
+  --white:      #ffffff;
+  --gold:       #C9B694;
+  --gold-dim:   rgba(201,182,148,0.40);
+  --gold-faint: rgba(201,182,148,0.08);
+  --border:     rgba(201,182,148,0.14);
+  --border-mid: rgba(201,182,148,0.30);
+  --border-str: rgba(201,182,148,0.58);
+  --text:       #f0f0f0;
+  --text-body:  #c8c6c4;
+  --text-sub:   #a8a5a2;
+  --text-faint: #797673;
+  --page-max:   980px;
+  --pad-x:      clamp(20px, 5vw, 64px);
+  --pad-s:      clamp(52px, 7vw, 88px);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text-body); font-size: 0.96rem; line-height: 1.85; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+p { font-size: 0.96rem; line-height: 1.85; color: var(--text-body); }
+p + p { margin-top: 14px; }
+.page-wrap { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--pad-x); }
+section { padding: var(--pad-s) 0; border-bottom: 1px solid var(--border); }
+section:last-of-type { border-bottom: none; }
+.site-header { background: var(--black); border-bottom: 1px solid var(--border); padding: 20px var(--pad-x); }
+.site-header-inner { max-width: var(--page-max); margin: 0 auto; display: flex; align-items: center; gap: 10px; }
+.hdr-icon { display: flex; align-items: center; gap: 5px; }
+.hdr-line   { display: block; width: 20px; height: 1px; background: var(--gold); }
+.hdr-stroke { display: block; width: 1px; height: 16px; background: var(--gold); }
+.hdr-wordmark { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.20em; text-transform: uppercase; color: var(--text-sub); }
+.page-hero { background: var(--black); padding: clamp(56px, 8vw, 96px) var(--pad-x) clamp(44px, 6vw, 68px); border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: var(--page-max); margin: 0 auto; }
+.page-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.page-service-type { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 20px; }
+.page-h1 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 24px; }
+.page-lede { font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.9; color: var(--text-body); max-width: 580px; }
+.section-hd { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.section-num { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); flex-shrink: 0; }
+.section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text); }
+.section-rule { flex: 1; height: 1px; background: var(--border); }
+.block { background: var(--surface); border: 1px solid var(--border); padding: clamp(24px, 4vw, 40px); }
+.block-accent { border-left: 2px solid var(--gold); }
+.block-note { border-left: 2px solid var(--gold-dim); background: var(--gold-faint); padding: 16px 22px; font-size: 0.88rem; color: var(--text-body); line-height: 1.75; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.grid-2 > * { background: var(--bg); }
+.dash-list { list-style: none; }
+.dash-list li { padding: 12px 0 12px 24px; position: relative; border-bottom: 1px solid var(--border); font-size: 0.92rem; color: var(--text-body); line-height: 1.8; }
+.dash-list li:last-child { border-bottom: none; }
+.dash-list li::before { content: ''; position: absolute; left: 0; top: 1.3em; width: 12px; height: 1px; background: var(--gold-dim); }
+.offer { border: 1px solid var(--border); background: var(--surface); margin-bottom: 20px; }
+.offer-head { padding: clamp(20px, 4vw, 32px); border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 20px; }
+.offer-num  { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); flex-shrink: 0; padding-top: 3px; }
+.offer-meta { flex: 1; }
+.offer-name { font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: 600; color: var(--white); line-height: 1.35; margin-bottom: 10px; }
+.offer-summary { font-size: 0.92rem; color: var(--text-body); line-height: 1.85; max-width: 620px; }
+.offer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.offer-col  { background: var(--bg); padding: 20px 24px; }
+.offer-col-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.offer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.offer-col ul li { font-size: 0.88rem; color: var(--text-body); line-height: 1.65; padding-left: 16px; position: relative; }
+.offer-col ul li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--gold-dim); }
+.offer-foot { padding: 14px clamp(20px, 4vw, 32px); display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--surface2); flex-wrap: wrap; }
+.offer-solves { font-size: 0.85rem; color: var(--text-sub); font-style: italic; line-height: 1.65; }
+.badge { display: inline-block; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-sub); border: 1px solid var(--border-mid); padding: 4px 10px; }
+.btn-gold { display: inline-flex; align-items: center; justify-content: center; background: var(--gold); color: #000; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.20em; text-transform: uppercase; padding: 12px 28px; min-height: 44px; border: none; cursor: pointer; border-radius: 0; transition: opacity 0.2s; }
+.btn-gold:hover { opacity: 0.85; }
+.btn-outline { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text-sub); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.20em; text-transform: uppercase; padding: 11px 28px; min-height: 44px; border: 1px solid var(--border-mid); cursor: pointer; border-radius: 0; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.cta-h2 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 16px; }
+.cta-body { max-width: 540px; margin-bottom: 24px; font-size: 0.96rem; line-height: 1.9; color: var(--text-body); }
+.cta-email-plain { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 20px; }
+.cta-pair { display: flex; gap: 16px; flex-wrap: wrap; }
+.cta-note { margin-top: 24px; font-size: 0.78rem; color: var(--text-faint); font-style: italic; line-height: 1.75; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+footer { background: var(--black); border-top: 1px solid var(--border); padding: clamp(24px, 3.5vw, 40px) var(--pad-x); }
+.footer-inner { max-width: var(--page-max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer-mark { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.footer-mark-icon { display: flex; align-items: center; gap: 4px; }
+.fm-line   { display: block; width: 16px; height: 1px; background: var(--gold-dim); }
+.fm-stroke { display: block; width: 1px; height: 13px; background: var(--gold-dim); }
+.footer-mark-text { font-size: 0.62rem; font-weight: 300; letter-spacing: 0.30em; text-transform: uppercase; color: var(--text-faint); }
+.footer-copy { font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.08em; }
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .offer-cols { grid-template-columns: 1fr; } .footer-inner { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 480px) { .offer-cols { grid-template-columns: 1fr; } .cta-pair { flex-direction: column; } }
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="hdr-icon">
+      <span class="hdr-line"></span>
+      <span class="hdr-stroke"></span>
+      <span class="hdr-line"></span>
+    </div>
+    <span class="hdr-wordmark">Human Integrity Advisory</span>
+  </div>
+</header>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Integrity &amp; Intervention Advisory for AI Systems</p>
+    <p class="page-service-type">Service Overview &middot; Architecture</p>
+    <h1 class="page-h1">Intervention &amp; Decision Architecture Review</h1>
+    <p class="page-lede">A structured assessment of how escalation, override, and authority function in AI-dependent operations. We identify where the architecture fails before a system event does.</p>
+  </div>
+</div>
+<main>
+
+<section>
+<div class="page-wrap">
+  <div class="section-hd reveal"><span class="section-num">01</span><span class="section-label">The question this service answers</span><div class="section-rule"></div></div>
+  <div class="grid-2 reveal">
+    <div class="block block-accent">
+      <p style="font-size:1.05rem;font-weight:600;color:var(--white);line-height:1.5;margin-bottom:16px;">Where does your escalation and override architecture fail, and would you find out before a system event does?</p>
+      <p>AI governance policies define what should happen when a system behaves unexpectedly. They almost never define who has authority to act, what information they need, or how quickly they can realistically respond.</p>
+      <p>This review maps the actual decision architecture and identifies every point at which the chain can fail.</p>
+    </div>
+    <div class="block">
+      <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">What governance policy cannot produce</p>
+      <ul class="dash-list">
+        <li>Policy defines intent. It cannot confirm that override authority is clear, held by the right people, and exercisable at operational speed.</li>
+        <li>Documented escalation paths and functional escalation paths are not the same thing.</li>
+        <li>Structural gaps in decision architecture are invisible until a system event makes them visible. By then, the cost of discovery is not containable.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="page-wrap">
+  <div class="section-hd reveal"><span class="section-num">02</span><span class="section-label">What it is</span><div class="section-rule"></div></div>
+  <p class="reveal" style="max-width:660px;margin-bottom:32px;">A deep examination of the decision architecture surrounding your AI-dependent systems. HIA traces the chain from system event to human response and identifies every point at which the chain can fail. Practitioner-led. Evaluated against operational reality, not documentation standards.</p>
+  <div class="offer reveal">
+    <div class="offer-head">
+      <span class="offer-num">DAR</span>
+      <div class="offer-meta">
+        <span class="badge" style="display:inline-block;margin-bottom:14px;">Architecture</span>
+        <p class="offer-name">Intervention &amp; Decision Architecture Review</p>
+        <p class="offer-summary">A structured assessment of how escalation, override, and authority function in AI-dependent operations. We identify where the architecture fails before a system event does.</p>
+      </div>
+    </div>
+    <div class="offer-cols">
+      <div class="offer-col">
+        <div class="offer-col-label">What it includes</div>
+        <ul>
+          <li>Mapping of formal and informal escalation paths from system event to human response.</li>
+          <li>Assessment of override authority: who can act, under what conditions, with what information.</li>
+          <li>Identification of structural gaps and decision latency that would prevent timely intervention.</li>
+        </ul>
+      </div>
+      <div class="offer-col">
+        <div class="offer-col-label">What it produces</div>
+        <ul>
+          <li>Escalation architecture document</li>
+          <li>Decision rights map</li>
+          <li>Structural gap report</li>
+          <li>Prioritised remediation plan</li>
+        </ul>
+      </div>
+      <div class="offer-col">
+        <div class="offer-col-label">Engagement scope</div>
+        <ul>
+          <li>Applicable to new and existing AI deployments</li>
+          <li>Tailored to your operational context</li>
+          <li>Remote or in-person</li>
+          <li>Direct presentation to accountable executive</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer-foot">
+      <p class="offer-solves">Focus: the mechanics of real-time decision-making when a system produces an output that no one planned for.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="page-wrap">
+  <div class="section-hd reveal"><span class="section-num">03</span><span class="section-label">Why it matters</span><div class="section-rule"></div></div>
+  <div class="grid-2 reveal" style="margin-bottom:24px;">
+    <div class="block">
+      <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">How the failure compounds</p>
+      <p>When an AI-driven decision produces outputs outside expected parameters, the system continues to run. The crisis begins at the moment of failure, not the moment of discovery. Every hour between those two points is an hour of accumulated cost.</p>
+      <p>The escalation chain determines how much of that time is recoverable. If the chain has structural gaps, authority that cannot be exercised at the required speed, or information that does not reach the right people, the window for low-cost intervention closes before the board is aware there is a problem.</p>
+    </div>
+    <div class="block">
+      <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">What this review addresses</p>
+      <ul class="dash-list">
+        <li>Whether escalation paths function under real operational conditions, not just on paper.</li>
+        <li>Whether override authority is held by the right people and can be exercised at operational speed.</li>
+        <li>Whether decision latency in your current architecture would prevent timely intervention.</li>
+        <li>Where structural gaps sit and how to address them in priority order.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="block-note reveal">Most organisations score well on governance design. They score poorly on operational intervention capability. This review addresses the second.</div>
+</div>
+</section>
+
+<section>
+<div class="page-wrap">
+  <div class="section-hd reveal"><span class="section-num">04</span><span class="section-label">What changes as a result</span><div class="section-rule"></div></div>
+  <div class="grid-2 reveal">
+    <div class="block">
+      <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">After the review</p>
+      <ul class="dash-list">
+        <li>Structural gaps become visible and addressable before a system event makes them unavoidable.</li>
+        <li>A prioritised map of where authority is unclear, escalation paths are broken, or override speed does not match operational urgency.</li>
+        <li>Decision rights are documented against operational reality, not governance aspiration.</li>
+        <li>Remediation is sequenced by impact, not complexity.</li>
+      </ul>
+    </div>
+    <div class="block" style="display:flex;flex-direction:column;gap:18px;">
+      <div>
+        <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px;">How the review works</p>
+        <p style="font-size:0.9rem;color:var(--text-body);line-height:1.8;">We begin by mapping the escalation chain as it currently exists, not as it is documented. Most organisations identify critical gaps in the first conversation. The full review traces the chain in detail across formal and informal paths, authority structures, and information flows.</p>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:18px;">
+        <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px;">Output</p>
+        <p style="font-size:0.9rem;color:var(--text-body);line-height:1.8;">Findings are presented directly to the accountable executive. A written scope defines responsibilities, communication channels, and boundaries before work begins.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section style="border-bottom:none;">
+<div class="page-wrap">
+  <div class="section-hd reveal"><span class="section-num">05</span><span class="section-label">Request a confidential conversation</span><div class="section-rule"></div></div>
+  <div class="reveal">
+    <h2 class="cta-h2">Most organisations identify the first gap in the initial conversation.</h2>
+    <p class="cta-body">A short, confidential conversation to establish what your current architecture looks like and whether this review is a fit. Please include your role, the situation prompting the enquiry, and any relevant timelines.</p>
+    <span class="cta-email-plain">advisory@hia.io</span>
+    <div class="cta-pair">
+      <a href="mailto:advisory@hia.io" class="btn-gold">Send an enquiry</a>
+      <a href="https://jamessaint.github.io/Human-Integrity-Advisory/contact.html" class="btn-outline">Use the contact form</a>
+    </div>
+    <p class="cta-note">All correspondence is treated as private and off record unless explicitly agreed otherwise in writing.</p>
+  </div>
+</div>
+</section>
+
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <div class="footer-mark-icon">
+        <span class="fm-line"></span>
+        <span class="fm-stroke"></span>
+        <span class="fm-line"></span>
+      </div>
+      <span class="footer-mark-text">Human Integrity Advisory</span>
+    </div>
+    <span class="footer-copy">&copy;&nbsp;2026 Human Integrity Advisory &middot; All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  if ('IntersectionObserver' in window) {
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); rio.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { rio.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+  }
+}());
+</script>
+
+</body>
+</html>
