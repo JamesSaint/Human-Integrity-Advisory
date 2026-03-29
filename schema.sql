@@ -1,9 +1,9 @@
 -- ============================================================
--- ALMA v3.0 — AI Literacy Mindset Assessment
+-- AI Literacy Mindset Assessment v1.0
 -- PostgreSQL Database Schema
--- Developed by Mulya van Roon, AIGP
+-- Developed by James Saint, (HIA) Human Integrity Advisory Ltd
 -- In collaboration with Dr. Joanna Michalska, Ethica Group Ltd
--- Version 3.0 — March 2026
+-- Version 1.0 — March 2026
 -- ============================================================
 
 -- Enable UUID extension
