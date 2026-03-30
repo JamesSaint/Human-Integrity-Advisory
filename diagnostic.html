@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Governance Assessment · Version 1.0 | Human Integrity Advisory</title>
+<title>AI Governance Diagnostic Assessment · Version 1.0 | Human Integrity Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -336,7 +336,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 <div id="intro-screen">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div class="page-eyebrow">AI Governance Assessment</div>
+      <div class="page-eyebrow">AI Governance Diagnostic Assessment</div>
       <!-- <div class="hero-alma-mark">ALMA</div> -->
       <div class="hero-alma-sub">Version 1.0</div>
       <!-- <p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p> -->
@@ -344,7 +344,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
         <button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment →</button>
         <!-- <a href="services.html" class="hero-btn-outline">View Services</a> -->
       </div>
-      <p class="hero-note">Respond based on your genuine feelings and actual behaviours. There are no right or wrong answers. Results are for governance diagnostic purposes only and should not be linked to individual performance evaluation.</p>
+      <p class="hero-note">Respond based on your genuine feelings and actual behaviours. There are no right or wrong answers. Results are for governance diagnostic purposes only.</p>
     </div>
   </div>
   <div class="hero-stat-band">
@@ -422,7 +422,7 @@ const SECTIONS = [
 {
   id:'B', title:'Psychological Safety',
   desc:'Assesses your sense of safety to question AI systems, report errors, and acknowledge uncertainty.',
-  govLink:'Low scores create escalation pathway failures and governance blind spots. When operators fear retribution, subtle AI errors accumulate silently.',
+  // govLink:'Low scores create escalation pathway failures and governance blind spots. When operators fear retribution, subtle AI errors accumulate silently.',
   type:'likert', dim:'ps', dimLabel:'Psychological Safety', behKeys:['K1','K2','K3'],
   questions:[
     {id:'B1',text:'If I made an error while using an AI system, it is safe for me to report it.'},
@@ -440,7 +440,7 @@ const SECTIONS = [
 {
   id:'C', title:'Growth Orientation',
   desc:'Assesses your belief that AI governance capability can be developed through effort and learning.',
-  govLink:'Low scores create capability stagnation. The "digital native" fallacy takes hold — senior leaders abdicate oversight, assuming AI competence belongs to younger or more technical staff.',
+  // govLink:'Low scores create capability stagnation. The "digital native" fallacy takes hold — senior leaders abdicate oversight, assuming AI competence belongs to younger or more technical staff.',
   type:'likert', dim:'go', dimLabel:'Growth Orientation', behKeys:['K4','K5','K6'],
   questions:[
     {id:'C1',text:'I can significantly improve my ability to work effectively with AI through effort and practice.'},
@@ -458,7 +458,7 @@ const SECTIONS = [
 {
   id:'D', title:'Adaptive Flexibility',
   desc:'Assesses your comfort with ambiguity and willingness to revise approaches as AI evolves.',
-  govLink:"Low scores create governance rigidity and framework-reality gaps. Static rules cannot keep pace with AI evolution; shadow AI proliferates as workarounds. The sunk cost fallacy drives deployment of flawed models.",
+  // govLink:"Low scores create governance rigidity and framework-reality gaps. Static rules cannot keep pace with AI evolution; shadow AI proliferates as workarounds. The sunk cost fallacy drives deployment of flawed models.",
   type:'likert', dim:'af', dimLabel:'Adaptive Flexibility', behKeys:['K7','K8','K9'],
   questions:[
     {id:'D1',text:'I am comfortable making decisions about AI without complete information.'},
@@ -476,7 +476,7 @@ const SECTIONS = [
 {
   id:'E', title:'Conscious Ownership',
   desc:'Assesses your sense of personal accountability for AI decisions and outcomes.',
-  govLink:'Low scores create accountability diffusion and "moral crumple zones" — where humans absorb liability for systems they cannot meaningfully control, or voluntarily shift blame to the algorithm.',
+  // govLink:'Low scores create accountability diffusion and "moral crumple zones" — where humans absorb liability for systems they cannot meaningfully control, or voluntarily shift blame to the algorithm.',
   type:'likert', dim:'co', dimLabel:'Conscious Ownership', behKeys:['K10','K11','K12'],
   questions:[
     {id:'E1',text:'I take personal responsibility for decisions I make using AI.'},
@@ -494,7 +494,7 @@ const SECTIONS = [
 {
   id:'F', title:'Critical Engagement',
   desc:'Assesses your tendency to actively question, verify, and challenge AI outputs.',
-  govLink:'Low scores create automation bias and human oversight erosion. As AI capability improves, critical engagement naturally drops — the complacency paradox.',
+  // govLink:'Low scores create automation bias and human oversight erosion. As AI capability improves, critical engagement naturally drops — the complacency paradox.',
   type:'likert', dim:'ce', dimLabel:'Critical Engagement', behKeys:['K13','K14','K15'],
   questions:[
     {id:'F1',text:'I routinely verify AI-generated outputs before acting on them.',n:'●'},
