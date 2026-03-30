@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Literacy Mindset Assessment (ALMA) · Version 1.0 | Human Integrity Advisory</title>
+<title>AI Governance Assessment · Version 1.0 | Human Integrity Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -327,7 +327,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 
 <!-- PROGRESS BAR (survey mode) -->
 <div id="progress-container" class="hidden">
-  <div class="logo">HIA — ALMA</div>
+  <div class="logo">HIA</div>
   <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
   <div class="progress-label" id="progress-label">1 / 11</div>
 </div>
@@ -336,10 +336,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);
 <div id="intro-screen">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div class="page-eyebrow">AI Governance Diagnostic Instrument</div>
-      <div class="hero-alma-mark">ALMA</div>
-      <div class="hero-alma-sub">AI Literacy Mindset Assessment · Version 1.0</div>
-      <p class="page-lede">Measuring psychological readiness for responsible AI governance. ALMA quantifies both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p>
+      <div class="page-eyebrow">AI Governance Assessment</div>
+      <!-- <div class="hero-alma-mark">ALMA</div> -->
+      <div class="hero-alma-sub">Version 1.0</div>
+      <p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p>
       <div class="hero-cta-row">
         <button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment →</button>
         <!-- <a href="services.html" class="hero-btn-outline">View Services</a> -->
@@ -852,8 +852,8 @@ function completeSurvey(){
 
   let html = `
   <div class="dash-header">
-    <h1 class="dash-title">Diagnostic Results</h1>
-    <p class="dash-sub">AI Literacy Mindset Assessment v1.0 — ${today}</p>
+    <h1 class="dash-title">Assessment Results</h1>
+    <p class="dash-sub">Date:  ${today}</p>
     <p class="dash-meta">Role: ${S.context.A1} · ${S.context.A2} · ${S.context.A3} · ${S.context.A4} employees · AI usage: ${S.context.A5}</p>
   </div>
 
@@ -973,7 +973,7 @@ function completeSurvey(){
 
   <!-- FOOTER -->
   <div class="footer-row">
-    <!-- <div class="footer-credit">ALMA v1.0 · Developed by James Saint, Human Integrity Advisory Ltd · In collaboration with Dr. Joanna Michalska, Ethica Group Ltd · Confidential</div> -->
+    <!-- <div class="footer-credit">Developed by Human Integrity Advisory Ltd · In collaboration Ethica Group Ltd · Confidential</div> -->
     <button class="btn-print" onclick="window.print()">Print / Export PDF</button>
   </div>
   `;
