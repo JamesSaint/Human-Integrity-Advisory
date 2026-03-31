@@ -318,3 +318,111 @@ COMMENT ON TABLE alma_regulatory_mappings IS 'Core IP: maps ALMA constructs (dim
 COMMENT ON TABLE regulatory_enforcement_timeline IS 'Key enforcement milestones per framework for timeline display.';
 COMMENT ON VIEW v_regulatory_risk_per_respondent IS 'Per-respondent regulatory risk profile: which articles are at risk based on individual ALMA scores.';
 COMMENT ON VIEW v_regulatory_risk_summary IS 'Organisation-level regulatory risk summary for board reporting.';
+
+-- ─────────────────────────────────────────────────────────────
+-- UK DSIT FRAMEWORK — Article Data
+-- ─────────────────────────────────────────────────────────────
+UPDATE regulatory_frameworks SET active = TRUE WHERE id = 'uk-ai';
+UPDATE regulatory_frameworks SET active = TRUE WHERE id = 'us-nist';
+
+INSERT INTO regulatory_articles (framework_id, article_num, title, summary, url_path, penalty_tier, chapter) VALUES
+('uk-ai', 'P1', 'Safety, Security & Robustness', 'AI systems should function securely and as intended, with risks identified and managed across the full lifecycle.', 'white-paper#safety-security-and-robustness', 'sectorSpecific', 'DSIT Cross-Sectoral Principles'),
+('uk-ai', 'P2', 'Appropriate Transparency & Explainability', 'Users and affected parties should understand when AI is being used and how it influences decisions.', 'white-paper#appropriate-transparency-and-explainability', 'sectorSpecific', 'DSIT Cross-Sectoral Principles'),
+('uk-ai', 'P3', 'Fairness', 'AI systems should not generate unfair outcomes or undermine legal rights. Includes bias detection and equitable treatment.', 'white-paper#fairness', 'sectorSpecific', 'DSIT Cross-Sectoral Principles'),
+('uk-ai', 'P4', 'Accountability & Governance', 'Clear responsibility for AI outcomes must exist. Appropriate governance structures with designated AI risk management roles.', 'white-paper#accountability-and-governance', 'sectorSpecific', 'DSIT Cross-Sectoral Principles'),
+('uk-ai', 'P5', 'Contestability & Redress', 'Individuals should be able to challenge AI decisions and seek meaningful redress.', 'white-paper#contestability-and-redress', 'sectorSpecific', 'DSIT Cross-Sectoral Principles'),
+('uk-ai', 'ICO-AI', 'ICO AI & Data Protection Guidance', 'AI processing of personal data must comply with UK GDPR principles including lawfulness, fairness, transparency, and accountability.', '', 'ico', 'ICO Guidance'),
+('uk-ai', 'ICO-ADM', 'Automated Decision-Making & Profiling', 'UK GDPR Art 22 rights relating to solely automated decisions. Data (Use and Access) Act 2025 modifies these provisions.', '', 'ico', 'ICO Guidance'),
+('uk-ai', 'DUA-2025', 'Data (Use and Access) Act 2025', 'Royal Assent June 2025. Relaxes some ADM constraints but introduces new safeguards for AI processing.', '', 'ico', 'Legislation'),
+('uk-ai', 'AISI', 'AI Safety Institute (AI Security Institute)', 'State-backed body for empirical evaluation of frontier AI capabilities and risks. Expected to gain statutory footing.', '', 'sectorSpecific', 'Government Bodies'),
+('uk-ai', 'CYBER-AI', 'Code of Practice for Cyber Security of AI', 'DSIT voluntary code (Jan 2025) setting baseline cybersecurity principles for AI systems.', '', 'sectorSpecific', 'DSIT Codes'),
+('uk-ai', 'ASSURE', 'Third-Party AI Assurance Roadmap', 'DSIT strategic framework (2025) to build credible third-party AI assurance market.', '', 'sectorSpecific', 'DSIT Codes');
+
+-- ─────────────────────────────────────────────────────────────
+-- NIST AI RMF — Article Data
+-- ─────────────────────────────────────────────────────────────
+INSERT INTO regulatory_articles (framework_id, article_num, title, summary, url_path, penalty_tier, chapter) VALUES
+('us-nist', 'GOV', 'GOVERN Function', 'Cross-cutting function for AI risk management culture, policies, processes, and accountability. Applies to all lifecycle stages.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core'),
+('us-nist', 'GOV-1', 'GOV 1: Policies & Accountability', 'Legal/regulatory requirements understood and documented. Trustworthy AI integrated into policies. Risk tolerance defined.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'GOV-2', 'GOV 2: Roles & Responsibilities', 'Roles, responsibilities, and lines of communication for AI risk management documented and clearly defined.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'GOV-3', 'GOV 3: Workforce Diversity & AI Literacy', 'Workforce diversity prioritised. Personnel trained in AI risk management. AI literacy fostered organisation-wide.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'GOV-4', 'GOV 4: Organisational Practices', 'Organisational teams committed to culture of AI risk awareness. Third-party AI risks addressed.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'GOV-5', 'GOV 5: Engagement & Feedback', 'Ongoing monitoring of risks and benefits. Stakeholder engagement mechanisms. External feedback channels.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'GOV-6', 'GOV 6: Oversight & Escalation', 'Oversight functions and escalation mechanisms defined. Includes go/no-go, override, and decommissioning authorisation.', 'playbook/?function=Govern', 'voluntary', 'AI RMF Core — Govern'),
+('us-nist', 'MAP', 'MAP Function', 'Establishes context to frame AI risks. Purpose documentation, stakeholder identification, impact assessment.', 'playbook/?function=Map', 'voluntary', 'AI RMF Core'),
+('us-nist', 'MEA', 'MEASURE Function', 'Quantitative, qualitative, and mixed-method tools to analyse, assess, benchmark, and monitor AI risk.', 'playbook/?function=Measure', 'voluntary', 'AI RMF Core'),
+('us-nist', 'MAN', 'MANAGE Function', 'Risk treatment and response. Prioritisation, planned/unplanned response, post-deployment monitoring, override and decommissioning.', 'playbook/?function=Manage', 'voluntary', 'AI RMF Core'),
+('us-nist', 'MAN-4', 'MAN 4: Post-Deployment Monitoring', 'Post-deployment monitoring plans. Appeal and override mechanisms. Decommissioning. Incident response. Change management.', 'playbook/?function=Manage', 'voluntary', 'AI RMF Core — Manage'),
+('us-nist', 'TRUST', 'Trustworthy AI Characteristics', 'Seven characteristics: valid/reliable, safe, secure/resilient, accountable/transparent, explainable/interpretable, privacy-enhanced, fair.', 'airmf/', 'voluntary', 'AI RMF Foundation'),
+('us-nist', 'GAI', 'Generative AI Profile (AI 600-1)', 'Companion resource for GAI risks. Content provenance, pre-deployment testing, incident disclosure, governance.', '', 'voluntary', 'AI RMF Profiles');
+
+-- ─────────────────────────────────────────────────────────────
+-- UK DSIT → ALMA Mappings
+-- ─────────────────────────────────────────────────────────────
+INSERT INTO alma_regulatory_mappings (framework_id, alma_construct, alma_key, article_num, mapping_priority, rationale) VALUES
+('uk-ai', 'dimension', 'ps', 'P1', 'primary', 'Safety principle (P1) undermined when staff fear speaking up about AI issues.'),
+('uk-ai', 'dimension', 'ps', 'P2', 'primary', 'Transparency (P2) requires open communication culture.'),
+('uk-ai', 'dimension', 'ps', 'P5', 'primary', 'Contestability (P5) depends on people feeling safe to challenge AI decisions.'),
+('uk-ai', 'dimension', 'go', 'P4', 'primary', 'Accountability & Governance (P4) requires competent oversight staff.'),
+('uk-ai', 'dimension', 'go', 'ICO-AI', 'primary', 'ICO AI guidance requires competent data controllers for AI processing.'),
+('uk-ai', 'dimension', 'af', 'P1', 'primary', 'Safety (P1) requires adaptive governance for evolving AI risks.'),
+('uk-ai', 'dimension', 'af', 'P4', 'primary', 'Governance (P4) must adapt to changing technology landscape.'),
+('uk-ai', 'dimension', 'co', 'P4', 'primary', 'Accountability (P4) requires clear ownership of AI outcomes.'),
+('uk-ai', 'dimension', 'co', 'ICO-AI', 'primary', 'ICO requires identifiable controllers for AI data processing.'),
+('uk-ai', 'dimension', 'co', 'ICO-ADM', 'primary', 'ADM provisions require accountable parties for automated decisions.'),
+('uk-ai', 'dimension', 'ce', 'P2', 'primary', 'Transparency (P2) meaningless without critical output evaluation.'),
+('uk-ai', 'dimension', 'ce', 'P1', 'primary', 'Safety (P1) depends on human verification of AI outputs.'),
+('uk-ai', 'dimension', 'ce', 'ICO-ADM', 'primary', 'ADM safeguards including human review require active engagement.'),
+('uk-ai', 'gap', 'accountability', 'P4', 'primary', 'P4 requires clear responsibility for AI outcomes.'),
+('uk-ai', 'gap', 'accountability', 'ICO-AI', 'primary', 'ICO requires identifiable data controllers.'),
+('uk-ai', 'gap', 'authority', 'P4', 'primary', 'P4 governance requires override authority.'),
+('uk-ai', 'gap', 'authority', 'P5', 'primary', 'P5 contestability requires authority to act on challenges.'),
+('uk-ai', 'gap', 'authority', 'ICO-ADM', 'primary', 'ADM human intervention requires genuine authority.'),
+('uk-ai', 'gap', 'intervention', 'P1', 'primary', 'Safety (P1) requires functional intervention capability.'),
+('uk-ai', 'gap', 'intervention', 'P5', 'primary', 'Contestability (P5) requires ability to halt or reverse AI decisions.'),
+('uk-ai', 'gap', 'escalation', 'P5', 'primary', 'Contestability (P5) requires accessible escalation mechanisms.'),
+('uk-ai', 'gap', 'escalation', 'P4', 'primary', 'Governance (P4) requires clear escalation to accountable parties.'),
+('uk-ai', 'gap', 'escalation', 'ICO-AI', 'primary', 'ICO expects complaints handling for AI processing concerns.');
+
+-- ─────────────────────────────────────────────────────────────
+-- NIST AI RMF → ALMA Mappings
+-- ─────────────────────────────────────────────────────────────
+INSERT INTO alma_regulatory_mappings (framework_id, alma_construct, alma_key, article_num, mapping_priority, rationale) VALUES
+('us-nist', 'dimension', 'ps', 'GOV-5', 'primary', 'GOV 5 stakeholder engagement requires psychological safety for feedback.'),
+('us-nist', 'dimension', 'ps', 'GOV-6', 'primary', 'GOV 6 escalation mechanisms need people who feel safe to escalate.'),
+('us-nist', 'dimension', 'ps', 'TRUST', 'primary', 'Trustworthy AI characteristics depend on open error reporting culture.'),
+('us-nist', 'dimension', 'go', 'GOV-3', 'primary', 'GOV 3 workforce AI literacy requires growth orientation.'),
+('us-nist', 'dimension', 'go', 'GOV-1', 'primary', 'GOV 1 policy integration requires understanding of AI risks.'),
+('us-nist', 'dimension', 'go', 'MAP', 'primary', 'MAP function context-setting requires evolving expertise.'),
+('us-nist', 'dimension', 'af', 'MAN', 'primary', 'MANAGE function requires adaptive risk response.'),
+('us-nist', 'dimension', 'af', 'MAN-4', 'primary', 'MAN 4 post-deployment monitoring needs organisational agility.'),
+('us-nist', 'dimension', 'af', 'GOV-4', 'primary', 'GOV 4 practices require adaptable risk culture.'),
+('us-nist', 'dimension', 'co', 'GOV-2', 'primary', 'GOV 2 requires documented roles and responsibilities.'),
+('us-nist', 'dimension', 'co', 'GOV-6', 'primary', 'GOV 6 oversight requires clear accountability chains.'),
+('us-nist', 'dimension', 'co', 'MAN', 'primary', 'MANAGE function needs accountable risk owners.'),
+('us-nist', 'dimension', 'ce', 'MEA', 'primary', 'MEASURE function relies on active AI system evaluation.'),
+('us-nist', 'dimension', 'ce', 'MAN-4', 'primary', 'MAN 4 monitoring unfulfilled when nobody checks outputs.'),
+('us-nist', 'dimension', 'ce', 'TRUST', 'primary', 'Trustworthy AI cannot be verified without critical engagement.'),
+('us-nist', 'gap', 'accountability', 'GOV-2', 'primary', 'GOV 2 requires documented AI risk management roles.'),
+('us-nist', 'gap', 'accountability', 'GOV-6', 'primary', 'GOV 6 requires oversight authorisation structures.'),
+('us-nist', 'gap', 'authority', 'GOV-6', 'primary', 'GOV 6 requires authorised go/no-go and override decisions.'),
+('us-nist', 'gap', 'authority', 'MAN', 'primary', 'MANAGE requires authorised risk response capability.'),
+('us-nist', 'gap', 'intervention', 'MAN-4', 'primary', 'MAN 4 requires appeal, override, and decommissioning mechanisms.'),
+('us-nist', 'gap', 'intervention', 'MAN', 'primary', 'MANAGE requires operational intervention capability.'),
+('us-nist', 'gap', 'escalation', 'GOV-5', 'primary', 'GOV 5 requires functional feedback and engagement mechanisms.'),
+('us-nist', 'gap', 'escalation', 'GOV-6', 'primary', 'GOV 6 requires escalation to authorised decision-makers.');
+
+-- UK enforcement timeline
+INSERT INTO regulatory_enforcement_timeline (framework_id, milestone, enforcement_date, description, status) VALUES
+('uk-ai', 'DSIT White Paper published', '2023-03-29', 'Pro-innovation approach to AI regulation with 5 cross-sectoral principles.', 'past'),
+('uk-ai', 'Regulator strategic updates', '2024-04-30', 'Regulators published approaches to applying AI principles within their remits.', 'past'),
+('uk-ai', 'AI Opportunities Action Plan', '2025-01-13', 'Government accepted all 50 expert recommendations on AI adoption.', 'past'),
+('uk-ai', 'Data (Use and Access) Act', '2025-06-19', 'Royal Assent. Modifies ADM provisions and data protection rules.', 'past'),
+('uk-ai', 'Expected AI Bill', '2026-12-31', 'Government-backed AI regulation bill expected in second half of 2026.', 'upcoming');
+
+-- NIST timeline
+INSERT INTO regulatory_enforcement_timeline (framework_id, milestone, enforcement_date, description, status) VALUES
+('us-nist', 'AI RMF 1.0 published', '2023-01-26', 'NIST AI 100-1 released as voluntary framework.', 'past'),
+('us-nist', 'AI RMF Playbook launched', '2023-01-26', 'Companion resource with suggested actions for each subcategory.', 'past'),
+('us-nist', 'GAI Profile (AI 600-1)', '2024-07-26', 'Generative AI risk management profile released per EO 14110.', 'past'),
+('us-nist', 'Formal review expected', '2028-01-01', 'NIST plans formal community review and potential update by 2028.', 'upcoming');

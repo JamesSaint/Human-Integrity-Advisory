@@ -673,19 +673,69 @@ const REGULATORY_FRAMEWORKS = {
     id: 'uk-ai',
     name: 'UK AI Regulation Framework',
     shortName: 'UK Framework',
-    citation: 'DSIT Pro-Innovation AI Regulation (2024)',
+    citation: 'DSIT Cross-Sectoral AI Principles (2023–2026)',
     baseUrl: 'https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach/',
-    active: false, // Enable when ready
-    articles: {} // Placeholder for UK principles: Safety, Transparency, Fairness, Accountability, Contestability
+    explorerUrl: 'https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach/white-paper',
+    checkerUrl: 'https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/',
+    active: true,
+    timeline: {
+      whitePaper: '2023-03-29',
+      regulatorUpdates: '2024-04-30',
+      aiActionPlan: '2025-01-13',
+      duaAct: '2025-06-19',
+      expectedBill: '2026-H2'
+    },
+    penalties: {
+      ico: { max: '£17.5M or 4% global turnover (data protection)', articles: ['ICO-AI'] },
+      sectorSpecific: { max: 'Varies by regulator (FCA, Ofcom, CMA etc.)', articles: ['P1'] }
+    },
+    articles: {
+      'P1': { num:'P1', title:'Safety, Security & Robustness', summary:'AI systems should function securely and as intended, with risks identified and managed across the full lifecycle. Includes cybersecurity, reliability under adversarial conditions, and fail-safe mechanisms.', url:'white-paper#safety-security-and-robustness', penaltyTier:'sectorSpecific' },
+      'P2': { num:'P2', title:'Appropriate Transparency & Explainability', summary:'Users and affected parties should understand when AI is being used and how it influences decisions. Explanations should be proportionate to context and meaningful to the audience.', url:'white-paper#appropriate-transparency-and-explainability', penaltyTier:'sectorSpecific' },
+      'P3': { num:'P3', title:'Fairness', summary:'AI systems should not generate unfair outcomes or undermine legal rights. Includes bias detection and mitigation, equitable treatment, and compliance with existing equality legislation.', url:'white-paper#fairness', penaltyTier:'sectorSpecific' },
+      'P4': { num:'P4', title:'Accountability & Governance', summary:'Clear responsibility for AI outcomes must exist. Organisations should have appropriate governance structures, with designated roles for AI risk management and clear lines of accountability.', url:'white-paper#accountability-and-governance', penaltyTier:'sectorSpecific' },
+      'P5': { num:'P5', title:'Contestability & Redress', summary:'Individuals should be able to challenge AI decisions that affect them and seek meaningful redress. Mechanisms must be accessible, timely, and effective.', url:'white-paper#contestability-and-redress', penaltyTier:'sectorSpecific' },
+      'ICO-AI': { num:'ICO-AI', title:'ICO AI & Data Protection Guidance', summary:'The ICO requires that AI processing of personal data complies with UK GDPR principles: lawfulness, fairness, transparency, purpose limitation, data minimisation, accuracy, and accountability. Includes specific guidance on automated decision-making (ADM) and profiling.', url:'', penaltyTier:'ico' },
+      'ICO-ADM': { num:'ICO-ADM', title:'Automated Decision-Making & Profiling', summary:'Under UK GDPR Art 22, individuals have rights related to solely automated decisions with legal or significant effects. The Data (Use and Access) Act 2025 modifies these provisions — organisations must provide safeguards including human oversight and the right to contest decisions.', url:'', penaltyTier:'ico' },
+      'DUA-2025': { num:'DUA-2025', title:'Data (Use and Access) Act 2025', summary:'Received Royal Assent June 2025. Relaxes some constraints on automated decision-making but introduces new safeguards. Establishes smart data schemes and modifies data protection provisions relevant to AI.', url:'', penaltyTier:'ico' },
+      'AISI': { num:'AISI', title:'AI Safety Institute (AI Security Institute)', summary:'State-backed body for empirical evaluation of frontier AI capabilities and risks. Conducts pre-deployment testing, safety research, and develops evaluation methodologies. Expected to gain statutory footing.', url:'', penaltyTier:'sectorSpecific' },
+      'CYBER-AI': { num:'CYBER-AI', title:'Code of Practice for Cyber Security of AI', summary:'DSIT voluntary code (Jan 2025) setting baseline cybersecurity principles for AI systems. Being submitted to ETSI as basis for global standard. Covers data poisoning, prompt injection, and model security.', url:'', penaltyTier:'sectorSpecific' },
+      'ASSURE': { num:'ASSURE', title:'Third-Party AI Assurance Roadmap', summary:'DSIT strategic framework (2025) to build a credible third-party AI assurance market. Plans include voluntary code of ethics for AI auditors, skills framework, and AI Assurance Innovation Fund.', url:'', penaltyTier:'sectorSpecific' }
+    }
   },
   'us-nist': {
     id: 'us-nist',
     name: 'NIST AI Risk Management Framework',
     shortName: 'NIST AI RMF',
     citation: 'NIST AI 100-1 (January 2023)',
-    baseUrl: 'https://www.nist.gov/artificial-intelligence/ai-risk-management-framework/',
-    active: false, // Enable when ready
-    articles: {} // Placeholder for NIST functions: Govern, Map, Measure, Manage
+    baseUrl: 'https://airc.nist.gov/airmf-resources/',
+    explorerUrl: 'https://airc.nist.gov/airmf-resources/airmf/',
+    checkerUrl: 'https://airc.nist.gov/airmf-resources/playbook/',
+    active: true,
+    timeline: {
+      published: '2023-01-26',
+      playbook: '2023-01-26',
+      gaiProfile: '2024-07-26',
+      reviewExpected: '2028-01-01'
+    },
+    penalties: {
+      note: { max: 'Voluntary framework — no direct penalties. However, referenced by federal procurement, state laws (e.g. Colorado AI Act), and industry standards.', articles: ['GOV'] }
+    },
+    articles: {
+      'GOV': { num:'GOV', title:'GOVERN Function', summary:'Cross-cutting function establishing organisational AI risk management culture, policies, processes, and accountability structures. Applies to all AI lifecycle stages. Includes legal/regulatory awareness (GOV 1.1), trustworthiness integration (GOV 1.2), risk tolerance definition (GOV 1.3), and resource allocation (GOV 1.5).', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-1': { num:'GOV-1', title:'GOV 1: Policies & Accountability', summary:'Legal and regulatory requirements involving AI are understood, managed, and documented. Trustworthy AI characteristics are integrated into organisational policies. Processes determine needed risk management levels. Risk culture is cultivated and present.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-2': { num:'GOV-2', title:'GOV 2: Roles & Responsibilities', summary:'Roles, responsibilities, and lines of communication related to mapping, measuring, and managing AI risks are documented and clearly defined. Teams are diverse and include relevant domain expertise plus AI technical expertise.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-3': { num:'GOV-3', title:'GOV 3: Workforce Diversity & AI Literacy', summary:'Workforce diversity, equity, inclusion, and accessibility are prioritised. Personnel are trained in AI risk management and their specific roles. AI literacy is fostered across the organisation.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-4': { num:'GOV-4', title:'GOV 4: Organisational Practices', summary:'Organisational teams are committed to a culture that considers and communicates AI risk. Mechanisms exist to monitor and address third-party AI risks. Policies address AI intellectual property and data use.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-5': { num:'GOV-5', title:'GOV 5: Engagement & Feedback', summary:'Ongoing monitoring of existing and emergent risks and benefits. Regular engagement with relevant stakeholders. Mechanisms to receive, assess, and respond to feedback from external sources on AI systems.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'GOV-6': { num:'GOV-6', title:'GOV 6: Oversight & Escalation', summary:'Policies and procedures define oversight functions and escalation mechanisms. Include authorisation for decisions about AI systems, including go/no-go decisions, override, and decommissioning.', url:'playbook/?function=Govern', penaltyTier:'voluntary' },
+      'MAP': { num:'MAP', title:'MAP Function', summary:'Establishes context to frame AI risks. Includes intended purpose documentation (MAP 1), stakeholder identification (MAP 3), and impact assessment (MAP 5). Contextual knowledge informs go/no-go deployment decisions.', url:'playbook/?function=Map', penaltyTier:'voluntary' },
+      'MEA': { num:'MEA', title:'MEASURE Function', summary:'Employs quantitative, qualitative, and mixed-method tools to analyse, assess, benchmark, and monitor AI risk. Includes metrics for trustworthiness characteristics, testing methodologies, and performance monitoring.', url:'playbook/?function=Measure', penaltyTier:'voluntary' },
+      'MAN': { num:'MAN', title:'MANAGE Function', summary:'Addresses risk treatment and response. Includes risk prioritisation (MAN 1), planned and unplanned risk response (MAN 2), post-deployment monitoring (MAN 4), and mechanisms for appeal, override, and decommissioning.', url:'playbook/?function=Manage', penaltyTier:'voluntary' },
+      'MAN-4': { num:'MAN-4', title:'MAN 4: Post-Deployment Monitoring', summary:'Post-deployment AI system monitoring plans are implemented. Includes mechanisms for appeal and override, decommissioning protocols, incident response, and change management for deployed systems.', url:'playbook/?function=Manage', penaltyTier:'voluntary' },
+      'TRUST': { num:'TRUST', title:'Trustworthy AI Characteristics', summary:'Seven characteristics: valid and reliable, safe, secure and resilient, accountable and transparent, explainable and interpretable, privacy-enhanced, and fair with harmful bias managed. These form the foundation for all risk management activities.', url:'airmf/', penaltyTier:'voluntary' },
+      'GAI': { num:'GAI', title:'Generative AI Profile (AI 600-1)', summary:'Companion resource addressing risks unique to generative AI. Covers content provenance, pre-deployment testing, incident disclosure, and governance considerations. Cross-sectoral profile mapping to all four core functions.', url:'', penaltyTier:'voluntary' }
+    }
   }
 };
 
@@ -823,10 +873,73 @@ const REGULATORY_MAPPINGS = {
   }
 };
 
+// ── UK DSIT → ALMA MAPPINGS ──
+const UK_REGULATORY_MAPPINGS = {
+  dimensions: {
+    ps: { primary: ['P1','P2','P5'], riskNarrative: { critical:'Safety, transparency, and contestability principles (P1, P2, P5) are undermined when staff fear speaking up about AI issues.', fragile:'Principles partially upheld but psychological barriers may prevent full transparency and contestability.', robust:'Strong psychological safety supports all five DSIT principles.' }},
+    go: { primary: ['P4','GOV-3','ICO-AI'], riskNarrative: { critical:'Accountability & Governance (P4) requires competent oversight. Capability stagnation means governance structures lack the human capability to function.', fragile:'Governance capability developing but unevenly. ICO expectations on competent AI processing (ICO-AI) partially met.', robust:'Growth orientation ensures ongoing development of AI governance competence as required by P4.' }},
+    af: { primary: ['P1','P4'], riskNarrative: { critical:'Safety (P1) and governance (P4) cannot adapt to evolving AI risks. Rigid frameworks create gaps exploited by shadow AI use.', fragile:'Governance adapts but slowly. P1 safety principles met for current systems but struggle with new deployments.', robust:'Adaptive governance supports proportionate, evolving compliance with P1 and P4.' }},
+    co: { primary: ['P4','ICO-AI','ICO-ADM'], riskNarrative: { critical:'Accountability & Governance (P4) is structurally unmet. ICO expectations on data controller accountability (ICO-AI) and ADM safeguards (ICO-ADM) require identifiable responsible parties.', fragile:'Accountability exists formally but diffuses in practice. ICO ADM requirements (ICO-ADM) technically met but operationally unclear.', robust:'Clear ownership supports P4 and meets ICO expectations for accountable AI processing.' }},
+    ce: { primary: ['P2','P1','ICO-ADM'], riskNarrative: { critical:'Transparency (P2) is meaningless without critical evaluation. Safety (P1) depends on human verification. ICO ADM safeguards (ICO-ADM) including human review are unfulfilled.', fragile:'Some critical engagement but inconsistent. P2 transparency provisions exist but outputs not routinely verified.', robust:'Active verification supports P2 transparency, P1 safety, and ICO ADM human oversight requirements.' }}
+  },
+  gaps: {
+    accountability: { primary: ['P4','ICO-AI'], riskNarrative: { critical:'P4 requires clear responsibility. ICO guidance requires identifiable data controllers for AI processing.', fragile:'Accountability documented but unclear in edge cases.', robust:'Strong accountability meets P4 and ICO requirements.' }},
+    authority: { primary: ['P4','P5','ICO-ADM'], riskNarrative: { critical:'P4 governance and P5 contestability require people with authority to override AI decisions. ICO ADM provisions require human intervention capability.', fragile:'Authority exists but exercise creates friction.', robust:'Override authority normalised, supporting P4, P5, and ICO ADM requirements.' }},
+    intervention: { primary: ['P1','P5'], riskNarrative: { critical:'P1 safety and P5 redress require functional intervention. If systems cannot be stopped or overridden, both principles are unmet.', fragile:'Intervention possible but untested.', robust:'Tested intervention supports P1 safety and P5 contestability.' }},
+    escalation: { primary: ['P5','P4','ICO-AI'], riskNarrative: { critical:'P5 contestability requires accessible escalation. ICO expects complaints handling for AI-related data processing issues.', fragile:'Escalation routes exist but have gaps.', robust:'Clear escalation supports P5 contestability and ICO complaint handling expectations.' }}
+  },
+  patterns: {
+    silentAutomation: { articles: ['P1','P2','P5'], narrative: 'Silent Automation directly violates Safety (P1), Transparency (P2), and Contestability (P5) principles simultaneously.', penaltyExposure: 'high' },
+    diffusedPassivity: { articles: ['P4','ICO-AI'], narrative: 'Diffused Passivity contradicts Accountability & Governance (P4) and ICO data controller obligations.', penaltyExposure: 'high' },
+    frozenGovernance: { articles: ['P1','P4'], narrative: 'Frozen Governance means safety (P1) and governance (P4) frameworks cannot adapt to evolving AI risks.', penaltyExposure: 'medium' },
+    lonelyVigilance: { articles: ['P1','P5'], narrative: 'Lonely Vigilance creates brittle compliance — safety (P1) and contestability (P5) depend on isolated individuals.', penaltyExposure: 'high' },
+    confidentBlindness: { articles: ['P1','P2'], narrative: 'Confident Blindness undermines Safety (P1) and Transparency (P2) through enthusiasm without verification.', penaltyExposure: 'medium' }
+  },
+  hoc: { primary: ['P4','P1','P5'], riskNarrative: { critical:'HOC critically low. UK framework principles P1, P4, P5 require operational governance infrastructure that does not exist.', fragile:'HOC fragile. Principles achievable under normal conditions but may fail under pressure.', robust:'HOC supports comprehensive compliance with all five DSIT principles.' }}
+};
+
+// ── NIST AI RMF → ALMA MAPPINGS ──
+const NIST_REGULATORY_MAPPINGS = {
+  dimensions: {
+    ps: { primary: ['GOV-5','GOV-6','TRUST'], riskNarrative: { critical:'GOV 5 stakeholder engagement and GOV 6 oversight/escalation mechanisms require psychological safety to function. Low safety means feedback loops are broken.', fragile:'Engagement exists but is filtered. GOV 5 and GOV 6 partially operational.', robust:'Strong psychological safety enables the open feedback culture GOV 5 and GOV 6 require.' }},
+    go: { primary: ['GOV-3','GOV-1','MAP'], riskNarrative: { critical:'GOV 3 workforce diversity and AI literacy are unmet. GOV 1 policy integration requires understanding that comes from growth. MAP function context-setting requires evolving expertise.', fragile:'Some capability development but unevenly distributed. GOV 3 partially met.', robust:'Growth orientation supports comprehensive AI literacy (GOV 3) and informed risk framing (MAP).' }},
+    af: { primary: ['MAN','MAN-4','GOV-4'], riskNarrative: { critical:'MANAGE function requires adaptive risk response. MAN 4 post-deployment monitoring needs organisational agility. GOV 4 practices require risk culture that adapts.', fragile:'Some adaptive capacity. MAN 4 monitoring detects issues but response is slow.', robust:'Adaptive flexibility enables the responsive risk management the MANAGE function requires.' }},
+    co: { primary: ['GOV-2','GOV-6','MAN'], riskNarrative: { critical:'GOV 2 roles and responsibilities are undefined or unenforced. GOV 6 oversight authorisation is unclear. MANAGE function lacks accountable owners.', fragile:'Roles documented but not actively enforced. GOV 2 and GOV 6 technically met.', robust:'Clear ownership aligns with GOV 2 role clarity, GOV 6 oversight, and MANAGE accountability.' }},
+    ce: { primary: ['MEA','MAN-4','TRUST'], riskNarrative: { critical:'MEASURE function relies on active evaluation of AI system performance. MAN 4 post-deployment monitoring is unfulfilled when nobody checks outputs. Trustworthy AI characteristics cannot be verified.', fragile:'Some measurement but inconsistent. MEA function partially operational.', robust:'Active critical engagement enables comprehensive MEASURE function and MAN 4 monitoring.' }}
+  },
+  gaps: {
+    accountability: { primary: ['GOV-2','GOV-6'], riskNarrative: { critical:'GOV 2 requires documented roles and responsibilities. GOV 6 requires oversight authorisation. Both unmet without clear accountability.', fragile:'Roles exist but blur under pressure.', robust:'Strong accountability meets GOV 2 and GOV 6 requirements.' }},
+    authority: { primary: ['GOV-6','MAN'], riskNarrative: { critical:'GOV 6 authorisation for AI decisions including override and decommissioning is absent. MANAGE function requires authorised risk response.', fragile:'Authority exists but not routinely exercised.', robust:'Clear authority supports GOV 6 and enables effective MANAGE responses.' }},
+    intervention: { primary: ['MAN-4','MAN'], riskNarrative: { critical:'MAN 4 requires mechanisms for appeal, override, and decommissioning. Without tested intervention capability, these are aspirational.', fragile:'Intervention mechanisms exist but are untested.', robust:'Tested intervention capability meets MAN 4 requirements.' }},
+    escalation: { primary: ['GOV-5','GOV-6'], riskNarrative: { critical:'GOV 5 feedback mechanisms and GOV 6 escalation structures are non-functional. AI risks cannot reach decision-makers.', fragile:'Escalation routes exist but have gaps.', robust:'Clear escalation supports GOV 5 engagement and GOV 6 oversight.' }}
+  },
+  patterns: {
+    silentAutomation: { articles: ['GOV-5','GOV-6','MEA'], narrative: 'Silent Automation means GOV 5 feedback, GOV 6 oversight, and MEASURE function all fail simultaneously.', penaltyExposure: 'high' },
+    diffusedPassivity: { articles: ['GOV-2','MAN'], narrative: 'Diffused Passivity means GOV 2 roles are unfulfilled and MANAGE function has no accountable owner.', penaltyExposure: 'high' },
+    frozenGovernance: { articles: ['MAN','MAN-4','GOV-4'], narrative: 'Frozen Governance prevents the adaptive risk management MANAGE and GOV 4 require.', penaltyExposure: 'medium' },
+    lonelyVigilance: { articles: ['GOV-5','GOV-6','MEA'], narrative: 'Lonely Vigilance means MEASURE depends on isolated individuals rather than systematic processes.', penaltyExposure: 'high' },
+    confidentBlindness: { articles: ['MEA','MAP','TRUST'], narrative: 'Confident Blindness means MEASURE is optimistic, MAP is incomplete, and trustworthiness is assumed.', penaltyExposure: 'medium' }
+  },
+  hoc: { primary: ['GOV','MAN','MEA'], riskNarrative: { critical:'HOC critically low. GOVERN, MANAGE, and MEASURE functions all require operational governance infrastructure.', fragile:'HOC fragile. Core functions partially operational but untested under stress.', robust:'HOC supports comprehensive implementation of all four AI RMF core functions.' }}
+};
+
+// ── FRAMEWORK MAPPING SELECTOR ──
+function getMappingsForFramework(fwId) {
+  if (fwId === 'eu-ai-act') return REGULATORY_MAPPINGS;
+  if (fwId === 'uk-ai') return UK_REGULATORY_MAPPINGS;
+  if (fwId === 'us-nist') return NIST_REGULATORY_MAPPINGS;
+  return REGULATORY_MAPPINGS; // default to EU
+}
+
+// ── ACTIVE FRAMEWORK STATE ──
+let activeFrameworkId = 'eu-ai-act';
+
 // ─── REGULATORY RISK CALCULATOR ──────────────────────────────────────────────
 function calcRegulatoryRisk(S, frameworkId) {
   const fw = REGULATORY_FRAMEWORKS[frameworkId || 'eu-ai-act'];
   if (!fw || !fw.active) return null;
+
+  const mappings = getMappingsForFramework(frameworkId || 'eu-ai-act');
 
   const risks = [];
   const articleHits = {}; // Track which articles are triggered and by what
@@ -835,7 +948,7 @@ function calcRegulatoryRisk(S, frameworkId) {
   function riskBadge(pct) { return pct < 40 ? 'high' : pct < 70 ? 'elevated' : 'lower'; }
 
   // Score each dimension against its mapped articles
-  Object.entries(REGULATORY_MAPPINGS.dimensions).forEach(([dimKey, mapping]) => {
+  Object.entries(mappings.dimensions).forEach(([dimKey, mapping]) => {
     const dim = S.dims[dimKey];
     if (!dim) return;
     const level = riskLevel(dim.comp);
@@ -858,7 +971,7 @@ function calcRegulatoryRisk(S, frameworkId) {
   });
 
   // Score each governance gap
-  Object.entries(REGULATORY_MAPPINGS.gaps).forEach(([gapKey, mapping]) => {
+  Object.entries(mappings.gaps).forEach(([gapKey, mapping]) => {
     const gap = S.gaps[gapKey];
     if (!gap) return;
     const level = riskLevel(gap.pct);
@@ -884,7 +997,7 @@ function calcRegulatoryRisk(S, frameworkId) {
   const activePatterns = [];
   Object.entries(S.patterns).forEach(([patKey, triggered]) => {
     if (!triggered) return;
-    const mapping = REGULATORY_MAPPINGS.patterns[patKey];
+    const mapping = mappings.patterns[patKey];
     if (!mapping) return;
     activePatterns.push({
       key: patKey, articles: mapping.articles,
@@ -936,14 +1049,14 @@ function calcRegulatoryRisk(S, frameworkId) {
     risks,
     articleRiskList,
     activePatterns,
-    hoc: { level: hocLevel, badge: hocBadge, narrative: REGULATORY_MAPPINGS.hoc.riskNarrative[hocLevel] },
+    hoc: { level: hocLevel, badge: hocBadge, narrative: mappings.hoc.riskNarrative[hocLevel] },
     counts: { high: highCount, elevated: elevatedCount, lower: lowerCount, total: articleRiskList.length },
     overallRisk: overallRegRisk,
     // Helper: get inline tags for a specific ALMA construct
     getInlineTags: function(type, key) {
       let mapping;
-      if (type === 'dimension') mapping = REGULATORY_MAPPINGS.dimensions[key];
-      else if (type === 'gap') mapping = REGULATORY_MAPPINGS.gaps[key];
+      if (type === 'dimension') mapping = mappings.dimensions[key];
+      else if (type === 'gap') mapping = mappings.gaps[key];
       if (!mapping) return [];
       return mapping.primary.map(artNum => {
         const art = fw.articles[artNum];
@@ -1198,7 +1311,7 @@ function calcScores(){
 // ─── DASHBOARD ───────────────────────────────────────────────────────────────
 function completeSurvey(){
   const S = calcScores();
-  const REG = calcRegulatoryRisk(S, 'eu-ai-act');
+  const REG = calcRegulatoryRisk(S, activeFrameworkId);
   const overallRag = rag(S.overall);
   const today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
 
@@ -1385,9 +1498,9 @@ function completeSurvey(){
 
   <!-- Framework Selector (future multi-jurisdiction) -->
   <div class="reg-framework-selector">
-    <button class="reg-fw-btn active" title="Active framework">§ EU AI Act</button>
-    <button class="reg-fw-btn" style="opacity:0.4;cursor:default;" title="Coming soon">UK Framework</button>
-    <button class="reg-fw-btn" style="opacity:0.4;cursor:default;" title="Coming soon">NIST AI RMF</button>
+    <button class="reg-fw-btn ${activeFrameworkId==='eu-ai-act'?'active':''}" onclick="switchFramework('eu-ai-act')">§ EU AI Act</button>
+    <button class="reg-fw-btn ${activeFrameworkId==='uk-ai'?'active':''}" onclick="switchFramework('uk-ai')">UK Framework</button>
+    <button class="reg-fw-btn ${activeFrameworkId==='us-nist'?'active':''}" onclick="switchFramework('us-nist')">NIST AI RMF</button>
   </div>
 
   <!-- Article Risk Cards -->
@@ -1425,7 +1538,7 @@ function completeSurvey(){
     <div class="reg-summary-title" style="color:#7ea8d4;">Human Oversight Capacity — Regulatory Alignment</div>
     <div class="reg-summary-desc">${REG.hoc.narrative}</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      ${REGULATORY_MAPPINGS.hoc.primary.map(artNum => {
+      ${getMappingsForFramework(REG.framework.id).hoc.primary.map(artNum => {
         const art = REG.framework.articles[artNum];
         return art ? `<a class="reg-tag" href="${REG.framework.baseUrl}${art.url}" target="_blank" rel="noopener"><span class="reg-tag-icon">§</span>Art ${artNum}: ${art.title}</a>` : '';
       }).join('')}
@@ -1444,8 +1557,10 @@ function completeSurvey(){
   </div>
 
   <div class="reg-disclaimer">
-    <strong>Regulatory disclaimer:</strong> This compliance risk assessment is based on the mapping of ALMA psychological readiness and governance infrastructure scores to specific EU AI Act obligations. It is indicative, not definitive. Regulatory compliance depends on multiple factors beyond human readiness, including technical controls, documentation, and conformity assessment. This analysis should complement — not replace — formal legal review. Article references are to Regulation (EU) 2024/1689. For authoritative guidance, consult the <a href="${REG.framework.explorerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">AI Act Explorer</a> and the <a href="${REG.framework.checkerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">EU AI Act Compliance Checker</a>.
+    <strong>Regulatory disclaimer:</strong> This compliance risk assessment maps ALMA psychological readiness and governance infrastructure scores to specific obligations under the <strong>${REG.framework.name}</strong>. It is indicative, not definitive. Regulatory compliance depends on multiple factors beyond human readiness, including technical controls, documentation, and conformity assessment. This analysis should complement — not replace — formal legal review. For authoritative guidance, consult the <a href="${REG.framework.explorerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">${REG.framework.shortName} Explorer</a> and the <a href="${REG.framework.checkerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">Compliance Resources</a>.
   </div>
+
+  ${buildAdvisorPanelHTML(S, REG)}
   ` : '<!-- Regulatory framework not active -->'}
 
   <!-- FOOTER -->
@@ -1464,6 +1579,167 @@ function completeSurvey(){
   document.getElementById('dashboard').classList.remove('hidden');
   document.body.style.paddingTop = 'var(--nav-h)';
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ─── FRAMEWORK SWITCHER ─────────────────────────────────────────────────────
+function switchFramework(fwId) {
+  if (!REGULATORY_FRAMEWORKS[fwId] || !REGULATORY_FRAMEWORKS[fwId].active) return;
+  activeFrameworkId = fwId;
+  // Re-render the entire dashboard with the new framework
+  completeSurvey();
+}
+
+// ─── ANTHROPIC API — DYNAMIC REGULATORY ADVISOR ─────────────────────────────
+// Uses the Anthropic API to provide real-time regulatory interpretation
+// based on the respondent's specific ALMA scores and risk profile.
+
+async function queryRegulatoryAdvisor(question, context) {
+  const advisorPanel = document.getElementById('reg-advisor-response');
+  const advisorBtn = document.getElementById('reg-advisor-btn');
+  if (advisorPanel) advisorPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Analysing regulatory implications...</div>';
+  if (advisorBtn) advisorBtn.disabled = true;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        tools: [{ type: "web_search_20250305", name: "web_search" }],
+        messages: [{
+          role: "user",
+          content: `You are a regulatory compliance advisor specialising in AI governance law. You have expertise in the EU AI Act (Regulation 2024/1689), UK DSIT AI framework, and NIST AI RMF.
+
+Context: An organisation has completed the ALMA (AI Literacy Mindset Assessment) governance diagnostic. Their scores and risk profile are:
+${context}
+
+Question: ${question}
+
+Provide a concise, practical answer (max 200 words) referencing specific articles, principles, or subcategories from the relevant regulatory framework. If referencing the EU AI Act, cite specific article numbers. If you need to check for recent regulatory updates or amendments, use web search. Focus on actionable compliance guidance, not general information.`
+        }]
+      })
+    });
+
+    const data = await response.json();
+    const fullResponse = data.content
+      .map(item => (item.type === "text" ? item.text : ""))
+      .filter(Boolean)
+      .join("\n");
+
+    if (advisorPanel) {
+      advisorPanel.innerHTML = `<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;padding:16px 0;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
+    }
+  } catch (err) {
+    if (advisorPanel) {
+      advisorPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to reach regulatory advisor. Error: ${err.message}</div>`;
+    }
+  }
+  if (advisorBtn) advisorBtn.disabled = false;
+}
+
+async function checkForAmendments(frameworkId) {
+  const amendPanel = document.getElementById('amendment-check-result');
+  if (amendPanel) amendPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Checking for regulatory updates...</div>';
+
+  try {
+    const fw = REGULATORY_FRAMEWORKS[frameworkId];
+    const fwName = fw ? fw.name : 'EU AI Act';
+    
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        tools: [{ type: "web_search_20250305", name: "web_search" }],
+        messages: [{
+          role: "user",
+          content: `Search for the most recent updates, amendments, guidelines, or enforcement actions related to the ${fwName} in the last 90 days. Focus on:
+1. Any amendments to the regulatory text itself
+2. New guidance documents or interpretive guidelines published
+3. Enforcement actions or penalty decisions
+4. New implementation deadlines approaching
+
+Provide a concise summary (max 250 words) of what has changed or is upcoming. If nothing significant has changed, state that clearly. Include dates for any developments found.`
+        }]
+      })
+    });
+
+    const data = await response.json();
+    const fullResponse = data.content
+      .map(item => (item.type === "text" ? item.text : ""))
+      .filter(Boolean)
+      .join("\n");
+
+    if (amendPanel) {
+      const timestamp = new Date().toLocaleString('en-GB', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+      amendPanel.innerHTML = `
+        <div style="font-size:0.68rem;color:var(--text-dim);margin-bottom:8px;letter-spacing:0.10em;text-transform:uppercase;">Last checked: ${timestamp}</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
+    }
+  } catch (err) {
+    if (amendPanel) {
+      amendPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to check for amendments. Error: ${err.message}</div>`;
+    }
+  }
+}
+
+// ─── BUILD ADVISOR PANEL HTML ──────────────────────────────────────────────
+function buildAdvisorPanelHTML(S, REG) {
+  if (!REG) return '';
+
+  const contextSummary = `Overall readiness: ${S.overall}% (${rag(S.overall)})
+Dimensions: PS=${S.dims.ps?.comp}%, GO=${S.dims.go?.comp}%, AF=${S.dims.af?.comp}%, CO=${S.dims.co?.comp}%, CE=${S.dims.ce?.comp}%
+HOC: ${S.hoc}% | Accountability: ${S.gaps.accountability?.pct}%, Authority: ${S.gaps.authority?.pct}%, Intervention: ${S.gaps.intervention?.pct}%, Escalation: ${S.gaps.escalation?.pct}%
+Active risk patterns: ${Object.entries(S.patterns).filter(([k,v])=>v).map(([k])=>k).join(', ')||'None'}
+Paper governance: ${Object.entries(S.dims).filter(([k,d])=>d.paperGov).map(([k,d])=>d.label).join(', ')||'None detected'}
+Framework: ${REG.framework.name}
+High-risk articles: ${REG.counts.high}, Elevated: ${REG.counts.elevated}`;
+
+  const presetQuestions = [
+    "What are the most urgent compliance gaps I should address first based on these scores?",
+    "How would a regulator likely assess our human oversight capability given these ALMA results?",
+    "What specific interventions would reduce our penalty exposure most effectively?",
+    "Given our risk patterns, what incident scenarios are we most vulnerable to?"
+  ];
+
+  return `
+  <!-- AI-POWERED REGULATORY ADVISOR -->
+  <h2 class="dash-sec-title" style="margin-top:48px;">AI Regulatory Advisor</h2>
+  <div class="reg-summary-card" style="border-color:rgba(100,140,200,0.25);">
+    <div class="reg-summary-title" style="color:#7ea8d4;">Dynamic Compliance Analysis</div>
+    <div class="reg-summary-desc">Ask the AI regulatory advisor about your specific compliance risks. Responses are generated using your ALMA scores and current regulatory knowledge, with real-time web search for the latest updates.</div>
+
+    <!-- Amendment Checker -->
+    <div style="margin-bottom:24px;padding:16px;background:var(--surface-2);border:1px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;">Regulatory Amendment Monitor</div>
+        <button onclick="checkForAmendments('${REG.framework.id}')" style="padding:6px 14px;font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;background:rgba(100,140,200,0.12);border:1px solid rgba(100,140,200,0.3);color:#7ea8d4;cursor:pointer;font-family:'Montserrat',sans-serif;">Check for Updates</button>
+      </div>
+      <div id="amendment-check-result" style="font-size:0.82rem;color:var(--text-dim);">Click "Check for Updates" to scan for recent regulatory changes to the ${REG.framework.shortName}.</div>
+    </div>
+
+    <!-- Preset Questions -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Quick questions based on your results:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${presetQuestions.map((q,i) => `<button onclick="queryRegulatoryAdvisor('${q.replace(/'/g,"\\'")}', document.getElementById('advisor-context').value)" style="padding:8px 14px;font-size:0.72rem;background:var(--surface-2);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;transition:all .15s;line-height:1.5;" onmouseover="this.style.borderColor='rgba(100,140,200,0.4)';this.style.color='#7ea8d4'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">${q}</button>`).join('')}
+      </div>
+    </div>
+
+    <!-- Custom Question -->
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <input type="text" id="advisor-custom-q" placeholder="Ask a specific regulatory compliance question..." style="flex:1;padding:10px 14px;font-size:0.82rem;background:var(--surface-2);border:1px solid var(--border);color:var(--text);font-family:'Montserrat',sans-serif;outline:none;" onfocus="this.style.borderColor='rgba(100,140,200,0.4)'" onblur="this.style.borderColor='var(--border)'" onkeypress="if(event.key==='Enter')document.getElementById('reg-advisor-btn').click()">
+      <button id="reg-advisor-btn" onclick="queryRegulatoryAdvisor(document.getElementById('advisor-custom-q').value, document.getElementById('advisor-context').value)" style="padding:10px 20px;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;background:#7ea8d4;border:none;color:#000;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;">Ask</button>
+    </div>
+
+    <!-- Hidden context -->
+    <textarea id="advisor-context" style="display:none;">${contextSummary}</textarea>
+
+    <!-- Response Area -->
+    <div id="reg-advisor-response"></div>
+  </div>`;
 }
 </script>
 </body>
