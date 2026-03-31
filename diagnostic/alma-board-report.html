@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALMA Board Report · {{organisationName}} · {{reportDate}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#000;--bg:#0a0a0a;--surface:#141414;--surface-2:#1c1c1c;
+  --border:rgba(201,182,148,0.14);--border-light:rgba(201,182,148,0.30);
+  --gold:#C9B694;--gold-dim:rgba(201,182,148,0.40);--gold-faint:rgba(201,182,148,0.08);
+  --text:#f0f0f0;--text-muted:#a8a5a2;--text-dim:#797673;
+  --green:#7fba7a;--green-bg:rgba(127,186,122,0.08);--green-border:rgba(127,186,122,0.30);
+  --amber:#d4a84b;--amber-bg:rgba(212,168,75,0.08);--amber-border:rgba(212,168,75,0.30);
+  --red:#c4605a;--red-bg:rgba(196,96,90,0.08);--red-border:rgba(196,96,90,0.30);
+  --blue:#7ea8d4;--blue-bg:rgba(100,140,200,0.08);--blue-border:rgba(100,140,200,0.25);
+  --page-max:860px;--pad:clamp(24px,5vw,56px);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);font-size:0.88rem;line-height:1.85;-webkit-font-smoothing:antialiased;}
+.report{max-width:var(--page-max);margin:0 auto;padding:0 var(--pad) 80px;}
+
+/* ── TYPOGRAPHY ─────────────────────────── */
+.sec-label{font-size:0.58rem;font-weight:700;letter-spacing:0.30em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-title{font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:8px;}
+.sec-sub{font-size:0.85rem;color:var(--text-muted);line-height:1.75;margin-bottom:0;}
+.sec-block{margin-bottom:56px;}
+.body-text{font-size:0.85rem;color:var(--text-muted);line-height:1.85;}
+.body-text strong{color:var(--text);font-weight:600;}
+.label-sm{font-size:0.6rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dim);}
+.label-xs{font-size:0.55rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim);}
+.value-lg{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;line-height:1;}
+.value-md{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;line-height:1;}
+.value-sm{font-family:'Montserrat',sans-serif;font-size:0.92rem;font-weight:600;}
+
+/* ── RAG BADGES ─────────────────────────── */
+.rag{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;font-size:0.55rem;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;}
+.rag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
+.rag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);}
+.rag-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
+.rag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);}
+
+/* ── CARDS & GRIDS ──────────────────────── */
+.card{background:var(--surface);border:1px solid var(--border);padding:clamp(20px,3vw,28px);}
+.card-flush{background:var(--surface);padding:clamp(18px,3vw,24px);}
+.grid-1px{display:grid;gap:1px;background:var(--border);}
+.grid-2{grid-template-columns:1fr 1fr;}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.grid-5{grid-template-columns:repeat(5,1fr);}
+.bar-track{height:3px;background:var(--surface-2);overflow:hidden;}
+.bar-fill{height:100%;transition:width .6s ease;}
+.fill-green{background:var(--green);}.fill-amber{background:var(--amber);}.fill-red{background:var(--red);}
+.fill-gold{background:var(--gold);}.fill-gold-dim{background:var(--gold-dim);}
+.divider{height:1px;background:var(--border);margin:20px 0;}
+.flag-warn{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--amber-bg);border:1px solid var(--amber-border);font-size:0.72rem;color:var(--amber);letter-spacing:0.04em;}
+.flag-critical{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--red-bg);border:1px solid var(--red-border);font-size:0.72rem;color:var(--red);letter-spacing:0.04em;}
+
+/* ── REGULATORY TAGS ────────────────────── */
+.reg-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;font-size:0.55rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--blue-bg);border:1px solid var(--blue-border);color:var(--blue);text-decoration:none;}
+.reg-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+
+/* ── PRIORITY BANDS ─────────────────────── */
+.priority-band{padding:clamp(18px,3vw,24px);border-left:3px solid;}
+.priority-immediate{background:var(--red-bg);border-color:var(--red);}
+.priority-30{background:var(--amber-bg);border-color:var(--amber);}
+.priority-90{background:var(--blue-bg);border-color:var(--blue);}
+.priority-structural{background:var(--gold-faint);border-color:var(--gold);}
+.priority-label{font-size:0.6rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;margin-bottom:10px;}
+.priority-immediate .priority-label{color:var(--red);}
+.priority-30 .priority-label{color:var(--amber);}
+.priority-90 .priority-label{color:var(--blue);}
+.priority-structural .priority-label{color:var(--gold);}
+
+/* ── RESPONSIVE ─────────────────────────── */
+@media(max-width:700px){.grid-4{grid-template-columns:1fr 1fr;}.grid-3{grid-template-columns:1fr;}.grid-5{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.grid-2{grid-template-columns:1fr;}.grid-4{grid-template-columns:1fr;}}
+
+/* ── PRINT ──────────────────────────────── */
+@media print{
+  body{background:#fff;color:#1a1a1a;font-size:9pt;line-height:1.6;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .report{max-width:100%;padding:0 20px 40px;}
+  .sec-block{margin-bottom:32px;page-break-inside:avoid;}
+  .report-header{background:#1a1a1a!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .report-header *{color:#fff!important;}
+  .report-header .conf-label{color:var(--gold)!important;}
+  .card,.card-flush{background:#f8f7f5;border:1px solid #d0ccc5;}
+  .grid-1px{background:#d0ccc5;}
+  .sec-label{color:#8b7d6b;}
+  .sec-label::after{background:#d0ccc5;}
+  .sec-title,.value-lg,.value-md,.value-sm{color:#1a1a1a;}
+  .sec-sub,.body-text{color:#4a4640;}
+  .label-sm,.label-xs{color:#7a756e;}
+  .bar-track{background:#e8e5e0;}
+  .divider{background:#d0ccc5;}
+  .priority-band{border-left-width:3px;}
+  .no-print{display:none!important;}
+  .print-break{page-break-before:always;}
+  .rag{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .advisory-note{background:#f5f3f0!important;border-color:#C9B694!important;}
+}
+</style>
+</head>
+<body>
+
+<div class="report">
+
+<!-- ═══════════════════════════════════════════
+     1. REPORT HEADER
+     ═══════════════════════════════════════════ -->
+<header class="report-header" style="background:var(--black);padding:clamp(40px,6vw,64px) clamp(24px,5vw,56px) clamp(32px,5vw,48px);margin:0 calc(-1 * var(--pad));border-bottom:1px solid var(--border);">
+  <div style="max-width:var(--page-max);margin:0 auto;">
+    <div class="conf-label" style="font-size:0.55rem;font-weight:700;letter-spacing:0.30em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;">Confidential Board Briefing</div>
+    <div style="font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;color:var(--gold);letter-spacing:0.18em;line-height:1;margin-bottom:4px;">ALMA</div>
+    <div style="font-size:0.62rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-bottom:28px;">AI Literacy Mindset Assessment</div>
+    <h1 style="font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;">AI Governance Readiness Report</h1>
+    <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:28px;">{{reportSubtitle}}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);">
+      <div style="background:var(--black);padding:14px 18px;">
+        <div class="label-xs" style="margin-bottom:4px;">Organisation</div>
+        <div class="value-sm" style="color:var(--text);">{{organisationName}}</div>
+      </div>
+      <div style="background:var(--black);padding:14px 18px;">
+        <div class="label-xs" style="margin-bottom:4px;">Report Date</div>
+        <div class="value-sm" style="color:var(--text);">{{reportDate}}</div>
+      </div>
+      <div style="background:var(--black);padding:14px 18px;">
+        <div class="label-xs" style="margin-bottom:4px;">Respondent Scope</div>
+        <div class="value-sm" style="color:var(--text);">{{respondentScope}}</div>
+      </div>
+      <div style="background:var(--black);padding:14px 18px;">
+        <div class="label-xs" style="margin-bottom:4px;">Regulatory Framework</div>
+        <div class="value-sm" style="color:var(--text);">{{selectedFramework}}</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div style="height:56px;"></div>
+
+<!-- ═══════════════════════════════════════════
+     2. EXECUTIVE SUMMARY
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-executive-summary">
+  <div class="sec-label">Section 01: Executive Summary</div>
+
+  <div class="card" style="margin-bottom:2px;">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div class="label-sm" style="margin-bottom:6px;">Organisation Status</div>
+        <div class="value-lg" style="color:var(--{{overallStatusColour}});">{{overallStatus}}</div>
+      </div>
+      <div id="exec-rag-badge">{{overallRagBadge}}</div>
+    </div>
+  </div>
+
+  <div class="grid-1px grid-3" style="margin-bottom:2px;">
+    <div class="card-flush">
+      <div class="label-xs" style="margin-bottom:6px;">Primary Failure Profile</div>
+      <div class="value-sm" style="color:var(--text);margin-bottom:4px;">{{primaryProfile}}</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">{{primaryProfileSummary}}</div>
+    </div>
+    <div class="card-flush">
+      <div class="label-xs" style="margin-bottom:6px;">Human Oversight Capacity</div>
+      <div class="value-sm" style="color:var(--{{hocColour}});margin-bottom:4px;">{{hocPct}}%</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">{{hocStatusLabel}}</div>
+    </div>
+    <div class="card-flush">
+      <div class="label-xs" style="margin-bottom:6px;">Overall Readiness</div>
+      <div class="value-sm" style="color:var(--{{overallColour}});margin-bottom:4px;">{{overallPct}}%</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">{{overallReadinessLabel}}</div>
+    </div>
+  </div>
+
+  <div class="grid-1px grid-2" style="margin-bottom:0;">
+    <div class="card-flush">
+      <div class="label-xs" style="margin-bottom:10px;">Top Three Board-Level Concerns</div>
+      <div id="exec-concerns" class="body-text">{{boardConcernsHTML}}</div>
+    </div>
+    <div class="card-flush">
+      <div class="label-xs" style="margin-bottom:10px;">Top Three Intervention Priorities</div>
+      <div id="exec-priorities" class="body-text">{{interventionPrioritiesHTML}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     3. EXPOSURE SNAPSHOT
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-exposure-snapshot">
+  <div class="sec-label">Section 02: Exposure Snapshot</div>
+
+  <div class="grid-1px grid-4">
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Overall Readiness</div>
+      <div class="value-lg" style="color:var(--{{overallColour}});">{{overallPct}}<span style="font-size:0.7em;opacity:0.6;">%</span></div>
+      <div id="snap-overall-rag" style="margin-top:8px;">{{overallRagBadgeSmall}}</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">HOC Composite</div>
+      <div class="value-lg" style="color:var(--{{hocColour}});">{{hocPct}}<span style="font-size:0.7em;opacity:0.6;">%</span></div>
+      <div id="snap-hoc-rag" style="margin-top:8px;">{{hocRagBadge}}</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Weakest Governance Gap</div>
+      <div class="value-md" style="color:var(--{{weakestGapColour}});margin-top:6px;">{{weakestGapLabel}}</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px;">{{weakestGapPct}}%</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Strongest Dimension</div>
+      <div class="value-md" style="color:var(--{{strongestDimColour}});margin-top:6px;">{{strongestDimLabel}}</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px;">{{strongestDimPct}}%</div>
+    </div>
+  </div>
+
+  <div class="grid-1px grid-4" style="margin-top:1px;">
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Paper Governance Flags</div>
+      <div class="value-lg" style="color:var(--{{paperGovCountColour}});">{{paperGovCount}}</div>
+      <div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">{{paperGovNote}}</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Active Risk Patterns</div>
+      <div class="value-lg" style="color:var(--{{patternCountColour}});">{{patternCount}}</div>
+      <div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">of 5 monitored</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Delusion Gap</div>
+      <div class="value-md" style="color:var(--{{delusionColour}});margin-top:6px;">{{delusionStatus}}</div>
+      <div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">{{delusionNote}}</div>
+    </div>
+    <div class="card-flush" style="text-align:center;">
+      <div class="label-xs" style="margin-bottom:8px;">Regulatory Exposure</div>
+      <div id="snap-reg-badge" style="margin-top:6px;">{{regExposureBadge}}</div>
+      <div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">{{regExposureNote}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     4. FAILURE PROFILE
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-failure-profile">
+  <div class="sec-label">Section 03: Failure Profile Analysis</div>
+  <p class="sec-sub" style="margin-bottom:24px;">ALMA identifies structural failure modes from score patterns. These are not descriptions of weakness. They are diagnostic categories that predict where governance breaks under operational conditions.</p>
+
+  <!-- Primary Profile -->
+  <div class="card" style="border-color:var(--{{primaryProfileBorderColour}});margin-bottom:2px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+      <div>
+        <div class="label-xs" style="margin-bottom:6px;">Primary Failure Profile</div>
+        <div class="sec-title" style="margin-bottom:0;">{{primaryProfile}}</div>
+      </div>
+      <div id="profile-severity-badge">{{primarySeverityBadge}}</div>
+    </div>
+    <p class="body-text" style="margin-bottom:16px;">{{primaryProfileMeaning}}</p>
+    <div class="divider"></div>
+    <div class="label-xs" style="margin-bottom:8px;">How This Breaks in Reality</div>
+    <p class="body-text">{{primaryProfileScenario}}</p>
+    <div class="divider"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+      <div style="background:var(--surface);padding:14px 16px;">
+        <div class="label-xs" style="margin-bottom:6px;">Board-Level Consequence</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">{{primaryBoardConsequence}}</p>
+      </div>
+      <div style="background:var(--surface);padding:14px 16px;">
+        <div class="label-xs" style="margin-bottom:6px;">Regulatory Consequence</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">{{primaryRegConsequence}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary Profiles -->
+  <div id="secondary-profiles">{{secondaryProfilesHTML}}</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     5. DIMENSION BREAKDOWN
+     ═══════════════════════════════════════════ -->
+<section class="sec-block print-break" id="sec-dimensions">
+  <div class="sec-label">Section 04: Core Dimensions</div>
+  <p class="sec-sub" style="margin-bottom:24px;">Five psychological readiness dimensions, each scored as a 50/50 composite of stated attitudes (Sections B-F) and observed behavioural frequency (Section K). A gap between attitude and behaviour signals policy that exists on paper but is not practised.</p>
+
+  <div id="dimension-cards">{{dimensionCardsHTML}}</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     6. GOVERNANCE GAP BREAKDOWN
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-governance-gaps">
+  <div class="sec-label">Section 05: Governance Gaps</div>
+  <p class="sec-sub" style="margin-bottom:24px;">Four governance infrastructure dimensions that determine whether psychological readiness translates into operational oversight capability. These measure the structural capacity to act, not the willingness to act.</p>
+
+  <div class="grid-1px grid-2" id="gap-cards">{{gapCardsHTML}}</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     7. HUMAN OVERSIGHT CAPACITY
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-hoc">
+  <div class="sec-label">Section 06: Human Oversight Capacity</div>
+
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:20px;">
+      <div class="value-lg" style="color:var(--{{hocColour}});flex-shrink:0;">{{hocPct}}<span style="font-size:0.6em;opacity:0.6;">%</span></div>
+      <div style="flex:1;min-width:200px;">
+        <div class="bar-track" style="height:5px;margin-bottom:10px;"><div class="bar-fill fill-{{hocRag}}" style="width:{{hocPct}}%;"></div></div>
+        <div id="hoc-rag-label">{{hocRagBadge}}</div>
+      </div>
+    </div>
+
+    <div class="label-xs" style="margin-bottom:8px;">What HOC Measures</div>
+    <p class="body-text" style="margin-bottom:16px;">Human Oversight Capacity is the average of four governance gap scores: Accountability, Executive Authority, Intervention Capability, and Escalation Pathways. It measures whether the organisational infrastructure exists to support human oversight of AI systems in practice, not just in policy.</p>
+
+    <div class="divider"></div>
+    <div class="label-xs" style="margin-bottom:8px;">Current Assessment</div>
+    <p class="body-text" style="margin-bottom:16px;">{{hocNarrative}}</p>
+
+    <div class="divider"></div>
+    <div class="label-xs" style="margin-bottom:8px;">Can This Organisation Plausibly Intervene in Time?</div>
+    <p class="body-text">{{hocInterventionAssessment}}</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     8. CROSS-PATTERN RISK
+     ═══════════════════════════════════════════ -->
+<section class="sec-block print-break" id="sec-patterns">
+  <div class="sec-label">Section 07: Cross-Dimensional Risk Patterns</div>
+  <p class="sec-sub" style="margin-bottom:24px;">ALMA monitors five structural risk patterns formed by specific combinations of dimensional scores. These patterns predict failure modes that individual dimension scores do not reveal. Active patterns indicate compounding vulnerabilities.</p>
+
+  <div id="pattern-cards">{{patternCardsHTML}}</div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     9. REGULATORY EXPOSURE
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-regulatory">
+  <div class="sec-label">Section 08: Regulatory Exposure</div>
+  <p class="sec-sub" style="margin-bottom:24px;">Maps ALMA psychological readiness and governance infrastructure scores to specific obligations under the selected regulatory framework. Low ALMA scores in dimensions directly linked to regulatory requirements indicate elevated non-compliance risk.</p>
+
+  <!-- Reg Summary -->
+  <div class="card" style="border-color:var(--blue-border);margin-bottom:2px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+      <div>
+        <div class="label-xs" style="margin-bottom:6px;">Overall Regulatory Risk</div>
+        <div class="value-md" style="color:var(--blue);">{{selectedFramework}}</div>
+      </div>
+      <div id="reg-overall-badge">{{regOverallBadge}}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);">
+      <div style="background:var(--surface);padding:12px 16px;text-align:center;">
+        <div class="value-md" style="color:var(--red);">{{regHighCount}}</div>
+        <div class="label-xs" style="margin-top:4px;">High Risk</div>
+      </div>
+      <div style="background:var(--surface);padding:12px 16px;text-align:center;">
+        <div class="value-md" style="color:var(--amber);">{{regElevatedCount}}</div>
+        <div class="label-xs" style="margin-top:4px;">Elevated</div>
+      </div>
+      <div style="background:var(--surface);padding:12px 16px;text-align:center;">
+        <div class="value-md" style="color:var(--green);">{{regLowerCount}}</div>
+        <div class="label-xs" style="margin-top:4px;">Lower Risk</div>
+      </div>
+      <div style="background:var(--surface);padding:12px 16px;text-align:center;">
+        <div class="value-md" style="color:var(--blue);">{{regTotalCount}}</div>
+        <div class="label-xs" style="margin-top:4px;">Total Mapped</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Penalty Exposure -->
+  <div id="penalty-exposure-bar">{{penaltyExposureHTML}}</div>
+
+  <!-- Enforcement Timeline -->
+  <div id="enforcement-timeline" style="margin-bottom:2px;">{{enforcementTimelineHTML}}</div>
+
+  <!-- Article Risk List -->
+  <div id="article-risk-cards">{{articleRiskCardsHTML}}</div>
+
+  <!-- Pattern Regulatory Implications -->
+  <div id="pattern-reg-implications">{{patternRegImplicationsHTML}}</div>
+
+  <!-- HOC Regulatory Narrative -->
+  <div class="card" style="border-color:var(--blue-border);margin-top:2px;">
+    <div class="label-xs" style="margin-bottom:8px;color:var(--blue);">Human Oversight Capacity: Regulatory Alignment</div>
+    <p class="body-text">{{hocRegNarrative}}</p>
+    <div class="reg-tags" style="margin-top:12px;" id="hoc-reg-tags">{{hocRegTags}}</div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div style="margin-top:16px;padding:14px 18px;border-left:2px solid var(--blue-border);font-size:0.75rem;color:var(--text-dim);line-height:1.7;font-style:italic;">
+    <strong style="color:var(--text-muted);font-style:normal;">Regulatory disclaimer:</strong> This compliance risk assessment maps ALMA scores to specific obligations under the {{selectedFramework}}. It is indicative, not definitive. Regulatory compliance depends on multiple factors beyond human readiness, including technical controls, documentation, and conformity assessment. This analysis should complement formal legal review, not replace it.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     10. BOARD PRIORITIES
+     ═══════════════════════════════════════════ -->
+<section class="sec-block print-break" id="sec-priorities">
+  <div class="sec-label">Section 09: Board Priorities</div>
+  <p class="sec-sub" style="margin-bottom:24px;">Prioritised interventions derived from the failure profile analysis, dimension scores, governance gap assessment, and regulatory exposure. Each recommendation is traceable to a specific score pattern and regulatory implication.</p>
+
+  <div style="display:flex;flex-direction:column;gap:2px;">
+    <!-- Immediate -->
+    <div class="priority-band priority-immediate" id="priorities-immediate">
+      <div class="priority-label">Immediate Board Attention</div>
+      <div class="body-text">{{prioritiesImmediateHTML}}</div>
+    </div>
+    <!-- 30-day -->
+    <div class="priority-band priority-30" id="priorities-30">
+      <div class="priority-label">Next 30 Days: Operating Corrections</div>
+      <div class="body-text">{{priorities30HTML}}</div>
+    </div>
+    <!-- 90-day -->
+    <div class="priority-band priority-90" id="priorities-90">
+      <div class="priority-label">Next 90 Days: Governance Design Changes</div>
+      <div class="body-text">{{priorities90HTML}}</div>
+    </div>
+    <!-- Structural -->
+    <div class="priority-band priority-structural" id="priorities-structural">
+      <div class="priority-label">Structural Agenda</div>
+      <div class="body-text">{{prioritiesStructuralHTML}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     11. ADVISORY INTERPRETATION
+     ═══════════════════════════════════════════ -->
+<section class="sec-block" id="sec-advisory">
+  <div class="sec-label">Section 10: Advisory Interpretation</div>
+
+  <div class="advisory-note card" style="border-color:var(--gold-dim);background:var(--gold-faint);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <span style="display:block;width:20px;height:1px;background:var(--gold);"></span>
+      <span style="display:block;width:1px;height:14px;background:var(--gold);"></span>
+      <span style="display:block;width:20px;height:1px;background:var(--gold);"></span>
+      <span style="font-size:0.6rem;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);">Advisory Note</span>
+    </div>
+
+    <div id="advisory-what-this-means" style="margin-bottom:20px;">
+      <div class="label-xs" style="margin-bottom:8px;">What This Means</div>
+      <p class="body-text">{{advisoryWhatThisMeans}}</p>
+    </div>
+
+    <div id="advisory-under-pressure" style="margin-bottom:20px;">
+      <div class="label-xs" style="margin-bottom:8px;">Where This Fails Under Pressure</div>
+      <p class="body-text">{{advisoryUnderPressure}}</p>
+    </div>
+
+    <div id="advisory-leadership" style="margin-bottom:20px;">
+      <div class="label-xs" style="margin-bottom:8px;">Why Leadership Should Care</div>
+      <p class="body-text">{{advisoryLeadership}}</p>
+    </div>
+
+    <div id="advisory-exposure" style="margin-bottom:20px;">
+      <div class="label-xs" style="margin-bottom:8px;">What This Exposes the Organisation To</div>
+      <p class="body-text">{{advisoryExposure}}</p>
+    </div>
+
+    <div id="advisory-change-first">
+      <div class="label-xs" style="margin-bottom:8px;">What Must Change First</div>
+      <p class="body-text">{{advisoryChangeFirst}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     12. FOOTER
+     ═══════════════════════════════════════════ -->
+<footer style="border-top:1px solid var(--border);padding:28px 0;margin-top:24px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="display:block;width:16px;height:1px;background:var(--gold-dim);"></span>
+        <span style="display:block;width:1px;height:12px;background:var(--gold-dim);"></span>
+        <span style="display:block;width:16px;height:1px;background:var(--gold-dim);"></span>
+        <span style="font-size:0.58rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);">Human Integrity Advisory</span>
+      </div>
+      <div style="font-size:0.65rem;color:var(--text-dim);letter-spacing:0.06em;">{{footerCollaboration}}</div>
+      <div style="font-size:0.62rem;color:var(--text-dim);letter-spacing:0.06em;margin-top:4px;">This document is confidential. Distribution without authorisation is prohibited.</div>
+      <div style="font-size:0.58rem;color:var(--text-dim);letter-spacing:0.06em;margin-top:4px;">© {{reportYear}} Human Integrity Advisory Ltd. All rights reserved.</div>
+    </div>
+    <div class="no-print">
+      <button onclick="window.print()" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:transparent;border:1px solid var(--border-light);color:var(--text-muted);font-size:0.62rem;cursor:pointer;font-family:'Montserrat',sans-serif;letter-spacing:0.20em;text-transform:uppercase;font-weight:600;transition:all .15s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)';" onmouseout="this.style.borderColor='rgba(201,182,148,0.30)';this.style.color='var(--text-muted)';">Print / Export PDF</button>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.report -->
+
+</body>
+</html>
