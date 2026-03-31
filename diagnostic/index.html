@@ -1626,97 +1626,97 @@ function openBoardReport() {
 // Uses the Anthropic API to provide real-time regulatory interpretation
 // based on the respondent's specific ALMA scores and risk profile.
 
-async function queryRegulatoryAdvisor(question, context) {
-  const advisorPanel = document.getElementById('reg-advisor-response');
-  const advisorBtn = document.getElementById('reg-advisor-btn');
-  if (advisorPanel) advisorPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Analysing regulatory implications...</div>';
-  if (advisorBtn) advisorBtn.disabled = true;
+// async function queryRegulatoryAdvisor(question, context) {
+//   const advisorPanel = document.getElementById('reg-advisor-response');
+//   const advisorBtn = document.getElementById('reg-advisor-btn');
+//   if (advisorPanel) advisorPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Analysing regulatory implications...</div>';
+//   if (advisorBtn) advisorBtn.disabled = true;
 
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        tools: [{ type: "web_search_20250305", name: "web_search" }],
-        messages: [{
-          role: "user",
-          content: `You are a regulatory compliance advisor specialising in AI governance law. You have expertise in the EU AI Act (Regulation 2024/1689), UK DSIT AI framework, and NIST AI RMF.
+//   try {
+//     const response = await fetch("https://api.anthropic.com/v1/messages", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         model: "claude-sonnet-4-20250514",
+//         max_tokens: 1000,
+//         tools: [{ type: "web_search_20250305", name: "web_search" }],
+//         messages: [{
+//           role: "user",
+//           content: `You are a regulatory compliance advisor specialising in AI governance law. You have expertise in the EU AI Act (Regulation 2024/1689), UK DSIT AI framework, and NIST AI RMF.
 
-Context: An organisation has completed the ALMA (AI Literacy Mindset Assessment) governance diagnostic. Their scores and risk profile are:
-${context}
+// Context: An organisation has completed the ALMA (AI Literacy Mindset Assessment) governance diagnostic. Their scores and risk profile are:
+// ${context}
 
-Question: ${question}
+// Question: ${question}
 
-Provide a concise, practical answer (max 200 words) referencing specific articles, principles, or subcategories from the relevant regulatory framework. If referencing the EU AI Act, cite specific article numbers. If you need to check for recent regulatory updates or amendments, use web search. Focus on actionable compliance guidance, not general information.`
-        }]
-      })
-    });
+// Provide a concise, practical answer (max 200 words) referencing specific articles, principles, or subcategories from the relevant regulatory framework. If referencing the EU AI Act, cite specific article numbers. If you need to check for recent regulatory updates or amendments, use web search. Focus on actionable compliance guidance, not general information.`
+//         }]
+//       })
+//     });
 
-    const data = await response.json();
-    const fullResponse = data.content
-      .map(item => (item.type === "text" ? item.text : ""))
-      .filter(Boolean)
-      .join("\n");
+//     const data = await response.json();
+//     const fullResponse = data.content
+//       .map(item => (item.type === "text" ? item.text : ""))
+//       .filter(Boolean)
+//       .join("\n");
 
-    if (advisorPanel) {
-      advisorPanel.innerHTML = `<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;padding:16px 0;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
-    }
-  } catch (err) {
-    if (advisorPanel) {
-      advisorPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to reach regulatory advisor. Error: ${err.message}</div>`;
-    }
-  }
-  if (advisorBtn) advisorBtn.disabled = false;
-}
+//     if (advisorPanel) {
+//       advisorPanel.innerHTML = `<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;padding:16px 0;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
+//     }
+//   } catch (err) {
+//     if (advisorPanel) {
+//       advisorPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to reach regulatory advisor. Error: ${err.message}</div>`;
+//     }
+//   }
+//   if (advisorBtn) advisorBtn.disabled = false;
+// }
 
-async function checkForAmendments(frameworkId) {
-  const amendPanel = document.getElementById('amendment-check-result');
-  if (amendPanel) amendPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Checking for regulatory updates...</div>';
+// async function checkForAmendments(frameworkId) {
+//   const amendPanel = document.getElementById('amendment-check-result');
+//   if (amendPanel) amendPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Checking for regulatory updates...</div>';
 
-  try {
-    const fw = REGULATORY_FRAMEWORKS[frameworkId];
-    const fwName = fw ? fw.name : 'EU AI Act';
+//   try {
+//     const fw = REGULATORY_FRAMEWORKS[frameworkId];
+//     const fwName = fw ? fw.name : 'EU AI Act';
     
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        tools: [{ type: "web_search_20250305", name: "web_search" }],
-        messages: [{
-          role: "user",
-          content: `Search for the most recent updates, amendments, guidelines, or enforcement actions related to the ${fwName} in the last 90 days. Focus on:
-1. Any amendments to the regulatory text itself
-2. New guidance documents or interpretive guidelines published
-3. Enforcement actions or penalty decisions
-4. New implementation deadlines approaching
+//     const response = await fetch("https://api.anthropic.com/v1/messages", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({
+//         model: "claude-sonnet-4-20250514",
+//         max_tokens: 1000,
+//         tools: [{ type: "web_search_20250305", name: "web_search" }],
+//         messages: [{
+//           role: "user",
+//           content: `Search for the most recent updates, amendments, guidelines, or enforcement actions related to the ${fwName} in the last 90 days. Focus on:
+// 1. Any amendments to the regulatory text itself
+// 2. New guidance documents or interpretive guidelines published
+// 3. Enforcement actions or penalty decisions
+// 4. New implementation deadlines approaching
 
-Provide a concise summary (max 250 words) of what has changed or is upcoming. If nothing significant has changed, state that clearly. Include dates for any developments found.`
-        }]
-      })
-    });
+// Provide a concise summary (max 250 words) of what has changed or is upcoming. If nothing significant has changed, state that clearly. Include dates for any developments found.`
+//         }]
+//       })
+//     });
 
-    const data = await response.json();
-    const fullResponse = data.content
-      .map(item => (item.type === "text" ? item.text : ""))
-      .filter(Boolean)
-      .join("\n");
+//     const data = await response.json();
+//     const fullResponse = data.content
+//       .map(item => (item.type === "text" ? item.text : ""))
+//       .filter(Boolean)
+//       .join("\n");
 
-    if (amendPanel) {
-      const timestamp = new Date().toLocaleString('en-GB', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
-      amendPanel.innerHTML = `
-        <div style="font-size:0.68rem;color:var(--text-dim);margin-bottom:8px;letter-spacing:0.10em;text-transform:uppercase;">Last checked: ${timestamp}</div>
-        <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
-    }
-  } catch (err) {
-    if (amendPanel) {
-      amendPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to check for amendments. Error: ${err.message}</div>`;
-    }
-  }
-}
+//     if (amendPanel) {
+//       const timestamp = new Date().toLocaleString('en-GB', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+//       amendPanel.innerHTML = `
+//         <div style="font-size:0.68rem;color:var(--text-dim);margin-bottom:8px;letter-spacing:0.10em;text-transform:uppercase;">Last checked: ${timestamp}</div>
+//         <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
+//     }
+//   } catch (err) {
+//     if (amendPanel) {
+//       amendPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to check for amendments. Error: ${err.message}</div>`;
+//     }
+//   }
+// }
 
 // ─── BUILD ADVISOR PANEL HTML ──────────────────────────────────────────────
 function buildAdvisorPanelHTML(S, REG) {
