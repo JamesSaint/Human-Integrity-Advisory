@@ -3,443 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Governance Diagnostic Assessment · Version 1.0 | Human Integrity Advisory</title>
+<title>AI Governance Diagnostic Assessment | Human Integrity Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --black: #000000;
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --surface-2: #1c1c1c;
-  --border: rgba(201,182,148,0.14);
-  --border-light: rgba(201,182,148,0.30);
-  --gold: #C9B694;
-  --gold-dim: rgba(201,182,148,0.40);
-  --gold-faint: rgba(201,182,148,0.08);
-  --accent: #C9B694;
-  --accent-glow: rgba(201,182,148,0.08);
-  --text: #f0f0f0;
-  --text-muted: #a8a5a2;
-  --text-dim: #797673;
-  --green: #7fba7a; --green-bg: rgba(127,186,122,0.08); --green-border: rgba(127,186,122,0.30);
-  --amber: #d4a84b; --amber-bg: rgba(212,168,75,0.08); --amber-border: rgba(212,168,75,0.30);
-  --red: #c4605a;   --red-bg: rgba(196,96,90,0.08);     --red-border: rgba(196,96,90,0.30);
-  --purple: #C9B694;
-  --radius: 0px; --radius-sm: 0px;
-  --nav-h: 60px;
-  --page-max: 980px;
-  --pad-x: clamp(20px, 5vw, 64px);
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:0.96rem;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:var(--nav-h);}
-
-/* ── HIA NAV ──────────────────────────────────────────────── */
-.hia-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 var(--pad-x);}
-.hia-nav-inner{width:100%;max-width:var(--page-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.nav-mark{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
-.nav-mark-icon{display:flex;align-items:center;gap:5px;}
-.nm-line{display:block;width:20px;height:1px;background:var(--gold);}
-.nm-stroke{display:block;width:1px;height:16px;background:var(--gold);}
-.nav-mark-text{font-size:0.65rem;font-weight:500;letter-spacing:0.20em;text-transform:uppercase;color:var(--text-muted);transition:color 0.2s;}
-.nav-mark:hover .nav-mark-text{color:var(--text);}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none;flex:1;justify-content:flex-end;}
-.nav-links a{font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);position:relative;padding-bottom:2px;transition:color 0.2s;text-decoration:none;}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.25s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-links a:hover::after{width:100%;}
-.nav-links a.current{color:var(--gold);}
-.nav-links a.current::after{width:100%;}
-.nav-enquire{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;padding:9px 18px;min-height:34px;border:none;cursor:pointer;white-space:nowrap;transition:opacity 0.2s;text-decoration:none;}
-.nav-enquire:hover{opacity:0.85;}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;width:40px;height:40px;}
-.nav-hamburger span{display:block;width:22px;height:1px;background:var(--text-muted);transition:transform 0.25s,opacity 0.2s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(10,10,10,0.98);border-bottom:1px solid var(--border);padding:20px var(--pad-x) 32px;z-index:199;}
-.nav-mobile.open{display:block;}
-.nav-mobile ul{list-style:none;}
-.nav-mobile ul li a{display:block;padding:14px 0;border-bottom:1px solid var(--border);font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);transition:color 0.2s;text-decoration:none;}
-.nav-mobile ul li:last-child a{border-bottom:none;}
-.nav-mobile ul li a:hover{color:var(--gold);}
-.nav-mobile-cta{display:flex;align-items:center;justify-content:center;width:100%;margin-top:24px;background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;padding:13px 20px;min-height:44px;transition:opacity 0.2s;text-decoration:none;}
-.nav-mobile-cta:hover{opacity:0.85;}
-
-/* ── PAGE HERO ────────────────────────────────────────────── */
-.page-hero{background:var(--black);padding:clamp(56px,8vw,96px) var(--pad-x) clamp(44px,6vw,68px);border-bottom:1px solid var(--border);}
-.page-hero-inner{max-width:var(--page-max);margin:0 auto;}
-.page-eyebrow{font-size:0.65rem;font-weight:600;letter-spacing:0.30em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-.page-h1{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:24px;}
-.page-lede{font-size:clamp(0.95rem,2vw,1.05rem);line-height:1.9;color:var(--text-muted);max-width:580px;}
-.hero-alma-mark{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,5rem);color:var(--gold);letter-spacing:0.20em;line-height:1;margin-bottom:4px;}
-.hero-alma-sub{font-size:0.65rem;font-weight:500;letter-spacing:0.30em;text-transform:uppercase;color:var(--text-dim);margin-bottom:32px;}
-.hero-stat-band{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:48px 0 0;}
-.hero-stat{background:var(--black);padding:clamp(20px,3vw,32px);text-align:center;}
-.hero-stat-num{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--text);line-height:1;margin-bottom:6px;}
-.hero-stat-lbl{font-size:0.72rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);line-height:1.65;}
-.hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;}
-.hero-btn-gold{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;padding:12px 28px;min-height:44px;border:none;cursor:pointer;transition:opacity 0.2s;}
-.hero-btn-gold:hover{opacity:0.85;}
-.hero-btn-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--text-muted);font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.20em;text-transform:uppercase;padding:11px 28px;min-height:44px;border:1px solid var(--border-light);cursor:pointer;transition:border-color 0.2s,color 0.2s;}
-.hero-btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.hero-note{font-size:0.82rem;color:var(--text-dim);line-height:1.75;margin-top:24px;max-width:580px;}
-.hero-bottom-label{font-size:0.58rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-dim);text-align:center;padding:20px 0;border-top:1px solid var(--border);margin-top:0;}
-
-/* ── HIA FOOTER ───────────────────────────────────────────── */
-.hia-footer{background:var(--black);border-top:1px solid var(--border);padding:clamp(24px,3.5vw,40px) var(--pad-x);}
-.hia-footer-inner{max-width:var(--page-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.footer-mark{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.footer-mark-icon{display:flex;align-items:center;gap:4px;}
-.fm-line{display:block;width:16px;height:1px;background:var(--gold-dim);}
-.fm-stroke{display:block;width:1px;height:13px;background:var(--gold-dim);}
-.footer-mark-text{font-size:0.62rem;font-weight:300;letter-spacing:0.30em;text-transform:uppercase;color:var(--text-dim);}
-.hia-footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
-.footer-links-list{display:flex;gap:20px;list-style:none;flex-wrap:wrap;justify-content:flex-end;}
-.footer-links-list a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);transition:color 0.2s;text-decoration:none;}
-.footer-links-list a:hover{color:var(--text-muted);}
-.footer-copy{font-size:0.68rem;color:var(--text-dim);letter-spacing:0.08em;}
-
-/* PROGRESS */
-#progress-container{position:fixed;top:0;left:0;right:0;z-index:210;background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 clamp(20px,5vw,64px);height:60px;display:flex;align-items:center;gap:20px;}
-.logo{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.65rem;color:var(--gold);letter-spacing:0.20em;text-transform:uppercase;flex-shrink:0;}
-.progress-track{flex:1;height:2px;background:var(--border);overflow:hidden;}
-.progress-fill{height:100%;background:var(--gold);transition:width 0.4s ease;}
-.progress-label{font-size:0.65rem;color:var(--text-dim);flex-shrink:0;font-weight:500;letter-spacing:0.10em;}
-
-/* SURVEY WRAPPER */
-#survey-wrapper{padding-top:80px;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding-bottom:100px;}
-.section-container{max-width:720px;width:100%;padding:40px clamp(20px,5vw,64px);}
-
-/* SECTION HEADER */
-.section-header{margin-bottom:40px;}
-.section-badge{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border-light);color:var(--text-muted);font-size:0.58rem;font-weight:700;padding:4px 10px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.24em;}
-.section-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.3rem,3vw,1.7rem);color:var(--text);line-height:1.2;margin-bottom:12px;}
-.section-desc{color:var(--text-muted);font-size:0.92rem;line-height:1.85;border-left:2px solid var(--gold-dim);padding-left:16px;}
-.gov-link{margin-top:12px;font-size:0.82rem;color:var(--text-dim);font-style:italic;border-left:2px solid var(--red-border);padding-left:12px;line-height:1.65;}
-
-/* QUESTION CARD */
-.question-card{background:var(--surface);border:1px solid var(--border);padding:20px 24px;margin-bottom:2px;transition:border-color .2s,background .2s;}
-.question-card:hover{background:var(--surface-2);border-color:rgba(201,182,148,0.22);}
-.question-card.answered{border-color:var(--border-light);}
-.question-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
-.q-num{font-size:0.58rem;font-weight:700;color:var(--gold);letter-spacing:0.22em;padding-top:3px;flex-shrink:0;min-width:28px;}
-.q-text{font-size:0.92rem;color:var(--text);line-height:1.65;flex:1;}
-.q-notation{flex-shrink:0;font-size:14px;margin-top:1px;cursor:help;}
-.n-star{color:var(--gold);} .n-diamond{color:var(--gold-dim);} .n-circle{color:var(--green);} .n-tri{color:var(--amber);}
-
-/* LIKERT */
-.likert-scale{display:flex;gap:2px;}
-.likert-option{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
-.likert-btn{width:100%;height:44px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-dim);cursor:pointer;font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:600;transition:all .15s;display:flex;align-items:center;justify-content:center;}
-.likert-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-faint);}
-.likert-btn.selected{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700;}
-.likert-label{font-size:0.6rem;color:var(--text-dim);text-align:center;line-height:1.2;letter-spacing:0.04em;font-weight:500;}
-
-/* FREQUENCY */
-.freq-scale{display:flex;gap:2px;flex-wrap:wrap;}
-.freq-btn{flex:1;min-width:70px;padding:10px 8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-dim);cursor:pointer;font-size:0.72rem;font-weight:600;transition:all .15s;text-align:center;letter-spacing:0.06em;text-transform:uppercase;font-family:'Montserrat',sans-serif;}
-.freq-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-faint);}
-.freq-btn.selected{background:var(--gold);border-color:var(--gold);color:#000;}
-
-/* CONTEXT */
-.context-question{background:var(--surface);border:1px solid var(--border);padding:20px 24px;margin-bottom:2px;}
-.context-q-text{font-size:0.92rem;color:var(--text);font-weight:600;margin-bottom:12px;}
-.radio-grid{display:flex;flex-wrap:wrap;gap:2px;}
-.radio-opt{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);padding:10px 16px;cursor:pointer;transition:all .15s;font-size:0.82rem;color:var(--text-dim);font-weight:500;}
-.radio-opt:hover{border-color:rgba(201,182,148,0.30);color:var(--text);background:var(--surface-2);}
-.radio-opt.selected{border-color:var(--gold);background:var(--gold-faint);color:var(--gold);}
-
-/* NAV */
-#nav-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:16px clamp(20px,5vw,64px);display:flex;justify-content:space-between;align-items:center;z-index:210;}
-.nav-info{font-size:0.65rem;color:var(--text-dim);letter-spacing:0.18em;text-transform:uppercase;font-weight:500;}
-.nav-buttons{display:flex;gap:2px;}
-.btn{padding:11px 28px;font-size:0.7rem;font-weight:700;cursor:pointer;transition:all .15s;border:none;font-family:'Montserrat',sans-serif;letter-spacing:0.20em;text-transform:uppercase;}
-.btn-ghost{background:transparent;color:var(--text-muted);border:1px solid var(--border-light);}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
-.btn-primary{background:var(--gold);color:#000;}
-.btn-primary:hover{opacity:.85;}
-.btn-complete{background:var(--gold);color:#000;}
-.btn-complete:hover{opacity:.85;}
-
-/* INTRO / HERO WRAPPER */
-#intro-screen{}
-.intro-logo{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(3rem,8vw,5rem);color:var(--gold);letter-spacing:0.20em;margin-bottom:8px;}
-.intro-tagline{font-family:'Montserrat',sans-serif;font-size:0.65rem;color:var(--text-dim);font-weight:500;letter-spacing:0.30em;margin-bottom:56px;text-transform:uppercase;}
-.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:48px;text-align:left;}
-.intro-card{background:var(--surface);border:none;padding:clamp(20px,4vw,32px);}
-.intro-card-num{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;color:var(--text);margin-bottom:8px;}
-.intro-card-num .g,.intro-card-num{color:var(--text);}
-.intro-card-label{font-size:0.82rem;color:var(--text-muted);line-height:1.65;}
-.intro-note{font-size:0.82rem;color:var(--text-dim);line-height:1.75;margin-top:28px;max-width:560px;margin-left:auto;margin-right:auto;}
-.legend-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:28px 0;font-size:0.72rem;color:var(--text-dim);letter-spacing:0.04em;}
-.leg-item{display:flex;align-items:center;gap:8px;}
-.leg-dot{width:8px;height:8px;flex-shrink:0;}
-
-/* DASHBOARD */
-#dashboard{max-width:980px;margin:0 auto;padding:80px clamp(20px,5vw,64px) 80px;}
-.dash-header{margin-bottom:48px;}
-.dash-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--text);margin-bottom:8px;line-height:1.2;}
-.dash-sub{color:var(--text-muted);font-size:0.92rem;}
-.dash-meta{font-size:0.78rem;color:var(--text-dim);margin-top:8px;letter-spacing:0.04em;}
-
-.overall-row{display:grid;grid-template-columns:auto 1fr;gap:32px;background:var(--surface);border:1px solid var(--border);padding:clamp(24px,4vw,40px);margin-bottom:48px;align-items:center;}
-.gauge{width:120px;height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Montserrat',sans-serif;flex-shrink:0;border:1px solid var(--border);}
-.gauge-num{font-size:clamp(2rem,5vw,2.6rem);font-weight:700;line-height:1;}
-.gauge-pct{font-size:0.85rem;opacity:.6;font-weight:500;}
-.overall-meta h3{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:8px;}
-.overall-meta p{color:var(--text-muted);font-size:0.92rem;line-height:1.85;margin-bottom:14px;}
-
-.rag-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;font-size:0.58rem;font-weight:700;font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:0.24em;}
-.rag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
-.rag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);}
-.rag-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
-
-.dim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1px;background:var(--border);margin-bottom:48px;}
-.dim-card{background:var(--surface);border:none;padding:clamp(20px,4vw,28px);}
-.dim-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
-.dim-name{font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.92rem;color:var(--text);}
-.dim-sec{font-size:0.58rem;font-weight:700;color:var(--text-dim);margin-top:3px;letter-spacing:0.22em;text-transform:uppercase;}
-.bar-group{margin-bottom:10px;}
-.bar-labels{display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.78rem;}
-.bar-labels span:first-child{color:var(--text-muted);}
-.bar-labels span:last-child{font-weight:600;color:var(--text);}
-.bar-track{height:3px;background:var(--surface-2);overflow:hidden;border:none;}
-.bar-fill{height:100%;transition:width .7s ease;}
-.fill-accent{background:var(--gold);}
-.fill-purple{background:var(--gold-dim);}
-.fill-green{background:var(--green);}
-.fill-amber{background:var(--amber);}
-.fill-red{background:var(--red);}
-.paper-flag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--amber-bg);border:1px solid var(--amber-border);font-size:0.72rem;color:var(--amber);margin-top:12px;letter-spacing:0.04em;}
-
-.gap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);margin-bottom:32px;}
-.gap-card{background:var(--surface);border:none;padding:clamp(18px,3vw,24px);}
-.gap-name{font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.88rem;color:var(--text);margin-bottom:4px;}
-.gap-desc{font-size:0.78rem;color:var(--text-dim);margin-bottom:16px;line-height:1.65;}
-.gap-score{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,2.4rem);font-weight:700;line-height:1;margin-bottom:12px;}
-
-.hoc-card{background:var(--surface);border:1px solid var(--border);padding:clamp(24px,4vw,40px);margin-bottom:48px;}
-.hoc-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:4px;}
-.hoc-desc{font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;line-height:1.75;}
-.hoc-row{display:flex;align-items:center;gap:24px;}
-.hoc-num{font-family:'Montserrat',sans-serif;font-size:clamp(2.5rem,6vw,3.2rem);font-weight:700;flex-shrink:0;}
-.hoc-track{flex:1;height:6px;background:var(--surface-2);overflow:hidden;}
-
-.risk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);margin-bottom:48px;}
-.risk-card{padding:clamp(18px,3vw,24px);border:none;}
-.risk-triggered{background:var(--red-bg);}
-.risk-safe{background:var(--surface);opacity:.5;}
-.risk-dot{width:8px;height:8px;margin-bottom:10px;}
-.rdot-red{background:var(--red);}
-.rdot-safe{background:var(--green);}
-.risk-name{font-family:'Montserrat',sans-serif;font-size:0.88rem;font-weight:600;margin-bottom:6px;}
-.risk-triggered .risk-name{color:var(--red);}
-.risk-safe .risk-name{color:var(--text-dim);}
-.risk-desc{font-size:0.78rem;line-height:1.65;color:var(--text-dim);margin-bottom:6px;}
-.risk-cond{font-size:0.65rem;color:var(--text-dim);font-style:italic;letter-spacing:0.04em;}
-
-.flags-list{display:flex;flex-direction:column;gap:2px;margin-bottom:48px;}
-.flag-item{background:var(--surface);border:1px solid var(--border);padding:18px 24px;display:flex;gap:14px;align-items:flex-start;}
-.flag-pill{padding:4px 10px;font-size:0.58rem;font-weight:700;text-transform:uppercase;flex-shrink:0;letter-spacing:0.20em;}
-.flag-high{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
-.flag-med{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);}
-.flag-low{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
-.flag-text{font-size:0.88rem;color:var(--text);line-height:1.75;}
-
-.dash-sec-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.7rem;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:16px;letter-spacing:0.26em;text-transform:uppercase;}
-.dash-sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
-.legend-bar{display:flex;gap:20px;margin-bottom:16px;flex-wrap:wrap;}
-.leg-item2{display:flex;align-items:center;gap:8px;font-size:0.72rem;color:var(--text-dim);letter-spacing:0.04em;}
-.leg-dot2{width:8px;height:8px;flex-shrink:0;}
-
-/* ── REGULATORY COMPLIANCE ────────────────────────────────── */
-.reg-inline-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:12px;}
-.reg-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:rgba(100,140,200,0.08);border:1px solid rgba(100,140,200,0.25);color:#7ea8d4;cursor:pointer;transition:all .15s;text-decoration:none;}
-.reg-tag:hover{background:rgba(100,140,200,0.16);border-color:rgba(100,140,200,0.45);color:#a0c4e8;}
-.reg-tag-icon{font-size:10px;opacity:0.7;}
-.reg-section{margin-bottom:48px;}
-.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1px;background:var(--border);margin-bottom:24px;}
-.reg-card{background:var(--surface);padding:clamp(20px,4vw,28px);border:none;}
-.reg-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;gap:12px;}
-.reg-article-num{font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.7rem;color:#7ea8d4;letter-spacing:0.18em;text-transform:uppercase;}
-.reg-article-title{font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.88rem;color:var(--text);margin-bottom:8px;line-height:1.4;}
-.reg-article-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:12px;}
-.reg-risk-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;font-size:0.55rem;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;}
-.reg-risk-high{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border);}
-.reg-risk-elevated{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);}
-.reg-risk-lower{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);}
-.reg-triggers{margin-top:10px;font-size:0.75rem;color:var(--text-dim);line-height:1.65;}
-.reg-triggers strong{color:var(--text-muted);font-weight:600;}
-.reg-link{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:0.68rem;color:#7ea8d4;text-decoration:none;letter-spacing:0.08em;transition:color .15s;}
-.reg-link:hover{color:#a0c4e8;}
-.reg-link-icon{font-size:10px;}
-.reg-summary-card{background:var(--surface);border:1px solid var(--border);padding:clamp(24px,4vw,40px);margin-bottom:24px;}
-.reg-summary-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:4px;}
-.reg-summary-desc{font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;line-height:1.75;}
-.reg-summary-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
-.reg-summary-stat{text-align:center;padding:16px 24px;background:var(--surface-2);border:1px solid var(--border);min-width:100px;}
-.reg-summary-stat-num{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:700;line-height:1;}
-.reg-summary-stat-lbl{font-size:0.62rem;color:var(--text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-top:4px;}
-.reg-framework-selector{display:flex;gap:2px;margin-bottom:16px;}
-.reg-fw-btn{padding:8px 16px;font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;transition:all .15s;font-family:'Montserrat',sans-serif;}
-.reg-fw-btn:hover{border-color:rgba(100,140,200,0.4);color:#7ea8d4;}
-.reg-fw-btn.active{background:rgba(100,140,200,0.12);border-color:rgba(100,140,200,0.4);color:#7ea8d4;}
-.reg-penalty-bar{margin-top:16px;padding:14px 18px;background:rgba(196,96,90,0.04);border:1px solid var(--red-border);font-size:0.78rem;color:var(--text-muted);line-height:1.75;}
-.reg-penalty-bar strong{color:var(--red);}
-.reg-disclaimer{font-size:0.72rem;color:var(--text-dim);font-style:italic;line-height:1.65;margin-top:16px;padding:12px 16px;border-left:2px solid rgba(100,140,200,0.3);}
-
-.footer-row{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-credit{font-size:0.68rem;color:var(--text-dim);letter-spacing:0.08em;}
-.btn-print{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:transparent;border:1px solid var(--border-light);color:var(--text-muted);font-size:0.65rem;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .15s;letter-spacing:0.20em;text-transform:uppercase;font-weight:600;}
-.btn-print:hover{border-color:var(--gold);color:var(--gold);}
-
-.hidden{display:none!important;}
-
-@media(max-width:768px){
-  .nav-links{display:none;}
-  .nav-enquire{display:none;}
-  .nav-hamburger{display:flex;}
-  .hero-stat-band{grid-template-columns:1fr 1fr;}
-  .hia-footer-inner{flex-direction:column;align-items:flex-start;}
-  .hia-footer-right{align-items:flex-start;}
-  .footer-links-list{justify-content:flex-start;}
-}
-@media(max-width:640px){
-  .intro-grid{grid-template-columns:1fr;}
-  .dim-grid{grid-template-columns:1fr;}
-  .gap-grid{grid-template-columns:repeat(2,1fr);}
-  .overall-row{grid-template-columns:1fr;}
-  .hoc-row{flex-direction:column;align-items:flex-start;}
-  .risk-grid{grid-template-columns:repeat(2,1fr);}
-  .hero-stat-band{grid-template-columns:1fr;}
-  .hero-cta-row{flex-direction:column;align-items:stretch;}
-}
-@media(max-width:480px){
-  .hia-nav{height:56px;}
-  :root{--nav-h:56px;}
-}
-
-@media print{
-  #progress-container,#nav-bar,#intro-screen,#survey-wrapper,.hia-nav,.nav-mobile,.hia-footer{display:none!important;}
-  #dashboard{display:block!important;padding:20px;}
-  .btn-print{display:none!important;}
-  body{background:#fff;color:#000;padding-top:0;}
-}
-</style>
+<link rel="stylesheet" href="alma.css">
 </head>
 <body>
-
-<!-- HIA FIXED NAV -->
-<nav class="hia-nav" id="hia-nav">
-  <div class="hia-nav-inner">
-    <a href="../index.html" class="nav-mark">
-      <span class="nav-mark-icon"><span class="nm-line"></span><span class="nm-stroke"></span><span class="nm-line"></span></span>
-      <span class="nav-mark-text">Human Integrity Advisory</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../about.html">About</a></li>
-      <li><a href="../services.html">Services</a></li>
-      <li><a href="../advisory-briefs.html">Advisory Briefs</a></li>
-    </ul>
-    <a href="../contact.html" class="nav-enquire">Enquire</a>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE NAV DRAWER -->
-<div class="nav-mobile" id="nav-mobile">
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../services.html">Services</a></li>
-    <li><a href="../advisory-briefs.html">Advisory Briefs</a></li>
-  </ul>
-  <a href="../contact.html" class="nav-mobile-cta">Enquire</a>
-</div>
-
-<!-- PROGRESS BAR (survey mode) -->
-<div id="progress-container" class="hidden">
-  <div class="logo">HIA</div>
-  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-  <div class="progress-label" id="progress-label">1 / 11</div>
-</div>
-
-<!-- HERO / INTRO SCREEN -->
-<div id="intro-screen">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="page-eyebrow">AI Governance Diagnostic Assessment</div>
-      <div class="hero-alma-mark">ALMA</div>
-      <div class="hero-alma-sub">Version 1.0</div>
-      <p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p>
-      <div class="hero-cta-row">
-        <button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment →</button>
-        <!-- <a href="../services.html" class="hero-btn-outline">View Services</a> -->
-      </div>
-      <p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic &amp; assesment purposes only.</p>
-    </div>
-  </div>
-<!--   <div class="hero-stat-band">
-    <div class="hero-stat">
-      <div class="hero-stat-num">92</div>
-      <div class="hero-stat-lbl">Rated items across 9 sections</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">14<span style="font-size:0.5em;opacity:0.6;">min</span></div>
-      <div class="hero-stat-lbl">Estimated completion time</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">RAG</div>
-      <div class="hero-stat-lbl">Scoring with risk pattern detection</div>
-    </div>
-  </div> -->
-  <!-- <div class="hero-bottom-label">Psychological Safety · Growth Orientation · Adaptive Flexibility · Conscious Ownership · Critical Engagement</div> -->
-</div>
-
-<!-- SURVEY WRAPPER -->
-<div id="survey-wrapper" class="hidden">
-  <div class="section-container">
-    <div id="section-content"></div>
-  </div>
-</div>
-
-<!-- NAV BAR -->
-<div id="nav-bar" class="hidden">
-  <div class="nav-info" id="nav-info"></div>
-  <div class="nav-buttons">
-    <button class="btn btn-ghost" id="btn-prev" onclick="goPrev()">← Back</button>
-    <button class="btn btn-primary" id="btn-next" onclick="goNext()">Next →</button>
-  </div>
-</div>
-
-<!-- DASHBOARD -->
+<nav class="hia-nav" id="hia-nav"><div class="hia-nav-inner"><a href="../index.html" class="nav-mark"><span class="nav-mark-icon"><span class="nm-line"></span><span class="nm-stroke"></span><span class="nm-line"></span></span><span class="nav-mark-text">Human Integrity Advisory</span></a><ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-enquire">Enquire</a><button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button></div></nav>
+<div class="nav-mobile" id="nav-mobile"><ul><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-mobile-cta">Enquire</a></div>
+<div id="progress-container" class="hidden"><div class="logo">HIA</div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div><div class="progress-label" id="progress-label">1 / 11</div></div>
+<div id="intro-screen"><div class="page-hero"><div class="page-hero-inner"><div class="page-eyebrow">AI Governance Diagnostic Assessment</div><div class="hero-alma-mark">ALMA</div><div class="hero-alma-sub">Version 2.0</div><p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p><div class="hero-cta-row"><button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment</button></div><p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic and assessment purposes only.</p></div></div></div>
+<div id="survey-wrapper" class="hidden"><div class="section-container"><div id="section-content"></div></div></div>
+<div id="nav-bar" class="hidden"><div class="nav-info" id="nav-info"></div><div class="nav-buttons"><button class="btn btn-ghost" id="btn-prev" onclick="goPrev()">Back</button><button class="btn btn-primary" id="btn-next" onclick="goNext()">Next</button></div></div>
 <div id="dashboard" class="hidden"></div>
-
-<!-- HIA FOOTER -->
-<footer class="hia-footer" id="hia-footer">
-  <div class="hia-footer-inner">
-    <div class="footer-mark">
-      <span class="footer-mark-icon"><span class="fm-line"></span><span class="fm-stroke"></span><span class="fm-line"></span></span>
-      <span class="footer-mark-text">Human Integrity Advisory</span>
-    </div>
-    <div class="hia-footer-right">
-      <ul class="footer-links-list">
-        <li><a href="../contact.html">Contact</a></li>
-        <li><a href="../terms.html">Terms & Conditions</a></li>
-        <li><a href="../privacy.html">Privacy</a></li>
-        <li><a href="../gdpr.html">GDPR</a></li>
-      </ul>
-      <div class="footer-copy">© 2026 Human Integrity Advisory · All rights reserved.</div>
-    </div>
-  </div>
-</footer>
-
+<footer class="hia-footer" id="hia-footer"><div class="hia-footer-inner"><div class="footer-mark"><span class="footer-mark-icon"><span class="fm-line"></span><span class="fm-stroke"></span><span class="fm-line"></span></span><span class="footer-mark-text">Human Integrity Advisory</span></div><div class="hia-footer-right"><ul class="footer-links-list"><li><a href="../contact.html">Contact</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../privacy.html">Privacy</a></li><li><a href="../gdpr.html">GDPR</a></li></ul><div class="footer-copy">&copy; 2026 Human Integrity Advisory. All rights reserved.</div></div></div></footer>
 <script>
-// ─── SURVEY DATA ─────────────────────────────────────────────────────────────
+// ============================================================
+// ALMA v2.0 Unified Diagnostic
+// Human Integrity Advisory Ltd
+// ============================================================
 const SECTIONS = [
 {
   id:'A', title:'Context & Background',
@@ -1307,270 +889,800 @@ function calcScores(){
 
   return S;
 }
-
-// ─── DASHBOARD ───────────────────────────────────────────────────────────────
-function completeSurvey(){
-  const S = calcScores();
-  const REG = calcRegulatoryRisk(S, activeFrameworkId);
-  const overallRag = rag(S.overall);
-  const today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-
-  const gaugeColors = {green:'var(--green)',amber:'var(--amber)',red:'var(--red)'};
-  const gaugeBg = {
-    green:'var(--surface-2)',
-    amber:'var(--surface-2)',
-    red:'var(--surface-2)'
-  };
-  const gaugeBorder = {green:'var(--green-border)',amber:'var(--amber-border)',red:'var(--red-border)'};
-
-  const overallDesc = overallRag==='green'
-    ? 'Lower vulnerability. Psychological readiness is strong across dimensions. Maintain current governance practices and monitor leading indicators quarterly.'
-    : overallRag==='amber'
-    ? 'Moderate vulnerability. Governance is functional but fragile. Targeted intervention across identified dimensions is recommended.'
-    : 'High vulnerability. Critical intervention required across multiple dimensions. Significant governance failure modes are likely active.';
-
-  const patternData = [
-    {key:'silentAutomation',name:'Silent Automation',desc:'Errors are noticed but not reported. AI output trusted without challenge.',cond:'Low Psych Safety + Low Critical Engagement'},
-    {key:'diffusedPassivity',name:'Diffused Passivity',desc:'"The system did it." Nobody checks output; nobody owns the error.',cond:'Low Conscious Ownership + Low Critical Engagement'},
-    {key:'frozenGovernance',name:'Frozen Governance',desc:'Static rules cannot keep pace. Shadow AI proliferates as workarounds.',cond:'Low Adaptive Flexibility + Low Growth Orientation'},
-    {key:'lonelyVigilance',name:'Lonely Vigilance',desc:'Individuals spot errors but fear raising them. Burnout and attrition risk.',cond:'High Critical Engagement + Low Psych Safety'},
-    {key:'confidentBlindness',name:'Confident Blindness',desc:'High enthusiasm, low verification. Flawed tools reach production.',cond:'High Growth Orientation + Low Critical Engagement'}
+// ── HELPERS (mirror existing codebase) ────────────────────────────────────────
+function _rag(pct) { return pct >= 70 ? 'green' : pct >= 40 ? 'amber' : 'red'; }
+function _ragLabel(pct) { return pct >= 70 ? 'Robust' : pct >= 40 ? 'Fragile' : 'Critical'; }
+function _ragBadge(pct, suffix) {
+  const r = _rag(pct);
+  return `<span class="rag rag-${r}">${_ragLabel(pct)}${suffix ? ' ' + suffix : ''}</span>`;
+}
+function _colour(pct) { return _rag(pct); }
+function _countPaperGov(S) { return Object.values(S.dims).filter(d => d.paperGov).length; }
+function _countActivePatterns(S) { return Object.values(S.patterns).filter(Boolean).length; }
+function _maxAttBehGap(S) {
+  return Math.max(...Object.values(S.dims).map(d => Math.abs(d.attPct - d.behPct)));
+}
+function _weakestConstruct(S) {
+  const all = [
+    ...Object.entries(S.dims).map(([k, d]) => ({ key: k, label: d.label, pct: d.comp, type: 'dimension' })),
+    ...Object.entries(S.gaps).map(([k, g]) => ({ key: k, label: g.label, pct: g.pct, type: 'gap' }))
   ];
+  return all.reduce((w, c) => c.pct < w.pct ? c : w, all[0]);
+}
+function _weakestGap(S) {
+  return Object.entries(S.gaps).reduce((w, [k, g]) => g.pct < w.pct ? { key: k, ...g } : w,
+    { key: Object.keys(S.gaps)[0], ...Object.values(S.gaps)[0] });
+}
+function _strongestDim(S) {
+  return Object.entries(S.dims).reduce((s, [k, d]) => d.comp > s.comp ? { key: k, ...d } : s,
+    { key: Object.keys(S.dims)[0], ...Object.values(S.dims)[0] });
+}
 
-  let html = `
-  <div class="dash-header">
-    <h1 class="dash-title">Assessment Results</h1>
-    <p class="dash-sub">Date:  ${today}</p>
-    <p class="dash-meta">Role: ${S.context.A1} · ${S.context.A2} · ${S.context.A3} · ${S.context.A4} employees · AI usage: ${S.context.A5}</p>
-  </div>
+// ── FAILURE PROFILE DEFINITIONS ───────────────────────────────────────────────
+// Evaluated in priority order. First match = primary; subsequent matches = secondary.
+const FAILURE_PROFILES = [
+  {
+    id: 'silentAutomation',
+    name: 'Silent Automation',
+    severity: 'critical',
+    test: S => S.patterns.silentAutomation,
+    meaning: 'People see problems with AI outputs but do not report them, and are not checking outputs systematically either.',
+    scenario: 'A customer-facing AI model produces biased outputs for weeks. Frontline staff notice anomalies but assume someone else is monitoring. No report is filed. The error compounds until external exposure forces discovery.',
+    boardConsequence: 'The board believes human oversight is operational because policy requires it. In reality, no human is in the loop. Incidents accumulate silently until external exposure forces disclosure under the worst possible conditions.',
+    regConsequence: 'Directly undermines Art 14 (Human Oversight) and Art 73 (Serious Incident Reporting). The 15-day reporting timeline cannot be met when incidents are not surfaced internally. Penalty exposure: up to €15M or 3% of global turnover.',
+    changeFirst: 'Establish protected reporting mechanisms for AI concerns and implement mandatory verification checkpoints, simultaneously. Neither alone resolves this pattern.'
+  },
+  {
+    id: 'confidentBlindness',
+    name: 'Confident Blindness',
+    severity: 'critical',
+    test: S => S.patterns.confidentBlindness,
+    meaning: 'The organisation is enthusiastically adopting AI and developing capability, but nobody is verifying whether the AI systems are performing correctly.',
+    scenario: 'A team deploys a new AI recommendation engine after extensive training. Adoption is high, confidence is strong. Nobody checks whether the recommendations are accurate. Six months later, an audit reveals systematic bias amplified by uncritical users.',
+    boardConsequence: 'Enthusiasm masks risk. The board sees strong adoption metrics. What it does not see is that confidence has replaced verification. The faster AI is adopted without verification, the larger the undetected exposure.',
+    regConsequence: 'Art 14 human oversight structurally compromised by automation bias. Art 9 risk management cannot function when risks are not being looked for. Confidence drives deployment while critical engagement provides no counterweight.',
+    changeFirst: 'Introduce verification protocols that are mandatory regardless of confidence level. Tie verification to decision impact, not perceived AI accuracy.'
+  },
+  {
+    id: 'interventionBreakdown',
+    name: 'Intervention Breakdown',
+    severity: 'critical',
+    test: S => S.gaps.intervention.pct < 40 && (S.gaps.authority.pct < 40 || S.gaps.escalation.pct < 40),
+    meaning: 'The organisation cannot stop, override, or reverse AI decisions when needed, and at least one supporting mechanism is also critically weak.',
+    scenario: 'An AI lending model begins rejecting valid applications at an abnormal rate. The operations team identifies the issue but lacks the technical capability or authorised access to halt the model. By the time a decision-maker is reached, hundreds of applications have been wrongly rejected.',
+    boardConsequence: 'The board has approved AI deployment on the assumption that human oversight includes the ability to intervene. That assumption is false. The time between "we need to stop this" and "it is stopped" is unacceptably long or undefined.',
+    regConsequence: 'Art 14.4 specifically requires mechanisms enabling intervention or interruption through a stop button or similar procedure. Art 72 post-market monitoring requires the ability to act on detected issues. Both are non-functional.',
+    changeFirst: 'Conduct an immediate technical audit of intervention capability for every deployed AI system. Establish and test maximum intervention latency.'
+  },
+  {
+    id: 'diffusedAccountability',
+    name: 'Diffused Accountability',
+    severity: 'critical',
+    test: S => S.dims.co.comp < 40 && S.gaps.accountability.pct < 40,
+    meaning: 'Nobody owns AI outcomes. Accountability is either unassigned, unclear, or assigned to people without the authority or information to act.',
+    scenario: 'An AI-assisted HR screening tool is challenged on fairness grounds. IT points to HR. HR points to the vendor. The vendor points to the contract. The regulator points to the deployer. Nobody can answer who is responsible.',
+    boardConsequence: 'The board cannot answer: "Who is responsible for this AI system\'s outcomes?" Under the EU AI Act, deployer obligations require identifiable, competent individuals assigned to oversight roles. The absence of clear accountability is itself the violation.',
+    regConsequence: 'Art 26 requires deployers to assign oversight to "natural persons who have the necessary competence, training and authority." Art 16 requires providers to maintain quality management. Without clear accountability, neither obligation can be demonstrated.',
+    changeFirst: 'Map every deployed AI system to a named accountable individual with documented authority, access, and consequence mechanisms.'
+  },
+  {
+    id: 'lonelyVigilance',
+    name: 'Lonely Vigilance',
+    severity: 'high',
+    test: S => S.patterns.lonelyVigilance,
+    meaning: 'A small number of individuals are actively checking AI outputs and raising concerns, but the environment punishes or ignores them for doing so.',
+    scenario: 'A data analyst identifies that an AI model is producing outputs inconsistent with training data. They raise the issue repeatedly and are dismissed. After several months, they leave the organisation. The issue remains unaddressed.',
+    boardConsequence: 'Human oversight is not an organisational capability. It depends on specific employees. The board is one resignation away from an oversight vacuum.',
+    regConsequence: 'Art 14 human oversight depends on isolated individuals rather than systemic process. Art 73 incident reporting relies on personal courage. Both are structurally brittle.',
+    changeFirst: 'Protect existing oversight individuals before they leave. Build systemic support structures before addressing the broader safety deficit.'
+  },
+  {
+    id: 'behaviouralHollowing',
+    name: 'Behavioural Hollowing',
+    severity: 'high',
+    test: S => _countPaperGov(S) >= 2,
+    meaning: 'The organisation holds strong beliefs about AI governance but is not acting on them. Policy exists. Intention is present. Behaviour is absent.',
+    scenario: 'A survey reveals that 85% of staff believe AI outputs should be verified. Behavioural data shows fewer than 20% actually verify. Governance exists only in documentation and intention.',
+    boardConsequence: 'The board receives assurance based on attitude surveys which appear positive. The behavioural reality is different. Under regulatory scrutiny, what matters is what people do, not what they believe.',
+    regConsequence: 'Art 26 deployer obligations require that human oversight is ensured, not merely intended. Regulators will test for evidence of actual practice, not declared belief. The attitude-behaviour gap creates vulnerability despite appearing compliant.',
+    changeFirst: 'Identify and remove the structural barriers preventing people from acting on their stated governance beliefs: time, access, tooling, management signals.'
+  },
+  {
+    id: 'frozenGovernance',
+    name: 'Frozen Governance',
+    severity: 'high',
+    test: S => S.patterns.frozenGovernance,
+    meaning: 'AI governance frameworks are rigid, outdated, and disconnected from actual AI usage. The organisation lacks the capability or willingness to update them.',
+    scenario: 'An AI governance policy was written 18 months ago. The organisation has since adopted three new AI platforms. The framework has not been updated. Staff work around it or ignore it.',
+    boardConsequence: 'The governance framework that the board approved and monitors is no longer relevant to the AI systems in use. Shadow AI proliferates. The board\'s oversight is based on an outdated map.',
+    regConsequence: 'Art 9 requires a continuous, iterative risk management system. Art 72 requires adaptive post-market monitoring. Rigid governance violates the fundamental principle of ongoing risk management.',
+    changeFirst: 'Audit the gap between the governance framework and actual AI systems in use. Implement event-driven governance updates tied to deployment, not calendar.'
+  },
+  {
+    id: 'escalationCompromised',
+    name: 'Escalation Compromised',
+    severity: 'critical',
+    test: S => S.gaps.escalation.pct < 40 && S.dims.ps.comp < 40,
+    meaning: 'Bad news about AI systems cannot reach decision-makers. Escalation pathways are absent or blocked, and people fear the consequences of using them.',
+    scenario: 'A compliance officer notices an AI system producing outputs that may violate requirements. Escalation requires reporting through a line manager who championed the system. The officer delays. The 15-day reporting window passes.',
+    boardConsequence: 'The board cannot rely on receiving timely information about AI failures. Problems are filtered, delayed, or suppressed before reaching decision-making level.',
+    regConsequence: 'Art 73 requires serious incident reporting within 15 days. Broken escalation makes this timeline impossible. Art 26 requires deployers to inform providers of risks. If risks cannot be escalated internally, they cannot be communicated externally.',
+    changeFirst: 'Establish direct, protected escalation routes that bypass hierarchical filters. Separate AI incident reporting from line management.'
+  },
+  {
+    id: 'illusionOfControl',
+    name: 'Illusion of Control',
+    severity: 'high',
+    test: S => S.overall >= 40 && S.hoc < 40 && _countPaperGov(S) >= 1,
+    meaning: 'Surface-level readiness scores appear adequate, but governance infrastructure is critically weak and at least one dimension shows paper governance.',
+    scenario: 'An executive team presents strong readiness scores to the board. Attitudes are positive. But accountability is unclear, intervention is untested, and the attitudes that score well are not being translated into behaviour.',
+    boardConsequence: 'The board is receiving false assurance. The metrics it monitors do not measure what matters. The gap between perceived control and actual capability is where risk concentrates.',
+    regConsequence: 'Art 14 human oversight appears compliant on documentation review but fails under operational testing. Art 26 deployer obligations appear met but are not behaviourally embedded. Maximum exposure at audit.',
+    changeFirst: 'Replace attitude-based governance metrics with operational tests of intervention, escalation, and accountability. Surface the gap between perception and capability.'
+  },
+  {
+    id: 'oversightInNameOnly',
+    name: 'Oversight in Name Only',
+    severity: 'critical',
+    test: S => S.hoc < 40 && _countActivePatterns(S) >= 2,
+    meaning: 'Governance infrastructure is critically weak and multiple cross-dimensional risk patterns are active simultaneously. Human oversight exists as a label, not a function.',
+    scenario: 'The organisation has a governance committee, a responsible AI policy, and named oversight roles. Accountability is diffuse, intervention is untested, escalation is blocked, and multiple structural risk patterns operate simultaneously.',
+    boardConsequence: 'Under any form of scrutiny, the gap between governance structure and function will be exposed. This is a systemic governance failure, not a weakness in one area.',
+    regConsequence: 'Multiple articles are simultaneously non-compliant. Regulatory exposure is not limited to a single obligation but spans Arts 14, 26, 9, 73 and others. Penalty exposure compounds because the failure is structural.',
+    changeFirst: 'This requires a governance reset. Commission an independent assessment of governance infrastructure and design a replacement structure.'
+  }
+];
 
-  <!-- OVERALL -->
-  <div class="overall-row">
-    <div class="gauge" style="background:${gaugeBg[overallRag]};border:2px solid ${gaugeBorder[overallRag]};">
-      <span class="gauge-num" style="color:${gaugeColors[overallRag]};">${S.overall}</span>
-      <span class="gauge-pct" style="color:${gaugeColors[overallRag]};">%</span>
-    </div>
-    <div class="overall-meta">
-      <h3>Overall Psychological Readiness</h3>
-      <p>${overallDesc}</p>
-      <span class="rag-badge rag-${overallRag}">${ragLabel(S.overall)} Capability</span>
-    </div>
-  </div>
+// ── EXECUTIVE STATUS RULES ────────────────────────────────────────────────────
+// Evaluated in priority order. First match wins.
+const EXEC_STATUS_RULES = [
+  { label: 'Structurally Exposed', test: S => S.overall < 40 },
+  { label: 'Intervention-Constrained', test: S => S.gaps.intervention.pct < 40 && S.gaps.authority.pct < 40 },
+  { label: 'Oversight-Dependent on Individuals', test: S => S.patterns.lonelyVigilance },
+  { label: 'Superficially Governed', test: S => S.overall >= 55 && _countPaperGov(S) >= 2 },
+  { label: 'Behaviourally Misaligned', test: S => S.overall >= 40 && _maxAttBehGap(S) > 40 },
+  { label: 'Operationally Fragile', test: S => S.overall >= 40 && S.overall < 55 && S.hoc < 50 },
+  { label: 'Escalation-Compromised', test: S => S.gaps.escalation.pct < 40 },
+  { label: 'Control Confidence Misaligned', test: S => S.overall >= 55 && S.hoc < 40 },
+  { label: 'Governance-Capable with Active Risks', test: S => S.overall >= 55 && _countActivePatterns(S) >= 1 },
+  { label: 'Robust: Monitoring Required', test: S => S.overall >= 70 && S.hoc >= 70 && _countActivePatterns(S) === 0 }
+];
 
-  <!-- DIMENSIONS -->
-  <h2 class="dash-sec-title">Five Core Dimensions</h2>
-  <div class="legend-bar">
-    <div class="leg-item2"><div class="leg-dot2" style="background:var(--accent)"></div>Attitude score</div>
-    <div class="leg-item2"><div class="leg-dot2" style="background:var(--purple)"></div>Behavioural frequency</div>
-    <div class="leg-item2"><div class="leg-dot2" style="background:var(--green)"></div>Composite (50/50)</div>
-  </div>
-  <div class="dim-grid">
-    ${Object.entries(S.dims).map(([k,d])=>{
-      const regTags = REG ? REG.getInlineTags('dimension', k) : [];
-      return `
-    <div class="dim-card">
-      <div class="dim-top">
+// ── RISK TRANSLATION TABLES ──────────────────────────────────────────────────
+const RISK_TRANSLATIONS = {
+  dims: {
+    ps: {
+      red: 'Personnel cannot safely report AI errors, challenge AI decisions, or acknowledge uncertainty. Oversight exists only as policy.',
+      amber: 'Reporting and challenge functions work under normal conditions but are likely to fail under commercial or time pressure.'
+    },
+    go: {
+      red: 'AI governance capability is stagnating. Competence concentrates in specialists. Senior leaders are not developing oversight fluency.',
+      amber: 'Capability development is occurring but unevenly distributed. Governance competence may be adequate for current systems but insufficient for new deployments.'
+    },
+    af: {
+      red: 'Governance frameworks cannot keep pace with AI adoption. Static rules create workarounds and shadow AI. Sunk cost fallacy drives continued use of flawed systems.',
+      amber: 'Governance adapts but with delay. New AI deployments outpace framework updates. Emerging risks accumulate in the gap between policy and practice.'
+    },
+    co: {
+      red: 'Nobody owns AI outcomes. Accountability is assigned on paper but not practised. The "algorithm decided" defence is culturally normalised.',
+      amber: 'Accountability structures exist but diffuse under pressure. Edge cases and shared systems create ambiguity about who is responsible.'
+    },
+    ce: {
+      red: 'AI outputs are not being verified before action. Automation bias is structurally embedded. Human oversight is nominal, not operational.',
+      amber: 'Verification occurs for high-profile decisions but is inconsistent for routine operations. Subtle drift and bias go undetected.'
+    }
+  },
+  gaps: {
+    accountability: {
+      red: 'Accountability for AI outcomes is undefined or assigned without corresponding authority. Consequences for oversight failure are absent.',
+      amber: 'Accountability is documented but operationally unclear in shared-responsibility scenarios. Consequence mechanisms exist but are not tested.'
+    },
+    authority: {
+      red: 'Override authority is absent, creates career risk, or requires approvals that eliminate its practical value.',
+      amber: 'Authority to override exists but is rarely exercised. Cultural norms discourage its use. Authority may erode under commercial pressure.'
+    },
+    intervention: {
+      red: 'The organisation cannot stop, modify, or reverse AI decisions within an acceptable timeframe. Intervention is untested.',
+      amber: 'Intervention mechanisms exist but have not been stress-tested. The time between detection and intervention completion is unknown.'
+    },
+    escalation: {
+      red: 'Bad news about AI systems cannot reliably reach decision-makers. Routes are unclear, undocumented, or blocked by hierarchy.',
+      amber: 'Escalation routes exist for clear-cut incidents but fail for ambiguous cases. Speed to decision-makers is uncertain.'
+    }
+  }
+};
+
+// ── PRESSURE NARRATIVES ──────────────────────────────────────────────────────
+// Used in "Where This Fails Under Pressure" block. Key = weakest construct key.
+const PRESSURE_NARRATIVES = {
+  ps: 'When timelines compress or stakes rise, the ability to speak up about AI problems will be the first capability to collapse. Errors will go unreported. Concerns will be suppressed.',
+  go: 'When AI systems change or new systems are introduced, the organisation will lack the adaptive capability to govern them. Governance will be applied retrospectively, if at all.',
+  af: 'When evidence suggests a change of course, the organisation will resist. Sunk costs, political investment, and rigid frameworks will prevent corrective action.',
+  co: 'When AI outcomes are poor, no individual will own the failure. Accountability will diffuse across teams, vendors, and systems until corrective action becomes impossible.',
+  ce: 'When AI systems produce subtly wrong outputs, nobody will notice. Verification effort is the first governance function to be cut when resources are scarce.',
+  accountability: 'When a regulator asks who is responsible for an AI decision, the organisation will not have a clear answer.',
+  authority: 'When someone needs to stop an AI system, they will not have the authority, access, or organisational support to do so.',
+  intervention: 'When an AI system needs to be halted or reversed, the organisation does not know how long that will take or whether it is technically possible.',
+  escalation: 'When a serious AI incident occurs, the information will not reach the right people in time. The 15-day reporting window will pass before the board is informed.'
+};
+
+// ── PATTERN METADATA ─────────────────────────────────────────────────────────
+const PATTERN_META = {
+  silentAutomation: {
+    name: 'Silent Automation',
+    trigger: 'Psychological Safety < 40% AND Critical Engagement < 40%',
+    significance: 'Errors may be noticed but not reported. AI output is trusted without challenge.',
+    vulnerability: 'Incidents accumulate silently. The organisation discovers failures through external exposure rather than internal detection.',
+    regNote: 'Directly undermines Art 14 (Human Oversight) and Art 73 (Serious Incident Reporting).'
+  },
+  diffusedPassivity: {
+    name: 'Diffused Passivity',
+    trigger: 'Conscious Ownership < 40% AND Critical Engagement < 40%',
+    significance: 'Nobody checks output; nobody owns the error. The "algorithm decided" defence becomes default.',
+    vulnerability: 'Accountability vacuum means no corrective action is taken. The same failures recur indefinitely.',
+    regNote: 'Contradicts Art 26 (Deployer Obligations) and Art 16 (Provider Obligations) accountability requirements.'
+  },
+  frozenGovernance: {
+    name: 'Frozen Governance',
+    trigger: 'Adaptive Flexibility < 40% AND Growth Orientation < 40%',
+    significance: 'Static rules cannot keep pace with AI evolution. Shadow AI proliferates as workarounds.',
+    vulnerability: 'Governance framework becomes irrelevant. Staff circumvent rather than comply. Policy-reality gap widens.',
+    regNote: 'Violates Art 9 (continuous risk management) and Art 72 (adaptive post-market monitoring).'
+  },
+  lonelyVigilance: {
+    name: 'Lonely Vigilance',
+    trigger: 'Critical Engagement > 70% AND Psychological Safety < 40%',
+    significance: 'Individuals spot errors but fear raising them. Burnout and attrition risk is high.',
+    vulnerability: 'Oversight depends on individual heroism. One departure collapses the entire oversight function.',
+    regNote: 'Art 14 oversight relies on personal courage, not systemic process. Art 73 reporting is structurally brittle.'
+  },
+  confidentBlindness: {
+    name: 'Confident Blindness',
+    trigger: 'Growth Orientation > 70% AND Critical Engagement < 40%',
+    significance: 'High enthusiasm, low verification. Flawed tools reach production without scrutiny.',
+    vulnerability: 'Automation bias accelerates. The better the system appears, the less anyone checks. Failure detection degrades over time.',
+    regNote: 'Compromises Art 14 (human oversight) and Art 9 (risk management) through optimistic rather than rigorous assessment.'
+  }
+};
+
+// ── 30-DAY CORRECTION ACTIONS ────────────────────────────────────────────────
+const CORRECTION_ACTIONS = {
+  ps: 'Implement anonymous AI concern reporting and guarantee non-retaliation for AI-related disclosures.',
+  go: 'Launch a targeted AI governance competency programme for senior leaders and oversight-role holders.',
+  af: 'Review and revise AI governance frameworks to align with current AI deployment reality.',
+  co: 'Complete an accountability mapping exercise for all deployed AI systems.',
+  ce: 'Introduce mandatory output verification protocols with documented evidence trails.',
+  accountability: 'Assign named accountability for each AI system, with documented authority and consequence mechanisms.',
+  authority: 'Review override authority structures. Ensure override does not require approvals that eliminate its practical value.',
+  intervention: 'Conduct intervention readiness testing for each deployed high-risk AI system.',
+  escalation: 'Establish and test AI-specific escalation routes. Publish pathway documentation to all relevant staff.'
+};
+
+// ── 90-DAY DESIGN OBJECTIVES ─────────────────────────────────────────────────
+const DESIGN_OBJECTIVES = {
+  silentAutomation: 'Build integrated reporting and verification systems that function as a single governance mechanism.',
+  diffusedPassivity: 'Redesign accountability structures to eliminate shared-responsibility ambiguity for AI outcomes.',
+  frozenGovernance: 'Implement event-driven governance review cycles triggered by AI deployment changes.',
+  lonelyVigilance: 'Build team-level verification and challenge capabilities so oversight does not depend on individual courage.',
+  confidentBlindness: 'Establish verification intensity scales linked to decision impact, independent of AI confidence metrics.'
+};
+
+
+// ============================================================
+// DETECTION FUNCTIONS
+// ============================================================
+
+// Returns array of matched profiles. First = primary, rest = secondary.
+function detectFailureProfiles(S) {
+  return FAILURE_PROFILES.filter(p => p.test(S));
+}
+
+// Returns the top-level diagnostic status label.
+function resolveExecutiveStatus(S) {
+  const match = EXEC_STATUS_RULES.find(r => r.test(S));
+  return match ? match.label : 'Under Assessment: Mixed Indicators';
+}
+
+
+// ============================================================
+// NARRATIVE GENERATION
+// ============================================================
+
+// Generates the five advisory interpretation blocks.
+function generateAdvisoryNarratives(S, REG, primaryProfile) {
+  const pgCount = _countPaperGov(S);
+  const patCount = _countActivePatterns(S);
+  const weakest = _weakestConstruct(S);
+
+  // Block 1: What This Means
+  let whatThisMeans;
+  if (S.overall < 40) {
+    whatThisMeans = 'This organisation is critically under-prepared for responsible AI governance. Multiple dimensions are in failure range, and the structural foundations for human oversight are not in place.';
+  } else if (S.overall < 55 && S.hoc < 40) {
+    whatThisMeans = 'Surface-level readiness scores mask a serious infrastructure deficit. Psychological attitudes toward governance are developing, but the operational mechanisms to act on those attitudes are critically weak.';
+  } else if (S.overall < 55) {
+    whatThisMeans = 'The organisation is in a fragile transitional state. Basic governance orientation exists, but multiple dimensions require targeted strengthening before oversight can be considered reliable.';
+  } else if (S.overall >= 55 && S.hoc < 40) {
+    whatThisMeans = 'Readiness scores suggest moderate capability, but governance infrastructure is not keeping pace. The gap between psychological readiness and operational oversight creates a material vulnerability.';
+  } else if (S.overall >= 55 && pgCount >= 2) {
+    whatThisMeans = 'Stated beliefs about AI governance are strong. Behavioural evidence does not match. The organisation is governing in principle but not in practice.';
+  } else if (S.overall >= 55 && S.hoc >= 55 && patCount > 0) {
+    whatThisMeans = 'Overall capability is developing, but specific cross-dimensional risk patterns are active. These patterns create concentrated vulnerabilities that aggregate scores do not reveal.';
+  } else if (S.overall >= 70 && S.hoc >= 70 && patCount === 0) {
+    whatThisMeans = 'Readiness and governance infrastructure are both strong. The priority is sustaining these levels under evolving AI deployment conditions and monitoring for early degradation signals.';
+  } else {
+    whatThisMeans = 'The organisation shows mixed indicators across dimensions. Targeted attention to the weakest areas will improve overall governance posture.';
+  }
+
+  // Block 2: Where This Fails Under Pressure
+  const pressureNarrative = PRESSURE_NARRATIVES[weakest.key] || PRESSURE_NARRATIVES.ce;
+  const underPressure = `Under operational pressure, this organisation is most likely to fail at ${weakest.label}. ${pressureNarrative}`;
+
+  // Block 3: Why Leadership Should Care
+  let leadership;
+  if (S.hoc < 40) {
+    leadership = 'Human Oversight Capacity is critically low. The board\'s current governance posture assumes oversight mechanisms that do not function. This is a board-level risk, not an operational improvement opportunity.';
+  } else if (S.hoc < 55 && REG && REG.overallRisk === 'high') {
+    leadership = 'Governance infrastructure exists but is insufficient to meet the regulatory obligations it is designed to support. Multiple high-risk regulatory articles are triggered. This exposes the organisation to enforcement action and penalty.';
+  } else if (S.hoc < 70 && patCount > 0) {
+    leadership = 'Active risk patterns indicate structural weaknesses that standard governance metrics do not capture. These represent concentrated failure points that surface-level oversight cannot detect or prevent.';
+  } else {
+    leadership = 'Governance infrastructure is strong. Leadership attention should focus on maintaining behavioural consistency and monitoring for degradation under changing AI deployment conditions.';
+  }
+
+  // Block 4: What This Exposes the Organisation To
+  let exposure = '';
+  if (REG) {
+    const h = REG.counts.high;
+    const e = REG.counts.elevated;
+    exposure = `Based on current scores, ${h} regulatory article${h !== 1 ? 's are' : ' is'} at high risk of non-compliance and ${e} ${e !== 1 ? 'are' : 'is'} at elevated risk. `;
+    if (h >= 3) {
+      exposure += 'Concentrated non-compliance with high-risk AI system requirements exposes the organisation to penalties of up to €15M or 3% of global annual turnover. ';
+    } else if (h >= 1) {
+      exposure += 'Non-compliance with specific high-risk requirements creates targeted penalty exposure of up to €15M or 3% of global annual turnover on the triggered articles. ';
+    } else if (e > 0) {
+      exposure += 'No immediate high-risk exposure, but elevated risk warrants monitoring as enforcement deadlines approach. ';
+    }
+    const now = new Date();
+    const hrDeadline = new Date('2026-08-02');
+    if (now < hrDeadline) {
+      exposure += 'High-risk AI system requirements become enforceable on 2 August 2026. Current scores indicate the organisation is not on track to achieve compliance by that date.';
+    } else {
+      exposure += 'High-risk AI system requirements are now enforceable. Current scores indicate active non-compliance risk.';
+    }
+  } else {
+    exposure = 'Regulatory exposure could not be calculated. Select a regulatory framework to enable compliance risk mapping.';
+  }
+
+  // Block 5: What Must Change First
+  const changeFirst = primaryProfile ? primaryProfile.changeFirst : 'Focus on the lowest-scoring governance gap and address the structural barrier preventing improvement.';
+
+  return { whatThisMeans, underPressure, leadership, exposure, changeFirst };
+}
+
+// Generates grouped recommendations tied to profiles, scores, and regulatory mapping.
+function generateRecommendations(S, REG, profiles) {
+  const primary = profiles[0] || null;
+  const patCount = _countActivePatterns(S);
+  const recs = { immediate: [], thirtyDay: [], ninetyDay: [], structural: [] };
+
+  // Immediate: critical severity, HOC < 40, overall < 40, patterns >= 2, or reg high
+  if (S.hoc < 40) {
+    recs.immediate.push('Human oversight infrastructure is critically weak. The board cannot currently assure regulators or stakeholders that deployed AI systems have functional human oversight.');
+  }
+  if (S.overall < 40) {
+    recs.immediate.push('Organisation-wide psychological readiness is in failure range. Governance capability is insufficient across multiple dimensions.');
+  }
+  if (patCount >= 2) {
+    recs.immediate.push(`${patCount} structural risk patterns are operating simultaneously. These represent compounding failure modes, not isolated weaknesses.`);
+  }
+  if (REG && REG.overallRisk === 'high') {
+    recs.immediate.push(`Non-compliance risk is concentrated across ${REG.counts.high} regulatory articles. Enforcement exposure is material.`);
+  }
+  if (primary && primary.severity === 'critical' && recs.immediate.length === 0) {
+    recs.immediate.push(`Primary failure profile (${primary.name}) is severity-critical. Board-level attention is required.`);
+  }
+
+  // 30-day: one correction per construct scoring < 40
+  Object.entries(S.dims).forEach(([k, d]) => {
+    if (d.comp < 40 && CORRECTION_ACTIONS[k]) {
+      const tags = REG ? _regTagsForConstruct(REG, 'dimension', k) : '';
+      recs.thirtyDay.push(`<strong>${d.label}</strong> requires immediate corrective action. Current score: ${d.comp}%. ${CORRECTION_ACTIONS[k]}${tags}`);
+    }
+  });
+  Object.entries(S.gaps).forEach(([k, g]) => {
+    if (g.pct < 40 && CORRECTION_ACTIONS[k]) {
+      const tags = REG ? _regTagsForConstruct(REG, 'gap', k) : '';
+      recs.thirtyDay.push(`<strong>${g.label}</strong> requires immediate corrective action. Current score: ${g.pct}%. ${CORRECTION_ACTIONS[k]}${tags}`);
+    }
+  });
+
+  // 90-day: active patterns and constructs scoring 40-55
+  Object.entries(S.patterns).forEach(([k, active]) => {
+    if (active && DESIGN_OBJECTIVES[k]) {
+      recs.ninetyDay.push(`<strong>${PATTERN_META[k].name}</strong> pattern is active and requires design-level attention. 90-day target: ${DESIGN_OBJECTIVES[k]}`);
+    }
+  });
+  Object.entries(S.dims).forEach(([k, d]) => {
+    if (d.comp >= 40 && d.comp < 55) {
+      recs.ninetyDay.push(`<strong>${d.label}</strong> is fragile (${d.comp}%) and trending toward critical. Design-level reinforcement is recommended before the next assessment cycle.`);
+    }
+  });
+
+  // Structural: 3+ constructs in amber, or primary profile is critical
+  const amberCount = Object.values(S.dims).filter(d => d.rag === 'amber').length + Object.values(S.gaps).filter(g => g.rag === 'amber').length;
+  if (amberCount >= 3) {
+    recs.structural.push('Governance maturity plateau. Scores indicate a governance framework that is present but not operational. The organisation requires a transition from policy-based governance to behaviour-based governance.');
+  }
+  if (S.hoc < 40 && S.overall >= 40) {
+    recs.structural.push('Oversight infrastructure deficit. Psychological readiness exceeds governance capability. The organisation\'s people are more ready than its systems.');
+  }
+  if (patCount >= 2 && S.overall >= 40) {
+    recs.structural.push('Compounding risk patterns. Multiple structural weaknesses interact to create failure modes that individual dimension scores do not predict. Intervention must address pattern triggers, not just individual scores.');
+  }
+  if (recs.structural.length === 0 && primary && primary.severity === 'critical') {
+    recs.structural.push(`The ${primary.name} profile indicates a governance design issue that targeted corrections alone will not resolve. A structured remediation programme is recommended.`);
+  }
+
+  return recs;
+}
+
+// Returns inline reg-tag HTML for a given construct.
+function _regTagsForConstruct(REG, type, key) {
+  if (!REG || !REG.getInlineTags) return '';
+  const tags = REG.getInlineTags(type, key);
+  if (!tags || tags.length === 0) return '';
+  return ' ' + tags.map(t =>
+    `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${t.num}</span>`
+  ).join(' ');
+}
+
+
+// ============================================================
+// HTML BUILDERS
+// ============================================================
+
+// Builds the dimension cards HTML block.
+function buildDimensionCardsHTML(S, REG) {
+  const order = ['ps', 'go', 'af', 'co', 'ce'];
+  return order.map(k => {
+    const d = S.dims[k];
+    const riskText = RISK_TRANSLATIONS.dims[k];
+    const interpretation = d.rag === 'red' ? riskText.red : d.rag === 'amber' ? riskText.amber : 'This dimension is in robust range. Maintain current practices and monitor for degradation.';
+    const regTags = REG ? _regTagsForConstruct(REG, 'dimension', k) : '';
+    return `
+    <div class="card" style="margin-bottom:2px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
         <div>
-          <div class="dim-name">${d.label}</div>
-          <div class="dim-sec">Section ${d.sec} · 10 items</div>
+          <div class="value-sm" style="color:var(--text);">${d.label}</div>
+          <div class="label-xs" style="margin-top:2px;">Section ${d.sec} · 10 attitude items + 3 behavioural items</div>
         </div>
-        <span class="rag-badge rag-${d.rag}">${ragLabel(d.comp)}</span>
+        ${_ragBadge(d.comp, '')}
       </div>
-      <div class="bar-group">
-        <div class="bar-labels"><span>Attitude</span><span>${d.attPct}%</span></div>
-        <div class="bar-track"><div class="bar-fill fill-accent" style="width:${d.attPct}%"></div></div>
+      <div style="margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:4px;"><span style="color:var(--text-muted);">Attitude</span><span style="color:var(--text);font-weight:600;">${d.attPct}%</span></div>
+        <div class="bar-track"><div class="bar-fill fill-gold" style="width:${d.attPct}%;"></div></div>
       </div>
-      <div class="bar-group">
-        <div class="bar-labels"><span>Behaviour</span><span>${d.behPct}%</span></div>
-        <div class="bar-track"><div class="bar-fill fill-purple" style="width:${d.behPct}%"></div></div>
+      <div style="margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:4px;"><span style="color:var(--text-muted);">Behaviour</span><span style="color:var(--text);font-weight:600;">${d.behPct}%</span></div>
+        <div class="bar-track"><div class="bar-fill fill-gold-dim" style="width:${d.behPct}%;"></div></div>
       </div>
-      <div class="bar-group">
-        <div class="bar-labels"><span><strong>Composite</strong></span><span><strong>${d.comp}%</strong></span></div>
-        <div class="bar-track" style="height:4px;"><div class="bar-fill fill-${d.rag}" style="width:${d.comp}%"></div></div>
+      <div style="margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:4px;"><span style="color:var(--text);font-weight:600;">Composite</span><span style="color:var(--text);font-weight:700;">${d.comp}%</span></div>
+        <div class="bar-track" style="height:4px;"><div class="bar-fill fill-${d.rag}" style="width:${d.comp}%;"></div></div>
       </div>
-      ${d.paperGov?`<div class="paper-flag">⚠ Paper governance detected — high attitude, low behaviour</div>`:''}
-      ${regTags.length>0?`<div class="reg-inline-tags">${regTags.map(t=>`<a class="reg-tag" href="${t.url}" target="_blank" rel="noopener" title="${t.title} — ${t.risk==='high'?'High':t.risk==='elevated'?'Elevated':'Lower'} compliance risk"><span class="reg-tag-icon">§</span>Art ${t.num}</a>`).join('')}</div>`:''}
-    </div>`}).join('')}
-  </div>
+      ${d.paperGov ? '<div class="flag-warn" style="margin-bottom:12px;">Paper governance detected: high attitude, low behaviour</div>' : ''}
+      <div class="divider"></div>
+      <div class="label-xs" style="margin-bottom:6px;">Executive Interpretation</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">${interpretation}</p>
+      ${regTags ? `<div class="reg-tags">${regTags}</div>` : ''}
+    </div>`;
+  }).join('');
+}
 
-  <!-- GOVERNANCE GAPS -->
-  <h2 class="dash-sec-title">Governance Gaps — Human Oversight Capacity</h2>
-  <div class="gap-grid">
-    ${Object.entries(S.gaps).map(([k,g])=>{
-      const regTags = REG ? REG.getInlineTags('gap', k) : [];
-      return `
-    <div class="gap-card">
-      <div class="gap-name">${g.label}</div>
-      <div class="gap-desc">${g.desc}</div>
-      <div class="gap-score" style="color:${g.rag==='green'?'var(--green)':g.rag==='amber'?'var(--amber)':'var(--red)'};">${g.pct}%</div>
-      <div class="bar-track" style="margin-bottom:12px;height:3px;"><div class="bar-fill fill-${g.rag}" style="width:${g.pct}%"></div></div>
-      <span class="rag-badge rag-${g.rag}">${ragLabel(g.pct)}</span>
-      ${regTags.length>0?`<div class="reg-inline-tags">${regTags.map(t=>`<a class="reg-tag" href="${t.url}" target="_blank" rel="noopener" title="${t.title} — ${t.risk==='high'?'High':t.risk==='elevated'?'Elevated':'Lower'} compliance risk"><span class="reg-tag-icon">§</span>Art ${t.num}</a>`).join('')}</div>`:''}
-    </div>`}).join('')}
-  </div>
-
-  <!-- HOC COMPOSITE -->
-  <div class="hoc-card">
-    <div class="hoc-title">Human Oversight Capacity (HOC) Composite</div>
-    <div class="hoc-desc">Average across all four governance gap dimensions. Measures whether organisational infrastructure exists to support psychological readiness in practice.</div>
-    <div class="hoc-row">
-      <div class="hoc-num" style="color:${rag(S.hoc)==='green'?'var(--green)':rag(S.hoc)==='amber'?'var(--amber)':'var(--red)'};">${S.hoc}%</div>
-      <div style="flex:1;">
-        <div class="hoc-track"><div class="bar-fill fill-${rag(S.hoc)}" style="width:${S.hoc}%;height:100%;"></div></div>
-        <span class="rag-badge rag-${rag(S.hoc)}" style="margin-top:12px;display:inline-flex;">${ragLabel(S.hoc)} Oversight Infrastructure</span>
+// Builds the governance gap cards HTML block.
+function buildGapCardsHTML(S, REG) {
+  const order = ['accountability', 'authority', 'intervention', 'escalation'];
+  return order.map(k => {
+    const g = S.gaps[k];
+    const riskText = RISK_TRANSLATIONS.gaps[k];
+    const interpretation = g.rag === 'red' ? riskText.red : g.rag === 'amber' ? riskText.amber : 'This governance gap is in robust range. Infrastructure supports operational oversight.';
+    const regTags = REG ? _regTagsForConstruct(REG, 'gap', k) : '';
+    return `
+    <div class="card-flush">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px;">
+        <div>
+          <div class="value-sm" style="color:var(--text);">${g.label}</div>
+          <div style="font-size:0.75rem;color:var(--text-dim);margin-top:2px;">${g.desc}</div>
+        </div>
+        ${_ragBadge(g.pct, '')}
       </div>
-    </div>
-  </div>
+      <div class="value-lg" style="color:var(--${_colour(g.pct)});margin-bottom:8px;">${g.pct}<span style="font-size:0.6em;opacity:0.6;">%</span></div>
+      <div class="bar-track" style="height:3px;margin-bottom:14px;"><div class="bar-fill fill-${g.rag}" style="width:${g.pct}%;"></div></div>
+      <div class="label-xs" style="margin-bottom:6px;">Executive Implication</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-bottom:8px;">${interpretation}</p>
+      ${regTags ? `<div class="reg-tags">${regTags}</div>` : ''}
+    </div>`;
+  }).join('');
+}
 
-  <!-- RISK PATTERNS -->
-  <h2 class="dash-sec-title">Cross-Dimensional Risk Patterns</h2>
-  <div class="risk-grid">
-    ${patternData.map(p=>{
-      const triggered = S.patterns[p.key];
-      return `<div class="risk-card ${triggered?'risk-triggered':'risk-safe'}">
-        <div class="risk-dot ${triggered?'rdot-red':'rdot-safe'}"></div>
-        <div class="risk-name">${p.name}</div>
-        <div class="risk-desc">${p.desc}</div>
-        <div class="risk-cond">${p.cond}</div>
+// Builds the cross-pattern risk cards HTML block.
+function buildPatternCardsHTML(S) {
+  const keys = ['silentAutomation', 'diffusedPassivity', 'frozenGovernance', 'lonelyVigilance', 'confidentBlindness'];
+  return keys.map(k => {
+    const active = S.patterns[k];
+    const m = PATTERN_META[k];
+    if (!active) {
+      return `<div class="card" style="margin-bottom:2px;opacity:0.4;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+          <div style="width:8px;height:8px;background:var(--green);"></div>
+          <div class="value-sm" style="color:var(--text-dim);">${m.name}</div>
+        </div>
+        <div style="font-size:0.78rem;color:var(--text-dim);">Not active. Trigger: ${m.trigger}</div>
       </div>`;
-    }).join('')}
-  </div>
-
-  ${S.flags.length>0?`
-  <!-- FLAGS -->
-  <h2 class="dash-sec-title">Priority Flags & Leading Indicators</h2>
-  <div class="flags-list">
-    ${S.flags.map(f=>`
-    <div class="flag-item">
-      <span class="flag-pill ${f.lvl==='high'?'flag-high':f.lvl==='med'?'flag-med':'flag-low'}">${f.lvl==='high'?'High':f.lvl==='med'?'Medium':'Low'}</span>
-      <span class="flag-text">${f.txt}</span>
-    </div>`).join('')}
-  </div>`:''}
-
-  <!-- INTERPRETATION GUIDE -->
-  <h2 class="dash-sec-title">Interpretation Guide</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);margin-bottom:48px;">
-    <div style="background:var(--surface);border:none;padding:clamp(20px,4vw,28px);">
-      <div style="color:var(--green);font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.7rem;margin-bottom:10px;letter-spacing:0.24em;text-transform:uppercase;">Robust ≥70%</div>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.75;">Lower vulnerability. Maintain current governance practices, monitor quarterly pulse indicators, and focus on sustaining behaviours under pressure.</p>
-    </div>
-    <div style="background:var(--surface);border:none;padding:clamp(20px,4vw,28px);">
-      <div style="color:var(--amber);font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.7rem;margin-bottom:10px;letter-spacing:0.24em;text-transform:uppercase;">Fragile 40–69%</div>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.75;">Moderate vulnerability. Functional but fragile. Targeted Wave 1–2 interventions recommended. Monitor for deterioration into red territory.</p>
-    </div>
-    <div style="background:var(--surface);border:none;padding:clamp(20px,4vw,28px);">
-      <div style="color:var(--red);font-family:'Montserrat',sans-serif;font-weight:700;font-size:0.7rem;margin-bottom:10px;letter-spacing:0.24em;text-transform:uppercase;">Critical &lt;40%</div>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.75;">High vulnerability. Immediate intervention required. Governance failure modes are likely active. Prioritise this dimension in Wave 1 roadmap.</p>
-    </div>
-  </div>
-
-  ${REG ? `
-  <!-- REGULATORY COMPLIANCE RISK -->
-  <h2 class="dash-sec-title">Regulatory Compliance Risk — ${REG.framework.shortName}</h2>
-
-  <!-- Summary Card -->
-  <div class="reg-summary-card">
-    <div class="reg-summary-title">Compliance Risk Assessment</div>
-    <div class="reg-summary-desc">Based on ALMA scores, the following analysis maps your psychological readiness and governance infrastructure gaps to specific obligations under <strong>${REG.framework.citation}</strong>. Low ALMA scores in dimensions directly linked to regulatory requirements indicate elevated non-compliance risk.</div>
-    <div class="reg-summary-row">
-      <div class="reg-summary-stat">
-        <div class="reg-summary-stat-num" style="color:var(--red);">${REG.counts.high}</div>
-        <div class="reg-summary-stat-lbl">High Risk Articles</div>
+    }
+    return `<div class="card" style="margin-bottom:2px;border-color:var(--red-border);background:var(--red-bg);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:8px;height:8px;background:var(--red);"></div>
+          <div class="value-sm" style="color:var(--red);">${m.name}</div>
+        </div>
+        <span class="rag rag-red">Active</span>
       </div>
-      <div class="reg-summary-stat">
-        <div class="reg-summary-stat-num" style="color:var(--amber);">${REG.counts.elevated}</div>
-        <div class="reg-summary-stat-lbl">Elevated Risk</div>
-      </div>
-      <div class="reg-summary-stat">
-        <div class="reg-summary-stat-num" style="color:var(--green);">${REG.counts.lower}</div>
-        <div class="reg-summary-stat-lbl">Lower Risk</div>
-      </div>
-      <div class="reg-summary-stat">
-        <div class="reg-summary-stat-num" style="color:#7ea8d4;">${REG.counts.total}</div>
-        <div class="reg-summary-stat-lbl">Articles Mapped</div>
-      </div>
-    </div>
-    ${REG.overallRisk === 'high' ? `
-    <div class="reg-penalty-bar">
-      <strong>⚠ Elevated Penalty Exposure:</strong> Multiple high-risk articles triggered. Under Art 99, non-compliance with high-risk AI system requirements (Arts 9, 10, 13, 14, 26) can result in fines up to <strong>€15M or 3% of global annual turnover</strong>. Prohibited practice violations (Art 5) carry fines up to <strong>€35M or 7% of global turnover</strong>.
-    </div>` : ''}
-  </div>
+      <div class="label-xs" style="margin-bottom:4px;">Trigger</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:10px;">${m.trigger}</p>
+      <div class="label-xs" style="margin-bottom:4px;">Significance</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:10px;">${m.significance}</p>
+      <div class="label-xs" style="margin-bottom:4px;">Where It Creates Vulnerability</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;margin-bottom:10px;">${m.vulnerability}</p>
+      <div class="label-xs" style="margin-bottom:4px;">Regulatory Touchpoint</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.65;">${m.regNote}</p>
+    </div>`;
+  }).join('');
+}
 
-  <!-- Framework Selector (future multi-jurisdiction) -->
-  <div class="reg-framework-selector">
-    <button class="reg-fw-btn ${activeFrameworkId==='eu-ai-act'?'active':''}" onclick="switchFramework('eu-ai-act')">§ EU AI Act</button>
-    <button class="reg-fw-btn ${activeFrameworkId==='uk-ai'?'active':''}" onclick="switchFramework('uk-ai')">UK Framework</button>
-    <button class="reg-fw-btn ${activeFrameworkId==='us-nist'?'active':''}" onclick="switchFramework('us-nist')">NIST AI RMF</button>
-  </div>
+// Builds the penalty exposure bar HTML.
+function buildPenaltyExposureHTML(REG) {
+  if (!REG || REG.overallRisk !== 'high') return '';
+  return `<div style="margin-top:2px;margin-bottom:2px;padding:14px 18px;background:var(--red-bg);border:1px solid var(--red-border);font-size:0.82rem;color:var(--text-muted);line-height:1.75;">
+    <strong style="color:var(--red);">Elevated Penalty Exposure:</strong> Multiple high-risk articles triggered. Under Art 99, non-compliance with high-risk requirements can result in fines up to <strong style="color:var(--red);">€15M or 3% of global annual turnover</strong>. Prohibited practice violations carry fines up to <strong style="color:var(--red);">€35M or 7%</strong>.
+  </div>`;
+}
 
-  <!-- Article Risk Cards -->
-  <div class="reg-grid">
-    ${REG.articleRiskList.map(art => `
-    <div class="reg-card">
-      <div class="reg-card-header">
-        <div class="reg-article-num">Article ${art.num}</div>
-        <span class="reg-risk-badge reg-risk-${art.riskLevel}">${art.riskLevel === 'high' ? 'High Risk' : art.riskLevel === 'elevated' ? 'Elevated' : 'Lower Risk'}</span>
-      </div>
-      <div class="reg-article-title">${art.title}</div>
-      <div class="reg-article-desc">${art.summary}</div>
-      <div class="reg-triggers"><strong>Triggered by:</strong> ${art.sources.join(', ')}</div>
-      <a class="reg-link" href="${art.url}" target="_blank" rel="noopener"><span class="reg-link-icon">→</span> View Article ${art.num} in AI Act Explorer</a>
-    </div>`).join('')}
-  </div>
-
-  ${REG.activePatterns.length > 0 ? `
-  <!-- Pattern-Specific Regulatory Implications -->
-  <h2 class="dash-sec-title" style="margin-top:32px;">Active Pattern — Regulatory Implications</h2>
-  <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:24px;">
-    ${REG.activePatterns.map(p => `
-    <div style="background:var(--surface);border:1px solid var(--red-border);padding:20px 24px;">
-      <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.88rem;color:var(--red);margin-bottom:8px;">${p.key.replace(/([A-Z])/g,' $1').trim()}</div>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.75;margin-bottom:10px;">${p.narrative}</p>
-      <div class="reg-inline-tags">${p.articles.map(artNum => {
-        const art = REG.framework.articles[artNum];
-        return art ? `<a class="reg-tag" href="${REG.framework.baseUrl}${art.url}" target="_blank" rel="noopener"><span class="reg-tag-icon">§</span>Art ${artNum}: ${art.title}</a>` : '';
-      }).join('')}</div>
-    </div>`).join('')}
-  </div>` : ''}
-
-  <!-- HOC Regulatory Narrative -->
-  <div class="reg-summary-card" style="border-color:rgba(100,140,200,0.25);">
-    <div class="reg-summary-title" style="color:#7ea8d4;">Human Oversight Capacity — Regulatory Alignment</div>
-    <div class="reg-summary-desc">${REG.hoc.narrative}</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      ${getMappingsForFramework(REG.framework.id).hoc.primary.map(artNum => {
-        const art = REG.framework.articles[artNum];
-        return art ? `<a class="reg-tag" href="${REG.framework.baseUrl}${art.url}" target="_blank" rel="noopener"><span class="reg-tag-icon">§</span>Art ${artNum}: ${art.title}</a>` : '';
+// Builds the enforcement timeline HTML.
+function buildEnforcementTimelineHTML(REG) {
+  if (!REG || !REG.framework || !REG.framework.timeline) return '';
+  const fw = REG.framework;
+  if (fw.id !== 'eu-ai-act') return ''; // Timeline display for EU AI Act only
+  const now = new Date();
+  const items = [
+    { label: 'Prohibited Practices', date: '2025-02-02', display: '2 Feb 2025' },
+    { label: 'GPAI Obligations', date: '2025-08-02', display: '2 Aug 2025' },
+    { label: 'High-Risk Requirements', date: '2026-08-02', display: '2 Aug 2026' },
+    { label: 'Full Enforcement', date: '2027-08-02', display: '2 Aug 2027' }
+  ];
+  return `<div class="card" style="margin-bottom:2px;">
+    <div class="label-xs" style="margin-bottom:12px;">Enforcement Timeline</div>
+    <div class="grid-1px grid-4">
+      ${items.map(i => {
+        const past = now >= new Date(i.date);
+        const colour = past ? 'var(--green)' : (i.label === 'Full Enforcement' ? 'var(--red)' : 'var(--amber)');
+        return `<div class="card-flush" style="text-align:center;">
+          <div class="label-xs" style="margin-bottom:4px;">${i.label}</div>
+          <div style="font-weight:600;font-size:0.85rem;color:${colour};">${i.display}${past ? ' ✓' : ''}</div>
+        </div>`;
       }).join('')}
     </div>
-  </div>
+  </div>`;
+}
 
-  <!-- Key Enforcement Dates -->
-  <div style="background:var(--surface);border:1px solid var(--border);padding:clamp(20px,4vw,28px);margin-bottom:24px;">
-    <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.78rem;color:var(--text-muted);margin-bottom:14px;letter-spacing:0.14em;text-transform:uppercase;">EU AI Act Enforcement Timeline</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border);">
-      <div style="background:var(--surface-2);padding:14px 16px;"><div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:4px;">Prohibited Practices</div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.85rem;color:var(--green);">2 Feb 2025 ✓</div></div>
-      <div style="background:var(--surface-2);padding:14px 16px;"><div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:4px;">GPAI Obligations</div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.85rem;color:var(--green);">2 Aug 2025 ✓</div></div>
-      <div style="background:var(--surface-2);padding:14px 16px;"><div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:4px;">High-Risk Requirements</div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.85rem;color:var(--amber);">2 Aug 2026</div></div>
-      <div style="background:var(--surface-2);padding:14px 16px;"><div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:4px;">Full Enforcement</div><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.85rem;color:var(--red);">2 Aug 2027</div></div>
+// Builds the article risk cards HTML.
+function buildArticleRiskCardsHTML(REG) {
+  if (!REG || !REG.articleRiskList) return '';
+  return `<div class="grid-1px grid-2" style="margin-top:2px;margin-bottom:2px;">
+    ${REG.articleRiskList.map(art => `
+    <div class="card-flush">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px;">
+        <div class="label-xs" style="color:var(--blue);">Article ${art.num}</div>
+        <span class="rag rag-${art.riskLevel === 'high' ? 'red' : art.riskLevel === 'elevated' ? 'amber' : 'green'}">${art.riskLevel === 'high' ? 'High Risk' : art.riskLevel === 'elevated' ? 'Elevated' : 'Lower Risk'}</span>
+      </div>
+      <div class="value-sm" style="color:var(--text);margin-bottom:6px;font-size:0.85rem;">${art.title}</div>
+      <p style="font-size:0.78rem;color:var(--text-dim);line-height:1.65;margin-bottom:6px;">${art.summary}</p>
+      <div style="font-size:0.72rem;color:var(--text-dim);"><strong style="color:var(--text-muted);">Triggered by:</strong> ${art.sources.join(', ')}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+// Builds the pattern-specific regulatory implications HTML.
+function buildPatternRegImplicationsHTML(REG) {
+  if (!REG || !REG.activePatterns || REG.activePatterns.length === 0) return '';
+  return `<div style="margin-top:2px;">
+    <div class="label-xs" style="margin-bottom:10px;">Pattern-Specific Regulatory Implications</div>
+    ${REG.activePatterns.map(p => `
+    <div class="card" style="border-color:var(--red-border);margin-bottom:2px;">
+      <div class="value-sm" style="color:var(--red);margin-bottom:8px;">${p.key.replace(/([A-Z])/g, ' $1').trim()}</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:8px;">${p.narrative}</p>
+      <div class="reg-tags">${p.articles.map(artNum => {
+        const art = REG.framework.articles[artNum];
+        return art ? `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${artNum}: ${art.title}</span>` : '';
+      }).join('')}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+// Builds the priority band list items.
+function buildPriorityListHTML(items) {
+  if (!items || items.length === 0) return '<p style="font-size:0.82rem;color:var(--text-dim);font-style:italic;">No items in this priority band based on current scores.</p>';
+  return items.map((item, i) => `<p style="margin-bottom:${i < items.length - 1 ? '12px' : '0'};">${item}</p>`).join('');
+}
+
+// Builds secondary profiles HTML block.
+function buildSecondaryProfilesHTML(profiles) {
+  if (profiles.length <= 1) return '';
+  return profiles.slice(1).map(p => `
+  <div class="card" style="margin-top:2px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:10px;">
+      <div>
+        <div class="label-xs" style="margin-bottom:4px;">Secondary Profile</div>
+        <div class="value-sm" style="color:var(--text);">${p.name}</div>
+      </div>
+      <span class="rag rag-${p.severity === 'critical' ? 'red' : 'amber'}">${p.severity === 'critical' ? 'Critical' : 'High'}</span>
+    </div>
+    <p class="body-text" style="margin-bottom:10px;">${p.meaning}</p>
+    <div class="label-xs" style="margin-bottom:6px;">How This Breaks in Reality</div>
+    <p class="body-text">${p.scenario}</p>
+  </div>`).join('');
+}
+
+// Builds the three board-level concerns.
+function buildBoardConcernsHTML(S, REG, profiles) {
+  const concerns = [];
+  const primary = profiles[0];
+  if (primary) concerns.push(`Primary failure profile is <strong>${primary.name}</strong> (${primary.severity}). ${primary.meaning}`);
+  if (S.hoc < 40) concerns.push(`Human Oversight Capacity is critically low at ${S.hoc}%. Governance infrastructure is insufficient to support the oversight the board assumes is operational.`);
+  else if (S.hoc < 55) concerns.push(`Human Oversight Capacity is fragile at ${S.hoc}%. Infrastructure may fail under pressure.`);
+  const wg = _weakestGap(S);
+  if (wg.pct < 40) concerns.push(`${wg.label} is the weakest governance gap at ${wg.pct}% (Critical). ${RISK_TRANSLATIONS.gaps[wg.key] ? RISK_TRANSLATIONS.gaps[wg.key].red : ''}`);
+  if (REG && REG.overallRisk === 'high' && concerns.length < 3) concerns.push(`Regulatory exposure is high across ${REG.counts.high} articles. Material penalty risk is present.`);
+  if (_countActivePatterns(S) >= 2 && concerns.length < 3) concerns.push(`${_countActivePatterns(S)} cross-dimensional risk patterns are active simultaneously, indicating compounding structural weaknesses.`);
+  while (concerns.length < 3) concerns.push('Monitor leading indicators for early warning of degradation in currently stable areas.');
+  return concerns.slice(0, 3).map((c, i) => `<p style="margin-bottom:${i < 2 ? '10px' : '0'};">${i + 1}. ${c}</p>`).join('');
+}
+
+// Builds the three intervention priorities.
+function buildInterventionPrioritiesHTML(S, profiles, recs) {
+  const priorities = [];
+  const primary = profiles[0];
+  if (primary) priorities.push(primary.changeFirst);
+  if (recs.thirtyDay.length > 0) priorities.push(recs.thirtyDay[0].replace(/<[^>]+>/g, ''));
+  if (recs.ninetyDay.length > 0 && priorities.length < 3) priorities.push(recs.ninetyDay[0].replace(/<[^>]+>/g, ''));
+  const wg = _weakestGap(S);
+  if (wg.pct < 40 && priorities.length < 3) priorities.push(CORRECTION_ACTIONS[wg.key] || 'Address the weakest governance gap as a priority.');
+  while (priorities.length < 3) priorities.push('Sustain current governance practices and establish quarterly monitoring cadence.');
+  return priorities.slice(0, 3).map((p, i) => `<p style="margin-bottom:${i < 2 ? '10px' : '0'};">${i + 1}. ${p}</p>`).join('');
+}
+
+// Builds the HOC regulatory tags.
+function buildHocRegTags(REG) {
+  if (!REG) return '';
+  const mappings = typeof getMappingsForFramework === 'function'
+    ? getMappingsForFramework(REG.framework.id)
+    : null;
+  if (!mappings || !mappings.hoc || !mappings.hoc.primary) return '';
+  return mappings.hoc.primary.map(artNum => {
+    const art = REG.framework.articles[artNum];
+    return art ? `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${artNum}: ${art.title}</span>` : '';
+  }).join(' ');
+}
+
+
+// ── Module-scope state for framework switcher ──
+let _lastS = null, _lastREG = null;
+
+// ============================================================
+// UNIFIED DASHBOARD RENDERER
+// ============================================================
+function completeSurvey() {
+  const S = calcScores();
+  const REG = calcRegulatoryRisk(S, activeFrameworkId);
+  _lastS = S; _lastREG = REG;
+  const profiles = detectFailureProfiles(S);
+  const primary = profiles[0] || null;
+  const status = resolveExecutiveStatus(S);
+  const narratives = generateAdvisoryNarratives(S, REG, primary);
+  const recs = generateRecommendations(S, REG, profiles);
+  const today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const year = new Date().getFullYear();
+  const wg = _weakestGap(S), sd = _strongestDim(S);
+  const pgCount = _countPaperGov(S), patCount = _countActivePatterns(S);
+  let statusColour = 'red';
+  if (S.overall>=70&&S.hoc>=70&&patCount===0) statusColour='green';
+  else if (S.overall>=55) statusColour='amber';
+  const fwName = REG ? REG.framework.shortName : 'Not selected';
+  let html = `
+  <header class="report-header" style="padding:clamp(40px,6vw,64px) clamp(24px,5vw,56px) clamp(32px,5vw,48px);margin:0 calc(-1 * clamp(20px,5vw,64px));">
+    <div style="max-width:var(--page-max);margin:0 auto;">
+      <div class="conf-label" style="margin-bottom:28px;">Confidential Board Briefing</div>
+      <div style="font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;color:var(--gold);letter-spacing:0.18em;line-height:1;margin-bottom:4px;">ALMA</div>
+      <div style="font-size:0.62rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-bottom:28px;">AI Literacy Mindset Assessment</div>
+      <h1 style="font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;">AI Governance Readiness Report</h1>
+      <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:28px;">Diagnostic assessment of psychological readiness and governance infrastructure for responsible AI oversight.</p>
+      <div class="grid-1px grid-4">
+        <div class="card-flush" style="background:var(--black);"><div class="label-xs" style="margin-bottom:4px;">Organisation</div><div class="value-sm" style="color:var(--text);">${S.context.A3||'Organisation'}</div></div>
+        <div class="card-flush" style="background:var(--black);"><div class="label-xs" style="margin-bottom:4px;">Report Date</div><div class="value-sm" style="color:var(--text);">${today}</div></div>
+        <div class="card-flush" style="background:var(--black);"><div class="label-xs" style="margin-bottom:4px;">Respondent</div><div class="value-sm" style="color:var(--text);">${S.context.A1||''} &middot; ${S.context.A2||''}</div></div>
+        <div class="card-flush" style="background:var(--black);"><div class="label-xs" style="margin-bottom:4px;">Framework</div><div class="value-sm" style="color:var(--text);">${fwName}</div></div>
+      </div>
+    </div>
+  </header>
+  <div style="height:48px;"></div>
+  <div class="sec-block"><div class="dash-sec-title">Executive Status</div>
+    <div class="card" style="margin-bottom:2px;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;"><div><div class="label-sm" style="margin-bottom:6px;">Organisation Status</div><div class="value-lg" style="color:var(--${statusColour});">${status}</div></div>${_ragBadge(S.overall,'Capability')}</div></div>
+    <div class="grid-1px grid-3" style="margin-bottom:2px;">
+      <div class="card-flush"><div class="label-xs" style="margin-bottom:6px;">Primary Failure Profile</div><div class="value-sm" style="color:var(--text);margin-bottom:4px;">${primary?primary.name:'No critical profile detected'}</div><div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">${primary?primary.meaning:'Scores do not trigger a named failure profile.'}</div></div>
+      <div class="card-flush"><div class="label-xs" style="margin-bottom:6px;">Human Oversight Capacity</div><div class="value-sm" style="color:var(--${_colour(S.hoc)});margin-bottom:4px;">${S.hoc}%</div><div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">${_ragLabel(S.hoc)} oversight infrastructure</div></div>
+      <div class="card-flush"><div class="label-xs" style="margin-bottom:6px;">Overall Readiness</div><div class="value-sm" style="color:var(--${_colour(S.overall)});margin-bottom:4px;">${S.overall}%</div><div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;">${_ragLabel(S.overall)} readiness</div></div>
+    </div>
+    <div class="grid-1px grid-2"><div class="card-flush"><div class="label-xs" style="margin-bottom:10px;">Top Three Board-Level Concerns</div><div class="body-text">${buildBoardConcernsHTML(S,REG,profiles)}</div></div><div class="card-flush"><div class="label-xs" style="margin-bottom:10px;">Top Three Intervention Priorities</div><div class="body-text">${buildInterventionPrioritiesHTML(S,profiles,recs)}</div></div></div>
+  </div>
+  <div class="sec-block"><div class="dash-sec-title">Exposure Snapshot</div>
+    <div class="grid-1px grid-4">
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Overall Readiness</div><div class="value-lg" style="color:var(--${_colour(S.overall)});">${S.overall}<span style="font-size:0.7em;opacity:0.6;">%</span></div><div style="margin-top:8px;">${_ragBadge(S.overall,'')}</div></div>
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">HOC Composite</div><div class="value-lg" style="color:var(--${_colour(S.hoc)});">${S.hoc}<span style="font-size:0.7em;opacity:0.6;">%</span></div><div style="margin-top:8px;">${_ragBadge(S.hoc,'')}</div></div>
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Weakest Gap</div><div class="value-md" style="color:var(--${_colour(wg.pct)});margin-top:6px;">${wg.label}</div><div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px;">${wg.pct}%</div></div>
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Strongest Dimension</div><div class="value-md" style="color:var(--${_colour(sd.comp)});margin-top:6px;">${sd.label}</div><div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px;">${sd.comp}%</div></div>
+    </div>
+    <div class="grid-1px grid-4" style="margin-top:1px;">
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Paper Governance</div><div class="value-lg" style="color:var(--${pgCount===0?'green':'amber'});">${pgCount}</div><div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">${pgCount===0?'None detected':pgCount+' dimension'+(pgCount>1?'s':'')+' affected'}</div></div>
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Risk Patterns</div><div class="value-lg" style="color:var(--${patCount===0?'green':patCount>=2?'red':'amber'});">${patCount}</div><div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">of 5 monitored</div></div>
+      <div class="card-flush" style="text-align:center;"><div class="label-xs" style="margin-bottom:8px;">Delusion Gap</div><div class="value-md" style="color:var(--text-dim);margin-top:6px;">Requires org data</div><div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">Multi-respondent needed</div></div>
+      <div class="card-flush" style="text-align:center;" id="snap-reg"><div class="label-xs" style="margin-bottom:8px;">Regulatory Exposure</div><div style="margin-top:6px;">${REG?'<span class="rag rag-'+(REG.overallRisk==='high'?'red':REG.overallRisk==='elevated'?'amber':'green')+'">'+(REG.overallRisk==='high'?'High':REG.overallRisk==='elevated'?'Elevated':'Lower')+'</span>':'<span class="rag rag-blue">Not assessed</span>'}</div><div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">${REG?REG.counts.high+' high-risk articles':'Select framework'}</div></div>
     </div>
   </div>
-
-  <div class="reg-disclaimer">
-    <strong>Regulatory disclaimer:</strong> This compliance risk assessment maps ALMA psychological readiness and governance infrastructure scores to specific obligations under the <strong>${REG.framework.name}</strong>. It is indicative, not definitive. Regulatory compliance depends on multiple factors beyond human readiness, including technical controls, documentation, and conformity assessment. This analysis should complement — not replace — formal legal review. For authoritative guidance, consult the <a href="${REG.framework.explorerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">${REG.framework.shortName} Explorer</a> and the <a href="${REG.framework.checkerUrl}" target="_blank" rel="noopener" style="color:#7ea8d4;">Compliance Resources</a>.
+  <div class="sec-block"><div class="dash-sec-title">Core Dimensions</div><p class="sec-sub" style="margin-bottom:24px;">Five psychological readiness dimensions, each scored as a 50/50 composite of stated attitudes and observed behavioural frequency.</p><div id="dim-cards-container">${buildDimensionCardsHTML(S,REG)}</div></div>
+  <div class="sec-block"><div class="dash-sec-title">Governance Gaps</div><p class="sec-sub" style="margin-bottom:24px;">Four governance infrastructure dimensions determining whether readiness translates into operational oversight.</p><div class="grid-1px grid-2" id="gap-cards-container">${buildGapCardsHTML(S,REG)}</div></div>
+  <div class="sec-block"><div class="dash-sec-title">Human Oversight Capacity</div>
+    <div class="card"><div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-bottom:20px;"><div class="value-lg" style="color:var(--${_colour(S.hoc)});flex-shrink:0;">${S.hoc}<span style="font-size:0.6em;opacity:0.6;">%</span></div><div style="flex:1;min-width:200px;"><div class="bar-track" style="height:5px;margin-bottom:10px;"><div class="bar-fill fill-${_rag(S.hoc)}" style="width:${S.hoc}%;"></div></div>${_ragBadge(S.hoc,'Infrastructure')}</div></div>
+      <div class="label-xs" style="margin-bottom:8px;">What HOC Measures</div><p class="body-text" style="margin-bottom:16px;">Average of four governance gap scores. Measures whether organisational infrastructure supports human oversight in practice.</p><div class="divider"></div>
+      <div class="label-xs" style="margin-bottom:8px;">Current Assessment</div><p class="body-text" style="margin-bottom:16px;">${REG?REG.hoc.narrative:(S.hoc<40?'HOC critically low.':S.hoc<70?'HOC fragile.':'HOC supports compliance.')}</p><div class="divider"></div>
+      <div class="label-xs" style="margin-bottom:8px;">Can This Organisation Plausibly Intervene in Time?</div><p class="body-text">${S.hoc<40?'No. Governance infrastructure for timely intervention is not operational.':S.hoc<55?'Uncertain. Mechanisms exist but are untested.':S.hoc<70?'Probably, under normal conditions.':'Yes, under current conditions.'}</p>
+    </div>
   </div>
-
-  ${buildAdvisorPanelHTML(S, REG)}
-  ` : '<!-- Regulatory framework not active -->'}
-
-  <!-- FOOTER -->
-  <div class="footer-row">
-    <!-- <div class="footer-credit">Developed by Human Integrity Advisory Ltd · In collaboration Ethica Group Ltd · Confidential</div> -->
-    <button class="btn-print" onclick="window.print()">Print / Export PDF</button>
-    <button class="btn-print" onclick="openBoardReport()" style="margin-left:2px;">Generate Board Report</button>
+  <div class="sec-block print-break"><div class="dash-sec-title">Failure Profile Analysis</div><p class="sec-sub" style="margin-bottom:24px;">Structural failure modes predicted from score patterns.</p>
+    ${primary?'<div class="card" style="border-color:var(--'+(primary.severity==='critical'?'red-border':'amber-border')+');margin-bottom:2px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;"><div><div class="label-xs" style="margin-bottom:6px;">Primary Failure Profile</div><div class="sec-title" style="margin-bottom:0;">'+primary.name+'</div></div><span class="rag rag-'+(primary.severity==='critical'?'red':'amber')+'">'+(primary.severity==='critical'?'Critical':'High')+'</span></div><p class="body-text" style="margin-bottom:16px;">'+primary.meaning+'</p><div class="divider"></div><div class="label-xs" style="margin-bottom:8px;">How This Breaks in Reality</div><p class="body-text">'+primary.scenario+'</p><div class="divider"></div><div class="grid-1px grid-2"><div class="card-flush"><div class="label-xs" style="margin-bottom:6px;">Board-Level Consequence</div><p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">'+primary.boardConsequence+'</p></div><div class="card-flush"><div class="label-xs" style="margin-bottom:6px;">Regulatory Consequence</div><p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">'+primary.regConsequence+'</p></div></div></div>':'<div class="card"><p class="body-text">No failure profiles triggered.</p></div>'}
+    ${buildSecondaryProfilesHTML(profiles)}
   </div>
+  <div class="sec-block"><div class="dash-sec-title">Cross-Dimensional Risk Patterns</div><p class="sec-sub" style="margin-bottom:24px;">Five structural risk patterns. Active patterns indicate compounding vulnerabilities.</p>${buildPatternCardsHTML(S)}</div>
+  ${S.flags.length>0?'<div class="sec-block"><div class="dash-sec-title">Priority Flags</div><div class="flags-list">'+S.flags.map(f=>'<div class="flag-item"><span class="flag-pill '+(f.lvl==='high'?'flag-high':'flag-med')+'">'+(f.lvl==='high'?'High':'Medium')+'</span><span class="flag-text">'+f.txt+'</span></div>').join('')+'</div></div>':''}
+  <div class="sec-block print-break" id="sec-regulatory"><div class="dash-sec-title">Regulatory Exposure</div>
+    <div class="reg-framework-selector no-print">
+      <button class="reg-fw-btn ${activeFrameworkId==='eu-ai-act'?'active':''}" onclick="switchFrameworkSection('eu-ai-act')">&sect; EU AI Act</button>
+      <button class="reg-fw-btn ${activeFrameworkId==='uk-ai'?'active':''}" onclick="switchFrameworkSection('uk-ai')">UK Framework</button>
+      <button class="reg-fw-btn ${activeFrameworkId==='us-nist'?'active':''}" onclick="switchFrameworkSection('us-nist')">NIST AI RMF</button>
+    </div>
+    <div id="regulatory-content">${buildRegulatoryContentHTML(S,REG)}</div>
+  </div>
+  <div class="sec-block print-break"><div class="dash-sec-title">Board Priorities</div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div class="priority-band priority-immediate"><div class="priority-label">Immediate Board Attention</div><div class="body-text">${buildPriorityListHTML(recs.immediate)}</div></div>
+      <div class="priority-band priority-30"><div class="priority-label">Next 30 Days: Operating Corrections</div><div class="body-text">${buildPriorityListHTML(recs.thirtyDay)}</div></div>
+      <div class="priority-band priority-90"><div class="priority-label">Next 90 Days: Governance Design Changes</div><div class="body-text">${buildPriorityListHTML(recs.ninetyDay)}</div></div>
+      <div class="priority-band priority-structural"><div class="priority-label">Structural Agenda</div><div class="body-text">${buildPriorityListHTML(recs.structural)}</div></div>
+    </div>
+  </div>
+  <div class="sec-block"><div class="dash-sec-title">Advisory Interpretation</div>
+    <div class="advisory-note card" style="border-color:var(--gold-dim);background:var(--gold-faint);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="display:block;width:20px;height:1px;background:var(--gold);"></span><span style="display:block;width:1px;height:14px;background:var(--gold);"></span><span style="display:block;width:20px;height:1px;background:var(--gold);"></span><span style="font-size:0.6rem;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);">Advisory Note</span></div>
+      <div style="margin-bottom:20px;"><div class="label-xs" style="margin-bottom:8px;">What This Means</div><p class="body-text">${narratives.whatThisMeans}</p></div>
+      <div style="margin-bottom:20px;"><div class="label-xs" style="margin-bottom:8px;">Where This Fails Under Pressure</div><p class="body-text">${narratives.underPressure}</p></div>
+      <div style="margin-bottom:20px;"><div class="label-xs" style="margin-bottom:8px;">Why Leadership Should Care</div><p class="body-text">${narratives.leadership}</p></div>
+      <div style="margin-bottom:20px;"><div class="label-xs" style="margin-bottom:8px;">What This Exposes the Organisation To</div><p class="body-text">${narratives.exposure}</p></div>
+      <div><div class="label-xs" style="margin-bottom:8px;">What Must Change First</div><p class="body-text">${narratives.changeFirst}</p></div>
+    </div>
+  </div>
+  <div class="footer-row no-print"><div style="font-size:0.68rem;color:var(--text-dim);">Report generated ${today}</div><div style="display:flex;gap:2px;"><button class="btn-print" onclick="exportReportJSON()">Download JSON</button><button class="btn-print" onclick="exportPDF()">Print / Export PDF</button></div></div>
+  <div style="border-top:1px solid var(--border);padding:28px 0;margin-top:24px;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;"><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="display:block;width:16px;height:1px;background:var(--gold-dim);"></span><span style="display:block;width:1px;height:12px;background:var(--gold-dim);"></span><span style="display:block;width:16px;height:1px;background:var(--gold-dim);"></span><span style="font-size:0.58rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);">Human Integrity Advisory</span></div><div style="font-size:0.62rem;color:var(--text-dim);">This document is confidential.</div><div style="font-size:0.58rem;color:var(--text-dim);margin-top:4px;">&copy; ${year} Human Integrity Advisory Ltd. All rights reserved.</div></div></div></div>
   `;
-
   document.getElementById('dashboard').innerHTML = html;
   document.getElementById('progress-container').classList.add('hidden');
   document.getElementById('survey-wrapper').classList.add('hidden');
@@ -1578,203 +1690,50 @@ function completeSurvey(){
   document.getElementById('hia-nav').classList.remove('hidden');
   document.getElementById('hia-footer').classList.remove('hidden');
   document.getElementById('dashboard').classList.remove('hidden');
-  document.body.style.paddingTop = 'var(--nav-h)';
+  document.body.style.paddingTop='var(--nav-h)';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ─── FRAMEWORK SWITCHER ─────────────────────────────────────────────────────
-function switchFramework(fwId) {
-  if (!REGULATORY_FRAMEWORKS[fwId] || !REGULATORY_FRAMEWORKS[fwId].active) return;
+// Builds regulatory section inner content (used by completeSurvey and switchFrameworkSection)
+function buildRegulatoryContentHTML(S, REG) {
+  if (!REG) return '<p class="body-text">Select a regulatory framework above.</p>';
+  return '<div class="card" style="border-color:var(--blue-border);margin-bottom:2px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;"><div><div class="label-xs" style="margin-bottom:6px;">Overall Regulatory Risk</div><div class="value-md" style="color:var(--blue);">'+REG.framework.shortName+'</div></div><span class="rag rag-'+(REG.overallRisk==='high'?'red':REG.overallRisk==='elevated'?'amber':'green')+'">'+(REG.overallRisk==='high'?'High Exposure':REG.overallRisk==='elevated'?'Elevated':'Lower Exposure')+'</span></div><div class="grid-1px grid-4"><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--red);">'+REG.counts.high+'</div><div class="label-xs" style="margin-top:4px;">High Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--amber);">'+REG.counts.elevated+'</div><div class="label-xs" style="margin-top:4px;">Elevated</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--green);">'+REG.counts.lower+'</div><div class="label-xs" style="margin-top:4px;">Lower Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--blue);">'+REG.counts.total+'</div><div class="label-xs" style="margin-top:4px;">Total Mapped</div></div></div></div>'+buildPenaltyExposureHTML(REG)+buildEnforcementTimelineHTML(REG)+buildArticleRiskCardsHTML(REG)+buildPatternRegImplicationsHTML(REG)+'<div class="card" style="border-color:var(--blue-border);margin-top:2px;"><div class="label-xs" style="margin-bottom:8px;color:var(--blue);">HOC: Regulatory Alignment</div><p class="body-text">'+REG.hoc.narrative+'</p><div class="reg-tags" style="margin-top:12px;">'+buildHocRegTags(REG)+'</div></div><div class="reg-disclaimer"><strong>Regulatory disclaimer:</strong> This maps ALMA scores to obligations under the '+REG.framework.shortName+'. Indicative, not definitive. Should complement formal legal review.</div>';
+}
+
+// ── Framework switcher (partial re-render) ──
+function switchFrameworkSection(fwId) {
+  if (!REGULATORY_FRAMEWORKS[fwId]||!REGULATORY_FRAMEWORKS[fwId].active||!_lastS) return;
   activeFrameworkId = fwId;
-  // Re-render the entire dashboard with the new framework
-  completeSurvey();
+  var REG = calcRegulatoryRisk(_lastS, fwId);
+  _lastREG = REG;
+  var rc = document.getElementById('regulatory-content');
+  if (rc) rc.innerHTML = buildRegulatoryContentHTML(_lastS, REG);
+  var dc = document.getElementById('dim-cards-container');
+  if (dc) dc.innerHTML = buildDimensionCardsHTML(_lastS, REG);
+  var gc = document.getElementById('gap-cards-container');
+  if (gc) gc.innerHTML = buildGapCardsHTML(_lastS, REG);
+  var sr = document.getElementById('snap-reg');
+  if (sr) sr.innerHTML = '<div class="label-xs" style="margin-bottom:8px;">Regulatory Exposure</div><div style="margin-top:6px;"><span class="rag rag-'+(REG.overallRisk==='high'?'red':REG.overallRisk==='elevated'?'amber':'green')+'">'+(REG.overallRisk==='high'?'High':REG.overallRisk==='elevated'?'Elevated':'Lower')+'</span></div><div style="font-size:0.72rem;color:var(--text-dim);margin-top:4px;">'+REG.counts.high+' high-risk articles</div>';
+  document.querySelectorAll('.reg-fw-btn').forEach(function(b){b.classList.remove('active');});
+  var active = document.querySelector('.reg-fw-btn[onclick*="'+fwId+'"]');
+  if (active) active.classList.add('active');
 }
 
-// ─── BOARD REPORT TRIGGER ──────────────────────────────────────────────────
-function openBoardReport() {
-  const S = calcScores();
-  const REG = calcRegulatoryRisk(S, activeFrameworkId);
-
-  // Open window synchronously from click handler (prevents popup blocker)
-  const w = window.open('', '_blank');
-  if (!w) { alert('Please allow popups for this site to generate the board report.'); return; }
-
-  // Loading screen while template fetches
-  w.document.write('<!DOCTYPE html><html><head><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></head><body style="background:#0a0a0a;color:#C9B694;font-family:Montserrat,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;"><p style="letter-spacing:0.20em;font-size:0.7rem;font-weight:600;text-transform:uppercase;">Generating board report...</p></body></html>');
-
-  fetch('alma-board-report.html')
-    .then(function(r) { return r.text(); })
-    .then(function(templateHTML) {
-      var data = buildReportData(S, REG, {
-        organisationName: S.context.A3 || 'Organisation',
-        respondentScope: 'Individual assessment \u00b7 ' + (S.context.A1 || '') + ' \u00b7 ' + (S.context.A2 || ''),
-        collaboration: ''
-      });
-      var html = populateTemplate(templateHTML, data);
-      w.document.open();
-      w.document.write(html);
-      w.document.close();
-    })
-    .catch(function(err) {
-      w.document.open();
-      w.document.write('<!DOCTYPE html><html><body style="background:#0a0a0a;color:#c4605a;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:40px;text-align:center;"><div><p style="margin-bottom:12px;">Failed to load board report template.</p><p style="font-size:0.85rem;color:#797673;">Ensure <strong>alma-board-report.html</strong> is in the same directory as this page and served over HTTP.</p></div></body></html>');
-      w.document.close();
-    });
+// ── Data export (JSON download) ──
+function exportReportJSON() {
+  if (!_lastS) return;
+  var S=_lastS, REG=_lastREG, profiles=detectFailureProfiles(S);
+  var data = {
+    alma_version:'2.0', exported_at:new Date().toISOString(), respondent:S.context,
+    scores:{overall:S.overall,hoc:S.hoc,dimensions:S.dims,governance_gaps:S.gaps,patterns:S.patterns,flags:S.flags},
+    regulatory:REG?{framework_id:activeFrameworkId,overall_risk:REG.overallRisk,counts:REG.counts,article_risks:REG.articleRiskList.map(function(a){return{num:a.num,title:a.title,risk_level:a.riskLevel,sources:a.sources};})}:null,
+    executive:{status:resolveExecutiveStatus(S),primary_profile:profiles[0]?{name:profiles[0].name,severity:profiles[0].severity}:null,secondary_profiles:profiles.slice(1).map(function(p){return{name:p.name,severity:p.severity};}),active_pattern_count:_countActivePatterns(S),paper_gov_count:_countPaperGov(S)}
+  };
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='alma-report-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
 }
-
-// ─── ANTHROPIC API — DYNAMIC REGULATORY ADVISOR ─────────────────────────────
-// Uses the Anthropic API to provide real-time regulatory interpretation
-// based on the respondent's specific ALMA scores and risk profile.
-
-// async function queryRegulatoryAdvisor(question, context) {
-//   const advisorPanel = document.getElementById('reg-advisor-response');
-//   const advisorBtn = document.getElementById('reg-advisor-btn');
-//   if (advisorPanel) advisorPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Analysing regulatory implications...</div>';
-//   if (advisorBtn) advisorBtn.disabled = true;
-
-//   try {
-//     const response = await fetch("https://api.anthropic.com/v1/messages", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         model: "claude-sonnet-4-20250514",
-//         max_tokens: 1000,
-//         tools: [{ type: "web_search_20250305", name: "web_search" }],
-//         messages: [{
-//           role: "user",
-//           content: `You are a regulatory compliance advisor specialising in AI governance law. You have expertise in the EU AI Act (Regulation 2024/1689), UK DSIT AI framework, and NIST AI RMF.
-
-// Context: An organisation has completed the ALMA (AI Literacy Mindset Assessment) governance diagnostic. Their scores and risk profile are:
-// ${context}
-
-// Question: ${question}
-
-// Provide a concise, practical answer (max 200 words) referencing specific articles, principles, or subcategories from the relevant regulatory framework. If referencing the EU AI Act, cite specific article numbers. If you need to check for recent regulatory updates or amendments, use web search. Focus on actionable compliance guidance, not general information.`
-//         }]
-//       })
-//     });
-
-//     const data = await response.json();
-//     const fullResponse = data.content
-//       .map(item => (item.type === "text" ? item.text : ""))
-//       .filter(Boolean)
-//       .join("\n");
-
-//     if (advisorPanel) {
-//       advisorPanel.innerHTML = `<div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;padding:16px 0;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
-//     }
-//   } catch (err) {
-//     if (advisorPanel) {
-//       advisorPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to reach regulatory advisor. Error: ${err.message}</div>`;
-//     }
-//   }
-//   if (advisorBtn) advisorBtn.disabled = false;
-// }
-
-// async function checkForAmendments(frameworkId) {
-//   const amendPanel = document.getElementById('amendment-check-result');
-//   if (amendPanel) amendPanel.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;padding:12px 0;">Checking for regulatory updates...</div>';
-
-//   try {
-//     const fw = REGULATORY_FRAMEWORKS[frameworkId];
-//     const fwName = fw ? fw.name : 'EU AI Act';
-    
-//     const response = await fetch("https://api.anthropic.com/v1/messages", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         model: "claude-sonnet-4-20250514",
-//         max_tokens: 1000,
-//         tools: [{ type: "web_search_20250305", name: "web_search" }],
-//         messages: [{
-//           role: "user",
-//           content: `Search for the most recent updates, amendments, guidelines, or enforcement actions related to the ${fwName} in the last 90 days. Focus on:
-// 1. Any amendments to the regulatory text itself
-// 2. New guidance documents or interpretive guidelines published
-// 3. Enforcement actions or penalty decisions
-// 4. New implementation deadlines approaching
-
-// Provide a concise summary (max 250 words) of what has changed or is upcoming. If nothing significant has changed, state that clearly. Include dates for any developments found.`
-//         }]
-//       })
-//     });
-
-//     const data = await response.json();
-//     const fullResponse = data.content
-//       .map(item => (item.type === "text" ? item.text : ""))
-//       .filter(Boolean)
-//       .join("\n");
-
-//     if (amendPanel) {
-//       const timestamp = new Date().toLocaleString('en-GB', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
-//       amendPanel.innerHTML = `
-//         <div style="font-size:0.68rem;color:var(--text-dim);margin-bottom:8px;letter-spacing:0.10em;text-transform:uppercase;">Last checked: ${timestamp}</div>
-//         <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.85;">${fullResponse.replace(/\n/g,'<br>')}</div>`;
-//     }
-//   } catch (err) {
-//     if (amendPanel) {
-//       amendPanel.innerHTML = `<div style="color:var(--red);font-size:0.82rem;padding:12px 0;">Unable to check for amendments. Error: ${err.message}</div>`;
-//     }
-//   }
-// }
-
-// ─── BUILD ADVISOR PANEL HTML ──────────────────────────────────────────────
-function buildAdvisorPanelHTML(S, REG) {
-  if (!REG) return '';
-
-  const contextSummary = `Overall readiness: ${S.overall}% (${rag(S.overall)})
-Dimensions: PS=${S.dims.ps?.comp}%, GO=${S.dims.go?.comp}%, AF=${S.dims.af?.comp}%, CO=${S.dims.co?.comp}%, CE=${S.dims.ce?.comp}%
-HOC: ${S.hoc}% | Accountability: ${S.gaps.accountability?.pct}%, Authority: ${S.gaps.authority?.pct}%, Intervention: ${S.gaps.intervention?.pct}%, Escalation: ${S.gaps.escalation?.pct}%
-Active risk patterns: ${Object.entries(S.patterns).filter(([k,v])=>v).map(([k])=>k).join(', ')||'None'}
-Paper governance: ${Object.entries(S.dims).filter(([k,d])=>d.paperGov).map(([k,d])=>d.label).join(', ')||'None detected'}
-Framework: ${REG.framework.name}
-High-risk articles: ${REG.counts.high}, Elevated: ${REG.counts.elevated}`;
-
-  const presetQuestions = [
-    "What are the most urgent compliance gaps I should address first based on these scores?",
-    "How would a regulator likely assess our human oversight capability given these ALMA results?",
-    "What specific interventions would reduce our penalty exposure most effectively?",
-    "Given our risk patterns, what incident scenarios are we most vulnerable to?"
-  ];
-
-  return `
-  <!-- AI-POWERED REGULATORY ADVISOR -->
-  <h2 class="dash-sec-title" style="margin-top:48px;">AI Regulatory Advisor</h2>
-  <div class="reg-summary-card" style="border-color:rgba(100,140,200,0.25);">
-    <div class="reg-summary-title" style="color:#7ea8d4;">Dynamic Compliance Analysis</div>
-    <div class="reg-summary-desc">Ask the AI regulatory advisor about your specific compliance risks. Responses are generated using your ALMA scores and current regulatory knowledge, with real-time web search for the latest updates.</div>
-
-    <!-- Amendment Checker -->
-    <div style="margin-bottom:24px;padding:16px;background:var(--surface-2);border:1px solid var(--border);">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;">Regulatory Amendment Monitor</div>
-        <button onclick="checkForAmendments('${REG.framework.id}')" style="padding:6px 14px;font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;background:rgba(100,140,200,0.12);border:1px solid rgba(100,140,200,0.3);color:#7ea8d4;cursor:pointer;font-family:'Montserrat',sans-serif;">Check for Updates</button>
-      </div>
-      <div id="amendment-check-result" style="font-size:0.82rem;color:var(--text-dim);">Click "Check for Updates" to scan for recent regulatory changes to the ${REG.framework.shortName}.</div>
-    </div>
-
-    <!-- Preset Questions -->
-    <div style="margin-bottom:16px;">
-      <div style="font-size:0.68rem;color:var(--text-dim);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">Quick questions based on your results:</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;">
-        ${presetQuestions.map((q,i) => `<button onclick="queryRegulatoryAdvisor('${q.replace(/'/g,"\\'")}', document.getElementById('advisor-context').value)" style="padding:8px 14px;font-size:0.72rem;background:var(--surface-2);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;text-align:left;font-family:'Montserrat',sans-serif;transition:all .15s;line-height:1.5;" onmouseover="this.style.borderColor='rgba(100,140,200,0.4)';this.style.color='#7ea8d4'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">${q}</button>`).join('')}
-      </div>
-    </div>
-
-    <!-- Custom Question -->
-    <div style="display:flex;gap:8px;margin-bottom:16px;">
-      <input type="text" id="advisor-custom-q" placeholder="Ask a specific regulatory compliance question..." style="flex:1;padding:10px 14px;font-size:0.82rem;background:var(--surface-2);border:1px solid var(--border);color:var(--text);font-family:'Montserrat',sans-serif;outline:none;" onfocus="this.style.borderColor='rgba(100,140,200,0.4)'" onblur="this.style.borderColor='var(--border)'" onkeypress="if(event.key==='Enter')document.getElementById('reg-advisor-btn').click()">
-      <button id="reg-advisor-btn" onclick="queryRegulatoryAdvisor(document.getElementById('advisor-custom-q').value, document.getElementById('advisor-context').value)" style="padding:10px 20px;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;background:#7ea8d4;border:none;color:#000;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;">Ask</button>
-    </div>
-
-    <!-- Hidden context -->
-    <textarea id="advisor-context" style="display:none;">${contextSummary}</textarea>
-
-    <!-- Response Area -->
-    <div id="reg-advisor-response"></div>
-  </div>`;
-}
+function exportPDF(){window.print();}
 </script>
-<script src="alma-board-report-logic.js"></script>
 </body>
 </html>
