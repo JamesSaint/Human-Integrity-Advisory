@@ -6,13 +6,13 @@
 <title>AI Governance Diagnostic Assessment | Human Integrity Advisory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="alma.css">
+<link rel="stylesheet" href="agda.css">
 </head>
 <body>
 <nav class="hia-nav" id="hia-nav"><div class="hia-nav-inner"><a href="../index.html" class="nav-mark"><span class="nav-mark-icon"><span class="nm-line"></span><span class="nm-stroke"></span><span class="nm-line"></span></span><span class="nav-mark-text">Human Integrity Advisory</span></a><ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-enquire">Enquire</a><button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button></div></nav>
 <div class="nav-mobile" id="nav-mobile"><ul><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-mobile-cta">Enquire</a></div>
 <div id="progress-container" class="hidden"><div class="logo">HIA</div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div><div class="progress-label" id="progress-label">1 / 11</div></div>
-<div id="intro-screen"><div class="page-hero"><div class="page-hero-inner"><div class="page-eyebrow">AI Governance Diagnostic Assessment</div><div class="hero-alma-mark">AGDA</div><div class="hero-alma-sub">Version 2.0</div><p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p><div class="hero-cta-row"><button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment</button></div><p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic and assessment purposes only.</p></div></div></div>
+<div id="intro-screen"><div class="page-hero"><div class="page-hero-inner"><div class="page-eyebrow">AI Governance Diagnostic Assessment</div><div class="hero-agda-mark">AGDA</div><div class="hero-agda-sub">Version 2.0</div><p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p><div class="hero-cta-row"><button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment</button></div><p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic and assessment purposes only.</p></div></div></div>
 <div id="survey-wrapper" class="hidden"><div class="section-container"><div id="section-content"></div></div></div>
 <div id="nav-bar" class="hidden"><div class="nav-info" id="nav-info"></div><div class="nav-buttons"><button class="btn btn-ghost" id="btn-prev" onclick="goPrev()">Back</button><button class="btn btn-primary" id="btn-next" onclick="goNext()">Next</button></div></div>
 <div id="dashboard" class="hidden"></div>
@@ -1333,7 +1333,7 @@ function _regTagsForConstruct(REG, type, key) {
   const tags = REG.getInlineTags(type, key);
   if (!tags || tags.length === 0) return '';
   return ' ' + tags.map(t =>
-    `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${t.num}</span>`
+    `<a class="reg-tag" href="${t.url}" target="_blank" rel="noopener" title="${t.title}"><span style="font-size:10px;opacity:0.7;">\u00A7</span> Art ${t.num}</a>`
   ).join(' ');
 }
 
@@ -1489,6 +1489,7 @@ function buildArticleRiskCardsHTML(REG) {
       <div class="value-sm" style="color:var(--text);margin-bottom:6px;font-size:0.85rem;">${art.title}</div>
       <p style="font-size:0.78rem;color:var(--text-dim);line-height:1.65;margin-bottom:6px;">${art.summary}</p>
       <div style="font-size:0.72rem;color:var(--text-dim);"><strong style="color:var(--text-muted);">Triggered by:</strong> ${art.sources.join(', ')}</div>
+      <a class="reg-link" href="${art.url}" target="_blank" rel="noopener"><span class="reg-link-icon">\u2192</span> View Article ${art.num}</a>
     </div>`).join('')}
   </div>`;
 }
@@ -1504,7 +1505,7 @@ function buildPatternRegImplicationsHTML(REG) {
       <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:8px;">${p.narrative}</p>
       <div class="reg-tags">${p.articles.map(artNum => {
         const art = REG.framework.articles[artNum];
-        return art ? `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${artNum}: ${art.title}</span>` : '';
+        return art ? `<a class="reg-tag" href="${REG.framework.baseUrl}${art.url}" target="_blank" rel="noopener" title="${art.title}"><span style="font-size:10px;opacity:0.7;">\u00A7</span> Art ${artNum}: ${art.title}</a>` : '';
       }).join('')}</div>
     </div>`).join('')}
   </div>`;
@@ -1571,7 +1572,7 @@ function buildHocRegTags(REG) {
   if (!mappings || !mappings.hoc || !mappings.hoc.primary) return '';
   return mappings.hoc.primary.map(artNum => {
     const art = REG.framework.articles[artNum];
-    return art ? `<span class="reg-tag"><span style="font-size:10px;opacity:0.7;">§</span> Art ${artNum}: ${art.title}</span>` : '';
+    return art ? `<a class="reg-tag" href="${REG.framework.baseUrl}${art.url}" target="_blank" rel="noopener" title="${art.title}"><span style="font-size:10px;opacity:0.7;">\u00A7</span> Art ${artNum}: ${art.title}</a>` : '';
   }).join(' ');
 }
 
@@ -1604,7 +1605,7 @@ function completeSurvey() {
     <div style="max-width:var(--page-max);margin:0 auto;">
       <div class="conf-label" style="margin-bottom:28px;">Confidential Board Briefing</div>
       <div style="font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;color:var(--gold);letter-spacing:0.18em;line-height:1;margin-bottom:4px;">AGDA</div>
-      <div style="font-size:0.62rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-bottom:28px;">AI Literacy Mindset Assessment</div>
+      <div style="font-size:0.62rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-bottom:28px;">AI Governance Diagnostic Assessment</div>
       <h1 style="font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;">AI Governance Readiness Report</h1>
       <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:28px;">Diagnostic assessment of psychological readiness and governance infrastructure for responsible AI oversight.</p>
       <div class="grid-1px grid-4">
@@ -1724,14 +1725,14 @@ function exportReportJSON() {
   if (!_lastS) return;
   var S=_lastS, REG=_lastREG, profiles=detectFailureProfiles(S);
   var data = {
-    alma_version:'2.0', exported_at:new Date().toISOString(), respondent:S.context,
+    agda_version:'2.0', exported_at:new Date().toISOString(), respondent:S.context,
     scores:{overall:S.overall,hoc:S.hoc,dimensions:S.dims,governance_gaps:S.gaps,patterns:S.patterns,flags:S.flags},
     regulatory:REG?{framework_id:activeFrameworkId,overall_risk:REG.overallRisk,counts:REG.counts,article_risks:REG.articleRiskList.map(function(a){return{num:a.num,title:a.title,risk_level:a.riskLevel,sources:a.sources};})}:null,
     executive:{status:resolveExecutiveStatus(S),primary_profile:profiles[0]?{name:profiles[0].name,severity:profiles[0].severity}:null,secondary_profiles:profiles.slice(1).map(function(p){return{name:p.name,severity:p.severity};}),active_pattern_count:_countActivePatterns(S),paper_gov_count:_countPaperGov(S)}
   };
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');a.href=url;a.download='alma-report-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
+  var a=document.createElement('a');a.href=url;a.download='agda-report-'+new Date().toISOString().split('T')[0]+'.json';a.click();URL.revokeObjectURL(url);
 }
 function exportPDF(){window.print();}
 </script>
