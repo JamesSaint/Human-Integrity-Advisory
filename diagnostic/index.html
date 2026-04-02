@@ -12,14 +12,14 @@
 <nav class="hia-nav" id="hia-nav"><div class="hia-nav-inner"><a href="../index.html" class="nav-mark"><span class="nav-mark-icon"><span class="nm-line"></span><span class="nm-stroke"></span><span class="nm-line"></span></span><span class="nav-mark-text">Human Integrity Advisory</span></a><ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-enquire">Enquire</a><button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button></div></nav>
 <div class="nav-mobile" id="nav-mobile"><ul><li><a href="../index.html">Home</a></li><li><a href="../about.html">About</a></li><li><a href="../services.html">Services</a></li><li><a href="../advisory-briefs.html">Advisory Briefs</a></li></ul><a href="../contact.html" class="nav-mobile-cta">Enquire</a></div>
 <div id="progress-container" class="hidden"><div class="logo">HIA</div><div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div><div class="progress-label" id="progress-label">1 / 11</div></div>
-<div id="intro-screen"><div class="page-hero"><div class="page-hero-inner"><div class="page-eyebrow">AI Governance Diagnostic Assessment</div><div class="hero-alma-mark">ALMA</div><div class="hero-alma-sub">Version 2.0</div><p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p><div class="hero-cta-row"><button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment</button></div><p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic and assessment purposes only.</p></div></div></div>
+<div id="intro-screen"><div class="page-hero"><div class="page-hero-inner"><div class="page-eyebrow">AI Governance Diagnostic Assessment</div><div class="hero-alma-mark">AGDA</div><div class="hero-alma-sub">Version 2.0</div><p class="page-lede">Measuring psychological readiness for responsible AI governance. Quantifying both what your people believe and what they actually do; producing prioritised vulnerability maps, not abstract maturity scores.</p><div class="hero-cta-row"><button class="hero-btn-gold" onclick="startSurvey()">Begin Assessment</button></div><p class="hero-note">Respond based on your genuine feelings and actual behaviours.<br>There are no right or wrong answers.<br>Results are for diagnostic and assessment purposes only.</p></div></div></div>
 <div id="survey-wrapper" class="hidden"><div class="section-container"><div id="section-content"></div></div></div>
 <div id="nav-bar" class="hidden"><div class="nav-info" id="nav-info"></div><div class="nav-buttons"><button class="btn btn-ghost" id="btn-prev" onclick="goPrev()">Back</button><button class="btn btn-primary" id="btn-next" onclick="goNext()">Next</button></div></div>
 <div id="dashboard" class="hidden"></div>
 <footer class="hia-footer" id="hia-footer"><div class="hia-footer-inner"><div class="footer-mark"><span class="footer-mark-icon"><span class="fm-line"></span><span class="fm-stroke"></span><span class="fm-line"></span></span><span class="footer-mark-text">Human Integrity Advisory</span></div><div class="hia-footer-right"><ul class="footer-links-list"><li><a href="../contact.html">Contact</a></li><li><a href="../terms.html">Terms</a></li><li><a href="../privacy.html">Privacy</a></li><li><a href="../gdpr.html">GDPR</a></li></ul><div class="footer-copy">&copy; 2026 Human Integrity Advisory. All rights reserved.</div></div></div></footer>
 <script>
 // ============================================================
-// ALMA v2.0 Unified Diagnostic
+// AGDA v2.0 Unified Diagnostic
 // Human Integrity Advisory Ltd
 // ============================================================
 const SECTIONS = [
@@ -200,7 +200,7 @@ const SECTIONS = [
 ];
 
 // ─── REGULATORY FRAMEWORK MAPPING ENGINE ─────────────────────────────────────
-// Maps ALMA dimensions, governance gaps, and risk patterns to regulatory obligations.
+// Maps AGDA dimensions, governance gaps, and risk patterns to regulatory obligations.
 // Structured for multi-jurisdiction support. EU AI Act primary; UK/US extensible.
 
 const REGULATORY_FRAMEWORKS = {
@@ -321,9 +321,9 @@ const REGULATORY_FRAMEWORKS = {
   }
 };
 
-// ─── ALMA → REGULATORY MAPPINGS ──────────────────────────────────────────────
-// Each mapping links an ALMA construct to specific articles, with context for WHY
-// the ALMA score creates regulatory risk at that article.
+// ─── AGDA → REGULATORY MAPPINGS ──────────────────────────────────────────────
+// Each mapping links an AGDA construct to specific articles, with context for WHY
+// the AGDA score creates regulatory risk at that article.
 
 const REGULATORY_MAPPINGS = {
   // ── DIMENSION MAPPINGS ──
@@ -455,7 +455,7 @@ const REGULATORY_MAPPINGS = {
   }
 };
 
-// ── UK DSIT → ALMA MAPPINGS ──
+// ── UK DSIT → AGDA MAPPINGS ──
 const UK_REGULATORY_MAPPINGS = {
   dimensions: {
     ps: { primary: ['P1','P2','P5'], riskNarrative: { critical:'Safety, transparency, and contestability principles (P1, P2, P5) are undermined when staff fear speaking up about AI issues.', fragile:'Principles partially upheld but psychological barriers may prevent full transparency and contestability.', robust:'Strong psychological safety supports all five DSIT principles.' }},
@@ -480,7 +480,7 @@ const UK_REGULATORY_MAPPINGS = {
   hoc: { primary: ['P4','P1','P5'], riskNarrative: { critical:'HOC critically low. UK framework principles P1, P4, P5 require operational governance infrastructure that does not exist.', fragile:'HOC fragile. Principles achievable under normal conditions but may fail under pressure.', robust:'HOC supports comprehensive compliance with all five DSIT principles.' }}
 };
 
-// ── NIST AI RMF → ALMA MAPPINGS ──
+// ── NIST AI RMF → AGDA MAPPINGS ──
 const NIST_REGULATORY_MAPPINGS = {
   dimensions: {
     ps: { primary: ['GOV-5','GOV-6','TRUST'], riskNarrative: { critical:'GOV 5 stakeholder engagement and GOV 6 oversight/escalation mechanisms require psychological safety to function. Low safety means feedback loops are broken.', fragile:'Engagement exists but is filtered. GOV 5 and GOV 6 partially operational.', robust:'Strong psychological safety enables the open feedback culture GOV 5 and GOV 6 require.' }},
@@ -634,7 +634,7 @@ function calcRegulatoryRisk(S, frameworkId) {
     hoc: { level: hocLevel, badge: hocBadge, narrative: mappings.hoc.riskNarrative[hocLevel] },
     counts: { high: highCount, elevated: elevatedCount, lower: lowerCount, total: articleRiskList.length },
     overallRisk: overallRegRisk,
-    // Helper: get inline tags for a specific ALMA construct
+    // Helper: get inline tags for a specific AGDA construct
     getInlineTags: function(type, key) {
       let mapping;
       if (type === 'dimension') mapping = mappings.dimensions[key];
@@ -1603,7 +1603,7 @@ function completeSurvey() {
   <header class="report-header" style="padding:clamp(40px,6vw,64px) clamp(24px,5vw,56px) clamp(32px,5vw,48px);margin:0 calc(-1 * clamp(20px,5vw,64px));">
     <div style="max-width:var(--page-max);margin:0 auto;">
       <div class="conf-label" style="margin-bottom:28px;">Confidential Board Briefing</div>
-      <div style="font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;color:var(--gold);letter-spacing:0.18em;line-height:1;margin-bottom:4px;">ALMA</div>
+      <div style="font-size:clamp(2.2rem,6vw,3.4rem);font-weight:700;color:var(--gold);letter-spacing:0.18em;line-height:1;margin-bottom:4px;">AGDA</div>
       <div style="font-size:0.62rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-bottom:28px;">AI Literacy Mindset Assessment</div>
       <h1 style="font-size:clamp(1.2rem,3vw,1.6rem);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;">AI Governance Readiness Report</h1>
       <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:28px;">Diagnostic assessment of psychological readiness and governance infrastructure for responsible AI oversight.</p>
@@ -1697,7 +1697,7 @@ function completeSurvey() {
 // Builds regulatory section inner content (used by completeSurvey and switchFrameworkSection)
 function buildRegulatoryContentHTML(S, REG) {
   if (!REG) return '<p class="body-text">Select a regulatory framework above.</p>';
-  return '<div class="card" style="border-color:var(--blue-border);margin-bottom:2px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;"><div><div class="label-xs" style="margin-bottom:6px;">Overall Regulatory Risk</div><div class="value-md" style="color:var(--blue);">'+REG.framework.shortName+'</div></div><span class="rag rag-'+(REG.overallRisk==='high'?'red':REG.overallRisk==='elevated'?'amber':'green')+'">'+(REG.overallRisk==='high'?'High Exposure':REG.overallRisk==='elevated'?'Elevated':'Lower Exposure')+'</span></div><div class="grid-1px grid-4"><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--red);">'+REG.counts.high+'</div><div class="label-xs" style="margin-top:4px;">High Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--amber);">'+REG.counts.elevated+'</div><div class="label-xs" style="margin-top:4px;">Elevated</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--green);">'+REG.counts.lower+'</div><div class="label-xs" style="margin-top:4px;">Lower Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--blue);">'+REG.counts.total+'</div><div class="label-xs" style="margin-top:4px;">Total Mapped</div></div></div></div>'+buildPenaltyExposureHTML(REG)+buildEnforcementTimelineHTML(REG)+buildArticleRiskCardsHTML(REG)+buildPatternRegImplicationsHTML(REG)+'<div class="card" style="border-color:var(--blue-border);margin-top:2px;"><div class="label-xs" style="margin-bottom:8px;color:var(--blue);">HOC: Regulatory Alignment</div><p class="body-text">'+REG.hoc.narrative+'</p><div class="reg-tags" style="margin-top:12px;">'+buildHocRegTags(REG)+'</div></div><div class="reg-disclaimer"><strong>Regulatory disclaimer:</strong> This maps ALMA scores to obligations under the '+REG.framework.shortName+'. Indicative, not definitive. Should complement formal legal review.</div>';
+  return '<div class="card" style="border-color:var(--blue-border);margin-bottom:2px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;"><div><div class="label-xs" style="margin-bottom:6px;">Overall Regulatory Risk</div><div class="value-md" style="color:var(--blue);">'+REG.framework.shortName+'</div></div><span class="rag rag-'+(REG.overallRisk==='high'?'red':REG.overallRisk==='elevated'?'amber':'green')+'">'+(REG.overallRisk==='high'?'High Exposure':REG.overallRisk==='elevated'?'Elevated':'Lower Exposure')+'</span></div><div class="grid-1px grid-4"><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--red);">'+REG.counts.high+'</div><div class="label-xs" style="margin-top:4px;">High Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--amber);">'+REG.counts.elevated+'</div><div class="label-xs" style="margin-top:4px;">Elevated</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--green);">'+REG.counts.lower+'</div><div class="label-xs" style="margin-top:4px;">Lower Risk</div></div><div class="card-flush" style="text-align:center;"><div class="value-md" style="color:var(--blue);">'+REG.counts.total+'</div><div class="label-xs" style="margin-top:4px;">Total Mapped</div></div></div></div>'+buildPenaltyExposureHTML(REG)+buildEnforcementTimelineHTML(REG)+buildArticleRiskCardsHTML(REG)+buildPatternRegImplicationsHTML(REG)+'<div class="card" style="border-color:var(--blue-border);margin-top:2px;"><div class="label-xs" style="margin-bottom:8px;color:var(--blue);">HOC: Regulatory Alignment</div><p class="body-text">'+REG.hoc.narrative+'</p><div class="reg-tags" style="margin-top:12px;">'+buildHocRegTags(REG)+'</div></div><div class="reg-disclaimer"><strong>Regulatory disclaimer:</strong> This maps AGDA scores to obligations under the '+REG.framework.shortName+'. Indicative, not definitive. Should complement formal legal review.</div>';
 }
 
 // ── Framework switcher (partial re-render) ──
