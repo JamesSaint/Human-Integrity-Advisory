@@ -31,16 +31,15 @@ All advisory work is confidential and off record unless explicitly agreed otherw
 
 ## Site Architecture
 
-Six public pages, three legal pages, one internal reference page.
+Five public pages, three legal pages, one internal reference page.
 
 ```
 /
-├── index.html              # Homepage -- positioning, thesis, authority chain visualisation
-├── how-we-see.html         # AGDA -- proprietary assessment engine (8 dimensions, 6 criteria)
+├── index.html              # Homepage -- positioning, services overview, authority chain
+├── method.html             # Assessment engine, eight dimensions, three-stage engagement
 ├── services.html           # Three service lines with Who/Reveals/Receives structure
-├── how-it-works.html       # Three-stage engagement model (Exposure, Reality Testing, Decision Support)
-├── about.html              # Founder, values, sectors, proprietary method
-├── contact.html            # Enquiry form (Formspree) -- selective entry point
+├── about.html              # Founder, values, independence, sectors
+├── contact.html            # Enquiry form (Formspree)
 ├── terms.html              # Terms and conditions
 ├── privacy.html            # Privacy policy
 ├── gdpr.html               # GDPR statement
