@@ -76,276 +76,8 @@
 .hero-triad { margin-top: 52px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
 
-/* ── THE GAP ─────────────────────────────────────────────── */
-.gap-infographic {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: 0; border: 1px solid var(--border); background: var(--border); margin-top: 32px;
-}
-.gap-col-left, .gap-col-right {
-  background: var(--surface2); padding: clamp(20px,3vw,32px);
-  display: flex; flex-direction: column; gap: 8px;
-}
-.gap-col-right { border-left: 2px solid var(--gold); }
-.gap-mid {
-  background: var(--surface); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; padding: 16px 12px; gap: 10px; width: 100px;
-}
-.gap-col-heading { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 10px; }
-.gap-col-heading.muted  { color: var(--text-sub); }
-.gap-col-heading.bright { color: var(--gold); }
-.gap-row {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 9px 12px; font-size: 0.88rem; color: var(--text-sub); line-height: 1.5;
-  transition: border-color 0.2s, color 0.2s;
-}
-.gap-col-left:hover .gap-row  { border-color: var(--border-mid); }
-.gap-col-right .gap-row       { color: var(--text-body); border-color: var(--border-mid); }
-.gap-col-right .gap-row:hover { border-color: var(--gold); }
-.gap-divider-label {
-  background: var(--gold); color: #000;
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; padding: 7px 8px; text-align: center; width: 100%;
-}
-.gap-arrow-line { width: 1px; flex: 1; min-height: 24px; background: var(--border); }
-.gap-arrow-tip  { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--gold-dim); }
-.gap-note-text { font-size: 0.75rem; font-style: italic; color: var(--text-faint); margin-top: 10px; line-height: 1.65; }
-@media (max-width: 640px) {
-  .gap-infographic { grid-template-columns: 1fr; }
-  .gap-mid { flex-direction: row; width: 100%; padding: 10px 20px; }
-  .gap-col-right { border-left: none; border-top: 2px solid var(--gold); }
-}
 
-/* ══════════════════════════════════════════════════════════
-   AUTHORITY CHAIN — two parallel tracks on one timeline
-══════════════════════════════════════════════════════════ */
 
-.ctd {
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-
-/* Time marker */
-.ctd-m {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 14px 20px;
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-}
-.ctd-m:first-child { border-top: none; }
-
-.ctd-stamp {
-  font-size: clamp(1.4rem, 5vw, 1.9rem);
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  white-space: nowrap;
-}
-.ctd-stamp .g { color: var(--gold); }
-
-.ctd-step-name {
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  line-height: 1.3;
-}
-
-/* Crisis cell */
-.ctd-c {
-  background: var(--black);
-  padding: 16px 20px 14px;
-  border-top: 1px solid rgba(201,182,148,0.06);
-}
-
-.ctd-track-name {
-  font-size: 0.52rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(201,182,148,0.4);
-  margin-bottom: 6px;
-  display: block;
-}
-
-.ctd-c-body {
-  font-size: clamp(0.86rem, 2vw, 0.93rem);
-  color: rgba(255,255,255,0.6);
-  line-height: 1.65;
-}
-
-/* Authority cell */
-.ctd-a {
-  background: var(--surface);
-  padding: 14px 20px 18px;
-  border-top: 1px solid rgba(201,182,148,0.06);
-  border-bottom: 1px solid rgba(201,182,148,0.08);
-}
-
-.ctd-a-body {
-  font-size: clamp(0.86rem, 2vw, 0.93rem);
-  color: var(--text-body);
-  line-height: 1.65;
-}
-
-/* Intervention window band */
-.ctd-w {
-  display: flex;
-  align-items: stretch;
-  background: var(--border);
-  gap: 1px;
-}
-
-.ctd-w-open {
-  flex: 3;
-  background: rgba(201,182,148,0.05);
-  padding: 13px 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ctd-w-open-text {
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(201,182,148,0.55);
-  white-space: nowrap;
-}
-
-.ctd-w-rule {
-  flex: 1;
-  height: 1px;
-  align-self: center;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(201,182,148,0.25) 0,
-    rgba(201,182,148,0.25) 5px,
-    transparent 5px,
-    transparent 12px
-  );
-}
-
-.ctd-w-closed {
-  flex: 1;
-  background: #0a0808;
-  padding: 13px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border-left: 2px solid rgba(201,182,148,0.3);
-}
-
-.ctd-w-closed-text {
-  font-size: 0.52rem;
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(201,182,148,0.7);
-  white-space: nowrap;
-}
-
-.ctd-w-x {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(201,182,148,0.6);
-  line-height: 1;
-}
-
-/* Board — gold inversion */
-.ctd-m.ctd-break {
-  background: var(--gold);
-  border-top: none;
-}
-.ctd-m.ctd-break .ctd-stamp { color: #000; }
-.ctd-m.ctd-break .ctd-stamp .g { color: rgba(0,0,0,0.6); }
-.ctd-m.ctd-break .ctd-step-name { color: rgba(0,0,0,0.55); }
-
-.ctd-c.ctd-break {
-  background: #c4ae8a;
-  border-top: none;
-}
-.ctd-c.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
-.ctd-c.ctd-break .ctd-c-body {
-  color: rgba(0,0,0,0.85);
-  font-weight: 600;
-  font-size: clamp(0.92rem, 2.2vw, 1rem);
-}
-
-.ctd-a.ctd-break {
-  background: #b8a27e;
-  border-top: none;
-  border-bottom: none;
-}
-.ctd-a.ctd-break .ctd-track-name { color: rgba(0,0,0,0.45); }
-.ctd-a.ctd-break .ctd-a-body {
-  color: rgba(0,0,0,0.85);
-  font-weight: 600;
-}
-
-/* Mobile: window note wraps */
-@media (max-width: 560px) {
-  .ctd-w { flex-wrap: wrap; gap: 1px; }
-  .ctd-w-open { flex: 1 1 100%; }
-  .ctd-w-closed { flex: 1 1 100%; border-left: none; border-top: 1px solid rgba(201,182,148,0.3); justify-content: flex-start; }
-}
-
-/* Desktop: explicit grid placement */
-@media (min-width: 720px) {
-  .ctd {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto auto auto;
-    background: var(--border);
-    gap: 1px;
-    border: none;
-    outline: 1px solid var(--border);
-  }
-
-  .ctd-m      { border-top: none; padding: 18px 22px 16px; }
-  .ctd-m1     { grid-column: 1; grid-row: 1; }
-  .ctd-m2     { grid-column: 2; grid-row: 1; }
-  .ctd-m3     { grid-column: 3; grid-row: 1; }
-  .ctd-m4     { grid-column: 4; grid-row: 1; }
-
-  .ctd-stamp  { font-size: clamp(1.6rem, 3vw, 2.2rem); display: block; margin-bottom: 6px; }
-
-  .ctd-c      { padding: 20px 22px 22px; border-top: none; }
-  .ctd-c1     { grid-column: 1; grid-row: 2; }
-  .ctd-c2     { grid-column: 2; grid-row: 2; }
-  .ctd-c3     { grid-column: 3; grid-row: 2; }
-  .ctd-c4     { grid-column: 4; grid-row: 2; }
-
-  .ctd-w      { display: contents; }
-  .ctd-w-open {
-    grid-column: 1 / 4; grid-row: 3;
-    flex: none; padding: 12px 22px; align-items: center;
-  }
-  .ctd-w-closed {
-    grid-column: 4; grid-row: 3;
-    flex: none; background: #0d0b09; padding: 12px 18px;
-    justify-content: center; border-left: none;
-  }
-
-  .ctd-a      { padding: 20px 22px 24px; border-top: none; border-bottom: none; }
-  .ctd-a1     { grid-column: 1; grid-row: 4; }
-  .ctd-a2     { grid-column: 2; grid-row: 4; }
-  .ctd-a3     { grid-column: 3; grid-row: 4; }
-  .ctd-a4     { grid-column: 4; grid-row: 4; }
-
-  .ctd-m4.ctd-break { background: var(--gold); }
-  .ctd-c4.ctd-break { background: #c4ae8a; }
-  .ctd-a4.ctd-break { background: #b8a27e; }
-}
-
-/* ── TIER GRID ─────────────────────────────────────── */
-.tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-@media (max-width: 640px) { .tier-grid { grid-template-columns: 1fr; } }
 
 </style>
 </head>
@@ -417,34 +149,28 @@
       </div>
     </div>
   </div>
-  <div class="reveal" style="margin-top:32px;">
-    <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-sub);margin-bottom:20px;text-align:center;">Where the failure lives</p>
-    <div class="gap-infographic">
-      <div class="gap-col-left">
-        <p class="gap-col-heading muted">Governance Design Layer</p>
-        <div class="gap-row">Ethics frameworks and risk charters</div>
-        <div class="gap-row">Board oversight structures</div>
-        <div class="gap-row">Escalation protocols, documented</div>
-        <div class="gap-row">Override authority, defined in writing</div>
-        <div class="gap-row">Compliance programmes and audit structures</div>
-        <p class="gap-note-text">Well-designed. Rigorously documented. Incapable, by itself, of ensuring a board can act when it needs to.</p>
-      </div>
-      <div class="gap-mid">
-        <div class="gap-arrow-line"></div>
-        <div class="gap-arrow-tip"></div>
-        <div class="gap-divider-label">THE<br>GAP</div>
-        <div class="gap-arrow-tip" style="transform:rotate(180deg);border-top:none;border-bottom:7px solid var(--gold-dim);"></div>
-        <div class="gap-arrow-line"></div>
-      </div>
-      <div class="gap-col-right">
-        <p class="gap-col-heading bright">HIA: Intervention Layer</p>
-        <div class="gap-row">Can the board identify failure in time?</div>
-        <div class="gap-row">Is authority clear enough to act under pressure?</div>
-        <div class="gap-row">Do escalation paths function under real conditions?</div>
-        <div class="gap-row">Can overrides be enacted at operational speed?</div>
-        <div class="gap-row">Is information adequate to diagnose and act?</div>
-        <p class="gap-note-text" style="color:var(--text-sub);">Policy governs intent. HIA tests whether that intent survives contact with reality.</p>
-      </div>
+  <div class="grid-2 reveal" style="margin-top:32px;">
+    <div class="block">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:14px;">What governance produces</p>
+      <ul class="dash-list">
+        <li>Ethics frameworks and risk charters</li>
+        <li>Board oversight structures</li>
+        <li>Escalation protocols, documented</li>
+        <li>Override authority, defined in writing</li>
+        <li>Compliance programmes and audit structures</li>
+      </ul>
+      <p style="font-size:0.82rem;font-style:italic;color:var(--text-faint);margin-top:16px;line-height:1.65;">Well-designed. Rigorously documented. Incapable, by itself, of ensuring a board can act when it needs to.</p>
+    </div>
+    <div class="block block-accent">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">What HIA tests</p>
+      <ul class="dash-list">
+        <li>Can the board identify failure in time?</li>
+        <li>Is authority clear enough to act under pressure?</li>
+        <li>Do escalation paths function under real conditions?</li>
+        <li>Can overrides be enacted at operational speed?</li>
+        <li>Is information adequate to diagnose and act?</li>
+      </ul>
+      <p style="font-size:0.82rem;font-style:italic;color:var(--text-sub);margin-top:16px;line-height:1.65;">Policy governs intent. HIA tests whether that intent survives contact with reality.</p>
     </div>
   </div>
 </div>
@@ -455,23 +181,49 @@
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">02</span><span class="section-label">What we do</span><div class="section-rule"></div></div>
   <p class="reveal" style="max-width:660px;margin-bottom:32px;">Three services. One question. Can your organisation intervene before failure becomes irreversible?</p>
-  <div class="tier-grid reveal">
-    <div class="svc-card">
-      <p class="svc-title">Exposure Assessment</p>
-      <p class="svc-body">One system. One scenario. A clear view of where intervention breaks.</p>
+
+  <div class="offer reveal">
+    <div class="offer-head">
+      <span class="offer-num">01</span>
+      <div class="offer-meta">
+        <p class="offer-name">Exposure Assessment</p>
+        <p class="offer-summary">One system. One scenario. A clear view of where intervention breaks. For boards and executives accountable for a specific consequential system who need to know whether governance translates to operational control.</p>
+      </div>
+    </div>
+    <div class="offer-foot">
+      <p class="offer-solves">A board that cannot see where the chain breaks cannot govern what it cannot see.</p>
       <a href="services.html#exposure" class="btn-ghost">View</a>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Board-Level Advisory</p>
-      <p class="svc-body">Independent judgement in high-stakes decisions where internal certainty may be misleading.</p>
+  </div>
+
+  <div class="offer reveal">
+    <div class="offer-head">
+      <span class="offer-num">02</span>
+      <div class="offer-meta">
+        <p class="offer-name">Board-Level Advisory</p>
+        <p class="offer-summary">Independent judgement in high-stakes decisions where internal certainty may be misleading. For boards navigating vendor dependencies, AI deployment at scale, or decisions where governance documents are not sufficient.</p>
+      </div>
+    </div>
+    <div class="offer-foot">
+      <p class="offer-solves">The most dangerous failures are the ones the organisation cannot see from the inside.</p>
       <a href="services.html#advisory" class="btn-ghost">View</a>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Ongoing Integrity Oversight</p>
-      <p class="svc-body">Continued visibility across critical systems, decision structures, and intervention capability.</p>
+  </div>
+
+  <div class="offer reveal">
+    <div class="offer-head">
+      <span class="offer-num">03</span>
+      <div class="offer-meta">
+        <p class="offer-name">Ongoing Integrity Oversight</p>
+        <p class="offer-summary">Continued visibility across critical systems, decision structures, and intervention capability. For organisations running multiple consequential systems that want a standing independent view as exposure evolves.</p>
+      </div>
+    </div>
+    <div class="offer-foot">
+      <p class="offer-solves">Intervention capability decays the moment it stops being tested.</p>
       <a href="services.html#oversight" class="btn-ghost">View</a>
     </div>
   </div>
+
 </div>
 </section>
 
@@ -485,75 +237,39 @@
   </div>
   <p class="reveal" style="max-width:640px;margin-bottom:32px;">The crisis begins the moment a system fails. Authority to stop it travels upward through people who cannot act. By the time it reaches the board, the moment for low-cost intervention has passed. What follows is damage limitation.</p>
 
-  <div class="ctd reveal">
-
-    <div class="ctd-m ctd-m1">
-      <div>
-        <span class="ctd-stamp">T<span class="g">+</span>0</span>
-        <span class="ctd-step-name">System Event</span>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-node">T+0</div>
+      <div class="tl-body">
+        <div class="tl-label">System event</div>
+        <div class="tl-text">An AI-driven decision produces outputs outside expected parameters. The system runs on. No signal has reached executive level. No one with authority to act has been told.</div>
       </div>
+      <div class="tl-time">Intervention possible</div>
     </div>
-    <div class="ctd-c ctd-c1">
-      <span class="ctd-track-name">The crisis</span>
-      <p class="ctd-c-body">An AI-driven decision produces outputs outside expected parameters. The system runs on.</p>
-    </div>
-    <div class="ctd-a ctd-a1">
-      <span class="ctd-track-name">Authority</span>
-      <p class="ctd-a-body">Board unaware. No signal has reached executive level. No one with authority to act has been told.</p>
-    </div>
-
-    <div class="ctd-m ctd-m2">
-      <div>
-        <span class="ctd-stamp">T<span class="g">+</span>6<span class="g">h</span></span>
-        <span class="ctd-step-name">Operations</span>
+    <div class="tl-item">
+      <div class="tl-node">T+6h</div>
+      <div class="tl-body">
+        <div class="tl-label">Operations</div>
+        <div class="tl-text">Deviation noticed. Damage accumulating. The decision is still running. Signal reaches operations, but the first person in the chain lacks authority to halt the system. Escalation route unclear.</div>
       </div>
+      <div class="tl-time">Intervention possible</div>
     </div>
-    <div class="ctd-c ctd-c2">
-      <p class="ctd-c-body">Deviation noticed. Damage accumulating. Decision still running. Escalation route unclear.</p>
-    </div>
-    <div class="ctd-a ctd-a2">
-      <p class="ctd-a-body">Signal reaches operations. First person in the chain lacks authority to halt the system.</p>
-    </div>
-
-    <div class="ctd-m ctd-m3">
-      <div>
-        <span class="ctd-stamp">T<span class="g">+</span>18<span class="g">h</span></span>
-        <span class="ctd-step-name">Management</span>
+    <div class="tl-item">
+      <div class="tl-node">T+18h</div>
+      <div class="tl-body">
+        <div class="tl-label">Management</div>
+        <div class="tl-text">Still running. Cost compounding with every hour. Issue received at management level. Authority to act uncertain. Escalation continues upward. The window of low-cost intervention is closing.</div>
       </div>
+      <div class="tl-time">Window closing</div>
     </div>
-    <div class="ctd-c ctd-c3">
-      <p class="ctd-c-body">Still running. Cost compounding with every hour. The window of low-cost intervention is closing.</p>
-    </div>
-    <div class="ctd-a ctd-a3">
-      <p class="ctd-a-body">Issue received at management level. Authority to act uncertain. Escalation continues upward.</p>
-    </div>
-
-    <div class="ctd-w">
-      <div class="ctd-w-open">
-        <span class="ctd-w-open-text">Intervention possible</span>
-        <div class="ctd-w-rule"></div>
+    <div class="tl-item crit">
+      <div class="tl-node">T+36h</div>
+      <div class="tl-body">
+        <div class="tl-label">Board</div>
+        <div class="tl-text">Uncontainable. Regulatory exposure. Reputational damage. Financial liability. The board is informed. The intervention window has already closed. They are not a safeguard. They are a witness.</div>
       </div>
-      <div class="ctd-w-closed">
-        <span class="ctd-w-x">&#x2715;</span>
-        <span class="ctd-w-closed-text">Window closed</span>
-      </div>
+      <div class="tl-time">Window closed</div>
     </div>
-
-    <div class="ctd-m ctd-m4 ctd-break">
-      <div>
-        <span class="ctd-stamp">T+36<span style="font-size:0.55em;font-weight:800;vertical-align:baseline;">h+</span></span>
-        <span class="ctd-step-name">Board</span>
-      </div>
-    </div>
-    <div class="ctd-c ctd-c4 ctd-break">
-      <span class="ctd-track-name">The crisis</span>
-      <p class="ctd-c-body">Uncontainable. Regulatory exposure. Reputational damage. Financial liability. The cost of discovery is no longer manageable.</p>
-    </div>
-    <div class="ctd-a ctd-a4 ctd-break">
-      <span class="ctd-track-name">Authority</span>
-      <p class="ctd-a-body">The board is informed. The intervention window has already closed. They are not a safeguard. They are a witness.</p>
-    </div>
-
   </div>
 
   <div class="pull-quote reveal">
