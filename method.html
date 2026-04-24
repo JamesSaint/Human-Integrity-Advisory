@@ -90,38 +90,108 @@
 <div class="page-wrap">
   <div class="section-hd reveal"><span class="section-num">02</span><span class="section-label">Eight dimensions of control</span><div class="section-rule"></div></div>
   <p class="reveal" style="max-width:660px;margin-bottom:32px;">Every assessment tests eight dimensions. These are the conditions that determine whether control is real or inherited from a document no one has stress-tested.</p>
-  <div class="grid-3 reveal">
-    <div class="svc-card">
-      <p class="svc-title">Signal</p>
-      <p class="svc-body">Does the system surface the conditions that require human attention, clearly and in time?</p>
+  <style>
+  .dim-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .dim-cell {
+    background: var(--surface);
+    padding: 32px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 196px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.15s;
+  }
+  .dim-cell:hover { background: var(--surface2); }
+  .dim-cell::before {
+    content: attr(data-n);
+    position: absolute;
+    top: -4px; right: 14px;
+    font-size: 5.5rem;
+    font-weight: 800;
+    color: rgba(201,182,148,0.055);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+  .dim-cell:hover::before { color: rgba(201,182,148,0.10); }
+  .dim-cell-num {
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .dim-cell-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .dim-cell-body {
+    font-size: 0.82rem;
+    color: var(--text-sub);
+    line-height: 1.75;
+    flex: 1;
+  }
+  @media (max-width: 840px) {
+    .dim-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .dim-grid { grid-template-columns: 1fr; }
+    .dim-cell { min-height: auto; }
+  }
+  </style>
+  <div class="dim-grid reveal">
+    <div class="dim-cell" data-n="01">
+      <p class="dim-cell-num">01</p>
+      <p class="dim-cell-title">Signal</p>
+      <p class="dim-cell-body">Does the system surface the conditions that require human attention, clearly and in time?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Escalation</p>
-      <p class="svc-body">Does a signal reach the person with authority to act before the window to act has closed?</p>
+    <div class="dim-cell" data-n="02">
+      <p class="dim-cell-num">02</p>
+      <p class="dim-cell-title">Escalation</p>
+      <p class="dim-cell-body">Does a signal reach the person with authority to act before the window to act has closed?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Decision</p>
-      <p class="svc-body">Can the decision actually be made under pressure, with incomplete information and real constraints?</p>
+    <div class="dim-cell" data-n="03">
+      <p class="dim-cell-num">03</p>
+      <p class="dim-cell-title">Decision</p>
+      <p class="dim-cell-body">Can the decision be made under pressure, with incomplete information and real constraints?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Intervention</p>
-      <p class="svc-body">Can action be taken at the moment it matters, not after the consequence has compounded?</p>
+    <div class="dim-cell" data-n="04">
+      <p class="dim-cell-num">04</p>
+      <p class="dim-cell-title">Intervention</p>
+      <p class="dim-cell-body">Can action be taken at the moment it matters, not after the consequence has compounded?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Accountability</p>
-      <p class="svc-body">Is responsibility assigned in practice, not only on paper? Does it survive organisational change?</p>
+    <div class="dim-cell" data-n="05">
+      <p class="dim-cell-num">05</p>
+      <p class="dim-cell-title">Accountability</p>
+      <p class="dim-cell-body">Is responsibility assigned in practice, not only on paper? Does it survive organisational change?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Human oversight</p>
-      <p class="svc-body">Is oversight informed, authorised, and capable of altering outcomes? Or is it ceremonial?</p>
+    <div class="dim-cell" data-n="06">
+      <p class="dim-cell-num">06</p>
+      <p class="dim-cell-title">Human oversight</p>
+      <p class="dim-cell-body">Is oversight informed, authorised, and capable of altering outcomes? Or is it ceremonial?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Auditability</p>
-      <p class="svc-body">Is the decision trail complete, reliable, and defensible to the people who will later ask what happened?</p>
+    <div class="dim-cell" data-n="07">
+      <p class="dim-cell-num">07</p>
+      <p class="dim-cell-title">Auditability</p>
+      <p class="dim-cell-body">Is the decision trail complete, reliable, and defensible to the people who will later ask what happened?</p>
     </div>
-    <div class="svc-card">
-      <p class="svc-title">Capacity</p>
-      <p class="svc-body">Are the people, authority, and resources required to act actually present when the moment arrives?</p>
+    <div class="dim-cell" data-n="08">
+      <p class="dim-cell-num">08</p>
+      <p class="dim-cell-title">Capacity</p>
+      <p class="dim-cell-body">Are the people, authority, and resources required to act actually present when the moment arrives?</p>
     </div>
   </div>
 </div>
