@@ -1,5 +1,5 @@
 /* ============================================================
-   HIA · Human Integrity Advisory · Global Stylesheet v4
+   Intervene Advisory · Global Stylesheet v4
    Theme: Black / White / Gold #C9B694 · Montserrat
    Breakpoints: 480 · 768 · 1024
    Contrast targets: body ≥ 7:1 · sub ≥ 4.5:1 · faint ≥ 3:1
@@ -431,7 +431,7 @@ ul, ol { list-style: none; padding: 0; }
 .block p:last-child { margin-bottom: 0; }
 .block-ghost { position: relative; overflow: hidden; }
 .block-ghost::after {
-  content: 'HIA';
+  content: 'INT';
   position: absolute;
   right: -4px;
   bottom: -20px;
@@ -1084,7 +1084,7 @@ ul, ol { list-style: none; padding: 0; }
 .stmt-dot:hover { background: var(--gold); }
 
 /* ══════════════════════════════════════
-   HIA MARK SECTION DIVIDER
+   INTERVENE MARK SECTION DIVIDER
 ══════════════════════════════════════ */
 .mark-divider {
   display: flex;

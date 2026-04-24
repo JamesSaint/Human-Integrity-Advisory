@@ -1,6 +1,6 @@
-# HIA favicon pack
+# Intervene favicon pack
 
-This pack has been regenerated from the new HIA logo icon.
+This pack has been regenerated from the new Intervene logo icon.
 
 ## Included
 - Standard favicons: 16x16, 32x32, 48x48, 64x64, 96x96, favicon.ico

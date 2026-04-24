@@ -1,4 +1,4 @@
-# Human Integrity Advisory
+# Intervene Advisory
 
 ![Status](https://img.shields.io/badge/status-active-blue)
 ![Focus](https://img.shields.io/badge/focus-AI%20Intervention%20%26%20Governance-003366)
@@ -7,15 +7,21 @@
 
 ## Overview
 
-Human Integrity Advisory (HIA) is an independent integrity advisory for high-stakes decisions. The practice addresses a specific question most governance frameworks leave untested: **can your organisation detect, escalate, decide, and intervene before failure becomes irreversible?**
+Intervene Advisory is an independent advisory practice for high-stakes decisions. The practice addresses a specific question most governance frameworks leave untested: **can your organisation detect, escalate, decide, and intervene before failure becomes irreversible?**
 
-HIA operates in the gap between governance design and operational reality. Policy defines what should happen. HIA tests whether it can.
+Intervene operates in the gap between governance design and operational reality. Policy defines what should happen. Intervene tests whether it can.
 
 The live site is hosted at:
 
 **https://jamessaint.github.io/Human-Integrity-Advisory/**
 
-## What HIA Does
+## Operational Layers
+
+- **Intervene Core** -- The proprietary assessment engine. Tests whether intervention is actually possible under real-world conditions of time, dependency, evidence, and control. Not a product sold to clients. It is how Intervene structures assessments.
+- **Intervene Labs** -- Simulation and pressure-testing capability. Where governance assumptions are tested against operational reality.
+- **Intervene Advisory** -- Senior advisory practice. Independent judgement for boards and executives facing high-stakes decisions.
+
+## What Intervene Does
 
 Three services. One question.
 
@@ -24,8 +30,6 @@ Three services. One question.
 - **Ongoing Integrity Oversight** -- Continued visibility across critical systems, decision structures, and intervention capability.
 
 Engagements follow a three-stage model: **Exposure**, **Reality Testing**, **Decision Support**. Each stage produces a defined output before the next begins.
-
-HIA uses **AGDA** (Adaptive Governance and Decision Architecture), a proprietary assessment engine that tests whether intervention is actually possible under real-world conditions of time, dependency, evidence, and control. AGDA is not a product sold to clients. It is the structured method by which HIA conducts assessments.
 
 All advisory work is confidential and off record unless explicitly agreed otherwise in writing.
 
@@ -36,7 +40,7 @@ Five public pages, three legal pages, one internal reference page.
 ```
 /
 ├── index.html              # Homepage -- positioning, services overview, authority chain
-├── method.html             # Assessment engine, eight dimensions, three-stage engagement
+├── method.html             # Intervene Core, eight dimensions, three-stage engagement
 ├── services.html           # Three service lines with Who/Reveals/Receives structure
 ├── about.html              # Founder, values, independence, sectors
 ├── contact.html            # Enquiry form (Formspree)

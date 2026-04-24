@@ -1,4 +1,4 @@
-/* hia.js — Human Integrity Advisory v5 */
+/* hia.js — Intervene Advisory v5 */
 (function () {
   'use strict';
 
