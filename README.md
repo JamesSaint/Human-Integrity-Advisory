@@ -7,57 +7,68 @@
 
 ## Overview
 
-Human Integrity Advisory (HIA) is an independent advisory practice focused on a specific and underserved question: **can your organisation actually intervene when an AI-driven system fails?**
+Human Integrity Advisory (HIA) is an independent integrity advisory for high-stakes decisions. The practice addresses a specific question most governance frameworks leave untested: **can your organisation detect, escalate, decide, and intervene before failure becomes irreversible?**
 
-Most AI governance programmes produce policy frameworks that define what *should* happen. HIA operates in the space that governance design cannot reach — the moment of live system failure — assessing whether the people responsible for oversight can identify, escalate, and act under real operational conditions.
+HIA operates in the gap between governance design and operational reality. Policy defines what should happen. HIA tests whether it can.
 
 The live site is hosted at:
 
 **https://jamessaint.github.io/Human-Integrity-Advisory/**
 
-This repository provides the public website codebase, deployed via GitHub Pages.
-
 ## What HIA Does
 
-Governance frameworks define intent. HIA tests whether that intent can be enacted.
+Three services. One question.
 
-Three focused service lines:
+- **Exposure Assessment** -- One system. One scenario. A clear view of where intervention breaks.
+- **Board-Level Advisory** -- Independent judgement in high-stakes decisions where internal certainty may be misleading.
+- **Ongoing Integrity Oversight** -- Continued visibility across critical systems, decision structures, and intervention capability.
 
-- **Boardroom Integrity Advisory** — Senior advisory to boards and executive leadership on whether they have the clarity, information, and authority to act when AI governance is tested.
-- **Intervention & Decision Architecture Review** — Structured assessment of escalation, override, and authority in AI-dependent operations. We identify where the architecture fails before a system event does.
-- **Executive Intervention Labs** — Facilitated scenario-based work with senior leadership, structured to expose genuine inability to act — and to leave leadership materially better equipped.
+Engagements follow a three-stage model: **Exposure**, **Reality Testing**, **Decision Support**. Each stage produces a defined output before the next begins.
+
+HIA uses **AGDA** (Adaptive Governance and Decision Architecture), a proprietary assessment engine that tests whether intervention is actually possible under real-world conditions of time, dependency, evidence, and control. AGDA is not a product sold to clients. It is the structured method by which HIA conducts assessments.
 
 All advisory work is confidential and off record unless explicitly agreed otherwise in writing.
 
-## Repository Structure
+## Site Architecture
+
+Six public pages, three legal pages, one internal reference page.
 
 ```
 /
-├── index.html                  # Homepage
-├── about.html                  # About HIA
-├── services.html               # Service lines and engagement model
-├── contact.html                # Enquiry form
-├── terms.html                  # Terms and conditions
-├── privacy.html                # Privacy policy
-├── gdpr.html                   # GDPR statement
-├── brand-sheet.html            # Internal brand reference (noindex)
-├── style.css                   # Site styles
-├── robots.txt                  # Crawl directives
-├── sitemap.xml                 # Public page index
+├── index.html              # Homepage -- positioning, thesis, authority chain visualisation
+├── how-we-see.html         # AGDA -- proprietary assessment engine (8 dimensions, 6 criteria)
+├── services.html           # Three service lines with Who/Reveals/Receives structure
+├── how-it-works.html       # Three-stage engagement model (Exposure, Reality Testing, Decision Support)
+├── about.html              # Founder, values, sectors, proprietary method
+├── contact.html            # Enquiry form (Formspree) -- selective entry point
+├── terms.html              # Terms and conditions
+├── privacy.html            # Privacy policy
+├── gdpr.html               # GDPR statement
+├── brand-sheet.html        # Internal brand reference (noindex)
+├── hia.css                 # Site styles
+├── hia.js                  # Reveal animations, counter animations, hamburger menu
+├── robots.txt              # Crawl directives
+├── sitemap.xml             # Public page index
 └── assets/
-    └── images/
-        ├── favicons/           # Favicon set and webmanifest
-        ├── logo/               # Logo variants (SVG, PNG, AI)
-        └── linkedin/           # LinkedIn-formatted brand assets
+    ├── images/
+    │   ├── favicons/       # Favicon set and webmanifest
+    │   ├── logo/           # Logo variants (SVG, PNG, AI)
+    │   ├── linkedin/       # LinkedIn-formatted brand assets
+    │   ├── hero-bg.png     # Homepage hero background
+    │   └── hero-bg.jpg     # Homepage hero background (fallback)
+    └── og/
+        └── og-home.png     # Open Graph image (1200x630)
 ```
 
 ## Brand and Design
 
 - **Typeface**: Montserrat (300, 400, 500, 600, 700, 800)
-- **Surfaces**: Black `#000000`, Page BG `#0a0a0a`, Surface `#141414`
+- **Surfaces**: Black `#000000`, Page BG `#0a0a0a`, Surface `#141414`, Surface2 `#1c1c1c`
 - **Accent**: Gold `#C9B694`
-- **Design principle**: Dark, minimal, architecturally sharp — no rounded corners, no gradients, no decorative flourishes
-- **No build process or framework dependencies** — plain HTML, CSS, and vanilla JavaScript only
+- **Text**: Primary `#f0f0f0`, Body `#c8c6c4`, Sub `#a8a5a2`, Faint `#797673`
+- **Design**: Dark, minimal, architecturally sharp. No rounded corners, no gradients, no decorative flourishes.
+- **Voice**: Board-grade. No em dashes, no exclamation marks. Calm, authoritative, concrete. Sceptical of false control.
+- **No build process or framework dependencies**. Plain HTML, CSS, and vanilla JavaScript only.
 
 Full brand token reference is in `brand-sheet.html`.
 
@@ -67,15 +78,13 @@ Every public page includes:
 
 - Unique `<title>` and meta description
 - Canonical URL pointed to `jamessaint.github.io/Human-Integrity-Advisory`
-- `index, follow` robots directive on public pages; `noindex, nofollow` on utility pages
+- `index, follow` robots directive on public pages; `noindex, nofollow` on legal and utility pages
 - Full Open Graph tag set (og:title, og:description, og:url, og:image, og:image:alt)
-- Twitter/X card tags
+- Twitter/X card tags (summary_large_image)
 - JSON-LD structured data appropriate to each page type
 - Favicon set, webmanifest, and theme-color
 
-OG images are served from `assets/og/` and must be 1200×630px PNG. See `06_OG_IMAGE_BRIEF.md` in the associated SEO bundle for design specifications.
-
-The sitemap at `sitemap.xml` lists the four canonical public pages only. Utility pages (terms, privacy, gdpr) are excluded.
+OG images are served from `assets/og/` and should be 1200x630px PNG.
 
 ## Local Development
 
@@ -85,6 +94,12 @@ git clone https://github.com/jamessaint/Human-Integrity-Advisory.git
 
 Open any HTML file directly in a browser. No tooling, build step, or local server required.
 
+For live reload during development, any static file server works:
+
+```bash
+npx serve .
+```
+
 ## Deployment
 
 Changes pushed to the `main` branch publish automatically via GitHub Pages to:
@@ -93,15 +108,6 @@ Changes pushed to the `main` branch publish automatically via GitHub Pages to:
 
 When a custom domain is configured, update all canonical URLs, OG URLs, schema URLs, `robots.txt`, and `sitemap.xml` to reflect the new domain before going live.
 
-## Roadmap
-
-- OG image set (`assets/og/`) — specs defined, images pending production
-- Advisory briefs section for published governance insights
-- Board-ready one-page summary document
-- Governance maturity diagnostic tool
-- Anonymised case study references
-
 ## License
 
 All content is proprietary to **James Saint**. Viewing is permitted. Reuse, reproduction, or redistribution is not permitted without explicit written consent.
-
