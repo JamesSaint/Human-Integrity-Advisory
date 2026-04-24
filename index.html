@@ -76,44 +76,6 @@
 .hero-triad { margin-top: 52px; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); opacity: 0; animation: h-in 0.65s ease forwards 0.8s; }
 @keyframes h-in { to { opacity: 1; transform: none; } }
 
-/* ── THE GAP ─────────────────────────────────────────────── */
-.gap-infographic {
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  gap: 0; border: 1px solid var(--border); background: var(--border); margin-top: 32px;
-}
-.gap-col-left, .gap-col-right {
-  background: var(--surface2); padding: clamp(20px,3vw,32px);
-  display: flex; flex-direction: column; gap: 8px;
-}
-.gap-col-right { border-left: 2px solid var(--gold); }
-.gap-mid {
-  background: var(--surface); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; padding: 16px 12px; gap: 10px; width: 100px;
-}
-.gap-col-heading { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 10px; }
-.gap-col-heading.muted  { color: var(--text-sub); }
-.gap-col-heading.bright { color: var(--gold); }
-.gap-row {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 9px 12px; font-size: 0.88rem; color: var(--text-sub); line-height: 1.5;
-  transition: border-color 0.2s, color 0.2s;
-}
-.gap-col-left:hover .gap-row  { border-color: var(--border-mid); }
-.gap-col-right .gap-row       { color: var(--text-body); border-color: var(--border-mid); }
-.gap-col-right .gap-row:hover { border-color: var(--gold); }
-.gap-divider-label {
-  background: var(--gold); color: #000;
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; padding: 7px 8px; text-align: center; width: 100%;
-}
-.gap-arrow-line { width: 1px; flex: 1; min-height: 24px; background: var(--border); }
-.gap-arrow-tip  { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--gold-dim); }
-.gap-note-text { font-size: 0.75rem; font-style: italic; color: var(--text-faint); margin-top: 10px; line-height: 1.65; }
-@media (max-width: 640px) {
-  .gap-infographic { grid-template-columns: 1fr; }
-  .gap-mid { flex-direction: row; width: 100%; padding: 10px 20px; }
-  .gap-col-right { border-left: none; border-top: 2px solid var(--gold); }
-}
 
 
 
@@ -187,34 +149,28 @@
       </div>
     </div>
   </div>
-  <div class="reveal" style="margin-top:32px;">
-    <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--text-sub);margin-bottom:20px;text-align:center;">Where the failure lives</p>
-    <div class="gap-infographic">
-      <div class="gap-col-left">
-        <p class="gap-col-heading muted">Governance Design Layer</p>
-        <div class="gap-row">Ethics frameworks and risk charters</div>
-        <div class="gap-row">Board oversight structures</div>
-        <div class="gap-row">Escalation protocols, documented</div>
-        <div class="gap-row">Override authority, defined in writing</div>
-        <div class="gap-row">Compliance programmes and audit structures</div>
-        <p class="gap-note-text">Well-designed. Rigorously documented. Incapable, by itself, of ensuring a board can act when it needs to.</p>
-      </div>
-      <div class="gap-mid">
-        <div class="gap-arrow-line"></div>
-        <div class="gap-arrow-tip"></div>
-        <div class="gap-divider-label">THE<br>GAP</div>
-        <div class="gap-arrow-tip" style="transform:rotate(180deg);border-top:none;border-bottom:7px solid var(--gold-dim);"></div>
-        <div class="gap-arrow-line"></div>
-      </div>
-      <div class="gap-col-right">
-        <p class="gap-col-heading bright">HIA: Intervention Layer</p>
-        <div class="gap-row">Can the board identify failure in time?</div>
-        <div class="gap-row">Is authority clear enough to act under pressure?</div>
-        <div class="gap-row">Do escalation paths function under real conditions?</div>
-        <div class="gap-row">Can overrides be enacted at operational speed?</div>
-        <div class="gap-row">Is information adequate to diagnose and act?</div>
-        <p class="gap-note-text" style="color:var(--text-sub);">Policy governs intent. HIA tests whether that intent survives contact with reality.</p>
-      </div>
+  <div class="grid-2 reveal" style="margin-top:32px;">
+    <div class="block">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:14px;">What governance produces</p>
+      <ul class="dash-list">
+        <li>Ethics frameworks and risk charters</li>
+        <li>Board oversight structures</li>
+        <li>Escalation protocols, documented</li>
+        <li>Override authority, defined in writing</li>
+        <li>Compliance programmes and audit structures</li>
+      </ul>
+      <p style="font-size:0.82rem;font-style:italic;color:var(--text-faint);margin-top:16px;line-height:1.65;">Well-designed. Rigorously documented. Incapable, by itself, of ensuring a board can act when it needs to.</p>
+    </div>
+    <div class="block block-accent">
+      <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">What HIA tests</p>
+      <ul class="dash-list">
+        <li>Can the board identify failure in time?</li>
+        <li>Is authority clear enough to act under pressure?</li>
+        <li>Do escalation paths function under real conditions?</li>
+        <li>Can overrides be enacted at operational speed?</li>
+        <li>Is information adequate to diagnose and act?</li>
+      </ul>
+      <p style="font-size:0.82rem;font-style:italic;color:var(--text-sub);margin-top:16px;line-height:1.65;">Policy governs intent. HIA tests whether that intent survives contact with reality.</p>
     </div>
   </div>
 </div>
