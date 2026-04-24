@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AGDA — AI Governance, Measured. Verified.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAFA;
+    --paper-2:#F3F2EF;
+    --ink:#0A0A0A;
+    --ink-2:#3D3D3D;
+    --ink-3:#767676;
+    --line:rgba(10,10,10,0.12);
+    --line-2:rgba(10,10,10,0.06);
+    --accent:#1E40AF;
+    --accent-2:#2952DE;
+    --accent-ghost:rgba(30,64,175,0.07);
+    --signal:#067647;
+    --signal-ghost:rgba(6,118,71,0.08);
+    --warn:#B8342A;
+    --code-bg:#0D0D0D;
+    --code-fg:#F3F2EF;
+    --code-dim:#A1A1A1;
+    --code-blue:#7DB3FF;
+    --code-green:#7EE09F;
+    --code-red:#FF7B7B;
+    --display:'Instrument Serif', 'Times New Roman', serif;
+    --sans:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11";line-height:1.5}
+  a{color:inherit;text-decoration:none}
+
+  /* Header */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(250,250,250,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2)}
+  .nav__inner{max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--display);font-size:26px;letter-spacing:-0.015em;font-weight:400}
+  .logo sup{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;color:var(--ink-3);margin-left:4px;vertical-align:super;font-weight:500;top:-0.6em;position:relative}
+  .nav__links{display:flex;gap:28px;font-size:13.5px;color:var(--ink-2);font-weight:400}
+  .nav__links a{transition:color .15s}
+  .nav__links a:hover{color:var(--ink)}
+  .nav__cta{font-family:var(--mono);font-size:12px;background:var(--ink);color:var(--paper);padding:9px 16px;font-weight:500;letter-spacing:-0.005em;transition:background .2s}
+  .nav__cta:hover{background:var(--accent)}
+  @media (max-width:900px){.nav__links{display:none}}
+
+  /* Layout */
+  section{padding:88px 32px;border-bottom:1px solid var(--line-2)}
+  .wrap{max-width:1240px;margin:0 auto}
+  .section-label{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .section-label::before{content:"";width:24px;height:1px;background:var(--accent)}
+
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-0.02em}
+  h1{font-size:clamp(52px,7vw,112px);letter-spacing:-0.03em;line-height:0.95}
+  h2{font-size:clamp(36px,4.6vw,68px);letter-spacing:-0.025em}
+  h3{font-size:clamp(22px,2vw,32px);letter-spacing:-0.012em;line-height:1.1}
+  h4{font-size:18px;font-family:var(--sans);font-weight:500;letter-spacing:-0.008em;line-height:1.3}
+  p{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:64ch}
+  .lead{font-size:22px;line-height:1.4;color:var(--ink);max-width:62ch;font-weight:400}
+  em.acc{font-style:italic;color:var(--accent);font-family:var(--display)}
+  strong{font-weight:600;color:var(--ink)}
+
+  /* HERO */
+  .hero{padding:48px 32px 88px;position:relative;overflow:hidden}
+  .hero__grid{display:grid;grid-template-columns:1.35fr 1fr;gap:72px;align-items:end;max-width:1240px;margin:0 auto}
+  .hero__meta{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:20px;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+  .hero__meta span::before{content:"· ";color:var(--line)}
+  .hero__meta span:first-child::before{content:""}
+  .hero h1{margin-bottom:32px}
+  .hero h1 em.acc{font-size:0.92em}
+  .hero__sub{font-size:20px;color:var(--ink-2);line-height:1.5;max-width:54ch;margin-bottom:40px;font-weight:400}
+  .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+  .btn{font-family:var(--sans);font-size:14px;font-weight:500;padding:14px 22px;border-radius:2px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:0}
+  .btn--primary{background:var(--ink);color:var(--paper)}
+  .btn--primary:hover{background:var(--accent)}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn--ghost:hover{border-color:var(--ink);background:var(--paper-2)}
+  .btn__arrow{font-family:var(--mono);font-size:14px;line-height:1}
+  .hero__badges{display:flex;gap:28px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;color:var(--ink-3);flex-wrap:wrap}
+  .hero__badges span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--signal);display:inline-block}
+
+  @media (max-width:900px){.hero__grid{grid-template-columns:1fr;gap:48px}}
+
+  /* Terminal block (attestation preview) */
+  .terminal{background:var(--code-bg);color:var(--code-fg);font-family:var(--mono);font-size:13px;line-height:1.6;padding:24px 28px;border-radius:4px;box-shadow:0 20px 60px -20px rgba(10,10,10,0.35),0 0 0 1px rgba(255,255,255,0.04);position:relative}
+  .terminal__bar{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--code-dim)}
+  .terminal__dots{display:flex;gap:6px}
+  .terminal__dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.1)}
+  .terminal__dots span:first-child{background:#FF6158}
+  .terminal__dots span:nth-child(2){background:#FFBE2E}
+  .terminal__dots span:nth-child(3){background:#28C840}
+  .terminal .prompt{color:var(--code-dim)}
+  .terminal .cmd{color:var(--code-fg)}
+  .terminal .key{color:var(--code-blue)}
+  .terminal .val{color:var(--code-fg)}
+  .terminal .ok{color:var(--code-green)}
+  .terminal .bad{color:var(--code-red)}
+  .terminal .dim{color:var(--code-dim)}
+  .terminal .comment{color:var(--code-dim);font-style:italic}
+  .terminal .line{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:2px 0}
+  .terminal .line .k{color:var(--code-dim)}
+  .terminal__foot{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:var(--code-dim);letter-spacing:0.04em;display:flex;justify-content:space-between}
+
+  /* problem */
+  .problem-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+  @media (max-width:900px){.problem-grid{grid-template-columns:1fr;gap:48px}}
+  .problem-grid .pull{font-family:var(--display);font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-0.018em;font-weight:400;max-width:22ch}
+  .problem-grid .pull em{font-style:italic;color:var(--accent)}
+
+  /* Chain */
+  .chain{display:grid;grid-template-columns:repeat(4,1fr) 1.2fr;gap:0;margin-top:40px;border:1px solid var(--line)}
+  .chain__node{padding:28px 24px;border-right:1px solid var(--line-2);position:relative}
+  .chain__node:last-child{border-right:0;background:var(--accent);color:var(--paper)}
+  .chain__node:last-child .n,.chain__node:last-child .d{color:var(--paper)}
+  .chain__node .n{font-family:var(--mono);font-size:10.5px;letter-spacing:0.16em;color:var(--accent);font-weight:500;margin-bottom:12px;display:block}
+  .chain__node:last-child .n{color:rgba(250,250,250,0.7)}
+  .chain__node h4{font-family:var(--display);font-size:26px;font-weight:400;line-height:1.1;margin-bottom:8px;letter-spacing:-0.01em}
+  .chain__node .d{font-size:13px;color:var(--ink-2);line-height:1.5}
+  @media (max-width:900px){.chain{grid-template-columns:1fr}.chain__node{border-right:0;border-bottom:1px solid var(--line-2)}}
+
+  /* Outputs */
+  .outputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:40px}
+  .output{padding:32px 28px;border:1px solid var(--line);background:var(--paper);transition:all .25s}
+  .output:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .output__tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:block;font-weight:500}
+  .output h3{margin-bottom:14px}
+  .output p{font-size:14.5px;margin-bottom:20px}
+  .output__list{border-top:1px solid var(--line-2);padding-top:16px;font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.9}
+  .output__list .item{display:flex;justify-content:space-between;padding:2px 0}
+  .output__list .item .v{color:var(--ink)}
+  @media (max-width:900px){.outputs{grid-template-columns:1fr}}
+
+  /* Verifiability */
+  .verif{background:var(--ink);color:var(--paper);padding:96px 32px;border-bottom:0}
+  .verif .section-label{color:#7DB3FF}
+  .verif .section-label::before{background:#7DB3FF}
+  .verif h2{color:var(--paper)}
+  .verif p{color:rgba(250,250,250,0.7)}
+  .verif__grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start;margin-top:48px}
+  @media (max-width:900px){.verif__grid{grid-template-columns:1fr}}
+  .verif__pts{display:flex;flex-direction:column;gap:24px}
+  .verif__pt{padding:20px 0;border-top:1px solid rgba(250,250,250,0.14)}
+  .verif__pt:first-child{border-top:1px solid rgba(250,250,250,0.28)}
+  .verif__pt .n{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:#7DB3FF;margin-bottom:6px;font-weight:500}
+  .verif__pt h4{color:var(--paper);font-size:20px;font-family:var(--display);font-weight:400;margin-bottom:6px;letter-spacing:-0.01em}
+  .verif__pt p{font-size:14px;line-height:1.55;max-width:58ch}
+
+  /* Regulatory map */
+  .regmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+  .reg{padding:24px 22px;border:1px solid var(--line);background:var(--paper)}
+  .reg__code{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--accent);font-weight:500;margin-bottom:10px;display:block}
+  .reg h4{font-family:var(--display);font-size:22px;font-weight:400;margin-bottom:6px;letter-spacing:-0.01em}
+  .reg p{font-size:13px;color:var(--ink-2);line-height:1.5}
+  @media (max-width:900px){.regmap{grid-template-columns:1fr}}
+
+  /* how */
+  .how{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line)}
+  .how__step{padding:32px 24px 24px 0;border-right:1px solid var(--line-2);position:relative}
+  .how__step:last-child{border-right:0}
+  .how__step .n{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--accent);font-weight:500;margin-bottom:14px}
+  .how__step h4{font-family:var(--display);font-size:22px;font-weight:400;margin-bottom:10px;letter-spacing:-0.01em}
+  .how__step p{font-size:13.5px;line-height:1.5}
+  @media (max-width:900px){.how{grid-template-columns:1fr}.how__step{border-right:0;border-bottom:1px solid var(--line-2);padding:24px 0}}
+
+  /* Pricing */
+  .pricing{background:var(--paper-2)}
+  .pricing__tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;margin-bottom:28px}
+  .tier{padding:36px 32px;background:var(--paper);border:1px solid var(--line);position:relative;display:flex;flex-direction:column;gap:22px}
+  .tier--feat{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .tier--feat p,.tier--feat li,.tier--feat .tier__note{color:rgba(250,250,250,0.75)}
+  .tier--feat .tier__price{color:var(--paper)}
+  .tier__badge{position:absolute;top:-10px;left:28px;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:4px 10px;font-weight:500}
+  .tier__name{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
+  .tier--feat .tier__name{color:rgba(250,250,250,0.6)}
+  .tier__price{font-family:var(--display);font-size:44px;font-weight:400;line-height:1;letter-spacing:-0.02em}
+  .tier__price small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--ink-3);font-weight:400;margin-top:8px;letter-spacing:0.12em;text-transform:uppercase}
+  .tier--feat .tier__price small{color:rgba(250,250,250,0.55)}
+  .tier__desc{font-size:14px;line-height:1.5}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px}
+  .tier li{font-size:13.5px;line-height:1.45;color:var(--ink-2);display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start}
+  .tier--feat li{color:rgba(250,250,250,0.82)}
+  .tier li::before{content:"→";color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:500;padding-top:1px}
+  .tier--feat li::before{color:#7DB3FF}
+  .tier__cta{margin-top:auto;padding-top:8px}
+  .tier__cta a{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;font-weight:500}
+  .tier--feat .tier__cta a{color:#7DB3FF;border-color:#7DB3FF}
+  .tier__note{font-size:11px;color:var(--ink-3);padding-top:12px;border-top:1px solid var(--line-2);margin-top:4px}
+  .tier--feat .tier__note{border-color:rgba(250,250,250,0.12)}
+
+  .addons{margin-top:40px;border-top:1px solid var(--line);padding-top:32px}
+  .addons__label{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:18px}
+  .addon-row{display:grid;grid-template-columns:1fr 1fr 160px;gap:24px;padding:16px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+  .addon-row h4{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:-0.01em}
+  .addon-row p{font-size:13.5px;margin:0}
+  .addon-row .p{font-family:var(--mono);font-size:13px;font-weight:500;text-align:right;color:var(--ink)}
+  .addon-row .p small{display:block;font-size:10px;color:var(--ink-3);letter-spacing:0.14em;text-transform:uppercase;margin-top:2px;font-weight:400}
+  @media (max-width:900px){.pricing__tiers{grid-template-columns:1fr}.addon-row{grid-template-columns:1fr;gap:6px}.addon-row .p{text-align:left}}
+
+  /* NOT */
+  .notlist{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+  .notitem{padding:22px 20px;border:1px solid var(--line);background:var(--paper)}
+  .notitem .x{font-family:var(--mono);font-size:11px;color:var(--warn);margin-bottom:8px;font-weight:500;letter-spacing:0.04em}
+  .notitem h4{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:-0.01em;margin-bottom:8px}
+  .notitem p{font-size:13px;color:var(--ink-2);line-height:1.5}
+  @media (max-width:900px){.notlist{grid-template-columns:1fr}}
+
+  /* Comparison table */
+  .cmp{margin-top:40px;width:100%;border-collapse:collapse}
+  .cmp th,.cmp td{text-align:left;padding:20px 20px;border-bottom:1px solid var(--line-2);font-size:14px;vertical-align:top}
+  .cmp thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .cmp .cat{font-family:var(--mono);font-size:11.5px;letter-spacing:0.08em;color:var(--ink-3);width:240px}
+  .cmp .name{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:-0.01em}
+  .cmp .desc{color:var(--ink-2);font-size:13.5px}
+  .cmp .us{color:var(--ink);font-weight:500;font-size:13.5px;line-height:1.5}
+  .cmp tr.agda-row{background:var(--accent-ghost)}
+  .cmp tr.agda-row .name{color:var(--accent)}
+
+  /* Pilot */
+  .pilot{background:var(--paper-2)}
+  .pilot__grid{display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:start}
+  @media (max-width:900px){.pilot__grid{grid-template-columns:1fr}}
+  .pilot-terms{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:24px;border-top:1px solid var(--line)}
+  .pilot-terms div{padding:18px 24px 18px 0;border-bottom:1px solid var(--line-2)}
+  .pilot-terms .k{font-family:var(--mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;font-weight:500}
+  .pilot-terms .v{font-size:14.5px;color:var(--ink);line-height:1.5}
+
+  /* Docs strip */
+  .docs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+  .doc{padding:24px 22px;border:1px solid var(--line);background:var(--paper);transition:all .2s;display:flex;flex-direction:column;gap:10px;min-height:180px}
+  .doc:hover{border-color:var(--ink)}
+  .doc__type{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;color:var(--accent);font-weight:500}
+  .doc h4{font-family:var(--display);font-size:22px;font-weight:400;letter-spacing:-0.012em;line-height:1.1}
+  .doc p{font-size:12.5px;color:var(--ink-2);line-height:1.5;flex:1}
+  .doc__link{font-family:var(--mono);font-size:11px;color:var(--ink);letter-spacing:0.04em;margin-top:auto}
+  .doc__link::after{content:" →";color:var(--accent)}
+  @media (max-width:900px){.docs{grid-template-columns:1fr 1fr}}
+
+  /* Footer */
+  footer{background:var(--ink);color:var(--paper);padding:64px 32px 32px;border-bottom:0}
+  .foot-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
+  .foot-grid .logo{color:var(--paper)}
+  .foot-col h5{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,250,250,0.5);margin-bottom:18px;font-weight:500}
+  .foot-col a{display:block;color:rgba(250,250,250,0.75);font-size:14px;padding:6px 0;transition:color .15s}
+  .foot-col a:hover{color:var(--paper)}
+  .foot-bottom{max-width:1240px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(250,250,250,0.12);display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:rgba(250,250,250,0.45);letter-spacing:0.06em}
+  @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+
+  /* Utility grid */
+  .g2{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+  @media (max-width:900px){.g2{grid-template-columns:1fr;gap:40px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="logo">AGDA<sup>™</sup></a>
+    <nav class="nav__links">
+      <a href="#what">What it does</a>
+      <a href="#verify">Verifiability</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#compare">Compare</a>
+      <a href="#docs">Docs</a>
+    </nav>
+    <a href="#pilot" class="nav__cta">Request a pilot →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__meta">
+      <span>Human Integrity Advisory</span>
+      <span>Engine v1.2.0</span>
+      <span>Released 2026-04-21</span>
+      <span>Thesis v1.0</span>
+    </div>
+    <div class="hero__grid">
+      <div>
+        <h1>AI governance is a <em class="acc">timing</em> problem.<br>AGDA measures it.</h1>
+        <p class="hero__sub">A deterministic scoring engine for AI intervention capability. Cryptographically signed outputs. Verifiable by any regulator in three lines of code — without trusting our servers.</p>
+        <div class="hero__ctas">
+          <a href="#pilot" class="btn btn--primary">Request a pilot <span class="btn__arrow">→</span></a>
+          <a href="#verify" class="btn btn--ghost">See a signed output <span class="btn__arrow">↓</span></a>
+        </div>
+        <div class="hero__badges">
+          <span><span class="dot"></span>Engine registry: public, append-only</span>
+          <span><span class="dot"></span>Ed25519 attestation</span>
+          <span><span class="dot"></span>491 tests passing</span>
+        </div>
+      </div>
+      <div>
+        <div class="terminal">
+          <div class="terminal__bar">
+            <div class="terminal__dots"><span></span><span></span><span></span></div>
+            <span>~ agda-verify</span>
+          </div>
+          <div><span class="prompt">$</span> <span class="cmd">agda verify report-BANK-SURV-2026-04-22.json</span></div>
+          <div style="margin-top:10px">
+            <div class="line"><span class="k">engine</span><span>agda-v1.2.0</span></div>
+            <div class="line"><span class="k">hash</span><span class="val">sha256:a7f3b21c9e4d8b7f...2e1b</span></div>
+            <div class="line"><span class="k">signed</span><span>2026-04-22T14:32:17Z</span></div>
+            <div class="line"><span class="k">signature</span><span class="val">ed25519:c4e8f11a…9f21</span></div>
+            <div class="line"><span class="k">registry</span><span class="ok">✓ entry found in engine-registry.jsonl</span></div>
+            <div class="line"><span class="k">key</span><span class="val">signing-key-2026-04-21-92b18307.pem</span></div>
+          </div>
+          <div style="margin-top:14px;padding:10px 12px;background:rgba(126,224,159,0.08);border-left:2px solid var(--code-green)">
+            <span class="ok">✓ SIGNATURE VALID</span> — output generated by authenticated AGDA engine
+          </div>
+          <div style="margin-top:12px">
+            <div><span class="comment">// verdict payload</span></div>
+            <div class="line"><span class="k">tti</span><span class="bad">after_impact</span></div>
+            <div class="line"><span class="k">classification</span><span class="bad">vendor_controlled_failure_risk</span></div>
+            <div class="line"><span class="k">chain_break</span><span class="val">escalation (score 1.8)</span></div>
+            <div class="line"><span class="k">obligations</span><span class="val">PRA SS1/23 §5.12; FCA CD §2.4</span></div>
+          </div>
+          <div class="terminal__foot">
+            <span>exit 0</span>
+            <span>agda.io/verify · public key registry</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="what">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div>
+        <div class="section-label">The core assertion</div>
+        <p class="pull">Governance is a <em>timed causal chain.</em> Effective governance is the chain completing inside the reversibility window under realistic conditions.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;padding-top:8px">
+        <p><strong>Signal → Escalation → Decision → Intervention.</strong> Each stage is necessary. None is sufficient. A claim of strong intervention capability when detection scores low is fiction — the signal never arrives, so the intervention capability is latent and untested.</p>
+        <p>Conformity frameworks assess the <em style="font-style:italic">presence</em> of governance artefacts. AGDA assesses whether governance can <em style="font-style:italic">arrive in time</em>.</p>
+        <p style="color:var(--ink-3);font-size:13px;font-family:var(--mono);padding-top:16px;border-top:1px solid var(--line-2);max-width:52ch">From AGDA Thesis v1.0 §1 — <a href="#docs" style="color:var(--accent);border-bottom:1px solid var(--accent)">read the full thesis</a></p>
+      </div>
+    </div>
+
+    <div class="chain">
+      <div class="chain__node">
+        <span class="n">01 — Signal</span>
+        <h4>Detection</h4>
+        <div class="d">Did the problem generate a detectable signal? Visibility, latency, distortion.</div>
+      </div>
+      <div class="chain__node">
+        <span class="n">02 — Escalation</span>
+        <h4>Movement</h4>
+        <div class="d">Did the signal reach an authority with decision rights? Routing, friction.</div>
+      </div>
+      <div class="chain__node">
+        <span class="n">03 — Decision</span>
+        <h4>Authority</h4>
+        <div class="d">Was a decision to intervene actually made? Clarity, confidence, evidence adequacy.</div>
+      </div>
+      <div class="chain__node">
+        <span class="n">04 — Intervention</span>
+        <h4>Action</h4>
+        <div class="d">Did it take effect before harm became irreversible? Override, reversibility, vendor dependency.</div>
+      </div>
+      <div class="chain__node">
+        <span class="n">Verdict</span>
+        <h4>Time to Intervention</h4>
+        <div class="d">before_impact · at_risk · after_impact — chain latency measured against the system's own reversibility window.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT AGDA PRODUCES -->
+<section>
+  <div class="wrap">
+    <div class="section-label">What AGDA produces</div>
+    <h2 style="max-width:20ch;margin-bottom:20px">Two levels of assessment. <em class="acc">One verdict.</em></h2>
+    <p style="max-width:64ch">AGDA operates at two granularities. The organisation level answers whether the governance chain arrives in time as a whole. The control level tests individual controls against realistic dependency, timing, override, and evidence conditions. Each output is cryptographically attested.</p>
+
+    <div class="outputs">
+      <div class="output">
+        <span class="output__tag">Org level — SEDI</span>
+        <h3>Assessment verdict</h3>
+        <p>Structured assessment across the four SEDI stages, producing a Time-to-Intervention verdict scored against the system's reversibility window.</p>
+        <div class="output__list">
+          <div class="item"><span>before_impact</span><span class="v" style="color:var(--signal)">●  green</span></div>
+          <div class="item"><span>at_risk</span><span class="v" style="color:#B8860B">●  amber</span></div>
+          <div class="item"><span>after_impact</span><span class="v" style="color:var(--warn)">●  red</span></div>
+        </div>
+      </div>
+      <div class="output">
+        <span class="output__tag">Control level — CRR™</span>
+        <h3>Control Reality Record</h3>
+        <p>For each critical control: a deterministic classification across seven terminals. Every terminal has a specific trigger and priority order.</p>
+        <div class="output__list">
+          <div class="item"><span>effective</span><span class="v">all gates pass</span></div>
+          <div class="item"><span>fragile</span><span class="v">degrades under pressure</span></div>
+          <div class="item"><span>dependent</span><span class="v">untested fallback</span></div>
+          <div class="item"><span>ineffective</span><span class="v">below threshold</span></div>
+          <div class="item"><span>vendor_controlled</span><span class="v">3rd-party gates</span></div>
+          <div class="item"><span>intervention_impossible</span><span class="v">reversibility failed</span></div>
+        </div>
+      </div>
+      <div class="output">
+        <span class="output__tag">Output — FER</span>
+        <h3>Failure Exposure Report</h3>
+        <p>Self-contained, attested HTML — designed to force a decision, not be filed in a drawer. Every finding traces to a specific regulatory article.</p>
+        <div class="output__list">
+          <div class="item"><span>Format</span><span class="v">HTML + JSON</span></div>
+          <div class="item"><span>Signature</span><span class="v">Ed25519</span></div>
+          <div class="item"><span>Verifiable</span><span class="v" style="color:var(--signal)">✓ offline</span></div>
+          <div class="item"><span>Immutable</span><span class="v">after submit</span></div>
+          <div class="item"><span>Traces to</span><span class="v">6 jurisdictions</span></div>
+          <div class="item"><span>40 named modes</span><span class="v">FM-001…FM-040</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFIABILITY (DARK) -->
+<section id="verify" class="verif">
+  <div class="wrap">
+    <div class="section-label">Verifiability</div>
+    <h2 style="max-width:22ch">Signed outputs. Verifiable <em class="acc" style="color:#7DB3FF;font-style:italic">without trusting us.</em></h2>
+    <p class="lead" style="color:rgba(250,250,250,0.75);margin-top:20px">Every AGDA output carries an Ed25519 signature committing to a specific engine hash. The hash is registered in a public, append-only log. Any regulator, auditor, or counterparty can verify an AGDA verdict against our public keys — without AGDA-proprietary tooling and without contacting our servers.</p>
+
+    <div class="verif__grid">
+      <div>
+        <div class="terminal">
+          <div class="terminal__bar">
+            <div class="terminal__dots"><span></span><span></span><span></span></div>
+            <span>verify.ts</span>
+          </div>
+          <div><span class="comment">// Three lines. No AGDA dependency.</span></div>
+          <div style="margin-top:10px">
+            <div><span class="key">const</span> <span class="val">pub</span> <span class="dim">=</span> <span class="key">readPubKey</span>(<span class="ok">'signing-key-2026-04-21.pem'</span>);</div>
+            <div><span class="key">const</span> <span class="val">ok</span> <span class="dim">=</span> <span class="key">verify</span>(<span class="val">pub</span>, <span class="val">report.payload</span>, <span class="val">report.signature</span>);</div>
+            <div><span class="key">assert</span>(<span class="val">ok</span>, <span class="ok">'AGDA signature valid'</span>);</div>
+          </div>
+          <div class="terminal__foot">
+            <span>Node.js / Python / Go · stdlib crypto only</span>
+            <span>agda.io/verify</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="verif__pts">
+        <div class="verif__pt">
+          <div class="n">01 · Deterministic</div>
+          <h4>Same inputs always produce the same verdict</h4>
+          <p>The scoring engine is a pure function. 491 tests lock behaviour. A regulator re-running inputs on a signed engine build gets the same output, bit-identical.</p>
+        </div>
+        <div class="verif__pt">
+          <div class="n">02 · Signed at the engine</div>
+          <h4>Every output is cryptographically attested</h4>
+          <p>Canonical JSON of the verdict is signed at the moment of engine execution with a hardware-custody Ed25519 key. Signature commits to engine hash + input hash + output hash.</p>
+        </div>
+        <div class="verif__pt">
+          <div class="n">03 · Public key registry</div>
+          <h4>Keys are published, append-only</h4>
+          <p>All signing keys appear in <span style="font-family:var(--mono);color:#7DB3FF">engine-registry.jsonl</span> — open-source, cryptographically chained, rotated on schedule. Revocation events are permanent.</p>
+        </div>
+        <div class="verif__pt">
+          <div class="n">04 · Third-party verifiable</div>
+          <h4>No dependency on AGDA infrastructure</h4>
+          <p>Any regulator or counterparty can verify an AGDA output with standard cryptographic tooling. No API calls to our servers. No trust in our uptime. The verification survives us.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY MAPPING -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Regulatory mapping</div>
+    <div class="g2">
+      <div>
+        <h2 style="max-width:14ch">Every finding, <em class="acc">article-level.</em></h2>
+      </div>
+      <div>
+        <p>AGDA ships an article-level regulatory library across six jurisdictions. Every control gap, every chain break, every contradiction penalty is mapped to the specific obligation it engages. AGDA does not produce a conformity verdict — it produces evidence that feeds conformity assessments, Article 14 documentation, SMCR accountability packs, and post-market monitoring.</p>
+      </div>
+    </div>
+
+    <div class="regmap">
+      <div class="reg"><span class="reg__code">PRA · UK</span><h4>SS1/23</h4><p>Model risk management for banks. Intervention capability, override authority, governance committee cadence.</p></div>
+      <div class="reg"><span class="reg__code">EU · Regulation</span><h4>EU AI Act</h4><p>Article 9 risk management, Article 14 human oversight, Article 72 post-market monitoring — direct evidence mapping.</p></div>
+      <div class="reg"><span class="reg__code">FCA · UK</span><h4>Consumer Duty</h4><p>Foreseeable harm, outcomes monitoring, intervention speed on consumer-facing AI decisions.</p></div>
+      <div class="reg"><span class="reg__code">EU · Regulation</span><h4>DORA</h4><p>ICT risk, third-party concentration, operational resilience, incident classification, testing programmes.</p></div>
+      <div class="reg"><span class="reg__code">EU · Regulation</span><h4>GDPR</h4><p>Article 22 automated decisions, DPIA inputs, rights to human review with timing evidence.</p></div>
+      <div class="reg"><span class="reg__code">US · Voluntary</span><h4>NIST AI RMF</h4><p>Govern, Map, Measure, Manage — operational timing evidence for Measure and Manage functions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section>
+  <div class="wrap">
+    <div class="section-label">How it works</div>
+    <h2 style="max-width:18ch">From system to signed verdict in <em class="acc">two weeks.</em></h2>
+    <div class="how">
+      <div class="how__step">
+        <div class="n">Step 01</div>
+        <h4>Scope</h4>
+        <p>Define the AI system and its reversibility window. Identify the critical controls. Calibrate sector overlay.</p>
+      </div>
+      <div class="how__step">
+        <div class="n">Step 02</div>
+        <h4>Assess</h4>
+        <p>Run SEDI at org level and CRR at control level. Evidence grades captured. Confidence stated. Engine scores deterministically.</p>
+      </div>
+      <div class="how__step">
+        <div class="n">Step 03</div>
+        <h4>Attest</h4>
+        <p>Engine signs the verdict payload. Signature, engine hash, and input hash are registered. Report generated as self-contained HTML + JSON.</p>
+      </div>
+      <div class="how__step">
+        <div class="n">Step 04</div>
+        <h4>Remediate · Retest</h4>
+        <p>Close gaps surfaced by the verdict. Re-run the assessment. Drift flags trigger retest cadence. Classification history retained indefinitely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="wrap">
+    <div class="section-label">Pricing</div>
+    <div class="g2" style="margin-bottom:8px">
+      <h2 style="max-width:14ch">Published. <em class="acc">Fixed.</em></h2>
+      <p>Three license tiers plus a modular professional-services and library layer. All fees GBP, annual, exclusive of VAT. No day rates. No hidden escalators. Enterprise agreements include source escrow on request.</p>
+    </div>
+
+    <div class="pricing__tiers">
+      <div class="tier">
+        <div class="tier__badge" style="background:var(--ink-3)">Standard</div>
+        <div class="tier__name">License — Standard</div>
+        <div class="tier__price">£120–180k<small>per year · single entity</small></div>
+        <p class="tier__desc">For a single enterprise running a bounded AI portfolio under active governance.</p>
+        <ul>
+          <li>Up to 5 SEDI assessments / year</li>
+          <li>Up to 50 CRR records</li>
+          <li>10 named users</li>
+          <li>Core regulatory library (3 jurisdictions)</li>
+          <li>Signed outputs, public verification</li>
+          <li>Standard support (business hours)</li>
+        </ul>
+        <div class="tier__cta"><a href="#pilot">Start with a pilot →</a></div>
+        <div class="tier__note">Suited to single-BU banks, insurers, healthtech &amp; SaaS platforms with 1–3 consequential AI systems.</div>
+      </div>
+
+      <div class="tier tier--feat">
+        <div class="tier__badge">Most common</div>
+        <div class="tier__name">License — Scale</div>
+        <div class="tier__price">£250–400k<small>per year · multi-entity</small></div>
+        <p class="tier__desc">For enterprises running AI across multiple business lines with active regulatory engagement.</p>
+        <ul>
+          <li>Unlimited SEDI assessments</li>
+          <li>Unlimited CRR records</li>
+          <li>50+ users, SSO/SAML</li>
+          <li>Full regulatory library (6 jurisdictions)</li>
+          <li>Drift detection &amp; retest dashboard</li>
+          <li>Source escrow available</li>
+          <li>Priority support + quarterly review</li>
+        </ul>
+        <div class="tier__cta"><a href="#pilot">Request an evaluation →</a></div>
+        <div class="tier__note">Typical buyer: Chief Data Officer, CISO, Head of AI Governance, CRO.</div>
+      </div>
+
+      <div class="tier">
+        <div class="tier__badge" style="background:var(--accent)">Regulator · Audit</div>
+        <div class="tier__name">License — Regulator / Audit</div>
+        <div class="tier__price">£300–600k<small>per year · observer access</small></div>
+        <p class="tier__desc">For regulators and audit firms verifying AGDA outputs across populations of supervised entities.</p>
+        <ul>
+          <li>Read-access across tenant clients</li>
+          <li>Batch verification of signed outputs</li>
+          <li>Independent rater workflow</li>
+          <li>Access to public corpus + calibration data</li>
+          <li>Inter-rater reliability tooling</li>
+          <li>Dedicated technical liaison</li>
+        </ul>
+        <div class="tier__cta"><a href="#docs">Read the regulator brief →</a></div>
+        <div class="tier__note">Designed for national regulators, transnational supervisors, and Big-4 audit practices integrating AGDA into existing methodologies.</div>
+      </div>
+    </div>
+
+    <div class="addons">
+      <div class="addons__label">Add-ons &amp; services</div>
+      <div class="addon-row">
+        <h4>Onboarding &amp; calibration</h4>
+        <p>Sector overlay tuning, rater training, first assessment delivered by HIA advisory team.</p>
+        <div class="p">£50–120k<small>one-off</small></div>
+      </div>
+      <div class="addon-row">
+        <h4>Regulatory library subscription</h4>
+        <p>Separately licensable for clients on Standard tier wanting full jurisdictional coverage.</p>
+        <div class="p">£25–60k<small>per year</small></div>
+      </div>
+      <div class="addon-row">
+        <h4>Source escrow</h4>
+        <p>Independent escrow agent. Release triggers: insolvency, cessation of updates, regulator demand.</p>
+        <div class="p">£15k setup + £8k<small>per year</small></div>
+      </div>
+      <div class="addon-row">
+        <h4>Rater accreditation</h4>
+        <p>Individual certification for internal raters. Annual re-accreditation. Inter-rater reliability reporting.</p>
+        <div class="p">£4–8k<small>per rater</small></div>
+      </div>
+      <div class="addon-row" style="border-bottom:0">
+        <h4>Advisory — delivered by HIA</h4>
+        <p>Executive Exposure Assessment, Focused Intervention Lab, or ongoing programme. Separate engagement letter.</p>
+        <div class="p">£65k–£1.2M<small>see hia.io</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT IS NOT -->
+<section>
+  <div class="wrap">
+    <div class="section-label">What AGDA is not</div>
+    <div class="g2">
+      <h2 style="max-width:18ch">Precision, <em class="acc">not overreach.</em></h2>
+      <p>AGDA occupies a specific gap between adjacent frameworks. Buying AGDA is not a substitute for any of the following. It is the measurement layer that makes them testable.</p>
+    </div>
+
+    <div class="notlist">
+      <div class="notitem">
+        <div class="x">— Not</div>
+        <h4>A conformity verdict</h4>
+        <p>AGDA output is evidence feeding conformity assessments under the EU AI Act, DORA, SS1/23. The conformity judgement remains with the assessment body.</p>
+      </div>
+      <div class="notitem">
+        <div class="x">— Not</div>
+        <h4>A compliance dashboard</h4>
+        <p>We do not track whether you have policy documents. We test whether those policies execute under pressure. Keep Drata, Vanta, Secureframe for SOC 2 posture.</p>
+      </div>
+      <div class="notitem">
+        <div class="x">— Not</div>
+        <h4>A model-testing platform</h4>
+        <p>We do not test bias, explainability, or drift in the model itself. Credo AI, Holistic AI, Fairly AI do that. AGDA tests the control surface around the model.</p>
+      </div>
+      <div class="notitem">
+        <div class="x">— Not</div>
+        <h4>A consulting deliverable</h4>
+        <p>AGDA is a product. Advisory delivery is available through Human Integrity Advisory as a separate engagement. The engine runs the same way in either case.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <div class="wrap">
+    <div class="section-label">Against adjacent frameworks</div>
+    <h2 style="max-width:16ch">The gap <em class="acc">none of them</em> occupies.</h2>
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>What it measures</th>
+          <th>What AGDA adds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">NIST AI RMF 1.0</td>
+          <td class="desc"><span class="name">Conceptual completeness</span><br>Qualitative functions (Govern, Map, Measure, Manage) and sub-practices.</td>
+          <td class="us">Operational timing verdict on specific systems. Article-level evidence for Measure &amp; Manage.</td>
+        </tr>
+        <tr>
+          <td class="cat">ISO/IEC 42001</td>
+          <td class="desc"><span class="name">Management-system conformance</span><br>Auditable management-system criteria. Certifiable.</td>
+          <td class="us">System-level capability under stress. Legitimate evidence for ISO 42001 performance-evaluation clauses.</td>
+        </tr>
+        <tr>
+          <td class="cat">EU AI Act conformity</td>
+          <td class="desc"><span class="name">Legal requirement satisfaction</span><br>Binary outcome: conforms / does not conform.</td>
+          <td class="us">Operational gradient + evidence-grade discrimination. Direct input to Article 14 oversight evidence.</td>
+        </tr>
+        <tr>
+          <td class="cat">SOC 2 (AICPA TSC)</td>
+          <td class="desc"><span class="name">Control existence &amp; operation</span><br>Type II over audit period against Trust Services Criteria.</td>
+          <td class="us">Control <em>timing</em> relative to harm horizon. A clean SOC 2 does not answer whether oversight is fast enough.</td>
+        </tr>
+        <tr>
+          <td class="cat">Drata · Vanta · Secureframe</td>
+          <td class="desc"><span class="name">Compliance posture automation</span><br>Optimise for audit-ready state across policy evidence.</td>
+          <td class="us">Verifiable intervention capability. A perfect Drata score can coexist with AGDA failure.</td>
+        </tr>
+        <tr>
+          <td class="cat">Credo AI · Holistic AI · Fairly AI</td>
+          <td class="desc"><span class="name">Model-level risk</span><br>Bias, explainability, drift monitoring. Focus on the model itself.</td>
+          <td class="us">Control-surface capability around the model. A perfectly fair model with broken oversight still fails.</td>
+        </tr>
+        <tr class="agda-row">
+          <td class="cat" style="color:var(--accent);font-weight:500">AGDA</td>
+          <td class="desc"><span class="name">Time-bounded intervention capability</span><br>Deterministic scoring engine with cryptographic attestation and article-level regulatory mapping.</td>
+          <td class="us" style="color:var(--accent)">The only system producing signed, verifiable verdicts on whether AI governance can arrive in time.</td>
+        </tr>
+        <tr>
+          <td class="cat">Big-4 AI governance audit</td>
+          <td class="desc"><span class="name">Partner judgement</span><br>Qualitative audit produced as a PDF. Value lives in human assessment.</td>
+          <td class="us">Deterministic, reproducible, signed verdict. The diagnostic part of the audit — commodity quality, verifiable.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot" class="pilot">
+  <div class="wrap">
+    <div class="section-label">Pilot programme</div>
+    <div class="pilot__grid">
+      <div>
+        <h2 style="max-width:12ch">Three <em class="acc">pilot seats.</em></h2>
+        <p style="margin-top:24px">AGDA is accepting a limited number of pilot clients through Q3 2026. Pilots receive full Scale-tier access at a reduced introductory fee in exchange for case-study rights and participation in the external rater programme.</p>
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="mailto:pilot@agda.io" class="btn btn--primary">Apply for pilot seat <span class="btn__arrow">→</span></a>
+          <a href="#docs" class="btn btn--ghost">Read the thesis first <span class="btn__arrow">↓</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="pilot-terms">
+          <div><div class="k">Seats available</div><div class="v">3 (of 5 total; 2 reserved)</div></div>
+          <div><div class="k">Window</div><div class="v">Q2–Q3 2026</div></div>
+          <div><div class="k">Pilot fee</div><div class="v">£75k + £50k onboarding <span style="color:var(--ink-3);font-family:var(--mono);font-size:11px">(≈40% off Scale list)</span></div></div>
+          <div><div class="k">Duration</div><div class="v">12 months</div></div>
+          <div><div class="k">Buyer profile</div><div class="v">Regulated enterprise running consequential AI</div></div>
+          <div><div class="k">Sector priority</div><div class="v">Banking · Insurance · Healthcare · Critical infra</div></div>
+          <div><div class="k">Case study rights</div><div class="v">Required; anonymisation acceptable</div></div>
+          <div><div class="k">Published reference</div><div class="v">Encouraged; not required</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section id="docs">
+  <div class="wrap">
+    <div class="section-label">Open documentation</div>
+    <div class="g2">
+      <h2 style="max-width:14ch">Read before <em class="acc">you sign.</em></h2>
+      <p>AGDA publishes the positions that matter most. The thesis states the intellectual claim. The failure mode catalogue gives the vocabulary. The attestation design explains why outputs are verifiable. Read these, then decide.</p>
+    </div>
+    <div class="docs">
+      <a class="doc" href="#">
+        <span class="doc__type">Thesis · Public</span>
+        <h4>AGDA Thesis v1.0</h4>
+        <p>Eight falsifiable claims. The chain argument. Position vs. NIST / ISO / EU AI Act / SOC 2.</p>
+        <span class="doc__link">agda.io/thesis</span>
+      </a>
+      <a class="doc" href="#">
+        <span class="doc__type">Catalogue · Public</span>
+        <h4>40 Failure Modes</h4>
+        <p>FM-001 through FM-040. Named, cited, indexed. The shared vocabulary for intervention failure.</p>
+        <span class="doc__link">agda.io/failure-modes</span>
+      </a>
+      <a class="doc" href="#">
+        <span class="doc__type">Technical · Public</span>
+        <h4>Attestation design</h4>
+        <p>Ed25519, canonical JSON, append-only registry. The three-line verification. Written for regulators.</p>
+        <span class="doc__link">agda.io/attestation</span>
+      </a>
+      <a class="doc" href="#">
+        <span class="doc__type">Regulator brief · Public</span>
+        <h4>Regulator briefing</h4>
+        <p>What a national regulator needs to know to accept AGDA outputs as evidence. 12 pages.</p>
+        <span class="doc__link">agda.io/regulator-brief</span>
+      </a>
+    </div>
+    <p style="margin-top:32px;color:var(--ink-3);font-size:13px;max-width:72ch">Rater protocol, corpus governance, IP methodology, and internal algorithmic specification are available under NDA to prospective clients during pilot evaluation.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="background:var(--ink);color:var(--paper);border-bottom:0;padding:96px 32px">
+  <div class="wrap" style="text-align:center">
+    <h2 style="color:var(--paper);font-size:clamp(40px,5.4vw,80px);max-width:20ch;margin:0 auto 28px">If your AI governance cannot be <em class="acc" style="color:#7DB3FF;font-style:italic">verified,</em> it is just a claim.</h2>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:pilot@agda.io" class="btn btn--primary" style="background:var(--paper);color:var(--ink)">Apply for a pilot seat <span class="btn__arrow">→</span></a>
+      <a href="#docs" class="btn btn--ghost" style="color:var(--paper);border-color:rgba(250,250,250,0.3)">Read the thesis <span class="btn__arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="logo" style="margin-bottom:16px">AGDA<sup>™</sup></div>
+      <p style="color:rgba(250,250,250,0.6);font-size:13.5px;max-width:42ch">AI Governance Diagnostic Assessment. A product of Human Integrity Advisory Ltd. Based in the United Kingdom.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <a href="#what">What it does</a>
+      <a href="#verify">Verifiability</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#compare">Compare</a>
+    </div>
+    <div class="foot-col">
+      <h5>Docs</h5>
+      <a href="#">Thesis v1.0</a>
+      <a href="#">Failure modes</a>
+      <a href="#">Attestation</a>
+      <a href="#">Regulator brief</a>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <a href="mailto:pilot@agda.io">pilot@agda.io</a>
+      <a href="mailto:regulator@agda.io">regulator@agda.io</a>
+      <a href="https://hia.io">hia.io — advisory</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Human Integrity Advisory Ltd</span>
+    <span>AGDA™ · CRR™ · SEDI · FPIF are trademarks of Human Integrity Advisory Ltd</span>
+  </div>
+</footer>
+
+</body>
+</html>
